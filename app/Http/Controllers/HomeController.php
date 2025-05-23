@@ -8,17 +8,20 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $active = 'home';
-        return view('home.index', compact('active'));
+        $title = 'Beranda';
+        $active = 'beranda';
+        return view('home.index', compact('active', 'title'));
     }
-    public function about()
+    public function tentang()
     {
-        $active = 'about';
-        return view('home.about', compact('active'));
+        $title = 'Tentang Aplikasi';
+        $active = 'tentang';
+        return view('home.tentang', compact('active', 'title'));
     }
-    public function contact()
+    public function kontak()
     {
-        $active = 'contact';
-        return view('home.contact', compact('active'));
+        $title = 'Kontak Kami';
+        $active = 'kontak';
+        return view('home.kontak', compact('active', 'title'));
     }
 }

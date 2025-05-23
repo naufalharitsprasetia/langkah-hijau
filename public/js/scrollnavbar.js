@@ -14,14 +14,14 @@ function scrollFunction() {
         myNavbar.classList.add(
             "bg-white/80",
             "backdrop-blur",
-            "dark:bg-gray-900/80"
+            "dark:bg-zinc-900/80"
         );
     } else {
         mybutton.style.display = "none";
         myNavbar.classList.remove(
             "bg-white/80",
             "backdrop-blur",
-            "dark:bg-gray-900/80"
+            "dark:bg-zinc-900/80"
         );
     }
 }

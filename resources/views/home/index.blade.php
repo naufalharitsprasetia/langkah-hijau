@@ -47,7 +47,7 @@
                 style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
             </div>
         </div>
-        <div class="mx-auto max-w-2xl pb-20 sm:pb-28 lg:pb-32 pt-12 sm:pt-16 lg:pt-20">
+        <div class="mx-auto max-w-2xl pb-2 sm:pb-32 lg:pb-36 pt-12 sm:pt-12 lg:pt-16">
             <div class="hidden sm:mb-8 sm:flex sm:justify-center">
                 <div
                     class="relative rounded-full px-3 py-1 text-sm/6 text-gray-600 dark:text-gray-300 ring-1 ring-gray-900/10 hover:ring-gray-900/20 dark:ring-gray-100/10 dark:hover:ring-gray-100/20">
@@ -133,7 +133,7 @@
                                 minim sampah, daur ulang DIY, dan kebiasaan hijau sehari-hari.</dd>
                         </div>
                         <div class="relative pl-16">
-                            <dt class="text-base/7 font-semibold text-gray-900">
+                            <dt class="text-base/7 font-semibold text-gray-900 dark:text-gray-100">
                                 <div
                                     class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-green-600">
                                     <i class="fa-solid fa-shop" style="color:white"></i>
@@ -145,7 +145,7 @@
                             </dd>
                         </div>
                         <div class="relative pl-16">
-                            <dt class="text-base/7 font-semibold text-gray-900">
+                            <dt class="text-base/7 font-semibold text-gray-900 dark:text-gray-100">
                                 <div
                                     class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-green-600">
                                     <i class="fa-solid fa-star-and-crescent" style="color:white"></i>
@@ -157,7 +157,7 @@
                                 amanah. Hadirkan kebaikan lewat gaya hidup hijau dan sedekah barang.</dd>
                         </div>
                         <div class="relative pl-16">
-                            <dt class="text-base/7 font-semibold text-gray-900">
+                            <dt class="text-base/7 font-semibold text-gray-900 dark:text-gray-100">
                                 <div
                                     class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-green-600">
                                     <i class="fa-solid fa-circle-info" style="color:white"></i>
@@ -172,29 +172,11 @@
                 </div>
             </div>
         </div>
-        {{-- LOGO CLOUD--}}
-        <div class="py-24 sm:py-32">
+        <div class="py-6 sm:py-10" id="mitra">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                <h2 class="text-center text-lg/8 font-semibold text-gray-900">Trusted by the world’s most innovative
-                    teams</h2>
-                <div
-                    class="mx-auto mt-10 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
-                    <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-                        src="https://tailwindcss.com/plus-assets/img/logos/158x48/transistor-logo-gray-900.svg"
-                        alt="Transistor" width="158" height="48">
-                    <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-                        src="https://tailwindcss.com/plus-assets/img/logos/158x48/reform-logo-gray-900.svg" alt="Reform"
-                        width="158" height="48">
-                    <img class="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-                        src="https://tailwindcss.com/plus-assets/img/logos/158x48/tuple-logo-gray-900.svg" alt="Tuple"
-                        width="158" height="48">
-                    <img class="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1"
-                        src="https://tailwindcss.com/plus-assets/img/logos/158x48/savvycal-logo-gray-900.svg"
-                        alt="SavvyCal" width="158" height="48">
-                    <img class="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1"
-                        src="https://tailwindcss.com/plus-assets/img/logos/158x48/statamic-logo-gray-900.svg"
-                        alt="Statamic" width="158" height="48">
-                </div>
+                <h2 class="text-center text-lg/8 font-semibold text-zinc-900 dark:text-gray-200">Didukung oleh :</h2>
+                <br>
+                <x-mitra />
             </div>
         </div>
 
@@ -208,13 +190,17 @@
                 style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
             </div>
         </div>
+
         {{-- BENTO GRID --}}
         <div class="py-24 sm:py-32">
             <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
-                <h2 class="text-center text-base/7 font-semibold text-green-600">Deploy faster</h2>
+                {{-- <h2 class="text-center text-base/7 font-semibold text-green-600 dark:text-green-400">Deploy faster
+                </h2> --}}
                 <p
-                    class="mx-auto mt-2 max-w-lg text-center text-4xl font-semibold tracking-tight text-balance text-gray-950 sm:text-5xl">
-                    Everything you need to deploy your app</p>
+                    class="mx-auto mt-2 max-w-2xl text-center text-4xl font-semibold text-balance text-green-600 dark:text-green-400 sm:text-5xl">
+                    <span class="text-zinc-900 dark:text-gray-100">Bagaimana</span><br>
+                    LangkahHijau Berdampak ?
+                </p>
                 <div class="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2">
                     <div class="relative lg:row-span-2">
                         <div class="absolute inset-px rounded-lg bg-white lg:rounded-l-4xl"></div>
@@ -320,35 +306,5 @@
             </div>
         </div>
     </div>
-    {{-- TESTIMONI --}}
-    {{-- <section class="bg-white relative isolate overflow-hidden px-6 py-24 sm:py-32 lg:px-8">
-        <div
-            class="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,var(--color-green-100),white)] opacity-20">
-        </div>
-        <div
-            class="absolute inset-y-0 right-1/2 -z-10 mr-16 w-[200%] origin-bottom-left skew-x-[-30deg] bg-white shadow-xl ring-1 shadow-green-600/10 ring-green-50 sm:mr-28 lg:mr-0 xl:mr-16 xl:origin-center">
-        </div>
-        <div class="mx-auto max-w-2xl lg:max-w-4xl">
-            <img class="mx-auto h-12" src="https://tailwindcss.com/plus-assets/img/logos/workcation-logo-green-600.svg"
-                alt="">
-            <figure class="mt-10">
-                <blockquote class="text-center text-xl/8 font-semibold text-gray-900 sm:text-2xl/9">
-                    <p>“Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo expedita voluptas culpa
-                        sapiente alias molestiae. Numquam corrupti in laborum sed rerum et corporis.”</p>
-                </blockquote>
-                <figcaption class="mt-10">
-                    <img class="mx-auto size-10 rounded-full"
-                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt="">
-                    <div class="mt-4 flex items-center justify-center space-x-3 text-base">
-                        <div class="font-semibold text-gray-900">Judith Black</div>
-                        <svg viewBox="0 0 2 2" width="3" height="3" aria-hidden="true" class="fill-gray-900">
-                            <circle cx="1" cy="1" r="1" />
-                        </svg>
-                        <div class="text-gray-600">CEO of Workcation</div>
-                    </div>
-                </figcaption>
-            </figure>
-        </div>
-    </section> --}}
+
 </x-layout>

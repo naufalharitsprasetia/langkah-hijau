@@ -1,6 +1,6 @@
 <header class="sticky inset-x-0 top-0 z-50 " x-data="{ isOpen: false }" id="myNavbar">
     {{-- sebenernya ada add remove bg-white/80 di .js nya --}}
-    <div class="bg-white/80 backdrop-blur dark:bg-gray-900/80 hidden"></div>
+    <div class="bg-white/80 backdrop-blur dark:bg-zinc-900/80 hidden"></div>
     <nav class="flex items-center justify-between p-6 lg:px-8 mx-auto max-w-7xl" aria-label="Global">
         <div class="flex lg:flex-1">
             <a href="#" class="-m-1.5 p-1.5 flex justify-center items-center">
@@ -26,9 +26,12 @@
             <a href="/blog" class="text-sm/6 font-medium text-gray-700 dark:text-gray-200">Edu-Zone ♻️</a>
             <a href="/about" class="text-sm/6 font-medium text-gray-700 dark:text-gray-200">Tantangan</a>
             <a href="/about" class="text-sm/6 font-medium text-gray-700 dark:text-gray-200">Green AI ✨</a>
-            <a href="/contact" class="text-sm/6 font-medium text-gray-700 dark:text-gray-200">Kontak</a>
+            <a href="/kontak" class="text-sm/6 font-medium text-gray-700 dark:text-gray-200">Kontak</a>
         </div>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center">
+            <a href="/login"
+                class="text-sm/6 font-medium mr-3 text-gray-100 bg-green-600 rounded-sm px-3 py-1 hover:bg-green-500 hover:text-grey-200">
+                <i class="fa-solid fa-sign-in"></i> Login</a>
             <!-- Theme Toggle Button -->
             <button id="theme-toggle" aria-label="Toggle theme"
                 class="p-2 rounded-full text-accent dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">
@@ -37,9 +40,6 @@
                         d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                 </svg>
             </button>
-            <a href="/login"
-                class="text-sm/6 font-medium text-gray-100 bg-green-600 rounded-sm px-3 py-1 hover:bg-green-500 hover:text-grey-200">Log
-                in <span aria-hidden="true">&rarr;</span></a>
         </div>
     </nav>
     <!-- Mobile menu, show/hide based on menu open state. -->
@@ -75,14 +75,14 @@
                         <a href="/t"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-50">Green
                             AI ✨</a>
-                        <a href="/contact"
+                        <a href="/kontak"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-50">Kontak
                         </a>
                     </div>
                     <div class="py-6">
                         <a href="/login"
-                            class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-medium text-gray-700 hover:bg-gray-50">Log
-                            in</a>
+                            class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-medium text-gray-700 hover:bg-gray-50">
+                            <i class="fa-solid fa-sign-in mr-3"></i> Login</a>
                     </div>
                 </div>
             </div>
