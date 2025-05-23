@@ -1,0 +1,165 @@
+body {
+    /* font-family: "Plus jakarta sans", sans-serif; */
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    background-color: white;
+    color: black;
+}
+
+.menu {
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out,
+        background-color 0.3s ease-in-out, border 0.3s ease-in-out;
+}
+
+.menu-hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+.menu-visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+::-moz-selection {
+    /* Code for Firefox */
+    color: white;
+    background: rgba(0, 128, 0, 0.541);
+}
+
+::selection {
+    color: white;
+    background: rgba(0, 128, 0, 0.5);
+}
+
+.hero-button {
+    transition: all 0.3s ease;
+}
+
+.cursor-example {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    background-color: white;
+    mix-blend-mode: difference;
+    z-index: 9999;
+}
+
+#backToTop {
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 50;
+}
+
+#backToTop.show {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* Accordion base styles */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.accordion.active .accordion-content {
+    max-height: 200px; /* Set a maximum height */
+}
+
+/* Accordion toggle button */
+.accordion-toggle {
+    cursor: pointer;
+}
+
+/* Simple styling for hover */
+.accordion-toggle:hover {
+    color: #4f46e5; /* Indigo */
+}
+
+/* Transition for the icon rotation */
+svg {
+    transition: transform 0.4s ease;
+}
+
+.accordion.active svg {
+    transform: rotate(180deg);
+}
+
+/* no scrollbar */
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* The switch - the outer container */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+
+/* The slider - the round button */
+.switch .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.switch .slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+/* Checked - dark mode */
+input:checked + .slider {
+    background-color: #4a5568;
+    /* Darker color */
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+/* Rounded switch */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}

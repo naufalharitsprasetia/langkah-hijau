@@ -1,91 +1,97 @@
 <x-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
-    {{-- Hero Section --}}
-    <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
-        <div class="hidden sm:mb-8 sm:flex sm:justify-center">
-            <div
-                class="relative rounded-full px-3 py-1 text-sm/6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                Periksa gaya hidupmu. <a href="#" class="font-semibold text-green-600"><span class="absolute inset-0"
-                        aria-hidden="true"></span>Read more <span aria-hidden="true">&rarr;</span></a>
-            </div>
-        </div>
-        <div class="text-center">
-            <h1 class="text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl">Hijaukan
-                Gaya, Hijaukan Dunia.</h1>
-            <p class="mt-8 text-lg font-medium text-pretty text-gray-500 sm:text-xl/8">Hijaukan Hidupmu, Mulai
-                Sekarang.</p>
-            <div class="mt-10 flex items-center justify-center gap-x-6">
-                <a href="#"
-                    class="rounded-md bg-green-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-green-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Get
-                    started</a>
-                <a href="#" class="text-sm/6 font-semibold text-gray-900">Learn more <span
-                        aria-hidden="true">→</span></a>
-            </div>
-        </div>
-    </div>
-    {{-- centered grid 2x2--}}
-    <div class="py-24 sm:py-32">
-        <div class="mx-auto max-w-7xl px-6 lg:px-8">
-            <div class="mx-auto max-w-2xl lg:text-center">
-                <h2 class="text-base/7 font-semibold text-green-600">Fokus Utama</h2>
-                <p
-                    class="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl lg:text-balance">
-                    4 Pilar Utama yang Menjadi Fondasi Aplikasi Greenstyle</p>
-                <p class="mt-6 text-lg/8 text-gray-600">Apa yang menjadi fokus utama kami dalam menghadirkan Greenstye?
-                    <br>
-                    Kami membangun aplikasi ini sebagai ruang digital untuk hidup lebih bijak, berkelanjutan, dan
-                    bernilai. Berikut adalah empat fokus utama yang kami gaungkan:
-                </p>
-            </div>
-            <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
-                <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
-                    <div class="relative pl-16">
-                        <dt class="text-base/7 font-semibold text-gray-900">
-                            <div
-                                class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-green-600">
-                                <i class="fa-solid fa-book" style="color:#fff"></i>
-                            </div>
-                            Edukasi
-                        </dt>
-                        <dd class="mt-2 text-base/7 text-gray-600">Konten inspiratif dan praktis seputar gaya hidup
-                            minim sampah, daur ulang DIY, dan kebiasaan hijau sehari-hari.</dd>
-                    </div>
-                    <div class="relative pl-16">
-                        <dt class="text-base/7 font-semibold text-gray-900">
-                            <div
-                                class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-green-600">
-                                <i class="fa-solid fa-shop" style="color:white"></i>
-                            </div>
-                            Marketplace
-                        </dt>
-                        <dd class="mt-2 text-base/7 text-gray-600">Jual beli barang bekas dengan sistem klasifikasi
-                            pintar dan fitur lokasi, untuk konsumsi yang lebih bijak dan berkelanjutan.
-                        </dd>
-                    </div>
-                    <div class="relative pl-16">
-                        <dt class="text-base/7 font-semibold text-gray-900">
-                            <div
-                                class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-green-600">
-                                <i class="fa-solid fa-star-and-crescent" style="color:white"></i>
-                            </div>
-                            Islamisasi
-                        </dt>
-                        <dd class="mt-2 text-base/7 text-gray-600">Menghidupkan nilai Islam dalam menjaga bumi sebagai
-                            amanah. Hadirkan kebaikan lewat gaya hidup hijau dan sedekah barang.</dd>
-                    </div>
-                    <div class="relative pl-16">
-                        <dt class="text-base/7 font-semibold text-gray-900">
-                            <div
-                                class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-green-600">
-                                <i class="fa-solid fa-circle-info" style="color:white"></i>
+    <style>
+        .hero-image {
+            --offset: 2px;
+            /* Adjusted for larger border */
+            background: rgb(71, 71, 71);
+            border-radius: 16px;
+            /* You can adjust the radius as per your design */
+            position: relative;
+            overflow: hidden;
+        }
 
-                            </div>
-                            Informasi
-                        </dt>
-                        <dd class="mt-2 text-base/7 text-gray-600">Forum, artikel, dan update komunitas seputar
-                            lingkungan. Terhubung dan tumbuh bersama komunitas hijau yang peduli.</dd>
-                    </div>
-                </dl>
+        /* Conic gradient for rotating border */
+        .hero-image::before {
+            content: '';
+            background: conic-gradient(transparent 270deg, #06C790, transparent);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            aspect-ratio: 1;
+            width: 200%;
+            /* Increased size for larger element */
+            animation: rotate 3s linear infinite;
+            /* Adjust animation speed */
+            z-index: 1;
+            /* To keep it behind the image */
+        }
+
+        /* Overlay */
+        .hero-image::after {
+            content: '';
+            background: inherit;
+            border-radius: inherit;
+            position: absolute;
+            inset: var(--offset);
+            z-index: 5;
+        }
+    </style>
+    {{-- Hero Section --}}
+    <div class="hero relative isolate z-10">
+        {{-- absoulute glow atas --}}
+        <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+            aria-hidden="true">
+            <div class="relative left-[calc(50%-11rem)] aspect-1155/678 w-144.5 -translate-x-1/2 rotate-30 bg-linear-to-tr from-[#44ff7c] to-[#80ff9b] opacity-30 sm:left-[calc(50%-30rem)] sm:w-288.75"
+                style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+            </div>
+        </div>
+        <div class="mx-auto max-w-2xl pb-20 sm:pb-28 lg:pb-32 pt-12 sm:pt-16 lg:pt-20">
+            <div class="hidden sm:mb-8 sm:flex sm:justify-center">
+                <div
+                    class="relative rounded-full px-3 py-1 text-sm/6 text-gray-600 dark:text-gray-300 ring-1 ring-gray-900/10 hover:ring-gray-900/20 dark:ring-gray-100/10 dark:hover:ring-gray-100/20">
+                    Cek gaya hidupmu, hijaukan langkahmu! <a href="#"
+                        class="font-semibold text-green-600 dark:text-green-400 hover:opacity-85"><span
+                            class="absolute inset-0" aria-hidden="true"></span>Cek Sekarang <span
+                            aria-hidden="true">&rarr;</span></a>
+                </div>
+            </div>
+            <div class="text-center">
+                <h1
+                    class="text-3xl font-semibold tracking-tight text-balance text-gray-900 dark:text-gray-100 sm:text-5xl md:text-6xl lg:text-7xl">
+                    Hijaukan
+                    Langkahmu, Hijaukan Dunia.</h1>
+                <p class="mt-8 text-lg font-medium text-pretty text-gray-500 dark:text-gray-300 sm:text-xl/8">Mulai dari
+                    langkah kecil,
+                    untuk bumi yang lebih hijau.</p>
+                <div class="mt-10 flex items-center justify-center gap-x-6">
+                    <a href="#"
+                        class="rounded-md bg-green-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-green-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Mulai
+                        Langkahmu</a>
+                    <a href="#" class="text-sm/6 font-semibold text-gray-900 dark:text-gray-200">Jelajahi <span
+                            aria-hidden="true">→</span></a>
+                </div>
+            </div>
+        </div>
+        {{-- snap screenshoot --}}
+        <div class="hero-image-wrapper w-full flex justify-center md:-mt-18 mb-20 ">
+            <div
+                class="hero-image fancy aspect-video rounded-md overflow-hidden max-w-5xl mx-auto relative p-[1.2px] bg-zinc-900">
+                <img class="w-full h-full object-cover rounded-2xl hidden dark:block relative z-10"
+                    src="{{ asset('img/langkahhijau/dashboard-dark.webp') }}" draggable="false" alt="LangkahHijau"
+                    loading="lazy">
+                <img class="w-full h-full object-cover rounded-2xl block dark:hidden relative z-10"
+                    src="{{ asset('img/langkahhijau/dashboard.webp') }}" draggable="false" alt="LangkahHijau"
+                    loading="lazy">
+
+            </div>
+        </div>
+        {{-- glow bawah --}}
+        <div class="absolute inset-x-0 top-[calc(100%-40rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-78rem)]"
+            aria-hidden="true">
+            <div class="relative left-[calc(50%+3rem)] aspect-1155/678 w-144.5 -translate-x-1/2 bg-linear-to-tr from-[#46ff21] to-[#a0ffbc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-288.75"
+                style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
             </div>
         </div>
     </div>
@@ -96,6 +102,74 @@
             aria-hidden="true">
             <div class="relative left-[calc(50%-11rem)] aspect-1155/678 w-144.5 -translate-x-1/2 rotate-30 bg-linear-to-tr from-[#44ff7c] to-[#80ff9b] opacity-30 sm:left-[calc(50%-30rem)] sm:w-288.75"
                 style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+            </div>
+        </div>
+        {{-- centered grid 2x2--}}
+        <div class="py-24 sm:py-32">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="mx-auto max-w-3xl lg:text-center">
+                    <h2 class="text-base/7 font-semibold text-green-600 dark:text-green-400">Fokus Utama</h2>
+                    <p
+                        class="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-gray-100 sm:text-5xl lg:text-balance">
+                        4 Pilar Utama yang Menjadi Fondasi Aplikasi LangkahHijau</p>
+                    <p class="mt-6 text-lg/8 text-gray-600">Apa yang menjadi fokus utama kami dalam menghadirkan
+                        Greenstye?
+                        <br>
+                        Kami membangun aplikasi ini sebagai ruang digital untuk hidup lebih bijak, berkelanjutan, dan
+                        bernilai. Berikut adalah empat fokus utama yang kami gaungkan:
+                    </p>
+                </div>
+                <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
+                    <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
+                        <div class="relative pl-16">
+                            <dt class="text-base/7 font-semibold text-gray-900 dark:text-gray-100">
+                                <div
+                                    class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg dark:bg-green-400 bg-green-600">
+                                    <i class="fa-solid fa-book" style="color:#fff"></i>
+                                </div>
+                                Edukasi
+                            </dt>
+                            <dd class="mt-2 text-base/7 text-gray-600">Konten inspiratif dan praktis seputar gaya hidup
+                                minim sampah, daur ulang DIY, dan kebiasaan hijau sehari-hari.</dd>
+                        </div>
+                        <div class="relative pl-16">
+                            <dt class="text-base/7 font-semibold text-gray-900">
+                                <div
+                                    class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-green-600">
+                                    <i class="fa-solid fa-shop" style="color:white"></i>
+                                </div>
+                                Marketplace
+                            </dt>
+                            <dd class="mt-2 text-base/7 text-gray-600">Jual beli barang bekas dengan sistem klasifikasi
+                                pintar dan fitur lokasi, untuk konsumsi yang lebih bijak dan berkelanjutan.
+                            </dd>
+                        </div>
+                        <div class="relative pl-16">
+                            <dt class="text-base/7 font-semibold text-gray-900">
+                                <div
+                                    class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-green-600">
+                                    <i class="fa-solid fa-star-and-crescent" style="color:white"></i>
+                                </div>
+                                Islamisasi
+                            </dt>
+                            <dd class="mt-2 text-base/7 text-gray-600">Menghidupkan nilai Islam dalam menjaga bumi
+                                sebagai
+                                amanah. Hadirkan kebaikan lewat gaya hidup hijau dan sedekah barang.</dd>
+                        </div>
+                        <div class="relative pl-16">
+                            <dt class="text-base/7 font-semibold text-gray-900">
+                                <div
+                                    class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-green-600">
+                                    <i class="fa-solid fa-circle-info" style="color:white"></i>
+
+                                </div>
+                                Informasi
+                            </dt>
+                            <dd class="mt-2 text-base/7 text-gray-600">Forum, artikel, dan update komunitas seputar
+                                lingkungan. Terhubung dan tumbuh bersama komunitas hijau yang peduli.</dd>
+                        </div>
+                    </dl>
+                </div>
             </div>
         </div>
         {{-- LOGO CLOUD--}}
@@ -121,6 +195,17 @@
                         src="https://tailwindcss.com/plus-assets/img/logos/158x48/statamic-logo-gray-900.svg"
                         alt="Statamic" width="158" height="48">
                 </div>
+            </div>
+        </div>
+
+    </div>
+    {{-- sc3 --}}
+    <div class="underhero relative isolate">
+        {{-- absoulute glow atas --}}
+        <div class="absolute inset-x-0 -top-40 -z-50 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+            aria-hidden="true">
+            <div class="relative left-[calc(50%-11rem)] aspect-1155/678 w-144.5 -translate-x-1/2 rotate-30 bg-linear-to-tr from-[#44ff7c] to-[#80ff9b] opacity-30 sm:left-[calc(50%-30rem)] sm:w-288.75"
+                style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
             </div>
         </div>
         {{-- BENTO GRID --}}
@@ -227,9 +312,16 @@
                 </div>
             </div>
         </div>
+        {{-- absoulute glow bawah--}}
+        <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-50 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+            aria-hidden="true">
+            <div class="relative left-[calc(50%+3rem)] aspect-1155/678 w-144.5 -translate-x-1/2 bg-linear-to-tr from-[#46ff21] to-[#a0ffbc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-288.75"
+                style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+            </div>
+        </div>
     </div>
     {{-- TESTIMONI --}}
-    <section class="bg-white relative isolate overflow-hidden px-6 py-24 sm:py-32 lg:px-8">
+    {{-- <section class="bg-white relative isolate overflow-hidden px-6 py-24 sm:py-32 lg:px-8">
         <div
             class="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,var(--color-green-100),white)] opacity-20">
         </div>
@@ -258,5 +350,5 @@
                 </figcaption>
             </figure>
         </div>
-    </section>
+    </section> --}}
 </x-layout>
