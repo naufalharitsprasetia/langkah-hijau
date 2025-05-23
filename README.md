@@ -116,28 +116,25 @@ Jika mengalami kendala, hubungi saya:
 
 ### 👨‍💻 Tim Pengembang
 
-Peran	Nama / Deskripsi
-Project Leader	Naufal Harits Prasetia
-Backend Developer	(Diisi sesuai tim proyek)
-Frontend Developer	(Diisi sesuai tim proyek)
-UI/UX Designer	(Diisi sesuai tim proyek)
-Content Creator	(Diisi sesuai tim proyek)
+|Peran              |	Nama / Deskripsi            |
+|Project Leader	    |   Naufal Harits Prasetia      |
+|Backend Developer  |   (Diisi sesuai tim proyek)   |
+|Frontend Developer |	(Diisi sesuai tim proyek)   |
+|UI/UX Designer     |	(Diisi sesuai tim proyek)   |
+|Content Creator    |	(Diisi sesuai tim proyek)   |
 
 ### 🧪 Tech Stack
-Framework: Laravel
-
-Frontend: Blade, TailwindCSS
-
-Database: MySQL / PostgreSQL / SQLite
-
-Deployment: Laravel Cloud
+-Framework: Laravel
+-Frontend: Blade, TailwindCSS
+-Database: MySQL / PostgreSQL / SQLite
+-Deployment: Laravel Cloud
 
 ### 📜 Lisensi & Kontribusi
 
-Proyek ini dibuat sebagai bagian dari partisipasi lomba dan penelitian edukatif.
+Proyek ini dibuat sebagai bagian dari partisipasi lomb  a dan penelitian edukatif.
 
-| Saya tidak mengizinkan penggunaan aplikasi ini secara langsung untuk kepentingan pribadi/komersial tanpa izin.
-| Anda diperbolehkan meniru ide atau desain, namun mohon cantumkan referensi berikut:
+Saya tidak mengizinkan penggunaan aplikasi ini secara langsung untuk kepentingan pribadi/komersial tanpa izin.
+Anda diperbolehkan meniru ide atau desain, namun mohon cantumkan referensi berikut:
 
 ```csharp
 Terinspirasi dari:
