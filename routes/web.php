@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 
 Route::get('/', function () {});
@@ -35,13 +36,13 @@ Route::get('/kontak', [HomeController::class, 'kontak'])->name('home.kontak');
 // Route::post('/tani-ai', [TaniController::class, 'chat'])->name('tani.chat')->middleware('req_auth');
 
 // Auth for guest
-// Route::middleware('guest')->group(function () {
-//     Route::get('/req-auth', [AuthController::class, 'reqAuth'])->name('auth.reqAuth');
-//     Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
-//     Route::post('/login', [AuthController::class, 'authenticate'])->name('auth.authenticate');
-//     Route::get('/sign-up', [AuthController::class, 'signup'])->name('auth.signup');
-//     Route::post('/sign-up', [AuthController::class, 'addUser'])->name('auth.addUser');
-// });
+Route::middleware('guest')->group(function () {
+    Route::get('/req-auth', [AuthController::class, 'reqAuth'])->name('auth.reqAuth');
+    Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
+    Route::post('/login', [AuthController::class, 'authenticate'])->name('auth.authenticate');
+    Route::get('/sign-up', [AuthController::class, 'signup'])->name('auth.signup');
+    Route::post('/sign-up', [AuthController::class, 'addUser'])->name('auth.addUser');
+});
 
 // Auth for user logged in
 // Route::middleware('auth')->group(function () {

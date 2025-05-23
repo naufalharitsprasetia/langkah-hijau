@@ -29,7 +29,7 @@ class AuthController extends Controller
     {
         return view('auth.signup', [
             'active' => 'signup',
-            'title' => 'signup'
+            'title' => 'Daftar'
         ]);
     }
 
