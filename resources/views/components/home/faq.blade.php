@@ -62,7 +62,7 @@ bisa memanfaatkan aplikasi ini sebagai panduan praktis.
     class="relative w-full mx-auto overflow-hidden text-sm font-normal bg-white/dark:bg-zinc-900/90 dark:bg-zinc-900/90 backdrop-blur-lg dark:text-white border border-gray-300 dark:border-zinc-700 divide-y dark:divide-zinc-700 rounded-md">
 
     @foreach ($faqs as $faq)
-    <div x-data="{ active: false }" class="cursor-pointer group border-gray-300 dark:border-zinc-700 cursor-pointer">
+    <div x-data="{ active: false }" class="group border-gray-300 dark:border-zinc-700 cursor-pointer">
         <button @click="active = !active"
             class="flex items-center justify-between w-full p-4 text-left select-none group-hover:underline cursor-pointer">
             <span>{{ $faq['question'] }}</span>
