@@ -1,6 +1,6 @@
 {{-- Footer --}}
 <footer
-    class="relative bg-white dark:bg-zinc-900 text-gray-600 h-fit dark:text-gray-400 py-8 px-4 sm:px-6 lg:px-8 z-50">
+    class="relative bg-white dark:bg-zinc-900 text-gray-600 h-fit dark:text-gray-400 py-8 px-4 sm:px-6 lg:px-8 z-30">
     <div class="max-w-6xl mx-auto ">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8 ">
             <!-- Logo and Social Icons -->
