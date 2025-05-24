@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HijauAIController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 
 Route::get('/', function () {});
 Route::get('/blog', function () {
@@ -31,8 +33,12 @@ Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('/tentang', [HomeController::class, 'tentang'])->name('home.tentang');
 Route::get('/kontak', [HomeController::class, 'kontak'])->name('home.kontak');
 
+//
+Route::get('/edu-zone', [PostController::class, 'index'])->name('post.index');
+
 // Hijau AI
-// Route::get('/tani-ai', [TaniController::class, 'index'])->name('tani')->middleware('req_auth');
+Route::get('/hijau-ai', [HijauAIController::class, 'index'])->name('hijau-ai.index');
+Route::post('/hijau-ai', [HijauAIController::class, 'ask'])->name('hijau-ai.ask');
 // Route::post('/tani-ai', [TaniController::class, 'chat'])->name('tani.chat')->middleware('req_auth');
 
 // Auth for guest

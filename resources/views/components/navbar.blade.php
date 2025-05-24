@@ -22,16 +22,25 @@
             </button>
         </div>
         <div class="hidden lg:flex lg:gap-x-12">
-            <a href="/" class="text-sm/6 font-medium text-green-600 dark:text-green-400">Beranda</a>
-            <a href="/blog" class="text-sm/6 font-medium text-gray-700 dark:text-gray-200">Edu-Zone ♻️</a>
-            <a href="/about" class="text-sm/6 font-medium text-gray-700 dark:text-gray-200">Tantangan</a>
-            <a href="/about" class="text-sm/6 font-medium text-gray-700 dark:text-gray-200">Green AI ✨</a>
-            <a href="/kontak" class="text-sm/6 font-medium text-gray-700 dark:text-gray-200">Kontak</a>
+            <a href="{{ route('home.index') }}"
+                class="text-sm/6 font-medium text-green-600 dark:text-green-400">Beranda</a>
+            <a href="{{ route('post.index') }}" class="text-sm/6 font-medium text-gray-700 dark:text-gray-200">Edu-Zone
+                ♻️</a>
+            <a href="/tantangan" class="text-sm/6 font-medium text-gray-700 dark:text-gray-200">Tantangan</a>
+            <a href="/hijau-ai" class="text-sm/6 font-medium text-gray-700 dark:text-gray-200">Hijau AI ✨</a>
+            <a href="{{ route('home.kontak') }}"
+                class="text-sm/6 font-medium text-gray-700 dark:text-gray-200">Kontak</a>
         </div>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center">
+            @guest
             <a href="/login"
                 class="text-sm/6 font-medium mr-3 text-gray-100 bg-green-600 rounded-sm px-3 py-1 hover:bg-green-500 hover:text-grey-200">
                 <i class="fa-solid fa-sign-in"></i> Login</a>
+            @else
+            <a href="#"
+                class="text-sm/6 font-medium mr-3 text-gray-100 bg-green-600 rounded-sm px-3 py-1 hover:bg-green-500 hover:text-grey-200">Hai,
+                {{ auth()->user()->name }}</a>
+            @endguest
             <!-- Theme Toggle Button -->
             <button id="theme-toggle" aria-label="Toggle theme"
                 class="p-2 rounded-full text-accent dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer">
