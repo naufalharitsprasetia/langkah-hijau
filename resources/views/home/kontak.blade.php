@@ -1,5 +1,4 @@
-<x-layout>
-    <x-slot:title>{{ $title }}</x-slot:title>
+<x-layout :title="$title">
     <div class="min-h-screen">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 py-12">
             <div class="lg:grid lg:grid-cols-2 lg:gap-8 mt-12">

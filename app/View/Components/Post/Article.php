@@ -1,18 +1,19 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Post;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Mitra extends Component
+class Article extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct()
-    {
+    public function __construct(
+        public string $active,
+    ) {
         //
     }
 
@@ -21,6 +22,6 @@ class Mitra extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.home.mitra');
+        return view('components.post.article');
     }
 }

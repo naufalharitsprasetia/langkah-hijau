@@ -7,7 +7,8 @@
             <div class="space-y-4">
                 <div class="flex items-center space-x-2">
                     <img src="/img/logoweb.png" width="40" height="40" alt="AgriConnect Logo" class="w-10 h-10">
-                    <span class="text-xl font-bold">Langkah<span class="text-green-500">Hijau</spanc></span>
+                    <span class="text-xl font-bold text-zinc-900 dark:text-white">Langkah<span
+                            class="text-green-500">Hijau</span></span>
                 </div>
                 <div class="flex space-x-4">
                     <a href="#" class="text-gray-400 hover:text-gray-500">

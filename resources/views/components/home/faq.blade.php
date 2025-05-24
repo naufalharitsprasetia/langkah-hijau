@@ -59,7 +59,7 @@ bisa memanfaatkan aplikasi ini sebagai panduan praktis.
         this.activeAccordion = (this.activeAccordion == id) ? '' : id
     }
 }"
-    class="relative w-full mx-auto overflow-hidden text-sm font-normal bg-white/40 dark:bg-zinc-900/40 backdrop-blur-lg dark:text-white border border-gray-300 dark:border-zinc-700 divide-y dark:divide-zinc-700 rounded-md">
+    class="relative w-full mx-auto overflow-hidden text-sm font-normal bg-white/dark:bg-zinc-900/90 dark:bg-zinc-900/90 backdrop-blur-lg dark:text-white border border-gray-300 dark:border-zinc-700 divide-y dark:divide-zinc-700 rounded-md">
 
     @foreach ($faqs as $faq)
     <div x-data="{ active: false }" class="cursor-pointer group border-gray-300 dark:border-zinc-700 cursor-pointer">

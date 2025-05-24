@@ -49,7 +49,7 @@
     </button>
     {{-- Body --}}
     <div class="bg-white dark:bg-zinc-900">
-        <x-navbar></x-navbar>
+        <x-navbar />
         {{-- Main --}}
         <main>
             <div class="relative isolate px-6 pt-14 lg:px-8">

@@ -12,7 +12,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        $title = 'Edu-Zone';
+        $active = 'edu-zone';
+        return view('post.index', compact('active', 'title'));
     }
 
     /**

@@ -1,10 +1,9 @@
-<x-layout>
-    <x-slot:title>{{ $title }}</x-slot:title>
+<x-layout :title="$title">
     <style>
         .hero-image {
             --offset: 2px;
             /* Adjusted for larger border */
-            background: rgb(71, 71, 71);
+            background: rgb(71: 71, 71);
             border-radius: 16px;
             /* You can adjust the radius as per your design */
             position: relative;
@@ -40,13 +39,8 @@
     </style>
     {{-- Hero Section --}}
     <div class="hero relative isolate z-10">
-        {{-- absoulute glow atas --}}
-        <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-            aria-hidden="true">
-            <div class="relative left-[calc(50%-11rem)] aspect-1155/678 w-144.5 -translate-x-1/2 rotate-30 bg-linear-to-tr from-[#44ff7c] to-[#80ff9b] opacity-30 sm:left-[calc(50%-30rem)] sm:w-288.75"
-                style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
-            </div>
-        </div>
+        <x-efek.glowatas />
+        {{-- header --}}
         <div class="mx-auto max-w-2xl pb-12 sm:pb-32 lg:pb-36 pt-12 sm:pt-12 lg:pt-16">
             <div class="hidden sm:mb-8 sm:flex sm:justify-center">
                 <div
@@ -80,15 +74,14 @@
             <div
                 class="hero-image fancy aspect-video rounded-md overflow-hidden max-w-5xl mx-auto relative p-[1.2px] bg-zinc-900">
                 <img class="w-full h-full object-cover rounded-2xl hidden dark:block relative z-10"
-                    src="{{ asset('img/langkahhijau/dashboard-dark.webp') }}" draggable="false" alt="LangkahHijau"
+                    src="{{ asset('img/langkahhijau/dashboard-dark.png') }}" draggable="false" alt="LangkahHijau"
                     loading="lazy">
                 <img class="w-full h-full object-cover rounded-2xl block dark:hidden relative z-10"
-                    src="{{ asset('img/langkahhijau/dashboard.webp') }}" draggable="false" alt="LangkahHijau"
+                    src="{{ asset('img/langkahhijau/dashboard.png') }}" draggable="false" alt="LangkahHijau"
                     loading="lazy">
-
             </div>
         </div>
-        {{-- glow bawah --}}
+        {{-- glow tengah bawah --}}
         <div class="absolute inset-x-0 top-[calc(100%-40rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-78rem)]"
             aria-hidden="true">
             <div class="relative left-[calc(50%+3rem)] aspect-1155/678 w-144.5 -translate-x-1/2 bg-linear-to-tr from-[#46ff21] to-[#a0ffbc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-288.75"
@@ -96,16 +89,10 @@
             </div>
         </div>
     </div>
-    {{-- under hero --}}
-    <div class="underhero relative isolate">
-        {{-- absoulute glow --}}
-        <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-            aria-hidden="true">
-            <div class="relative left-[calc(50%-11rem)] aspect-1155/678 w-144.5 -translate-x-1/2 rotate-30 bg-linear-to-tr from-[#44ff7c] to-[#80ff9b] opacity-30 sm:left-[calc(50%-30rem)] sm:w-288.75"
-                style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
-            </div>
-        </div>
-        {{-- centered grid 2x2--}}
+    {{-- sec2 --}}
+    <div class="sec2 relative isolate">
+        <x-efek.glowatas />
+        {{-- Fokus Utama--}}
         <div class="py-24 sm:py-32">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
                 <div class="mx-auto max-w-3xl lg:text-center">
@@ -126,7 +113,7 @@
                         <div class="relative pl-16">
                             <dt class="text-base/7 font-semibold text-gray-900 dark:text-gray-100">
                                 <div
-                                    class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg dark:bg-green-400 bg-green-600">
+                                    class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-green-600">
                                     <i class="fa-solid fa-book" style="color:#fff"></i>
                                 </div>
                                 Edukasi
@@ -187,30 +174,24 @@
                 </div>
             </div>
         </div>
+        {{-- Mitra --}}
         <div class="py-6 sm:py-10" id="mitra">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
                 <h2 class="text-center text-lg/8 font-semibold text-zinc-900 dark:text-gray-200">Didukung oleh :</h2>
                 <br>
-                <x-mitra />
+                <x-home.mitra />
             </div>
         </div>
-
     </div>
+    {{-- sec blog --}}
+    <x-post.article :active="$active" />
     {{-- sec.3 --}}
-    <div class="underhero relative isolate">
-        {{-- absoulute glow atas --}}
-        <div class="absolute inset-x-0 -top-40 -z-50 transform-gpu overflow-hidden blur-3xl sm:-top-80"
-            aria-hidden="true">
-            <div class="relative left-[calc(50%-11rem)] aspect-1155/678 w-144.5 -translate-x-1/2 rotate-30 bg-linear-to-tr from-[#44ff7c] to-[#80ff9b] opacity-30 sm:left-[calc(50%-30rem)] sm:w-288.75"
-                style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
-            </div>
-        </div>
+    <div class="sec3 relative isolate">
+        <x-efek.glowatas />
 
         {{-- BENTO GRID --}}
-        <div class="py-24 sm:py-32">
+        <div class="pt-24 pb-20 sm:py-32">
             <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
-                {{-- <h2 class="text-center text-base/7 font-semibold text-green-600 dark:text-green-400">Deploy faster
-                </h2> --}}
                 <p
                     class="mx-auto mt-2 max-w-2xl text-center text-4xl font-semibold text-balance text-green-600 dark:text-green-400 sm:text-5xl">
                     <span class="text-zinc-900 dark:text-gray-100">Bagaimana</span><br>
@@ -319,23 +300,14 @@
                 </div>
             </div>
         </div>
-        {{-- absoulute glow bawah--}}
-        <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-50 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
-            aria-hidden="true">
-            <div class="relative left-[calc(50%+3rem)] aspect-1155/678 w-144.5 -translate-x-1/2 bg-linear-to-tr from-[#46ff21] to-[#a0ffbc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-288.75"
-                style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
-            </div>
-        </div>
+        <x-efek.glowbawah />
     </div>
     {{-- sec faq --}}
     <section class="faq-container relative isolate px-4 sm:px-6 lg:px-16 overflow-visible">
-        <div class="aurora-bg w-[20px] h-[20px] hidden lg:block">
-            <div class="aurora w-[10%] from-green-600/35 to-green-600/15 top-[20%] left-[20%]"></div>
-        </div>
-
-        <div class="max-w-4xl mx-auto relative z-10 py-32">
+        <x-efek.glowatas />
+        <div class="max-w-4xl mx-auto relative z-10 pb-32">
             <div class="text-center mb-16">
-                <h2 class="text-base text-green-600 font-semibold tracking-wide uppercase">FAQ</h2>
+                <h2 class="text-base text-green-600 dark:text-green-400 font-semibold tracking-wide uppercase">FAQ</h2>
                 <p class="mt-2 text-3xl sm:text-4xl leading-8 font-bold tracking-tight text-gray-900 dark:text-white">
                     Pertanyaan yang Sering Diajukan
                 </p>
@@ -343,12 +315,11 @@
                     Temukan jawaban untuk pertanyaan umum tentang LangkahHijau dan fitur kami
                 </p>
             </div>
-
-            <x-faq />
+            <x-home.faq />
         </div>
     </section>
     {{-- sec last --}}
-    <section class="cta-container relative py-20 px-4 sm:px-6 lg:px-16">
+    <section class="cta-container relative isolate mb-36 px-4 sm:px-6 lg:px-16">
         <div class="max-w-4xl mx-auto flex items-center justify-between">
             <div class="flex-1 dark:text-white">
                 <h2 class="text-md md:text-4xl font-bold mb-4">Siap untuk Menghijaukan Dunia?</h2>
@@ -356,7 +327,7 @@
             </div>
             <div class="flex-1 text-right">
                 <a href="{{ route('home.index') }}"
-                    class="inline-flex items-center px-8 py-4 text-lg font-semibold rounded-lg bg-green-600 text-white">
+                    class="inline-flex items-center px-8 py-4 text-lg font-semibold rounded-lg bg-green-600 text-white hover:bg-green-500 cursor-pointer">
                     Daftar Sekarang
                     <svg class="ml-2 -mr-1 w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
@@ -367,5 +338,6 @@
                 </a>
             </div>
         </div>
+        <x-efek.glowbawah />
     </section>
 </x-layout>
