@@ -7,7 +7,7 @@
                 <span class="sr-only">LangkahHijau</span>
                 <img class="h-8 w-auto" src="/img/logoweb.png" alt="">
                 <h2 class="text-xl ml-1 font-semibold text-gray-900 dark:text-gray-100">Langkah<span
-                        class="text-green-500">Hijau</span></h2>
+                        class="text-green-600 dark:text-green-400">Hijau</span></h2>
             </a>
         </div>
         <div class="flex lg:hidden">
@@ -74,22 +74,22 @@
             <div class="mt-6 flow-root">
                 <div class="-my-6 divide-y divide-gray-500/10">
                     <div class="space-y-2 py-6">
-                        <a href="/"
+                        <a href="{{ route('home.index') }}"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-50">Beranda</a>
-                        <a href="/blog"
+                        <a href="/edu-zone"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-50">
                             Edu-Zone ♻️</a>
-                        <a href="/about"
+                        <a href="/challenge"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-50">Tantangan</a>
-                        <a href="/t"
-                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-50">Green
+                        <a href="/hijau-ai"
+                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-50">Hijau
                             AI ✨</a>
-                        <a href="/kontak"
+                        <a href="{{ route('home.kontak') }}"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-50">Kontak
                         </a>
                     </div>
                     <div class="py-6">
-                        <a href="/login"
+                        <a href="{{ route('auth.login') }}"
                             class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-medium text-gray-700 hover:bg-gray-50">
                             <i class="fa-solid fa-sign-in mr-3"></i> Login</a>
                     </div>

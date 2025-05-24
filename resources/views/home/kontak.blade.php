@@ -96,7 +96,7 @@
 
             // Construct the WhatsApp message
             const whatsappMessage =
-                `Halo Agriconnect, Nama Saya: ${name}%0AEmail: ${email}%0A, Pesan: ${message}`;
+                `Halo LangkahHijau, Nama Saya: ${name}%0AEmail: ${email}%0A, Pesan: ${message}`;
 
             // Replace 'YOUR_PHONE_NUMBER' with your actual WhatsApp business number
             const whatsappUrl = `https://api.whatsapp.com/send?phone=6281220594202&text=${whatsappMessage}`;
