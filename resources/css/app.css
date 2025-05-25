@@ -1,10 +1,14 @@
 @import "tailwindcss";
+@import "flowbite/src/themes/default";
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@plugin "flowbite/plugin";
+
+@source "../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php";
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
 @source "../views";
+@source "../../node_modules/flowbite";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
