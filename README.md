@@ -22,15 +22,14 @@
 - 🏅 **Sistem Green Points & Badge**  
   Kumpulkan poin dari kuis dan challenge untuk membuka badge/gelar eksklusif.
 
+- 📚 **Artikel Edukasi & Tips**  
+  Baca artikel ringkas yang inspiratif seputar hidup sehat dan peduli lingkungan.
+
 - 📊 **Jejak Karbon Harian** *(opsional)*  
   Lacak dampak lingkungan dari gaya hidupmu sehari-hari (transportasi, konsumsi, dll).
 
 - 🗺️ **Peta Hijau Lokal** *(opsional)*  
   Temukan tempat daur ulang, refill station, taman, dan komunitas hijau di sekitarmu.
-
-- 📚 **Artikel Edukasi & Tips**  
-  Baca artikel ringkas yang inspiratif seputar hidup sehat dan peduli lingkungan.
-
 ---
 
 ## ✅ Persyaratan
@@ -105,7 +104,9 @@ Aplikasi akan berjalan di: http://127.0.0.1:8000
 
 ### ❗ Troubleshooting
 - Pastikan versi PHP & Composer Anda sesuai.
+  
 - Jalankan composer install tanpa error.
+  
 - Cek kembali konfigurasi .env, terutama bagian database.
 
 Jika mengalami kendala, hubungi saya:
@@ -125,8 +126,11 @@ Jika mengalami kendala, hubungi saya:
 
 ### 🧪 Tech Stack
 -Framework: Laravel
+
 -Frontend: Blade, TailwindCSS
+
 -Database: MySQL / PostgreSQL / SQLite
+
 -Deployment: Laravel Cloud
 
 ### 📜 Lisensi & Kontribusi
