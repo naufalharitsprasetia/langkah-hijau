@@ -29,7 +29,7 @@
         </p>
 
         <!-- Read More Link -->
-        <a href="#"
+        <a href="/edu-zone/show"
             class="inline-flex items-center text-hijautua dark:text-hijaumuda font-medium text-xs sm:text-sm hover:text-hijautua dark:hover:text-hijaumuda transition-colors">
             Read More
             <i class="fas fa-arrow-right ml-2 text-xs"></i>

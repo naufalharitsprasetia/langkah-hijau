@@ -1,5 +1,5 @@
 {{-- artikel --}}
-<div class="relative isolate max-w-7xl mx-auto mt-20 px-4 sm:px-6 lg:px-16 pb-8">
+<div class="relative isolate max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 pb-8 z-30">
     <x-efek.glowatas />
     {{-- title --}}
     <p

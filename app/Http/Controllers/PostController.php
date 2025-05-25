@@ -38,7 +38,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        $title = 'Single Post';
+        $active = 'single-post';
+        return view('post.show', compact('active', 'title'));
     }
 
     /**

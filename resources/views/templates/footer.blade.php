@@ -48,12 +48,12 @@
 
             <!-- Company Links -->
             <div>
-                <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Company</h3>
+                <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Aplikasi</h3>
                 <ul class="space-y-2">
-                    <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">About Us</a></li>
-                    <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">Contact</a></li>
+                    <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">Tentang Kami</a></li>
+                    <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">Kontak</a></li>
                     <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">Support</a></li>
-                    <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">News</a></li>
+                    <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">Tim Kami</a></li>
                     <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">Careers</a></li>
                 </ul>
             </div>
@@ -71,13 +71,13 @@
 
             <!-- Services Links -->
             <div>
-                <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Services</h3>
+                <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Fitur</h3>
                 <ul class="space-y-2">
-                    <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">IoT Sensors</a></li>
-                    <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">AI Monitoring</a></li>
-                    <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">Marketplace</a></li>
-                    <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">Farmer Support</a></li>
-                    <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">Smart Irrigation</a></li>
+                    <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">Cek Gaya Hidup</a></li>
+                    <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">Tantangan</a></li>
+                    <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">Edu-Zone</a></li>
+                    <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">Green Event</a></li>
+                    <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">Hijau AI</a></li>
                 </ul>
             </div>
         </div>

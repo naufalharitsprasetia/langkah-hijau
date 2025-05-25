@@ -184,7 +184,7 @@
         </div>
     </div>
     {{-- sec blog --}}
-    <x-post.article :active="$active" />
+    <x-post.article :active="$active" class="mt-20" />
     {{-- sec.3 --}}
     <div class="sec3 relative isolate">
         <x-efek.glowatas />
@@ -303,9 +303,9 @@
         <x-efek.glowbawah />
     </div>
     {{-- sec faq --}}
-    <section class="faq-container relative isolate px-4 sm:px-6 lg:px-16 overflow-visible">
+    <section class="faq-container relative z-50 isolate px-4 sm:px-6 lg:px-16 overflow-visible">
         <x-efek.glowatas />
-        <div class="max-w-4xl mx-auto relative z-10 pb-32">
+        <div class="max-w-4xl mx-auto relative pb-32">
             <div class="text-center mb-16">
                 <h2 class="text-base text-hijautua dark:text-hijaumuda font-semibold tracking-wide uppercase">FAQ</h2>
                 <p class="mt-2 text-3xl sm:text-4xl leading-8 font-bold tracking-tight text-gray-900 dark:text-white">

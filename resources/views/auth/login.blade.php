@@ -33,11 +33,6 @@
 
 <body class="antialiased">
     <div class="cursor-example z-[99999999999] hidden sm:block"></div>
-    <div id="loader-overlay">
-        <div class="loader">
-            <div class="loader-inner"></div>
-        </div>
-    </div>
     <section class="login flex flex-col-reverse lg:flex-row h-screen bg-white dark:bg-zinc-900">
         <!-- Left Side: Login Form -->
         <div class="login-left w-full lg:w-1/2 flex flex-col justify-center items-center p-6 lg:p-12 relative ">
