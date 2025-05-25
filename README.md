@@ -117,12 +117,11 @@ Jika mengalami kendala, hubungi saya:
 
 ### 👨‍💻 Tim Pengembang
 
-|Peran              |	Nama / Deskripsi            |
-|Project Leader	    |   Naufal Harits Prasetia      |
-|Backend Developer  |   (Diisi sesuai tim proyek)   |
-|Frontend Developer |	(Diisi sesuai tim proyek)   |
-|UI/UX Designer     |	(Diisi sesuai tim proyek)   |
-|Content Creator    |	(Diisi sesuai tim proyek)   |
+|          Nama          |      NIM     |       Peran            |                                                          Contact Link                                                            |
+| :--------------------: | :----------: | :----------------:     | :----------------------------------------------------------------------------------------------------------------------------:   |
+| Naufal Harits Prasetia | 432022611051 |  Full-stack Developer  | [LinkedIn](https://www.linkedin.com/in/naufal-harits-prasetia-35b443283/) or [GitHub](https://github.com/naufalharitsprasetia)   |
+|      Rizky Cahyono     | 442023611000 |  Full-stack Developer  |      [LinkedIn](https://www.linkedin.com/in/rizky-cahyono-putra-67367a2a0/) or [GitHub](https://github.com/rizkycahyono97)       |
+|      Iqbal Maulana     | 442023611000 |  Full-stack Developer  |        [LinkedIn](https://www.linkedin.com/in/iqbal-maulana-dev/) or [GitHub](https://github.com/cardinaldeacre)                 |
 
 ### 🧪 Tech Stack
 -Framework: Laravel
