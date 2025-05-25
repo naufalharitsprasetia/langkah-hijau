@@ -4,7 +4,7 @@
     {{-- title --}}
     <p
         class="mt-4 mb-16 text-2xl text-center font-bold text-pretty text-gray-900 dark:text-gray-100 sm:text-5xl lg:text-balance">
-        Edu-Zone<br><span class="text-green-600 dark:text-green-400 text-xl sm:text-2xl font-medium">Edukasi tentang
+        Edu-Zone<br><span class="text-hijautua dark:text-hijaumuda text-xl sm:text-2xl font-medium">Edukasi tentang
             gaya hidup
             sehat dan ramah
             lingkungan</span>
@@ -28,7 +28,7 @@
                 <!-- Category and Date -->
                 <div class="flex flex-col xs:flex-row xs:items-center gap-2 xs:gap-3 mb-4">
                     <span
-                        class="bg-green-500 dark:bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium w-fit">Edukasi</span>
+                        class="bg-hijaumuda dark:bg-hijautua text-white px-3 py-1 rounded-full text-sm font-medium w-fit">Edukasi</span>
                     <span class="text-gray-500 dark:text-gray-400 text-sm">20 Mei 2025</span>
                 </div>
 
@@ -49,7 +49,7 @@
 
                 <!-- Read More Link -->
                 <a href="#"
-                    class="inline-flex items-center text-green-500 dark:text-green-400 font-medium hover:text-green-600 dark:hover:text-green-300 transition-colors text-sm sm:text-base">
+                    class="inline-flex items-center text-hijaumuda dark:text-hijaumuda font-medium hover:text-hijautua dark:hover:text-green-300 transition-colors text-sm sm:text-base">
                     Read More
                     <i class="fas fa-arrow-right ml-2 text-sm"></i>
                 </a>
@@ -92,7 +92,7 @@
         <!-- View More Button -->
         <div class="text-center">
             <a href="#"
-                class="inline-flex items-center bg-green-500 dark:bg-green-600 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full font-medium hover:bg-green-600 dark:hover:bg-green-700 transition-colors text-sm sm:text-base">
+                class="inline-flex items-center bg-hijaumuda dark:bg-hijautua text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full font-medium hover:bg-hijautua dark:hover:bg-green-700 transition-colors text-sm sm:text-base">
                 Lihat Artikel Lainnya
                 <i class="fas fa-arrow-right ml-2"></i>
             </a>
