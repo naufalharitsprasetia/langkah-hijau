@@ -17,7 +17,7 @@
                 this.isDropAbout = false;
             }
         }
-    }" class="sticky inset-x-0 top-0 z-50" id="myNavbar">
+    }" class="lg:sticky inset-x-0 top-0 z-50" id="myNavbar">
     {{-- sebenernya ada add remove bg-white/80 di .js nya --}}
     <div class="bg-white/80 backdrop-blur dark:bg-zinc-900/80 hidden"></div>
     <nav class="flex items-center justify-between p-6 lg:px-8 mx-auto max-w-7xl" aria-label="Global">
@@ -26,7 +26,7 @@
                 <span class="sr-only">LangkahHijau</span>
                 <img class="h-8 w-auto" src="/img/logoweb.png" alt="">
                 <h2 class="text-xl ml-1 font-semibold text-gray-900 dark:text-gray-100">Langkah<span
-                        class="text-green-600 dark:text-green-400">Hijau</span></h2>
+                        class="text-hijautua dark:text-hijaumuda">Hijau</span></h2>
             </a>
         </div>
         <div class="flex lg:hidden">
@@ -42,7 +42,7 @@
         </div>
         <div class="hidden lg:flex lg:gap-x-12">
             <a href="{{ route('home.index') }}"
-                class="text-sm/6 font-medium {{ $active == 'beranda' ? 'text-green-600 dark:text-green-400' : 'text-gray-700 dark:text-gray-200 hover:text-green-600'  }}">Beranda
+                class="text-sm/6 font-medium {{ $active == 'beranda' ? 'text-hijautua dark:text-hijaumuda' : 'text-gray-700 dark:text-gray-200 hover:text-hijautua'  }}">Beranda
                 🏠</a>
             {{-- dropdwon main --}}
             <div class="relative" @mouseenter="isDropMain = true" @mouseleave="isDropMain = false">
@@ -71,7 +71,7 @@
             </div>
             {{-- Hijau AI --}}
             <a href="/hijau-ai"
-                class="text-sm/6 font-medium {{ $active == 'hijau-ai' ? 'text-green-600 dark:text-green-400' : 'text-gray-700 dark:text-gray-200 hover:text-green-600'  }}">Hijau
+                class="text-sm/6 font-medium {{ $active == 'hijau-ai' ? 'text-hijautua dark:text-hijaumuda' : 'text-gray-700 dark:text-gray-200 hover:text-hijautua'  }}">Hijau
                 AI ✨</a>
             {{-- dropdown Tentang --}}
             <div class="relative" @mouseenter="isDropAbout = true" @mouseleave="isDropAbout = false">
@@ -106,7 +106,7 @@
         <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center">
             @guest
             <a href="/login"
-                class="text-sm/6 font-medium mr-3 text-gray-100 bg-green-600 rounded-sm px-3 py-1 hover:bg-green-500 hover:text-grey-200">
+                class="text-sm/6 font-medium mr-3 text-gray-100 bg-hijautua rounded-sm px-3 py-1 hover:bg-hijaumuda hover:text-grey-200">
                 <i class="fa-solid fa-sign-in"></i> Login</a>
             @else
             <!-- Profile dropdown -->
@@ -129,13 +129,15 @@
                     x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
                     x-transition:leave="transition ease-in duration-75 transform"
                     x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
-                    class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none"
+                    class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white dark:bg-zinc-900 dark:border-2 dark:border-zinc-700 py-1 shadow-lg ring-1 ring-black/5 focus:outline-none"
                     role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                     <!-- Active: "bg-gray-100 outline-none", Not Active: "" -->
-                    <a href="/dashboard" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200" role="menuitem"
-                        tabindex="-1" id="user-menu-item-0">Dashboard</a>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200" role="menuitem"
-                        tabindex="-1" id="user-menu-item-2">Sign out</a>
+                    <a href="/dashboard"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-zinc-700"
+                        role="menuitem" tabindex="-1" id="user-menu-item-0">Dashboard</a>
+                    <a href="#"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-zinc-700"
+                        role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
                 </div>
             </div>
             @endguest
