@@ -63,6 +63,9 @@ cd langkah-hijau
 ```bash
 composer install
 ```
+```bash
+npm run install
+```
 
 ### 4. Konfigurasi File .env
 
