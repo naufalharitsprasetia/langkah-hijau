@@ -60,10 +60,12 @@
                     x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
                     class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none"
                     role="menu" aria-orientation="vertical">
+                    <a href="/quiz" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">🌏 Cek Gaya Hidup
+                    </a>
+                    <a href="/tantangan" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">🏆 Tantangan
+                    </a>
                     <a href="{{ route('post.index') }}"
                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">♻️ Edu-Zone </a>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">🏆 Tantangan </a>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">🌏 Cek Gaya Hidup </a>
                     <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">📆 Green Events </a>
                 </div>
             </div>
@@ -90,7 +92,8 @@
                     <!-- Active: "bg-gray-100 outline-none", Not Active: "" -->
                     <a href="{{ route('post.index') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200"
                         role="menuitem" tabindex="-1" id="user-menu-item-0">Tentang Aplikasi</a>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 hover:outline-none"
+                    <a href="{{ route('home.kontak') }}"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 hover:outline-none"
                         role="menuitem" tabindex="-1" id="user-menu-item-1">Kontak Kami</a>
                     <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 hover:outline-none"
                         role="menuitem" tabindex="-1" id="user-menu-item-2">Tim Kami</a>
@@ -114,9 +117,8 @@
                         id="user-menu-button" aria-expanded="false" aria-haspopup="true">
                         {{-- <span class="absolute -inset-1.5"></span> --}}
                         <span class="sr-only">Open user menu</span>
-                        <a href="#"
-                            class="text-sm/6 font-medium mr-1 text-gray-700 dark:text-gray-200 rounded-sm block">{{
-                            auth()->user()->name }}</a>
+                        <span class="text-sm/6 font-medium mr-1 text-gray-700 dark:text-gray-200 rounded-sm block">{{
+                            auth()->user()->name }}</span>
                         <img class="size-8 rounded-full"
                             src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                             alt="">
@@ -132,8 +134,6 @@
                     <!-- Active: "bg-gray-100 outline-none", Not Active: "" -->
                     <a href="/dashboard" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200" role="menuitem"
                         tabindex="-1" id="user-menu-item-0">Dashboard</a>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200" role="menuitem"
-                        tabindex="-1" id="user-menu-item-1">Settings</a>
                     <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200" role="menuitem"
                         tabindex="-1" id="user-menu-item-2">Sign out</a>
                 </div>
@@ -158,8 +158,7 @@
             <div class="flex items-center justify-between">
                 <a href="#" class="-m-1.5 p-1.5">
                     <span class="sr-only">Your Company</span>
-                    <img class="h-8 w-auto"
-                        src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=green&shade=600" alt="">
+                    <img class="h-8 w-auto" src="{{ asset('img/logoweb.png') }}" alt="">
                 </a>
                 <button @click="isOpen = !isOpen, isDropMain= false, isDropAbout=false" type="button"
                     class="-m-2.5 rounded-md p-2.5 text-gray-700">
@@ -175,26 +174,27 @@
                     <div class="space-y-2 py-6">
                         <a href="{{ route('home.index') }}"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">Beranda</a>
+                        <a href="/tantangan"
+                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">Tantangan
+                            🏆</a>
+                        <a href="/quiz"
+                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">Cek
+                            Gaya Hidup 🌏</a>
                         <a href="/edu-zone"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">
                             Edu-Zone ♻️</a>
-                        <a href="/challenge"
-                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">Tantangan
-                            🏆</a>
-                        <a href="/challenge"
-                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">Cek
-                            Gaya Hidup 🌏</a>
-                        <a href="/challenge"
+                        <a href="#"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">Green
                             Events 📆</a>
                         <a href="/hijau-ai"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">Hijau
                             AI ✨</a>
                         <a href="{{ route('home.kontak') }}"
-                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">Kontak
-                            <a href="{{ route('home.tentang') }}"
-                                class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">Tentang
-                            </a>
+                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">Kontak</a>
+                        <a href="{{ route('home.tentang') }}"
+                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">Tentang
+                            Aplikasi
+                        </a>
                     </div>
                     <div class="py-6">
                         @auth

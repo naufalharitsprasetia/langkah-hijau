@@ -1,7 +1,7 @@
 <x-layout :title="$title" :active="$active">
     <div class="min-h-screen">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 py-12">
-            <div class="lg:grid lg:grid-cols-2 lg:gap-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 pb-12">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-8">
                 <div>
                     <h2 class="text-3xl font-extrabold text-gray-900 dark:text-white sm:text-4xl">
                         Hubungi Kami
