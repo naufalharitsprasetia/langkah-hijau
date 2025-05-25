@@ -1,4 +1,4 @@
-<x-layout :title="$title">
+<x-layout :title="$title" :active="$active">
 
     <div class="min-h-screen flex justify-center p-4 pt-14 md:mt-0 md:pt-0">
         <div id="container" class="w-full max-w-2xl rounded-3xl overflow-hidden flex flex-col">

@@ -10,7 +10,7 @@ class HijauAIController extends Controller
     public function index()
     {
         $title = 'Hijau AI';
-        $active = 'hijau-aiu';
+        $active = 'hijau-ai';
         return view('hijau-ai.index', compact('active', 'title'));
     }
     public function ask(Request $request)

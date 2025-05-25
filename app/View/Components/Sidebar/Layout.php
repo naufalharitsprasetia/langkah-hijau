@@ -1,6 +1,6 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Sidebar;
 
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -12,7 +12,7 @@ class Layout extends Component
      * Create a new component instance.
      */
     public function __construct(
-        public string $title,
+        public ?string $title = null,
         public string $active,
     ) {
         //
@@ -23,6 +23,6 @@ class Layout extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('templates.layout');
+        return view('templates-sidebar.layout');
     }
 }

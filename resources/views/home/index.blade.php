@@ -1,4 +1,4 @@
-<x-layout :title="$title">
+<x-layout :title="$title" :active="$active">
     <style>
         .hero-image {
             --offset: 2px;

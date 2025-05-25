@@ -32,6 +32,7 @@ Route::get('/blog', function () {
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('/tentang', [HomeController::class, 'tentang'])->name('home.tentang');
 Route::get('/kontak', [HomeController::class, 'kontak'])->name('home.kontak');
+Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('home.dashboard');
 
 //
 Route::get('/edu-zone', [PostController::class, 'index'])->name('post.index');
