@@ -12,7 +12,7 @@
         <!-- Category and Date -->
         <div class="flex flex-col xs:flex-row xs:justify-between xs:items-center gap-2 xs:gap-0 mb-3">
             <span
-                class="bg-green-500 dark:bg-green-600 text-white px-3 py-1 rounded-full text-xs sm:text-sm font-medium w-fit">Edukasi</span>
+                class="bg-hijaumuda dark:bg-hijautua text-white px-3 py-1 rounded-full text-xs sm:text-sm font-medium w-fit">Edukasi</span>
             <span class="text-gray-500 dark:text-gray-400 text-xs sm:text-sm">20 Mei 2025</span>
         </div>
 
@@ -30,7 +30,7 @@
 
         <!-- Read More Link -->
         <a href="#"
-            class="inline-flex items-center text-green-500 dark:text-green-400 font-medium text-xs sm:text-sm hover:text-green-600 dark:hover:text-green-300 transition-colors">
+            class="inline-flex items-center text-hijautua dark:text-hijaumuda font-medium text-xs sm:text-sm hover:text-hijautua dark:hover:text-hijaumuda transition-colors">
             Read More
             <i class="fas fa-arrow-right ml-2 text-xs"></i>
         </a>

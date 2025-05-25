@@ -30,7 +30,7 @@
                     <div class="bg-gray-50 dark:bg-zinc-800 rounded-xl p-4 hover:shadow-md transition-shadow duration-300 cursor-pointer"
                         id="card1">
                         <div class="w-8 h-8 bg-green-100 rounded-full mb-3 flex items-center justify-center">
-                            <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            <svg class="w-4 h-4 text-hijautua" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -44,7 +44,7 @@
                     <div class="bg-gray-50 dark:bg-zinc-800 rounded-xl p-4 hover:shadow-md transition-shadow duration-300 cursor-pointer"
                         id="card2">
                         <div class="w-8 h-8 bg-green-100 rounded-full mb-3 flex items-center justify-center">
-                            <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            <svg class="w-4 h-4 text-hijautua" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -58,7 +58,7 @@
                     <div class="bg-gray-50 dark:bg-zinc-800 rounded-xl p-4 hover:shadow-md transition-shadow duration-300 cursor-pointer"
                         id="card3">
                         <div class="w-8 h-8 bg-green-100 rounded-full mb-3 flex items-center justify-center">
-                            <svg class="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                            <svg class="w-4 h-4 text-hijautua" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -75,16 +75,16 @@
                         <div class="input-field relative">
                             <input id="userInput" type="text"
                                 placeholder="Tanya tentang Gaya Hidup Sehat dan Ramah Lingkungan"
-                                class="w-full py-3 px-4 bg-gray-100 dark:bg-zinc-800 rounded-full text-gray-700 dark:text-zinc-200 dark:placeholder:text-gray-200 focus:outline-none focus:ring-2 focus:ring-green-300"
+                                class="w-full py-3 px-4 bg-gray-100 dark:bg-zinc-800 rounded-full text-gray-700 dark:text-zinc-200 dark:placeholder:text-gray-200 focus:outline-none focus:ring-2 focus:ring-hijaumuda"
                                 autocomplete="off">
                             <button id="sendButton"
-                                class="absolute cursor-pointer right-2 top-1/2 transform -translate-y-1/2 bg-green-600 text-white px-4 py-2 rounded-full text-sm hover:bg-green-600 transition-colors duration-300">
+                                class="absolute cursor-pointer right-2 top-1/2 transform -translate-y-1/2 bg-hijautua text-white px-4 py-2 rounded-full text-sm hover:bg-hijautua transition-colors duration-300">
                                 Kirim
                             </button>
                         </div>
                         <div class="ai-footer">
                             <p class="text-xs text-gray-500 dark:text-zinc-300 text-center mt-4">Powered by <a
-                                    href="https://google.gemini.com" class="text-green-600 hover:underline">Google
+                                    href="https://google.gemini.com" class="text-hijautua hover:underline">Google
                                     Gemini✨</a>
                             </p>
                         </div>
@@ -104,7 +104,7 @@
                 <div class="space-y-4">
                     <div class="flex items-center space-x-2">
                         <img src="/img/logoweb.png" width="40" height="40" alt="AgriConnect Logo" class="w-10 h-10">
-                        <span class="text-xl font-bold">Langkah<span class="text-green-500">Hijau</spanc></span>
+                        <span class="text-xl font-bold">Langkah<span class="text-hijaumuda">Hijau</spanc></span>
                     </div>
                     <div class="flex space-x-4">
                         <a href="#" class="text-gray-400 hover:text-gray-500">
@@ -215,6 +215,7 @@
         userInputforcard.focus(); // Tambahkan fokus
     });
 </script>
+@vite(['resources/js/404.js'])
 <script>
     //
     document.addEventListener('DOMContentLoaded', function() {
@@ -225,11 +226,7 @@
     const userInput = document.getElementById('userInput');
     const sendButton = document.getElementById('sendButton');
 
-    gsap.from(container, { opacity: 0, duration: 1 });
-    gsap.from(content, { y: 20, opacity: 0, duration: 0.8, delay: 0.5 });
-    gsap.from(cards.children, { y: 30, opacity: 0, duration: 0.5, stagger: 0.2, delay: 1 });
-    gsap.from(userInput, { y: 20, opacity: 0, duration: 0.5, delay: 1.5 });
-    gsap.from(sendButton, { y: 20, opacity: 0, duration: 0.5, delay: 1.5 });
+    // pindah ke resources/js/gsap.js
 
     let isGenerating = false;
     let controller;
@@ -238,10 +235,10 @@
         const messageDiv = document.createElement('div');
         messageDiv.className = `mb-4 ${type === 'user' ? 'text-right' : 'text-left'}`;
         messageDiv.innerHTML = `
-            <div class="inline-block p-3 rounded-lg ${type === 'user' ? 'bg-green-600 text-white' : 'text-gray-800 dark:text-zinc-200'}">
+            <div class="inline-block p-3 rounded-lg ${type === 'user' ? 'bg-hijautua text-white' : 'text-gray-800 dark:text-zinc-200'}">
                 ${formatMessage(message)}
             </div>
-        `;
+            `;
         chat.appendChild(messageDiv);
 
         // Ensure the chat always scrolls to the latest message
