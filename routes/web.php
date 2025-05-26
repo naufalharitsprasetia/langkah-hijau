@@ -40,8 +40,6 @@ Route::get('/edu-zone', [PostController::class, 'index'])->name('post.index');
 Route::get('/edu-zone/{post}', [PostController::class, 'show'])->name('post.show');
 
 // Hijau AI
-Route::get('/hijau-ai', [HijauAIController::class, 'index'])->name('hijau-ai.index');
-Route::post('/hijau-ai', [HijauAIController::class, 'ask'])->name('hijau-ai.ask');
 // Route::post('/tani-ai', [TaniController::class, 'chat'])->name('tani.chat')->middleware('req_auth');
 
 // Auth for guest
@@ -55,6 +53,8 @@ Route::middleware('guest')->group(function () {
 
 // Auth for user logged in
 Route::middleware('auth')->group(function () {
+    Route::get('/hijau-ai', [HijauAIController::class, 'index'])->name('hijau-ai.index');
+    Route::post('/hijau-ai', [HijauAIController::class, 'ask'])->name('hijau-ai.ask');
     Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 });
 

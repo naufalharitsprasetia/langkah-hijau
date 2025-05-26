@@ -207,4 +207,5 @@
         </main>
         <x-mitra />
     </div>
+
 </x-sidebar.layout>

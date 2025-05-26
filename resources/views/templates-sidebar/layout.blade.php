@@ -70,6 +70,7 @@
                         <span class="ms-3"><i class="fa-solid fa-table-columns mr-3"></i> Dashboard</span>
                     </a>
                 </li>
+                @can('is_admin')
                 <li>
                     <button type="button"
                         class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
@@ -100,6 +101,8 @@
                         </li>
                     </ul>
                 </li>
+                @endcan
+
                 <li>
                     <a href="#"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"><span
@@ -123,11 +126,15 @@
                     </p>
                 </li>
                 <li>
-                    <a href="#"
-                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <span class="flex-1 ms-3 whitespace-nowrap"><i class="fa-solid fa-right-to-bracket mr-3"></i>
-                            Logout</span>
-                    </a>
+                    <form action="{{ route('auth.logout') }}" method="POST" class="block" id="logoutForm">
+                        @csrf
+                        <button type="button" id="logoutBtn"
+                            class="block w-full cursor-pointer items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            <span class="flex-1 ms-3 whitespace-nowrap"><i
+                                    class="fa-solid fa-right-to-bracket mr-3"></i>
+                                Logout</span>
+                        </button>
+                    </form>
                 </li>
             </ul>
         </div>
@@ -141,6 +148,7 @@
     {{-- <script src="../path/to/flowbite/dist/flowbite.min.js"></script> --}}
     {{-- Sidebar --}}
     @include('sweetalert2::index')
+    @vite('resources/js/sweetalert.js')
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ asset('js/scrollnavbar.js') }}"></script>
     <script src="{{ asset('js/preload.js') }}"></script>

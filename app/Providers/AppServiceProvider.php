@@ -20,8 +20,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Gate::define('is_farmer', function ($user) {
-            return $user->is_farmer;  // Cek apakah user memiliki field is_farmer true
+        Gate::define('is_admin', function ($user) {
+            return $user->is_admin;  // Cek apakah user memiliki field is_admin true
         });
     }
 }

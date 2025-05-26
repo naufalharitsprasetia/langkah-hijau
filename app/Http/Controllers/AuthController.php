@@ -12,8 +12,8 @@ class AuthController extends Controller
 {
     public function reqAuth()
     {
-        return view('errors.auth', [
-            'active' => 'req-auth',
+        return view('errors.reqauth', [
+            'active' => 'Required Auth',
             'title' => 'req-auth'
         ]);
     }

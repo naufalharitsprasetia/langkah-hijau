@@ -19,6 +19,7 @@ class IsAdmin
         if (Auth::check() && Auth::user()->is_admin) {
             return $next($request);
         } else {
+            // Kamu Tidak Memiliki Akses ke Halaman Ini
             abort(403);
         }
     }
