@@ -28,7 +28,7 @@ class PostSeeder extends Seeder
             **Tips Praktis:**
 
             “Mulai dari satu kebiasaan, lalu tambah perlahan. Konsisten lebih penting daripada sempurna!”',
-            'image' => 'zerowaste.jpg',
+            'image' => 'zerowaste.png',
             'created_at' => now()
         ]);
         // 2
@@ -44,7 +44,7 @@ class PostSeeder extends Seeder
             **Aksi Kecil:**
 
             Coba tantangan “Meatless Monday”! 1 hari tanpa daging = pengurangan emisi sekitar 2 kg CO₂.',
-            'image' => 'konsumsi.jpg',
+            'image' => 'daging.png',
             'created_at' => now()
         ]);
         // 3
@@ -60,7 +60,7 @@ class PostSeeder extends Seeder
             **Fun Fact:**
 
             Berjalan 30 menit sehari bisa membakar ±150 kalori dan mengurangi jejak karbon harianmu.”',
-            'image' => 'transportasi.jpg',
+            'image' => 'transportasi.png',
             'created_at' => now()
         ]);
         // 4
@@ -76,7 +76,7 @@ class PostSeeder extends Seeder
             **Solusi Ringan:**
 
             Pilih thrifting, tukar pakaian dengan teman, atau beli dari brand berkelanjutan.',
-            'image' => 'fashion.jpg',
+            'image' => 'fashion.png',
             'created_at' => now()
         ]);
         // 5. Supermarket
@@ -91,7 +91,7 @@ class PostSeeder extends Seeder
             **Bonus:**
 
             Gunakan daftar belanja agar tidak impulsif — itu juga bagian dari konsumsi berkelanjutan.',
-            'image' => 'supermarket.jpg',
+            'image' => 'supermarket.png',
             'created_at' => now()
         ]);
         // 6 kompos
@@ -107,7 +107,7 @@ class PostSeeder extends Seeder
             **Manfaat:**
 
             Mengurangi sampah ke TPA dan menghasilkan pupuk alami untuk tanaman.',
-            'image' => 'kompos.jpg',
+            'image' => 'kompos.png',
             'created_at' => now()
         ]);
         // 7 air
@@ -129,7 +129,7 @@ class PostSeeder extends Seeder
             **Ingat:**
 
             Hemat air hari ini = air bersih untuk generasi berikutnya.',
-            'image' => 'air.jpg',
+            'image' => 'water.png',
             'created_at' => now()
         ]);
     }

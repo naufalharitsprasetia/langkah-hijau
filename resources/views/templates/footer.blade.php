@@ -11,7 +11,7 @@
                             class="text-hijaumuda">Hijau</span></span>
                 </div>
                 <div class="flex space-x-4">
-                    <a href="#" class="text-gray-400 hover:text-gray-500">
+                    <a class="text-gray-400 hover:text-gray-500">
                         <span class="sr-only">Twitter</span>
                         <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path
@@ -19,7 +19,7 @@
                             </path>
                         </svg>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-gray-500">
+                    <a class="text-gray-400 hover:text-gray-500">
                         <span class="sr-only">YouTube</span>
                         <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path fill-rule="evenodd"
@@ -27,7 +27,7 @@
                                 clip-rule="evenodd"></path>
                         </svg>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-gray-500">
+                    <a class="text-gray-400 hover:text-gray-500">
                         <span class="sr-only">Facebook</span>
                         <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path fill-rule="evenodd"
@@ -35,7 +35,7 @@
                                 clip-rule="evenodd"></path>
                         </svg>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-gray-500">
+                    <a class="text-gray-400 hover:text-gray-500">
                         <span class="sr-only">LinkedIn</span>
                         <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path fill-rule="evenodd"
@@ -50,10 +50,11 @@
             <div>
                 <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Aplikasi</h3>
                 <ul class="space-y-2">
-                    <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">Tentang Kami</a></li>
-                    <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">Kontak</a></li>
-                    <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">Support</a></li>
+                    <li><a href="" class="hover:text-gray-900 dark:hover:text-white">Tentang Kami</a></li>
+                    <li><a href="{{ route('home.kontak') }}"
+                            class="hover:text-gray-900 dark:hover:text-white">Kontak</a></li>
                     <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">Tim Kami</a></li>
+                    <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">Support</a></li>
                     <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">Careers</a></li>
                 </ul>
             </div>
@@ -74,10 +75,13 @@
                 <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Fitur</h3>
                 <ul class="space-y-2">
                     <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">Cek Gaya Hidup</a></li>
-                    <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">Tantangan</a></li>
-                    <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">Edu-Zone</a></li>
+                    <li><a href="{{ route('challenges.index') }}"
+                            class="hover:text-gray-900 dark:hover:text-white">Tantangan</a></li>
+                    <li><a href="{{ route('post.index') }}"
+                            class="hover:text-gray-900 dark:hover:text-white">Edu-Zone</a></li>
                     <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">Green Event</a></li>
-                    <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">Hijau AI</a></li>
+                    <li><a href="{{ route('hijau-ai.index') }}" class="hover:text-gray-900 dark:hover:text-white">Hijau
+                            AI</a></li>
                 </ul>
             </div>
         </div>
@@ -87,9 +91,9 @@
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <p class="text-xs">&copy; 2025 LangkahHijau. All rights reserved.</p>
                 <nav class="flex space-x-4 mt-4 md:mt-0">
-                    <a href="#" class="text-xs hover:text-gray-900 dark:hover:text-white">Privacy Policy</a>
-                    <a href="#" class="text-xs hover:text-gray-900 dark:hover:text-white">Terms of Service</a>
-                    <a href="#" class="text-xs hover:text-gray-900 dark:hover:text-white">Cookie Settings</a>
+                    <a class="text-xs hover:text-gray-900 dark:hover:text-white">Privacy Policy</a>
+                    <a class="text-xs hover:text-gray-900 dark:hover:text-white">Terms of Service</a>
+                    <a class="text-xs hover:text-gray-900 dark:hover:text-white">Cookie Settings</a>
                 </nav>
             </div>
         </div>

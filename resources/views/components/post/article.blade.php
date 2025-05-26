@@ -4,10 +4,8 @@
     {{-- title --}}
     <p data-aos="fade-up" data-aos-duration="2000"
         class="mt-4 mb-16 text-2xl text-center font-bold text-pretty text-gray-900 dark:text-gray-100 sm:text-5xl lg:text-balance">
-        Edu-Zone<br><span class="text-hijautua dark:text-hijaumuda text-xl sm:text-2xl font-medium">Edukasi tentang
-            gaya hidup
-            sehat dan ramah
-            lingkungan</span>
+        Edu-Zone<br><span class="text-hijautua dark:text-hijaumuda text-lg sm:text-xl font-normal">Temukan inspirasi
+            gaya hidup sehat dan ramah lingkungan di sini – mulai langkah hijau Anda sekarang!</span>
     </p>
     {{-- <h2 class="text-center text-lg/8 font-semibold text-zinc-900 dark:text-gray-200 my-12">Edu-Zone</h2> --}}
     <!-- Featured Article Section -->
@@ -18,8 +16,8 @@
             <div class="w-full xl:w-auto xl:flex-shrink-0">
                 <div
                     class="w-full xl:w-80 h-48 sm:h-56 lg:h-64 bg-gradient-to-br from-green-100 to-blue-100 dark:from-green-900 dark:to-blue-900 rounded-2xl flex items-center justify-center overflow-hidden">
-                    <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-bsxYju0wDVbprjHOjvtU6JiSucjMxW.png"
-                        alt="Zero Waste Illustration" class="w-full h-full object-cover rounded-2xl">
+                    <img src="./img/posts/{{ $postUtama->image }}" alt="Zero Waste Illustration"
+                        class="w-full h-full object-cover rounded-2xl">
                 </div>
             </div>
 
@@ -61,20 +59,8 @@
             <div>
                 <h3 class="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-2">Tips
                     Lainnya</h3>
-                <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base">Tips Edukasi & Artikel terkait
-                    Langkah Hijau</p>
-            </div>
-
-            <!-- Navigation Arrows -->
-            <div class="hidden gap-2 self-start sm:self-auto sm:flex">
-                <button
-                    class="cursor-pointer w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                    <i class="fas fa-chevron-left text-gray-400 dark:text-gray-500 text-sm"></i>
-                </button>
-                <button
-                    class="cursor-pointer w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
-                    <i class="fas fa-chevron-right text-gray-400 dark:text-gray-500 text-sm"></i>
-                </button>
+                <p class="text-gray-600 dark:text-gray-300 text-sm sm:text-base">Kumpulan Tips Cerdas & Artikel
+                    Inspiratif untuk Menjalani Hidup Lebih Hijau!</p>
             </div>
         </div>
 

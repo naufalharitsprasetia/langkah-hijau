@@ -5,8 +5,8 @@
         <!-- Article Image -->
         <div
             class="w-full h-36 sm:h-40 lg:h-48 bg-gradient-to-br from-green-100 to-blue-100 dark:from-green-900 dark:to-blue-900 rounded-xl mb-4 flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform duration-300">
-            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-bsxYju0wDVbprjHOjvtU6JiSucjMxW.png"
-                alt="Zero Waste Illustration" class="w-full h-full object-cover rounded-xl">
+            <img src="./img/posts/{{ $post->image }}" alt="Zero Waste Illustration"
+                class="w-full h-full object-cover rounded-xl">
         </div>
 
         <!-- Category and Date -->

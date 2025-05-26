@@ -26,7 +26,7 @@ class ChallengeSeeder extends Seeder
         Challenge::create([
             'title' => '5 Hari Transportasi Ramah Lingkungan',
             'description' => 'Gunakan transportasi minim emisi: jalan kaki, sepeda, atau transportasi umum selama 5 hari berturut-turut.',
-            'challenge_images/eco_transport.jpg',
+            'image_path' =>    'challenge_images/eco_transport.jpg',
             'duration_days' => 5,
             'badge_name' => 'Komuter Hijau',
             'badge_icon' => '🚴',
@@ -36,7 +36,7 @@ class ChallengeSeeder extends Seeder
         Challenge::create([
             'title' => '3 Hari Makan Nabati',
             'description' => 'Selama 3 hari penuh, konsumsi makanan nabati (vegetarian/plant-based), hindari daging dan produk hewani.',
-            'challenge_images/plant_based_diet.jpg',
+            'image_path' =>  'challenge_images/plant_based_diet.jpg',
             'duration_days' => 3,
             'badge_name' => 'Eksplorer Nabati',
             'badge_icon' => '🌱',
