@@ -41,7 +41,7 @@
     <div class="hero relative isolate z-10">
         <x-efek.glowatas />
         {{-- header --}}
-        <div class="mx-auto max-w-2xl pb-12 sm:pb-32 lg:pb-36 pt-12 sm:pt-12 lg:pt-16">
+        <div class="mx-auto max-w-2xl pb-12 sm:pb-32 lg:pb-36">
             <div class="hidden sm:mb-8 sm:flex sm:justify-center">
                 <div
                     class="relative rounded-full px-3 py-1 text-sm/6 text-gray-600 dark:text-gray-300 ring-1 ring-gray-900/10 hover:ring-gray-900/20 dark:ring-gray-100/10 dark:hover:ring-gray-100/20">
@@ -95,7 +95,7 @@
         {{-- Fokus Utama--}}
         <div class="py-24 sm:py-32">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                <div class="mx-auto max-w-3xl lg:text-center">
+                <div class="mx-auto max-w-3xl lg:text-center" data-aos="fade-up" data-aos-duration="1500">
                     <h2 class="text-base/7 font-semibold text-hijautua dark:text-hijaumuda">Fokus Utama</h2>
                     <p
                         class="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-gray-100 sm:text-5xl lg:text-balance">
@@ -108,7 +108,8 @@
                         bernilai. Berikut adalah empat fokus utama yang kami gaungkan:
                     </p>
                 </div>
-                <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
+                <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl" data-aos="zoom-in-up"
+                    data-aos-duration="1000">
                     <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
                         <div class="relative pl-16">
                             <dt class="text-base/7 font-semibold text-gray-900 dark:text-gray-100">
@@ -175,9 +176,10 @@
             </div>
         </div>
         {{-- Mitra --}}
-        <div class="py-6 sm:py-10" id="mitra">
+        <div class="py-6 sm:py-10 mb-20" id="mitra">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                <h2 class="text-center text-lg/8 font-semibold text-zinc-900 dark:text-gray-200">Sponsor</h2>
+                <h2 class="text-center text-lg/8 md:text-2xl/8 font-semibold text-zinc-900 dark:text-gray-100">Sponsor
+                </h2>
                 <br>
                 <x-home.mitra />
             </div>
@@ -326,7 +328,7 @@
                 <p class="mb-6">Mulai dari langkah kecil, untuk bumi yang lebih hijau.</p>
             </div>
             <div class="flex-1 text-right">
-                <a href="{{ route('home.index') }}"
+                <a href="{{ route('auth.signup') }}"
                     class="inline-flex items-center px-8 py-4 text-lg font-semibold rounded-lg bg-hijautua text-white hover:bg-hijaumuda cursor-pointer">
                     Daftar Sekarang
                     <svg class="ml-2 -mr-1 w-6 h-6" fill="currentColor" viewBox="0 0 20 20"

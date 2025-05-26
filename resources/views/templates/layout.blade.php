@@ -12,7 +12,6 @@
     <link rel="icon" type="image/png" href="/img/logoweb.png">
     <link rel="stylesheet" href="/css/frontend.css">
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="canonical" href="{{ url()->current() }}">
     {{-- script --}}
     <script src="https://kit.fontawesome.com/5d8dfb0173.js" crossorigin="anonymous"></script>
@@ -56,6 +55,7 @@
         <x-footer />
     </div>
     {{-- <script src="../path/to/flowbite/dist/flowbite.min.js"></script> --}}
+    @include('sweetalert2::index')
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ asset('js/scrollnavbar.js') }}"></script>
     <script src="{{ asset('js/preload.js') }}"></script>

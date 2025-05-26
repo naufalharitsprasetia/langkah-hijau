@@ -17,7 +17,7 @@
                 this.isDropAbout = false;
             }
         }
-    }" class="lg:sticky inset-x-0 top-0 z-50" id="myNavbar">
+    }" class="lg:sticky inset-x-0 top-0 z-50 relative" id="myNavbar">
     {{-- sebenernya ada add remove bg-white/80 di .js nya --}}
     <div class="bg-white/80 backdrop-blur dark:bg-zinc-900/80 hidden"></div>
     <nav class="flex items-center justify-between p-6 lg:px-8 mx-auto max-w-7xl" aria-label="Global">
@@ -133,11 +133,14 @@
                     role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                     <!-- Active: "bg-gray-100 outline-none", Not Active: "" -->
                     <a href="/dashboard"
-                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-zinc-700"
+                        class="block text-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-zinc-700"
                         role="menuitem" tabindex="-1" id="user-menu-item-0">Dashboard</a>
-                    <a href="#"
-                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-zinc-700"
-                        role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
+                    <form action="{{ route('auth.logout') }}" method="POST" class="block" id="logoutForm">
+                        @csrf
+                        <button type="button" id="logoutBtn"
+                            class="block w-full cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-zinc-700"
+                            role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</buttont>
+                    </form>
                 </div>
             </div>
             @endguest
@@ -214,4 +217,8 @@
         </div>
     </div>
 </header>
+@vite('resources/js/sweetalert.js')
+<script>
+
+</script>
 <script src="{{ asset('js/themelogic.js') }}"></script>

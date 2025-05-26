@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use SweetAlert2\Laravel\Swal;
 
 class AuthController extends Controller
 {
@@ -65,11 +66,27 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
+
         // Simpan URL halaman terakhir diakses sebelum logout
-        $lastUrl = url()->previous();
-        $title = 'Apakah Anda ingin Logout!';
-        $text = "Pastikan semua progress sudah tersimpan!";
-        // confirmDelete($title, $text); sweet alert confirm logout lakukan di front end aja
+        // Swal::fire([
+        //     'title' => 'Apakah Anda ingin Logout!',
+        //     'text' => 'Pastikan semua progress sudah tersimpan!',
+        //     'icon' => 'success',
+        //     'showCancelButton' => true,
+        //     'icon' => "warning",
+        //     'confirmButtonColor' => "#3085d6",
+        //     'cancelButtonColor' => "#d33",
+        //     'confirmButtonText' => "Logout"
+        // ]);
+        // $result = Swal::SweetAlertResult;
+        // dd($result);
+        // if ($result['isConfirmed']) {
+        //     Swal::fire([
+        //         'title' => "Logged out",
+        //         'text' => "logout telah berhasil!",
+        //         'icon' => "success"
+        //     ]);
+        // }
 
         Auth::logout();
 
@@ -77,7 +94,7 @@ class AuthController extends Controller
         $request->session()->regenerateToken();
 
         // Redirect ke halaman terakhir yang diakses
-        return redirect($lastUrl)->with('success', 'Anda telah berhasil keluar.');
+        return redirect()->intended('/')->with('success', 'Anda telah berhasil keluar.');
     }
 
     public function addUser(Request $request)

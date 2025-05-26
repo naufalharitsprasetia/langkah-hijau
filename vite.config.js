@@ -12,6 +12,7 @@ export default defineConfig({
                 "resources/js/hijauai.js",
                 "resources/js/login.js",
                 "resources/js/signup.js",
+                "resources/js/sweetalert.js",
             ],
             refresh: true,
         }),

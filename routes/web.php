@@ -53,13 +53,9 @@ Route::middleware('guest')->group(function () {
 });
 
 // Auth for user logged in
-// Route::middleware('auth')->group(function () {
-//     Route::get('/req-auth', [AuthController::class, 'reqAuth'])->name('auth.reqAuth');
-//     Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
-//     Route::post('/login', [AuthController::class, 'authenticate'])->name('auth.authenticate');
-//     Route::get('/sign-up', [AuthController::class, 'signup'])->name('auth.signup');
-//     Route::post('/sign-up', [AuthController::class, 'addUser'])->name('auth.addUser');
-// });
+Route::middleware('auth')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+});
 
 // Products
 // Route::middleware([IsAdmin::class])->group(function () {
