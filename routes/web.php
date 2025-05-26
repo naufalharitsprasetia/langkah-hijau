@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChallengeController;
 use App\Http\Controllers\HijauAIController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
@@ -61,3 +62,7 @@ Route::middleware('auth')->group(function () {
 // Route::middleware([IsAdmin::class])->group(function () {
 //     Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.show');
 // });
+
+// challenge
+Route::get('/challenges', [ChallengeController::class, 'index'])->name('challenges.index');
+Route::get('/challenges/{challenge}', [ChallengeController::class, 'show'])->name('challenges.show');

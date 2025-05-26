@@ -16,6 +16,7 @@ class ChallengeSeeder extends Seeder
         Challenge::create([
             'title' => '7 Hari Tanpa Plastik Sekali Pakai',
             'description' => 'Selama seminggu, hindari penggunaan plastik sekali pakai seperti kantong kresek, sedotan, botol air, dan kemasan makanan/minuman.',
+            'image_path' => 'challenge_images/no_plastic_week.jpg',
             'duration_days' => 7,
             'badge_name' => 'Pejuang Anti Plastik',
             'badge_icon' => '♻️',
@@ -25,6 +26,7 @@ class ChallengeSeeder extends Seeder
         Challenge::create([
             'title' => '5 Hari Transportasi Ramah Lingkungan',
             'description' => 'Gunakan transportasi minim emisi: jalan kaki, sepeda, atau transportasi umum selama 5 hari berturut-turut.',
+            'challenge_images/eco_transport.jpg',
             'duration_days' => 5,
             'badge_name' => 'Komuter Hijau',
             'badge_icon' => '🚴',
@@ -34,6 +36,7 @@ class ChallengeSeeder extends Seeder
         Challenge::create([
             'title' => '3 Hari Makan Nabati',
             'description' => 'Selama 3 hari penuh, konsumsi makanan nabati (vegetarian/plant-based), hindari daging dan produk hewani.',
+            'challenge_images/plant_based_diet.jpg',
             'duration_days' => 3,
             'badge_name' => 'Eksplorer Nabati',
             'badge_icon' => '🌱',

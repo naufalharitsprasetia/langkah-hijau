@@ -13,6 +13,7 @@ class Challenge extends Model
     protected $fillable = [
         'title',
         'description',
+        'image_path',
         'duration_days',
         'badge_name',
         'badge_icon',
@@ -22,5 +23,11 @@ class Challenge extends Model
     public function participations(): HasMany
     {
         return $this->hasMany(UserChallengeParticipation::class);
+    }
+
+    // untuk mendapatkan url gambar
+    public function getImageUrlAttribute()
+    {
+        return $this->image_path ? asset('storage/' . $this->image_path) : null;
     }
 }
