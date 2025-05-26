@@ -2,7 +2,7 @@
 <div class="relative isolate max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 pb-8 z-30">
     <x-efek.glowatas />
     {{-- title --}}
-    <p
+    <p data-aos="fade-up" data-aos-duration="2000"
         class="mt-4 mb-16 text-2xl text-center font-bold text-pretty text-gray-900 dark:text-gray-100 sm:text-5xl lg:text-balance">
         Edu-Zone<br><span class="text-hijautua dark:text-hijaumuda text-xl sm:text-2xl font-medium">Edukasi tentang
             gaya hidup
@@ -11,7 +11,7 @@
     </p>
     {{-- <h2 class="text-center text-lg/8 font-semibold text-zinc-900 dark:text-gray-200 my-12">Edu-Zone</h2> --}}
     <!-- Featured Article Section -->
-    <div
+    <div data-aos="fade-up" data-aos-duration="2000"
         class="bg-white dark:bg-zinc-900 border border-gray-300 dark:border-zinc-700 rounded-2xl shadow-sm p-4 sm:p-6 lg:p-8 mb-8 sm:mb-12 transition-colors duration-300">
         <div class="flex flex-col xl:flex-row gap-6 lg:gap-8 items-center">
             <!-- Article Image -->
@@ -58,7 +58,7 @@
     </div>
 
     <!-- Tips Lainnya Section -->
-    <section>
+    <section data-aos="fade-up" data-aos-duration="2000">
         <!-- Section Header -->
         <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-4 sm:gap-0 mb-6 sm:mb-8">
             <div>

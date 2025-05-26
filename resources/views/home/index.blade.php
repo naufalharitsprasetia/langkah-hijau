@@ -194,12 +194,13 @@
         {{-- BENTO GRID --}}
         <div class="pt-24 pb-20 sm:py-32">
             <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
-                <p
+                <p data-aos="fade-up" data-aos-duration="2000"
                     class="mx-auto mt-2 max-w-2xl text-center text-4xl font-semibold text-balance text-hijautua dark:text-hijaumuda sm:text-5xl">
                     <span class="text-zinc-900 dark:text-gray-100">Bagaimana</span><br>
                     LangkahHijau Berdampak ?
                 </p>
-                <div class="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2">
+                <div class="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2" data-aos="fade-up"
+                    data-aos-duration="2000">
                     <div class="relative lg:row-span-2">
                         <div
                             class="absolute inset-px rounded-lg bg-white dark:bg-zinc-900 border border-gray-300 dark:border-zinc-700 lg:rounded-l-4xl">
@@ -308,7 +309,7 @@
     <section class="faq-container relative z-50 isolate px-4 sm:px-6 lg:px-16 overflow-visible">
         <x-efek.glowatas />
         <div class="max-w-4xl mx-auto relative pb-32">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="2000">
                 <h2 class="text-base text-hijautua dark:text-hijaumuda font-semibold tracking-wide uppercase">FAQ</h2>
                 <p class="mt-2 text-3xl sm:text-4xl leading-8 font-bold tracking-tight text-gray-900 dark:text-white">
                     Pertanyaan yang Sering Diajukan
@@ -322,7 +323,7 @@
     </section>
     {{-- sec last --}}
     <section class="cta-container relative isolate mb-36 px-4 sm:px-6 lg:px-16">
-        <div class="max-w-4xl mx-auto flex items-center justify-between">
+        <div class="max-w-4xl mx-auto flex items-center justify-between" data-aos="fade-up" data-aos-duration="2000">
             <div class="flex-1 dark:text-white">
                 <h2 class="text-md md:text-4xl font-bold mb-4">Siap untuk Menghijaukan Dunia?</h2>
                 <p class="mb-6">Mulai dari langkah kecil, untuk bumi yang lebih hijau.</p>
