@@ -186,7 +186,7 @@
         </div>
     </div>
     {{-- sec blog --}}
-    <x-post.article :active="$active" class="mt-20" />
+    <x-post.article :active="$active" class="mt-20" :postUtama="$postUtama" :posts="$posts" />
     {{-- sec.3 --}}
     <div class="sec3 relative isolate">
         <x-efek.glowatas />

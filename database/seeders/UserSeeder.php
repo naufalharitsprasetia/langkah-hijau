@@ -16,8 +16,8 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'Super Admin',
             'username' => 'superadmin',
-            'email' => 'admin@example.com',
-            'password' => Hash::make('bismillah123'),
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('bismillah'),
             'is_admin' => true,
             'total_points' => 0,
             'created_at' => now(),
@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'Naufal Harits',
             'username' => 'naufalharits',
-            'email' => 'naufal@example.com',
+            'email' => 'naufal@gmail.com',
             'password' => Hash::make('bismillah'),
             'total_points' => 0,
             'created_at' => now(),

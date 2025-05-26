@@ -13,6 +13,7 @@ class Articlecard extends Component
      */
     public function __construct(
         public ?string $active = null,
+        public object $post,
     ) {
         //
     }

@@ -36,7 +36,7 @@ Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('home.dashb
 
 //
 Route::get('/edu-zone', [PostController::class, 'index'])->name('post.index');
-Route::get('/edu-zone/show', [PostController::class, 'show'])->name('post.show');
+Route::get('/edu-zone/{post}', [PostController::class, 'show'])->name('post.show');
 
 // Hijau AI
 Route::get('/hijau-ai', [HijauAIController::class, 'index'])->name('hijau-ai.index');
