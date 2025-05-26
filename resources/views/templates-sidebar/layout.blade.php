@@ -85,7 +85,7 @@
                     </button>
                     <ul id="dropdown-example" class="hidden py-2 space-y-2">
                         <li>
-                            <a href="#"
+                            <a href="{{ route('post.manage') }}"
                                 class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Manage
                                 Posts</a>
                         </li>
@@ -136,23 +136,33 @@
                         </button>
                     </form>
                 </li>
+                <li class="text-center">
+                    <!-- Theme Toggle Button -->
+                    <button id="theme-toggle" aria-label="Toggle theme"
+                        class="block w-full text-center mx-auto p-2 rounded-full text-accent dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer">
+                        <svg id="theme-icon" class="h-6 w-6 text-center" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                        </svg>
+                    </button>
+                </li>
             </ul>
         </div>
     </aside>
 
-    <div class="p-4 sm:ml-64">
+    <div class="p-4 sm:ml-64 bg-white dark:bg-zinc-900">
         <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
             {{ $slot }}
         </div>
     </div>
-    {{-- <script src="../path/to/flowbite/dist/flowbite.min.js"></script> --}}
     {{-- Sidebar --}}
     @include('sweetalert2::index')
     @vite('resources/js/sweetalert.js')
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ asset('js/scrollnavbar.js') }}"></script>
     <script src="{{ asset('js/preload.js') }}"></script>
-
+    <script src="{{ asset('js/themelogic.js') }}"></script>
 </body>
 
 </html>

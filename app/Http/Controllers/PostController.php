@@ -18,6 +18,13 @@ class PostController extends Controller
         $posts = Post::where('id', '!=', $postUtama->id)->latest()->get();
         return view('post.index', compact('active', 'title', 'postUtama', 'posts'));
     }
+    public function manage()
+    {
+        $title = 'Manage Post';
+        $active = 'manage-edu-zone';
+        $posts = Post::all();
+        return view('post.manage', compact('active', 'title', 'posts'));
+    }
 
     /**
      * Show the form for creating a new resource.

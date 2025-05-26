@@ -212,6 +212,14 @@
                             class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-medium text-gray-700 hover:bg-gray-200">
                             <i class="fa-solid fa-sign-in mr-3"></i> Login</a>
                         @endauth
+                        <!-- Theme Toggle Button -->
+                        <button id="theme-toggle" aria-label="Toggle theme"
+                            class="p-2 rounded-full text-accent dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer">
+                            <svg id="theme-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                            </svg>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -219,7 +227,5 @@
     </div>
 </header>
 @vite('resources/js/sweetalert.js')
-<script>
 
-</script>
 <script src="{{ asset('js/themelogic.js') }}"></script>

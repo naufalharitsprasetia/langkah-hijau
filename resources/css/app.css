@@ -78,6 +78,20 @@ body {
         border-width: 10px;
     }
 }
+/* alert */
+
+.alert-success {
+    @apply bg-green-200 rounded-lg mx-2 py-2 px-3 text-slate-900 ring-2 ring-inset ring-green-500 my-3;
+}
+.alert-error {
+    @apply bg-rose-400 rounded-lg mx-2 py-2 px-3 text-white ring-2 ring-inset ring-rose-700 my-3;
+}
+.input-wrong {
+    @apply border-2 border-rose-500;
+}
+.label-error {
+    @apply text-sm font-semibold p-2 text-rose-500;
+}
 
 /* BUTTON BAWAH KANAN */
 #myBtnTop {
