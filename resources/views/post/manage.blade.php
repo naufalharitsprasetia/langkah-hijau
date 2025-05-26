@@ -22,6 +22,9 @@
                 <!-- Isi Halaman -->
                 <h2 class="text-2xl font-semibold text-zinc-900 dark:text-white">Manage Posts</h2>
                 <p class="text-sm text-zinc-900 dark:text-white">Total Posts : {{ count($posts) }}</p>
+                <a href="{{ route('post.create') }}"
+                    class="cursor-pointer inline-block text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg my-4 text-xs px-4 py-2 text-center me-2">Create
+                    New Post</a>
                 <br>
 
                 {{-- flow bite table --}}
@@ -69,12 +72,14 @@
                                     {{ $post->created_at }}
                                 </td>
                                 <td class="px-6 py-4 text-right">
-                                    <a href="#"
-                                        class="font-medium text-hijautua dark:text-hijaumuda hover:underline">Detail</a>
-                                    <a href="#"
-                                        class="font-medium text-yellow-600 dark:text-yellow-500 hover:underline">Edit</a>
-                                    <a href="#"
-                                        class="font-medium text-rose-600 dark:text-rose-500 hover:underline">Delete</a>
+                                    <div class="flex">
+                                        <a href="#"
+                                            class="inline-block p-2 m-2 font-medium text-hijautua dark:text-hijaumuda hover:underline">Detail</a>
+                                        <a href="#"
+                                            class="inline-block p-2 m-2 font-medium text-yellow-600 dark:text-yellow-500 hover:underline">Edit</a>
+                                        <a href="#"
+                                            class="inline-block p-2 m-2 font-medium text-rose-600 dark:text-rose-500 hover:underline">Delete</a>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach

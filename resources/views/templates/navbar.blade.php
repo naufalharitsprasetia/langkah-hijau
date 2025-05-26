@@ -133,7 +133,7 @@
                     class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white dark:bg-zinc-900 dark:border-2 dark:border-zinc-700 py-1 shadow-lg ring-1 ring-black/5 focus:outline-none"
                     role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                     <!-- Active: "bg-gray-100 outline-none", Not Active: "" -->
-                    <a href="/dashboard"
+                    <a href="{{ route('user.dashboard') }}"
                         class="block text-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-zinc-700"
                         role="menuitem" tabindex="-1" id="user-menu-item-0">Dashboard</a>
                     <form action="{{ route('auth.logout') }}" method="POST" class="block" id="logoutForm">

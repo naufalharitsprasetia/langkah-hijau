@@ -28,10 +28,5 @@ class HomeController extends Controller
         $active = 'kontak';
         return view('home.kontak', compact('active', 'title'));
     }
-    public function dashboard()
-    {
-        $title = 'Dashboard';
-        $active = 'dashboard';
-        return view('users.dashboard', compact('active', 'title'));
-    }
+
 }

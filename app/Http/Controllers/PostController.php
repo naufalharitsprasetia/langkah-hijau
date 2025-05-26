@@ -31,7 +31,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $title = 'Create New Post';
+        $active = 'create-edu-zone';
+        return view('post.create', compact('active', 'title'));
     }
 
     /**

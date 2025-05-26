@@ -58,6 +58,14 @@
         class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
         aria-label="Sidebar">
         <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+            <div class="flex lg:flex-1 ms-3 mt-3 mb-4">
+                <a href="#" class="-m-1.5 p-1.5 flex justify-center items-center">
+                    <span class="sr-only">LangkahHijau</span>
+                    <img class="h-8 w-auto" src="/img/logoweb.png" alt="">
+                    <h2 class="text-xl ml-1 font-semibold text-gray-900 dark:text-gray-100">Langkah<span
+                            class="text-hijautua dark:text-hijaumuda">Hijau</span></h2>
+                </a>
+            </div>
             <ul class="space-y-2 font-medium">
                 <li>
                     <a href="{{ route('home.index') }}"
@@ -65,7 +73,7 @@
                         <span class="ms-3"><i class="fa-solid fa-house mr-3"></i> Beranda</span>
                     </a>
                 <li>
-                    <a href="{{ route('home.dashboard') }}"
+                    <a href="{{ route('user.dashboard') }}"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                         <span class="ms-3"><i class="fa-solid fa-table-columns mr-3"></i> Dashboard</span>
                     </a>
@@ -104,7 +112,7 @@
                 @endcan
 
                 <li>
-                    <a href="#"
+                    <a href="{{ route('user.leaderboard') }}"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"><span
                             class="flex-1 ms-3 whitespace-nowrap"><i class="fa-solid fa-trophy mr-3"></i>
                             Leaderboard</span>
@@ -121,7 +129,7 @@
                 </li>
                 <hr>
                 <li>
-                    <p class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white group">
+                    <p class="flex text-center items-center p-2 text-gray-900 rounded-lg dark:text-white group">
                         <span class="flex-1 ms-3 whitespace-nowrap">{{ auth()->user()->name }} </span>
                     </p>
                 </li>
@@ -139,7 +147,7 @@
                 <li class="text-center">
                     <!-- Theme Toggle Button -->
                     <button id="theme-toggle" aria-label="Toggle theme"
-                        class="block w-full text-center mx-auto p-2 rounded-full text-accent dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer">
+                        class="flex items-center justify-center w-full text-center mx-auto p-2 rounded-full text-accent dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer">
                         <svg id="theme-icon" class="h-6 w-6 text-center" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -151,7 +159,7 @@
         </div>
     </aside>
 
-    <div class="p-4 sm:ml-64 bg-white dark:bg-zinc-900">
+    <div class="p-4 sm:ml-64 bg-white dark:bg-zinc-900 min-h-screen">
         <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
             {{ $slot }}
         </div>
