@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -10,7 +11,10 @@ class HomeController extends Controller
     {
         $title = 'Beranda';
         $active = 'beranda';
-        return view('home.index', compact('active', 'title'));
+        $postUtama = Post::latest()->first();
+        $posts = Post::where('id', '!=', $postUtama->id)->latest()->limit(3)->get();
+        // dd($postUtama);
+        return view('home.index', compact('active', 'title', 'postUtama', 'posts'));
     }
     public function tentang()
     {
@@ -24,4 +28,5 @@ class HomeController extends Controller
         $active = 'kontak';
         return view('home.kontak', compact('active', 'title'));
     }
+
 }

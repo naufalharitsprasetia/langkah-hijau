@@ -13,7 +13,7 @@ class Navbar extends Component
      */
     public function __construct(
         // public string $title,
-        // public string $active,
+        public string $active,
     )
     {
         //
@@ -24,6 +24,6 @@ class Navbar extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.navbar');
+        return view('templates.navbar');
     }
 }
