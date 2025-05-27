@@ -103,33 +103,7 @@
         <a href="/" class="btn-home">Kembali ke Beranda</a>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/Draggable.min.js"></script>
-    <script>
-        // GSAP Animations
-        gsap.from(".message", {
-            opacity: 0,
-            y: -50,
-            duration: 1,
-            ease: "power2.out"
-        });
-
-        gsap.from(".description", {
-            opacity: 0,
-            y: 50,
-            duration: 1,
-            delay: 0.5,
-            ease: "power2.out"
-        });
-
-        gsap.from(".btn-home", {
-            opacity: 0,
-            scale: 0.8,
-            duration: 1,
-            delay: 1,
-            ease: "bounce.out"
-        });
-    </script>
+    @vite(['resources/js/404.js'])
 </body>
 
 </html>

@@ -24,7 +24,7 @@ class UserChallengeParticipationSeeder extends Seeder
         $challengePlastik = Challenge::where('title', 'LIKE', '%Plastik%')->first();
         $challengeTransport = Challenge::where('title', 'LIKE', '%Transportasi%')->first();
         $challengeNabati = Challenge::where('title', 'LIKE', '%Nabati%')->first();
-    
+
         if ($user1 && $challengePlastik) {
             UserChallengeParticipation::create([
                 'user_id' => $user1->id,

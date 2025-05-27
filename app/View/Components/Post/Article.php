@@ -13,6 +13,8 @@ class Article extends Component
      */
     public function __construct(
         public string $active,
+        public object $postUtama,
+        public object $posts,
     ) {
         //
     }

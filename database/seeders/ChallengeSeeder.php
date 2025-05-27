@@ -50,7 +50,7 @@ class ChallengeSeeder extends Seeder
         Challenge::create([
             'title' => '3 Hari Makan Nabati',
             'description' => 'Selama 3 hari penuh, konsumsi makanan nabati (vegetarian/plant-based), hindari daging dan produk hewani.',
-            'checklist' => [
+           'checklist' => [
                 'Gunakan tas belanja kain setiap kali berbelanja.',
                 'Bawa dan gunakan botol minum pribadi.',
                 'Hindari membeli makanan atau minuman dalam kemasan plastik sekali pakai.',

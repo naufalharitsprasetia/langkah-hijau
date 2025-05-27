@@ -14,7 +14,16 @@ class PostController extends Controller
     {
         $title = 'Edu-Zone';
         $active = 'edu-zone';
-        return view('post.index', compact('active', 'title'));
+        $postUtama = Post::latest()->first();
+        $posts = Post::where('id', '!=', $postUtama->id)->latest()->get();
+        return view('post.index', compact('active', 'title', 'postUtama', 'posts'));
+    }
+    public function manage()
+    {
+        $title = 'Manage Post';
+        $active = 'manage-edu-zone';
+        $posts = Post::all();
+        return view('post.manage', compact('active', 'title', 'posts'));
     }
 
     /**
@@ -22,7 +31,9 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $title = 'Create New Post';
+        $active = 'create-edu-zone';
+        return view('post.create', compact('active', 'title'));
     }
 
     /**
@@ -38,7 +49,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        $title = 'Single Post';
+        $active = 'single-post';
+        return view('post.show', compact('active', 'title', 'post'));
     }
 
     /**

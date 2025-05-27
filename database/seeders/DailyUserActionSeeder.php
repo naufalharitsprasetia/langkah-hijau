@@ -15,7 +15,7 @@ class DailyUserActionSeeder extends Seeder
      */
     public function run(): void
     {
-        //ambil partisipasi andi di tantangan plastik (yang masih aktif)    
+        //ambil partisipasi andi di tantangan plastik (yang masih aktif)
         $andiPartisipasiPlastik = UserChallengeParticipation::whereHas('user', function ($query) {
             $query->where('email', 'andi@example.com');
         })->whereHas('challenge', function ($query) {
