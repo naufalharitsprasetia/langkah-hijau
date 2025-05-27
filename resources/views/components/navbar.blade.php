@@ -26,6 +26,7 @@
                 class="text-sm/6 font-medium text-green-600 dark:text-green-400">Beranda</a>
             <a href="{{ route('post.index') }}" class="text-sm/6 font-medium text-gray-700 dark:text-gray-200">Edu-Zone
                 ♻️</a>
+            <a href="/quizzes" class="text-sm/6 font-medium text-gray-700 dark:text-gray-200">Quiz</a>
             <a href="/tantangan" class="text-sm/6 font-medium text-gray-700 dark:text-gray-200">Tantangan</a>
             <a href="/hijau-ai" class="text-sm/6 font-medium text-gray-700 dark:text-gray-200">Hijau AI ✨</a>
             <a href="{{ route('home.kontak') }}"
@@ -33,13 +34,13 @@
         </div>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center">
             @guest
-            <a href="/login"
-                class="text-sm/6 font-medium mr-3 text-gray-100 bg-green-600 rounded-sm px-3 py-1 hover:bg-green-500 hover:text-grey-200">
-                <i class="fa-solid fa-sign-in"></i> Login</a>
+                <a href="/login"
+                    class="text-sm/6 font-medium mr-3 text-gray-100 bg-green-600 rounded-sm px-3 py-1 hover:bg-green-500 hover:text-grey-200">
+                    <i class="fa-solid fa-sign-in"></i> Login</a>
             @else
-            <a href="#"
-                class="text-sm/6 font-medium mr-3 text-gray-100 bg-green-600 rounded-sm px-3 py-1 hover:bg-green-500 hover:text-grey-200">Hai,
-                {{ auth()->user()->name }}</a>
+                <a href="#"
+                    class="text-sm/6 font-medium mr-3 text-gray-100 bg-green-600 rounded-sm px-3 py-1 hover:bg-green-500 hover:text-grey-200">Hai,
+                    {{ auth()->user()->name }}</a>
             @endguest
             <!-- Theme Toggle Button -->
             <button id="theme-toggle" aria-label="Toggle theme"
@@ -61,7 +62,8 @@
                 <a href="#" class="-m-1.5 p-1.5">
                     <span class="sr-only">Your Company</span>
                     <img class="h-8 w-auto"
-                        src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=green&shade=600" alt="">
+                        src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=green&shade=600"
+                        alt="">
                 </a>
                 <button @click="isOpen = !isOpen" type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
                     <span class="sr-only">Close menu</span>
@@ -79,6 +81,8 @@
                         <a href="/edu-zone"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-50">
                             Edu-Zone ♻️</a>
+                        <a href="/quizzes"
+                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-50">Quiz</a>
                         <a href="/challenge"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-50">Tantangan</a>
                         <a href="/hijau-ai"

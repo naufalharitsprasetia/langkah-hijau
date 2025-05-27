@@ -5,8 +5,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HijauAIController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\QuizController;
 
-Route::get('/', function () {});
+Route::get('/', function () { });
 Route::get('/blog', function () {
     return view('blog', ['title' => 'Blog']);
 });
@@ -35,6 +36,17 @@ Route::get('/kontak', [HomeController::class, 'kontak'])->name('home.kontak');
 
 //
 Route::get('/edu-zone', [PostController::class, 'index'])->name('post.index');
+
+// Quiz
+// Route::middleware(['auth'])->group(function () { // Opsional: Tambahkan middleware 'auth' jika quiz hanya untuk user login
+Route::get('/quizzes', [QuizController::class, 'index'])->name('quizzes.index');
+Route::get('/quizzes/{quiz}', [QuizController::class, 'show'])->name('quizzes.show');
+Route::get('/quizzes/{quiz}/start', [QuizController::class, 'start'])->name('quizzes.start');
+// Rute baru untuk menampilkan soal individual
+Route::get('/quizzes/{quiz}/question/{question}', [QuizController::class, 'showQuestion'])->name('quizzes.question');
+Route::post('/quizzes/{quiz}/question/{question}/submit', [QuizController::class, 'submitAnswer'])->name('quizzes.submit_answer');
+Route::get('/quizzes/{quiz}/results', [QuizController::class, 'results'])->name('quizzes.results');
+// });
 
 // Hijau AI
 Route::get('/hijau-ai', [HijauAIController::class, 'index'])->name('hijau-ai.index');
