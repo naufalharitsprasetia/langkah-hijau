@@ -61,10 +61,10 @@
                     langkah kecil,
                     untuk bumi yang lebih hijau.</p>
                 <div class="mt-10 flex items-center justify-center gap-x-6">
-                    <a href="#"
+                    <a href="{{route('auth.signup')}}"
                         class="rounded-md bg-hijautua px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-hijaumuda focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hijautua">Mulai
                         Langkahmu</a>
-                    <a href="#" class="text-sm/6 font-semibold text-gray-900 dark:text-gray-200">Jelajahi <span
+                    <a href="#explore" class="text-sm/6 font-semibold text-gray-900 dark:text-gray-200">Jelajahi <span
                             aria-hidden="true">→</span></a>
                 </div>
             </div>

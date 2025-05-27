@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
             'username' => 'naufalharits',
             'email' => 'naufal@gmail.com',
             'password' => Hash::make('bismillah'),
-            'green_points' => 0,
+            'green_points' => 400,
             'created_at' => now(),
         ]);
 
@@ -36,7 +36,7 @@ class UserSeeder extends Seeder
             'username' => 'andibudiman',
             'email' => 'andi@example.com',
             'password' => Hash::make('password123'),
-            'green_points' => 0,
+            'green_points' => 305,
             'created_at' => now(),
         ]);
 
@@ -45,7 +45,7 @@ class UserSeeder extends Seeder
             'username' => 'citralestari',
             'email' => 'citra@example.com',
             'password' => Hash::make('password123'),
-            'green_points' => 0,
+            'green_points' => 250,
             'created_at' => now(),
         ]);
 
@@ -54,7 +54,10 @@ class UserSeeder extends Seeder
             'username' => 'bayuperkasa',
             'email' => 'bayu@example.com',
             'password' => Hash::make('password123'),
-            'green_points' => 0,
+            'green_points' => 100,
+            'created_at' => now(),
+        ]);
+        User::factory(30)->create([
             'created_at' => now(),
         ]);
     }

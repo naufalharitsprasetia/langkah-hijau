@@ -12,9 +12,9 @@
                         class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-lg text-xs font-medium bg-hijaumuda/20 text-hijaumuda dark:bg-hijaumuda/30 dark:text-hijaumuda">Didukung
                         oleh AI ✨</span>
                 </div>
-                <div class="text-sm text-yellow-600 dark:text-yellow-400 mb-4">
+                {{-- <div class="text-sm text-yellow-600 dark:text-yellow-400 mb-4">
                     <strong>Peringatan:</strong> Rekomendasi ini hanya berdasarkan data anda di aplikasi ini.
-                </div>
+                </div> --}}
                 <div class="shadow-sm rounded-lg overflow-hidden mb-6 border dark:border-zinc-600">
                     <div class="px-4 py-5 sm:p-6">
                         <ul class="space-y-3" id="recommended-actions">

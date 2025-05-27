@@ -15,19 +15,19 @@
         <p class="text-gray-700 mb-6 text-center">{{ $quiz->description }}</p>
 
         @if ($quiz->duration_minutes)
-            <p class="text-lg text-gray-600 mb-6 text-center">Durasi: {{ $quiz->duration_minutes }} menit</p>
+        <p class="text-lg text-gray-600 mb-6 text-center">Durasi: {{ $quiz->duration_minutes }} menit</p>
         @endif
 
         @if ($quiz->questions->isEmpty())
-            <p class="text-center text-red-500">Quiz ini belum memiliki soal.</p>
+        <p class="text-center text-red-500">Quiz ini belum memiliki soal.</p>
         @else
-            <div class="text-center">
-                <p class="text-gray-800 mb-4">Jumlah soal: {{ $quiz->questions->count() }}</p>
-                <a href="{{ route('quizzes.start', $quiz->id) }}"
-                    class="bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 text-lg transition duration-300">
-                    Mulai Quiz Sekarang
-                </a>
-            </div>
+        <div class="text-center">
+            <p class="text-gray-800 mb-4">Jumlah soal: {{ $quiz->questions->count() }}</p>
+            <a href="{{ route('quizzes.start', $quiz->id) }}"
+                class="bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 text-lg transition duration-300">
+                Mulai Quiz Sekarang
+            </a>
+        </div>
         @endif
 
         <div class="mt-8 text-center">

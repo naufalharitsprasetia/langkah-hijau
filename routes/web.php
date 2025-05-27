@@ -6,9 +6,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\HijauAIController;
 use App\Http\Controllers\ChallengeController;
-use App\Http\Controllers\UserController;
 
 // // php artisan storage:link untuk hosting
 // Route::get('/create-storage-link', function () {
@@ -40,9 +41,6 @@ Route::get('/quizzes/{quiz}/question/{question}', [QuizController::class, 'showQ
 Route::post('/quizzes/{quiz}/question/{question}/submit', [QuizController::class, 'submitAnswer'])->name('quizzes.submit_answer');
 Route::get('/quizzes/{quiz}/results', [QuizController::class, 'results'])->name('quizzes.results');
 
-
-
-
 // Auth for guest
 Route::middleware('guest')->group(function () {
     Route::get('/req-auth', [AuthController::class, 'reqAuth'])->name('auth.reqAuth');
@@ -54,19 +52,34 @@ Route::middleware('guest')->group(function () {
 
 // Auth for user logged in
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', [UserController::class, 'dashboard'])->name('user.dashboard');
     Route::get('/leaderboard', [UserController::class, 'leaderboard'])->name('user.leaderboard');
+    Route::get('/dashboard', [UserController::class, 'dashboard'])->name('user.dashboard');
     Route::get('/hijau-ai', [HijauAIController::class, 'index'])->name('hijau-ai.index');
     Route::post('/hijau-ai', [HijauAIController::class, 'ask'])->name('hijau-ai.ask');
     Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 });
-
+// edu zone
 Route::get('/edu-zone', [PostController::class, 'index'])->name('post.index');
 Route::get('/edu-zone/{post}', [PostController::class, 'show'])->name('post.show');
-// Products
+// event
+Route::get('/event', [EventController::class, 'index'])->name('event.index');
+Route::get('/event/{event}', [EventController::class, 'show'])->name('event.show');
+// IS ADMIN Middleware
 Route::middleware([IsAdmin::class])->group(function () {
+    // Edu Zone
     Route::get('/edu-zone-manage', [PostController::class, 'manage'])->name('post.manage');
     Route::get('/edu-zone-create', [PostController::class, 'create'])->name('post.create');
+    Route::post('/edu-zone-create', [PostController::class, 'store'])->name('post.store');
+    Route::get('/edu-zone-edit/{post}', [PostController::class, 'edit'])->name('post.edit');
+    Route::put('/edu-zone-edit/{post}', [PostController::class, 'update'])->name('post.update');
+    Route::delete('/edu-zone-delete/{post}', [PostController::class, 'destroy'])->name('post.destroy');
+    // Events
+    Route::get('/event-manage', [EventController::class, 'manage'])->name('event.manage');
+    Route::get('/event-create', [EventController::class, 'create'])->name('event.create');
+    Route::post('/event-create', [EventController::class, 'store'])->name('event.store');
+    Route::get('/event-edit/{event}', [EventController::class, 'edit'])->name('event.edit');
+    Route::put('/event-edit/{event}', [EventController::class, 'update'])->name('event.update');
+    Route::delete('/event-delete/{event}', [EventController::class, 'destroy'])->name('event.destroy');
 });
 
 // challenge
