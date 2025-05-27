@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Post;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -15,6 +16,7 @@ class PostSeeder extends Seeder
     {
         // 1
         Post::create([
+            'id' => Str::uuid(),
             'title' => '5 Cara Mudah Memulai Gaya Hidup Zero Waste',
             'category' => '🌱 Zero Waste',
             'body' => 'Gaya hidup zero waste bukan berarti hidup tanpa sampah sama sekali, tapi mengurangi semaksimal mungkin. Mulailah dengan:
@@ -33,6 +35,7 @@ class PostSeeder extends Seeder
         ]);
         // 2
         Post::create([
+            'id' => Str::uuid(),
             'title' => 'Mengapa Konsumsi Daging Berlebihan Berdampak Buruk untuk Bumi?',
             'category' => '🛍️ Konsumsi Berkelanjutan',
             'body' => 'Produksi daging (terutama sapi) menghasilkan gas rumah kaca seperti metana. Juga memerlukan banyak air dan lahan. Mengurangi konsumsi daging:
@@ -49,6 +52,7 @@ class PostSeeder extends Seeder
         ]);
         // 3
         Post::create([
+            'id' => Str::uuid(),
             'title' => 'Transportasi Ramah Lingkungan, Pilihan Sehat dan Cerdas',
             'category' => '🚶 Transportasi Hijau',
             'body' => 'Kendaraan bermotor menyumbang emisi terbesar di kota-kota. Gunakan:
@@ -65,6 +69,7 @@ class PostSeeder extends Seeder
         ]);
         // 4
         Post::create([
+            'id' => Str::uuid(),
             'title' => 'Apa Itu Fast Fashion dan Mengapa Kita Harus Peduli?',
             'category' => '🛍️ Konsumsi Berkelanjutan',
             'body' => 'Fast fashion = tren pakaian cepat, murah, tapi berumur pendek. Dampaknya:
@@ -81,6 +86,7 @@ class PostSeeder extends Seeder
         ]);
         // 5. Supermarket
         Post::create([
+            'id' => Str::uuid(),
             'title' => 'Tips Belanja Ramah Lingkungan di Supermarket',
             'category' => '🛍️ Konsumsi Berkelanjutan',
             'body' => '1. Bawa tas kain sendiri
@@ -96,6 +102,7 @@ class PostSeeder extends Seeder
         ]);
         // 6 kompos
         Post::create([
+            'id' => Str::uuid(),
             'title' => 'Kompos di Rumah, Cara Sederhana Kurangi Sampah Organik',
             'category' => '🌱 Zero Waste',
             'body' => 'Sampah dapur seperti kulit buah, sayur layu, atau ampas kopi bisa dikompos. Caranya mudah:
@@ -112,6 +119,7 @@ class PostSeeder extends Seeder
         ]);
         // 7 air
         Post::create([
+            'id' => Str::uuid(),
             'title' => 'Air Lebih Berharga dari yang Kamu Kira – Hemat Air Mulai Hari Ini',
             'category' => '🔌 Energi dan Elektronik',
             'body' => 'Air bersih makin langka di banyak daerah, dan penggunaannya sering kita anggap remeh. Padahal:

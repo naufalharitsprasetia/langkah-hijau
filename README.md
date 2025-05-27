@@ -93,10 +93,14 @@ File database juga telah disediakan di folder /database.
 php artisan key:generate
 ```
 
-### 6. Migrasi dan Seed Database
+### 6. Migrasi dan Seed Database dan buat storage link
 
 ```bash
 php artisan migrate:fresh --seed
+```
+
+```bash
+php artisan  php artisan storage:link
 ```
 
 ### 7. Jalankan Aplikasi

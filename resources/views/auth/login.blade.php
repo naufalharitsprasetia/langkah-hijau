@@ -120,7 +120,7 @@
 
         <!-- Right Side: Image Section -->
         <div class="login-right w-full lg:w-1/2 h-full bg-cover bg-center lg:pe-4 lg:py-4">
-            <img src="{{ asset('img/auth/bg-auth.webp') }}" class="w-full h-full object-cover rounded-xl" alt="Gambar">
+            <img src="{{ asset('img/auth/auth-bg.png') }}" class="w-full h-full object-cover rounded-xl" alt="Gambar">
         </div>
     </section>
 
@@ -146,29 +146,28 @@
     <script src="{{ asset('js/themelogic.js') }}"></script>
     <script>
         // Password reveal toggle
-const togglePassword = document.querySelector("#togglePassword");
-const passwordInput = document.querySelector("#password");
-togglePassword.addEventListener("click", function () {
-    const type =
-        passwordInput.getAttribute("type") === "password" ? "text" : "password";
-    passwordInput.setAttribute("type", type);
-    this.classList.toggle("fa-eye-slash");
-});
+        const togglePassword = document.querySelector("#togglePassword");
+        const passwordInput = document.querySelector("#password");
+        togglePassword.addEventListener("click", function () {
+            const type =
+                passwordInput.getAttribute("type") === "password" ? "text" : "password";
+            passwordInput.setAttribute("type", type);
+            this.classList.toggle("fa-eye-slash");
+        });
 
-function togglePasswordVisibility(passwordId, toggleIconId) {
-    const passwordInput = document.getElementById(passwordId);
-    const toggleIcon = document.getElementById(toggleIconId);
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        toggleIcon.classList.remove("fa-eye-slash");
-        toggleIcon.classList.add("fa-eye");
-    } else {
-        passwordInput.type = "password";
-        toggleIcon.classList.remove("fa-eye");
-        toggleIcon.classList.add("fa-eye-slash");
-    }
-}
-
+        function togglePasswordVisibility(passwordId, toggleIconId) {
+            const passwordInput = document.getElementById(passwordId);
+            const toggleIcon = document.getElementById(toggleIconId);
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                toggleIcon.classList.remove("fa-eye-slash");
+                toggleIcon.classList.add("fa-eye");
+            } else {
+                passwordInput.type = "password";
+                toggleIcon.classList.remove("fa-eye");
+                toggleIcon.classList.add("fa-eye-slash");
+            }
+        }
     </script>
     @vite('resources/js/login.js')
 </body>

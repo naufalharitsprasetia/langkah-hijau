@@ -17,7 +17,20 @@ class UserController extends Controller
     {
         $title = 'LeaderBoard';
         $active = 'leaderboard';
-        $users = User::where('is_admin', false)->get();
-        return view('users.leaderboard', compact('active', 'title', 'users'));
+        // Ambil semua user non-admin dan urutkan berdasarkan green_points menurun
+        $allUsers = User::where('is_admin', false)
+            ->orderBy('green_points', 'desc')
+            ->get();
+
+        // Tambahkan kolom 'rank' secara manual
+        foreach ($allUsers as $index => $user) {
+            $user->rank = $index + 1;
+        }
+
+        // Bagi menjadi dua kategori jika masih ingin pisah
+        $topUsers = $allUsers->filter(fn($user) => $user->green_points > 500);
+        $users = $allUsers->filter(fn($user) => $user->green_points <= 500);
+        // Update Tier 1 Minggu Sekali
+        return view('users.leaderboard', compact('active', 'title', 'users', 'topUsers'));
     }
 }

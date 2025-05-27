@@ -60,16 +60,15 @@
                     x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
                     class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none"
                     role="menu" aria-orientation="vertical">
-                    <a href="/quiz" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">🌏 Cek Gaya Hidup
+                    <a href="/quizzes" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">🌏 Cek Gaya Hidup
                     </a>
-                    <a href="/quizzes"
-                        class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-50">Quiz</a>
                     <a href="{{ route('challenges.index') }}"
                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">🏆 Tantangan
                     </a>
                     <a href="{{ route('post.index') }}"
                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">♻️ Edu-Zone </a>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">📆 Green Events </a>
+                    <a href="{{ route('event.index') }}"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">📆 Green Events </a>
                 </div>
             </div>
             {{-- Hijau AI --}}
@@ -186,14 +185,12 @@
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">Tantangan
                             🏆</a>
                         <a href="/quizzes"
-                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-50">Quiz</a>
-                        <a href="/quiz"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">Cek
                             Gaya Hidup 🌏</a>
                         <a href="{{ route('post.index') }}"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">
                             Edu-Zone ♻️</a>
-                        <a href="#"
+                        <a href="{{ route('event.index') }}"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">Green
                             Events 📆</a>
                         <a href="{{ route('hijau-ai.index') }}"

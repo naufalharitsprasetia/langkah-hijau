@@ -6,45 +6,10 @@
                 <!-- Isi Halaman -->
                 <h2 class="text-2xl font-semibold text-zinc-900 dark:text-white">LeaderBoard</h2>
                 <br>
-                {{-- flow bite table --}}
-                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                            <tr>
-                                <th scope="col" class="px-6 py-3">
-                                    No
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Name
-                                </th>
-                                <th scope="col" class="px-6 py-3">
-                                    Green Points
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($users as $user)
-                            <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <th scope="row"
-                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $loop->iteration }}
-                                </th>
-                                <td class="px-6 py-4">
-                                    {{ $user->name }}
-                                </td>
-                                <td class="px-6 py-4">
-                                    {{ $user->green_points }}
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-                {{-- end flow bite table --}}
                 {{-- v0 --}}
                 <!-- League Badges -->
                 <div class="px-4 py-6">
-                    <div class="flex justify-center space-x-2 mb-6 overflow-x-auto pb-2">
+                    <div class="flex justify-center space-x-2 mb-6 pb-2">
                         @php
                         $badges = [
                         ['color' => 'bg-amber-600', 'active' => false],
@@ -61,7 +26,7 @@
                         <div class="flex-shrink-0">
                             <div
                                 class="w-12 h-14 {{ $badge['color'] }} rounded-t-lg rounded-b-sm relative {{ $badge['active'] ? 'ring-2 ring-blue-400 ring-offset-2 dark:ring-offset-gray-800' : '' }} transition-all duration-200">
-                                @if($badge['active'])
+                                {{-- @if($badge['active'])
                                 <div
                                     class="absolute -top-1 -right-1 w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center">
                                     <svg class="w-2 h-2 text-white" fill="currentColor" viewBox="0 0 20 20">
@@ -70,7 +35,7 @@
                                             clip-rule="evenodd"></path>
                                     </svg>
                                 </div>
-                                @endif
+                                @endif --}}
                             </div>
                         </div>
                         @endforeach
@@ -78,8 +43,9 @@
 
                     <!-- League Title -->
                     <div class="text-center mb-6">
-                        <h1 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Liga Safir</h1>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-1">8 teratas akan maju ke liga berikutnya
+                        <h1 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Tier Safir</h1>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-1">{{ count($topUsers) }} teratas akan
+                            maju ke Tier berikutnya
                         </p>
                         <p class="text-yellow-500 font-semibold text-sm">5 hari</p>
                     </div>
@@ -87,55 +53,59 @@
 
                 <!-- Leaderboard -->
                 <div class="px-4 pb-6">
-                    @php
-                    $users = [
-                    ['rank' => 1, 'name' => 'Fulan Ahmad', 'xp' => 13, 'avatar' => '👩', 'badge' => null,
-                    'zone' => 'promotion'],
-                    ['rank' => 2, 'name' => 'Ahmad Fulan', 'xp' => 13, 'avatar' => '👩', 'badge' => null,
-                    'zone' => 'promotion'],
-                    ['rank' => 3, 'name' => 'Fulan Ahmad', 'xp' => 13, 'avatar' => '👩', 'badge' => null,
-                    'zone' => 'promotion'],
-                    ['rank' => 4, 'name' => 'Fulan Ahmad', 'xp' => 13, 'avatar' => '👩', 'badge' => null,
-                    'zone' => 'promotion'],
-                    ['rank' => 5, 'name' => 'Fulan Ahmad', 'xp' => 13, 'avatar' => '👩', 'badge' => null,
-                    'zone' => 'promotion'],
-                    ['rank' => 6, 'name' => 'Fulan Ahmad', 'xp' => 13, 'avatar' => '👩', 'badge' => null,
-                    'zone' => 'promotion'],
-                    ['rank' => 7, 'name' => 'Fulan Ahmad', 'xp' => 13, 'avatar' => '👩', 'badge' => null,
-                    'zone' => 'promotion'],
-                    ['rank' => 8, 'name' => 'Fulan Ahmad', 'xp' => 13, 'avatar' => '👩', 'badge' => '2+ tahun',
-                    'zone' => 'promotion'],
-                    ['rank' => 9, 'name' => 'Linh', 'xp' => 12, 'avatar' => '🕐', 'badge' => null, 'zone' =>
-                    'promotion'],
-                    ['rank' => 10, 'name' => 'Bappy 01999880666', 'xp' => 12, 'avatar' => '👨', 'badge' => null, 'zone'
-                    => 'promotion'],
-                    ['rank' => 11, 'name' => 'Chauncey', 'xp' => 12, 'avatar' => '👨', 'badge' => null, 'zone' =>
-                    'promotion'],
-                    ['rank' => 12, 'name' => 'Лидия', 'xp' => 10, 'avatar' => '👩', 'badge' => null, 'zone' =>
-                    'promotion'],
-                    ['rank' => 13, 'name' => 'めい', 'xp' => 10, 'avatar' => '💜', 'badge' => null, 'zone' =>
-                    'promotion'],
-                    ['rank' => 14, 'name' => 'Leah White', 'xp' => 10, 'avatar' => '👩', 'badge' => null, 'zone' =>
-                    'promotion'],
-                    ['rank' => 15, 'name' => 'Tommy', 'xp' => 10, 'avatar' => '👨', 'badge' => '1+ tahun', 'zone' =>
-                    'promotion'],
-                    ['rank' => 16, 'name' => 'jovanny', 'xp' => 8, 'avatar' => '👨', 'badge' => null, 'zone' => 'safe'],
-                    ['rank' => 17, 'name' => 'Сергей', 'xp' => 6, 'avatar' => '👨', 'badge' => null, 'zone' =>
-                    'demotion'],
-                    ['rank' => 18, 'name' => 'Pram', 'xp' => 5, 'avatar' => '👨', 'badge' => '1+ tahun', 'zone' =>
-                    'demotion'],
-                    ['rank' => 19, 'name' => 'Naufal Harits Prasetia', 'xp' => 5, 'avatar' => '👨', 'badge' => null,
-                    'zone' => 'current'],
-                    ];
-                    @endphp
-
-
-
                     <!-- User List -->
                     <div class="space-y-3">
+                        {{-- loop top user --}}
+                        @foreach($topUsers as $user)
+                        @if($user->green_points > 500)
 
-                        @foreach($users as $user)
-                        @if($user['rank'] == 9)
+                        <div
+                            class="flex items-center p-3 rounded-xl transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-700/50
+                            {{  $user->username == auth()->user()->username  ? 'bg-blue-100 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800' : '' }}">
+                            <!-- Rank -->
+                            <div class="w-8 text-center">
+                                <span
+                                    class="text-lg font-bold {{ $user->username == auth()->user()->username ? 'text-blue-600 dark:text-blue-400' : 'text-gray-700 dark:text-gray-300' }}">
+                                    {{ $user->rank }}
+                                </span>
+                            </div>
+
+                            <!-- Avatar -->
+                            <div class="relative mx-3">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-xl">
+                                    👨
+                                </div>
+                                <div
+                                    class="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white dark:border-gray-800">
+                                </div>
+                            </div>
+
+                            <!-- User Info -->
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center space-x-2">
+                                    <h3 class="font-semibold text-gray-900 dark:text-white truncate">{{
+                                        $user->name }}
+                                    </h3>
+                                    @if($user['badge'])
+                                    <span
+                                        class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300">
+                                        🏆 {{ $user['badge'] }}
+                                    </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <!-- XP -->
+                            <div class="text-right">
+                                <span class="text-lg font-bold text-gray-700 dark:text-gray-300">{{ $user->green_points
+                                    }}
+                                    Points</span>
+                            </div>
+                        </div>
+                        {{-- tampilkan user --}}
+                        @endif
+                        @endforeach
                         <!-- Promotion Zone Header -->
                         <div class="flex items-center justify-center mb-4">
                             <div
@@ -156,37 +126,16 @@
                                 </svg>
                             </div>
                         </div>
-                        @endif
-                        @if($user['rank'] == 17)
-                        <!-- Demotion Zone Header -->
-                        <div class="flex items-center justify-center my-6">
-                            <div
-                                class="flex items-center space-x-2 bg-red-100 dark:bg-red-900/30 px-4 py-2 rounded-full">
-                                <svg class="w-4 h-4 text-red-600 dark:text-red-400" fill="currentColor"
-                                    viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M14.707 12.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l2.293-2.293a1 1 0 011.414 0z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                <span class="text-red-700 dark:text-red-300 font-semibold text-sm">ZONA PENURUNAN</span>
-                                <svg class="w-4 h-4 text-red-600 dark:text-red-400" fill="currentColor"
-                                    viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M14.707 12.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l2.293-2.293a1 1 0 011.414 0z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        @endif
-
+                        {{-- loop users --}}
+                        @foreach($users as $user)
                         <div
                             class="flex items-center p-3 rounded-xl transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-700/50
-                        {{ $user['zone'] == 'current' ? 'bg-red-100 dark:bg-red-900/30 border border-red-200 dark:border-red-800' : '' }}">
+                        {{  $user->username == auth()->user()->username  ? 'bg-blue-100 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800' : '' }}">
                             <!-- Rank -->
                             <div class="w-8 text-center">
                                 <span
-                                    class="text-lg font-bold {{ $user['zone'] == 'current' ? 'text-red-600 dark:text-red-400' : 'text-gray-700 dark:text-gray-300' }}">
-                                    {{ $user['rank'] }}
+                                    class="text-lg font-bold {{ $user->username == auth()->user()->username ? 'text-blue-600 dark:text-blue-400' : 'text-gray-700 dark:text-gray-300' }}">
+                                    {{ $user->rank }}
                                 </span>
                             </div>
 
@@ -194,7 +143,7 @@
                             <div class="relative mx-3">
                                 <div
                                     class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-xl">
-                                    {{ $user['avatar'] }}
+                                    👨
                                 </div>
                                 <div
                                     class="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white dark:border-gray-800">
@@ -204,7 +153,8 @@
                             <!-- User Info -->
                             <div class="flex-1 min-w-0">
                                 <div class="flex items-center space-x-2">
-                                    <h3 class="font-semibold text-gray-900 dark:text-white truncate">{{ $user['name'] }}
+                                    <h3 class="font-semibold text-gray-900 dark:text-white truncate">{{
+                                        $user->name }}
                                     </h3>
                                     @if($user['badge'])
                                     <span
@@ -217,8 +167,9 @@
 
                             <!-- XP -->
                             <div class="text-right">
-                                <span class="text-lg font-bold text-gray-700 dark:text-gray-300">{{ $user['xp'] }}
-                                    XP</span>
+                                <span class="text-lg font-bold text-gray-700 dark:text-gray-300">{{ $user->green_points
+                                    }}
+                                    Points</span>
                             </div>
                         </div>
                         @endforeach
