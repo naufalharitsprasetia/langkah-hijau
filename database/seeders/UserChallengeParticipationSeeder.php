@@ -19,6 +19,7 @@ class UserChallengeParticipationSeeder extends Seeder
         // ambil beberapa user dan challenge yang sudah ada
         $user1 = User::where('email', 'andi@example.com')->first();
         $user2 = User::where('email', 'citra@example.com')->first();
+        $user3 = User::where('email', 'bayu@example.com')->first();
 
         $challengePlastik = Challenge::where('title', 'LIKE', '%Plastik%')->first();
         $challengeTransport = Challenge::where('title', 'LIKE', '%Transportasi%')->first();

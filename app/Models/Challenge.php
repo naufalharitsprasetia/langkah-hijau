@@ -13,11 +13,16 @@ class Challenge extends Model
     protected $fillable = [
         'title',
         'description',
+        'checklist', 
         'image_path',
         'duration_days',
         'badge_name',
         'badge_icon',
         'completion_bonus_points',
+    ];
+
+    protected $casts = [
+        'checklist' => 'array',
     ];
 
     public function participations(): HasMany
