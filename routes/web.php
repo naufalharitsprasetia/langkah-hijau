@@ -72,3 +72,5 @@ Route::middleware([IsAdmin::class])->group(function () {
 // challenge
 Route::get('/challenges', [ChallengeController::class, 'index'])->name('challenges.index');
 Route::get('/challenges/{challenge}', [ChallengeController::class, 'show'])->name('challenges.show');
+Route::post('/challenges/{challenge}/participate', [ChallengeController::class, 'participate'])->name('challenges.participate');
+Route::get('/challenges/{participation}/progress', [ChallengeController::class, 'progress'])->name('challenges.progress');
