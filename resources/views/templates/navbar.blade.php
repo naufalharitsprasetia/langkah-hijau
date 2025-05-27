@@ -62,6 +62,8 @@
                     role="menu" aria-orientation="vertical">
                     <a href="/quiz" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">🌏 Cek Gaya Hidup
                     </a>
+                    <a href="/quizzes"
+                        class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-50">Quiz</a>
                     <a href="{{ route('challenges.index') }}"
                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">🏆 Tantangan
                     </a>
@@ -183,6 +185,8 @@
                         <a href="{{ route('challenges.index') }}"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">Tantangan
                             🏆</a>
+                        <a href="/quizzes"
+                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-50">Quiz</a>
                         <a href="/quiz"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">Cek
                             Gaya Hidup 🌏</a>
