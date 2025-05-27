@@ -3,7 +3,7 @@
         <!-- Breadcrumb -->
         <div class="mb-6">
             <nav class="flex items-center space-x-2 text-sm">
-                <a href=""
+                <a href="{{ url()->previous() }}"
                     class="flex items-center text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400 transition-colors">
                     <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
@@ -12,12 +12,9 @@
                 </a>
             </nav>
             <div class="mt-2">
-                <nav class="text-sm text-gray-500 dark:text-gray-400">
-                    <a href=""
-                        class="hover:text-green-600 dark:hover:text-green-400 transition-colors">Challenge</a>
-                    <span class="mx-2">/</span>
-                    <span class="text-gray-900 dark:text-white">{{ $participation->challenge->title }}</span>
-                </nav>
+                <h3 class="font-bold text-gray-800 mt-2">
+                    <span class="text-gray-500 font-normal">Challenge /</span> {{ $participation->challenge->badge_icon }} {{ $participation->challenge->title }}
+                </h3>
             </div>
         </div>
 
@@ -113,7 +110,7 @@
                 </div>
 
                 <!-- Challenge Description -->
-                <div class="space-y-4">
+                <div class="space-y-4 mt-5">
                     <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Deskripsi Challenge</h3>
                     <div class="prose prose-gray dark:prose-invert max-w-none">
                         <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
