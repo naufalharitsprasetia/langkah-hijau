@@ -1,4 +1,4 @@
-<x-layout :title="$title">
+<x-layout :title="$title" :active="$active">
     <style>
         .hero-image {
             --offset: 2px;
@@ -41,12 +41,12 @@
     <div class="hero relative isolate z-10">
         <x-efek.glowatas />
         {{-- header --}}
-        <div class="mx-auto max-w-2xl pb-12 sm:pb-32 lg:pb-36 pt-12 sm:pt-12 lg:pt-16">
+        <div class="mx-auto max-w-2xl pb-12 sm:pb-32 lg:pb-36">
             <div class="hidden sm:mb-8 sm:flex sm:justify-center">
                 <div
                     class="relative rounded-full px-3 py-1 text-sm/6 text-gray-600 dark:text-gray-300 ring-1 ring-gray-900/10 hover:ring-gray-900/20 dark:ring-gray-100/10 dark:hover:ring-gray-100/20">
                     Cek gaya hidupmu, hijaukan langkahmu! <a href="#"
-                        class="font-semibold text-green-600 dark:text-green-400 hover:opacity-85"><span
+                        class="font-semibold text-hijautua dark:text-hijaumuda hover:opacity-85"><span
                             class="absolute inset-0" aria-hidden="true"></span>Cek Sekarang <span
                             aria-hidden="true">&rarr;</span></a>
                 </div>
@@ -54,15 +54,15 @@
             <div class="text-center">
                 <h1
                     class="text-3xl font-semibold tracking-tight text-balance text-gray-900 dark:text-gray-100 sm:text-5xl md:text-6xl lg:text-7xl">
-                    <span class="text-green-600 dark:text-green-500">Hijaukan</span>
-                    Langkahmu, <span class="text-green-600 dark:text-green-500">Hijaukan</span> Dunia.
+                    <span class="text-hijautua dark:text-hijaumuda">Hijaukan</span>
+                    Langkahmu, <span class="text-hijautua dark:text-hijaumuda">Hijaukan</span> Dunia.
                 </h1>
                 <p class="mt-8 text-lg font-medium text-pretty text-gray-500 dark:text-gray-300 sm:text-xl/8">Mulai dari
                     langkah kecil,
                     untuk bumi yang lebih hijau.</p>
                 <div class="mt-10 flex items-center justify-center gap-x-6">
                     <a href="#"
-                        class="rounded-md bg-green-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-green-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">Mulai
+                        class="rounded-md bg-hijautua px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-hijaumuda focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hijautua">Mulai
                         Langkahmu</a>
                     <a href="#" class="text-sm/6 font-semibold text-gray-900 dark:text-gray-200">Jelajahi <span
                             aria-hidden="true">→</span></a>
@@ -95,8 +95,8 @@
         {{-- Fokus Utama--}}
         <div class="py-24 sm:py-32">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                <div class="mx-auto max-w-3xl lg:text-center">
-                    <h2 class="text-base/7 font-semibold text-green-600 dark:text-green-400">Fokus Utama</h2>
+                <div class="mx-auto max-w-3xl lg:text-center" data-aos="fade-up" data-aos-duration="1500">
+                    <h2 class="text-base/7 font-semibold text-hijautua dark:text-hijaumuda">Fokus Utama</h2>
                     <p
                         class="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-gray-100 sm:text-5xl lg:text-balance">
                         4 Pilar Utama yang Menjadi Fondasi Aplikasi LangkahHijau</p>
@@ -108,12 +108,13 @@
                         bernilai. Berikut adalah empat fokus utama yang kami gaungkan:
                     </p>
                 </div>
-                <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl">
+                <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl" data-aos="zoom-in-up"
+                    data-aos-duration="1000">
                     <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
                         <div class="relative pl-16">
                             <dt class="text-base/7 font-semibold text-gray-900 dark:text-gray-100">
                                 <div
-                                    class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-green-600">
+                                    class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-hijautua">
                                     <i class="fa-solid fa-book" style="color:#fff"></i>
                                 </div>
                                 Edukasi
@@ -127,7 +128,7 @@
                         <div class="relative pl-16">
                             <dt class="text-base/7 font-semibold text-gray-900 dark:text-gray-100">
                                 <div
-                                    class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-green-600">
+                                    class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-hijautua">
                                     <i class="fa-solid fa-shop" style="color:white"></i>
                                 </div>
                                 Aksi
@@ -142,7 +143,7 @@
                         <div class="relative pl-16">
                             <dt class="text-base/7 font-semibold text-gray-900 dark:text-gray-100">
                                 <div
-                                    class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-green-600">
+                                    class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-hijautua">
                                     <i class="fa-solid fa-star-and-crescent" style="color:white"></i>
                                 </div>
                                 Apresiasi
@@ -157,7 +158,7 @@
                         <div class="relative pl-16">
                             <dt class="text-base/7 font-semibold text-gray-900 dark:text-gray-100">
                                 <div
-                                    class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-green-600">
+                                    class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-hijautua">
                                     <i class="fa-solid fa-circle-info" style="color:white"></i>
 
                                 </div>
@@ -175,16 +176,17 @@
             </div>
         </div>
         {{-- Mitra --}}
-        <div class="py-6 sm:py-10" id="mitra">
+        <div class="py-6 sm:py-10 mb-20" id="mitra">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
-                <h2 class="text-center text-lg/8 font-semibold text-zinc-900 dark:text-gray-200">Sponsor</h2>
+                <h2 class="text-center text-lg/8 md:text-2xl/8 font-semibold text-zinc-900 dark:text-gray-100">Sponsor
+                </h2>
                 <br>
                 <x-home.mitra />
             </div>
         </div>
     </div>
     {{-- sec blog --}}
-    <x-post.article :active="$active" />
+    <x-post.article :active="$active" class="mt-20" :postUtama="$postUtama" :posts="$posts" />
     {{-- sec.3 --}}
     <div class="sec3 relative isolate">
         <x-efek.glowatas />
@@ -192,12 +194,13 @@
         {{-- BENTO GRID --}}
         <div class="pt-24 pb-20 sm:py-32">
             <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
-                <p
-                    class="mx-auto mt-2 max-w-2xl text-center text-4xl font-semibold text-balance text-green-600 dark:text-green-400 sm:text-5xl">
+                <p data-aos="fade-up" data-aos-duration="2000"
+                    class="mx-auto mt-2 max-w-2xl text-center text-4xl font-semibold text-balance text-hijautua dark:text-hijaumuda sm:text-5xl">
                     <span class="text-zinc-900 dark:text-gray-100">Bagaimana</span><br>
                     LangkahHijau Berdampak ?
                 </p>
-                <div class="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2">
+                <div class="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2" data-aos="fade-up"
+                    data-aos-duration="2000">
                     <div class="relative lg:row-span-2">
                         <div
                             class="absolute inset-px rounded-lg bg-white dark:bg-zinc-900 border border-gray-300 dark:border-zinc-700 lg:rounded-l-4xl">
@@ -303,11 +306,11 @@
         <x-efek.glowbawah />
     </div>
     {{-- sec faq --}}
-    <section class="faq-container relative isolate px-4 sm:px-6 lg:px-16 overflow-visible">
+    <section class="faq-container relative z-50 isolate px-4 sm:px-6 lg:px-16 overflow-visible">
         <x-efek.glowatas />
-        <div class="max-w-4xl mx-auto relative z-10 pb-32">
-            <div class="text-center mb-16">
-                <h2 class="text-base text-green-600 dark:text-green-400 font-semibold tracking-wide uppercase">FAQ</h2>
+        <div class="max-w-4xl mx-auto relative pb-32">
+            <div class="text-center mb-16" data-aos="fade-up" data-aos-duration="2000">
+                <h2 class="text-base text-hijautua dark:text-hijaumuda font-semibold tracking-wide uppercase">FAQ</h2>
                 <p class="mt-2 text-3xl sm:text-4xl leading-8 font-bold tracking-tight text-gray-900 dark:text-white">
                     Pertanyaan yang Sering Diajukan
                 </p>
@@ -320,14 +323,14 @@
     </section>
     {{-- sec last --}}
     <section class="cta-container relative isolate mb-36 px-4 sm:px-6 lg:px-16">
-        <div class="max-w-4xl mx-auto flex items-center justify-between">
+        <div class="max-w-4xl mx-auto flex items-center justify-between" data-aos="fade-up" data-aos-duration="2000">
             <div class="flex-1 dark:text-white">
                 <h2 class="text-md md:text-4xl font-bold mb-4">Siap untuk Menghijaukan Dunia?</h2>
                 <p class="mb-6">Mulai dari langkah kecil, untuk bumi yang lebih hijau.</p>
             </div>
             <div class="flex-1 text-right">
-                <a href="{{ route('home.index') }}"
-                    class="inline-flex items-center px-8 py-4 text-lg font-semibold rounded-lg bg-green-600 text-white hover:bg-green-500 cursor-pointer">
+                <a href="{{ route('auth.signup') }}"
+                    class="inline-flex items-center px-8 py-4 text-lg font-semibold rounded-lg bg-hijautua text-white hover:bg-hijaumuda cursor-pointer">
                     Daftar Sekarang
                     <svg class="ml-2 -mr-1 w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">

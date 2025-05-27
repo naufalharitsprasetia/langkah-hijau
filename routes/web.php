@@ -1,11 +1,10 @@
 <?php
 
+use App\Http\Middleware\IsAdmin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\HijauAIController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\QuizController;
 
 Route::get('/', function () { });
 Route::get('/blog', function () {
@@ -37,17 +36,6 @@ Route::get('/kontak', [HomeController::class, 'kontak'])->name('home.kontak');
 //
 Route::get('/edu-zone', [PostController::class, 'index'])->name('post.index');
 
-// Quiz
-// Route::middleware(['auth'])->group(function () { // Opsional: Tambahkan middleware 'auth' jika quiz hanya untuk user login
-Route::get('/quizzes', [QuizController::class, 'index'])->name('quizzes.index');
-Route::get('/quizzes/{quiz}', [QuizController::class, 'show'])->name('quizzes.show');
-Route::get('/quizzes/{quiz}/start', [QuizController::class, 'start'])->name('quizzes.start');
-// Rute baru untuk menampilkan soal individual
-Route::get('/quizzes/{quiz}/question/{question}', [QuizController::class, 'showQuestion'])->name('quizzes.question');
-Route::post('/quizzes/{quiz}/question/{question}/submit', [QuizController::class, 'submitAnswer'])->name('quizzes.submit_answer');
-Route::get('/quizzes/{quiz}/results', [QuizController::class, 'results'])->name('quizzes.results');
-// });
-
 // Hijau AI
 Route::get('/hijau-ai', [HijauAIController::class, 'index'])->name('hijau-ai.index');
 Route::post('/hijau-ai', [HijauAIController::class, 'ask'])->name('hijau-ai.ask');
@@ -63,15 +51,21 @@ Route::middleware('guest')->group(function () {
 });
 
 // Auth for user logged in
-// Route::middleware('auth')->group(function () {
-//     Route::get('/req-auth', [AuthController::class, 'reqAuth'])->name('auth.reqAuth');
-//     Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
-//     Route::post('/login', [AuthController::class, 'authenticate'])->name('auth.authenticate');
-//     Route::get('/sign-up', [AuthController::class, 'signup'])->name('auth.signup');
-//     Route::post('/sign-up', [AuthController::class, 'addUser'])->name('auth.addUser');
-// });
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [UserController::class, 'dashboard'])->name('user.dashboard');
+    Route::get('/leaderboard', [UserController::class, 'leaderboard'])->name('user.leaderboard');
+    Route::get('/hijau-ai', [HijauAIController::class, 'index'])->name('hijau-ai.index');
+    Route::post('/hijau-ai', [HijauAIController::class, 'ask'])->name('hijau-ai.ask');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+});
 
 // Products
-// Route::middleware([IsAdmin::class])->group(function () {
-//     Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.show');
-// });
+Route::middleware([IsAdmin::class])->group(function () {
+    Route::get('/edu-zone', [PostController::class, 'index'])->name('post.index');
+    Route::get('/edu-zone-manage', [PostController::class, 'manage'])->name('post.manage');
+    Route::get('/edu-zone-create', [PostController::class, 'create'])->name('post.create');
+});
+
+// challenge
+Route::get('/challenges', [ChallengeController::class, 'index'])->name('challenges.index');
+Route::get('/challenges/{challenge}', [ChallengeController::class, 'show'])->name('challenges.show');

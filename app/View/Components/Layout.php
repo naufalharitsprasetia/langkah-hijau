@@ -13,6 +13,7 @@ class Layout extends Component
      */
     public function __construct(
         public string $title,
+        public string $active,
     ) {
         //
     }
@@ -22,6 +23,6 @@ class Layout extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.layout');
+        return view('templates.layout');
     }
 }
