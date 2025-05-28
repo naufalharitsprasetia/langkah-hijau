@@ -97,34 +97,42 @@
                                         $currentActionDateCarbon = \Carbon\Carbon::parse($participation->start_date)
                                             ->startOfDay()
                                             ->addDays($day - 1);
+
+                                        // Ambil DailyUserAction sesuai tanggal
                                         $dailyAction = $participation->dailyActions?->firstWhere(
                                             'action_date',
                                             $currentActionDateCarbon,
                                         );
+
                                         $checklistStatus = $dailyAction?->checklist_status ?? [];
                                         $isDayCompleted = $dailyAction && $dailyAction->is_completed;
 
-                                        $buttonColor =
-                                            'bg-gray-600 dark:bg-gray-700 hover:bg-gray-700 dark:hover:bg-gray-600';
+                                        // Default: belum bisa diakses (future)
+                                        $buttonColor = 'bg-gray-300 dark:bg-gray-500';
+
                                         if ($isDayCompleted) {
                                             $buttonColor = 'bg-green-500 hover:bg-green-600';
                                         } elseif ($dailyAction) {
                                             $buttonColor = 'bg-yellow-500 hover:bg-yellow-600';
-                                        } elseif ($currentActionDateCarbon->isFuture()) {
-                                            $buttonColor = 'bg-gray-300 dark:bg-gray-500';
+                                        } elseif (
+                                            $currentActionDateCarbon->isPast() ||
+                                            $currentActionDateCarbon->isToday()
+                                        ) {
+                                            // Sudah lewat tapi belum dikerjakan
+                                            $buttonColor = 'bg-gray-600 hover:bg-gray-700';
                                         }
+
+                                        $isClickable = $dailyAction && !$currentActionDateCarbon->isFuture();
                                     @endphp
 
-                                    @if ($dailyAction)
-                                        <button type="button"
-                                            @click="
+                                    <button type="button"
+                                        @if ($isClickable) @click="
                                         selectedDay = {{ $day }};
                                         selectedDate = '{{ $dailyAction->action_date }}';
-                                    "
-                                            class="w-12 h-12 sm:w-14 sm:h-14 text-white rounded-lg flex items-center justify-center font-bold text-lg shadow-md transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800 {{ $buttonColor }}">
-                                            {{ $day }}
-                                        </button>
-                                    @endif
+                                    " @endif
+                                        class="w-12 h-12 sm:w-14 sm:h-14 text-white rounded-lg flex items-center justify-center font-bold text-lg shadow-md transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800 {{ $buttonColor }}">
+                                        {{ $day }}
+                                    </button>
                                 @endfor
                             @else
                                 <p class="text-gray-500 dark:text-gray-400">Data partisipasi tantangan tidak tersedia.
@@ -144,6 +152,10 @@
                             @php
                                 $checklistItems = $participation->challenge->checklist ?? [];
                                 $dailyActionData = $participation->dailyActions->keyBy(fn($item) => $item->action_date);
+                                $today = \Carbon\Carbon::today();
+                                $startDate = \Carbon\Carbon::parse($participation->start_date)->startOfDay();
+                                $dayIndex = $today->diffInDays($startDate) + 1;
+                                $todayFormatted = $today->translatedFormat('d F Y');
                             @endphp
 
                             @foreach ($dailyActionData as $actionDate => $dailyAction)
@@ -161,8 +173,9 @@
                                                 : 'bg-gray-500 hover:bg-gray-600';
                                         @endphp
 
-                                        <h4 class="text-lg font-semibold mb-4">Checklist Hari ke-{{ $dayIndex }} -
-                                            {{ \Carbon\Carbon::parse($actionDate)->translatedFormat('d F Y') }}</h4>
+                                        <h4 class="text-lg font-semibold mb-4">
+                                            Checklist Hari {{ $todayFormatted }}
+                                        </h4>
 
                                         <form method="POST"
                                             action="{{ route('daily-actions.checklist', $dailyAction->id) }}">
@@ -199,12 +212,6 @@
                             @endforeach
                         </div>
                     </div>
-
-
-
-
-
-
 
                 </div>
 

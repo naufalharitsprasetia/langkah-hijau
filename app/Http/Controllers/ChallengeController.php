@@ -98,7 +98,7 @@ class ChallengeController extends Controller
 
         // dd($participation, $action); // Untuk debugging jika perlu
 
-        return view('challenges.progress', compact('participation', 'title', 'active', 'action'));
+        return view('challenges.progress', compact('participation', 'title', 'active'));
     }
 
 
