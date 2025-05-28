@@ -52,11 +52,17 @@ Route::middleware('guest')->group(function () {
 
 // Auth for user logged in
 Route::middleware('auth')->group(function () {
+    // logout
+    Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+    // users
     Route::get('/leaderboard', [UserController::class, 'leaderboard'])->name('user.leaderboard');
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('user.dashboard');
+    // hijau AI
     Route::get('/hijau-ai', [HijauAIController::class, 'index'])->name('hijau-ai.index');
     Route::post('/hijau-ai', [HijauAIController::class, 'ask'])->name('hijau-ai.ask');
-    Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+    // event
+    Route::get('/event-ajukan', [EventController::class, 'ajukan'])->name('event.ajukan');
+    Route::post('/event-ajukan', [EventController::class, 'simpanAjuan'])->name('event.simpanAjuan');
 });
 // edu zone
 Route::get('/edu-zone', [PostController::class, 'index'])->name('post.index');

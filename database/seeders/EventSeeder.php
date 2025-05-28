@@ -15,6 +15,7 @@ class EventSeeder extends Seeder
      */
     public function run(): void
     {
+        $now = Carbon::now();
         $events = [
             [
                 'title' => 'Workshop Urban Farming untuk Pemula',
@@ -25,7 +26,7 @@ class EventSeeder extends Seeder
                 'penyelenggara' => 'LangkahHijau',
                 'contact_person' => 'Rina W.',
                 'contact_person_number' => '081234567890',
-                'date_time' => Carbon::parse('2025-06-15 10:00:00'),
+                'date_time' => $now->copy()->addDays(4)->setTime(10, 0),
             ],
             [
                 'title' => 'Aksi Bersih Sungai Brantas',
@@ -36,7 +37,7 @@ class EventSeeder extends Seeder
                 'penyelenggara' => 'LangkahHijau',
                 'contact_person' => 'Ari P.',
                 'contact_person_number' => '082112345678',
-                'date_time' => Carbon::parse('2025-07-01 08:00:00'),
+                'date_time' => $now->copy()->addDays(3)->setTime(8, 0),
             ],
             [
                 'title' => 'Green Talk: Energi Terbarukan di Rumah',
@@ -47,7 +48,7 @@ class EventSeeder extends Seeder
                 'penyelenggara' => 'LangkahHijau',
                 'contact_person' => 'Nanda M.',
                 'contact_person_number' => '081234111222',
-                'date_time' => Carbon::parse('2025-06-20 19:00:00'),
+                'date_time' => $now->copy()->addDays(1)->setTime(19, 0),
             ],
             [
                 'title' => 'Pameran Produk Daur Ulang Lokal',
@@ -58,7 +59,7 @@ class EventSeeder extends Seeder
                 'penyelenggara' => 'LangkahHijau',
                 'contact_person' => 'Eka S.',
                 'contact_person_number' => '087777000123',
-                'date_time' => Carbon::parse('2025-06-25 09:00:00'),
+                'date_time' => $now->copy()->addDays(2)->setTime(9, 0),
             ],
             [
                 'title' => 'Eco Picnic & Edukasi Sampah Organik',
@@ -69,7 +70,7 @@ class EventSeeder extends Seeder
                 'penyelenggara' => 'LangkahHijau',
                 'contact_person' => 'Rafi D.',
                 'contact_person_number' => '081999222111',
-                'date_time' => Carbon::parse('2025-07-05 14:00:00'),
+                'date_time' => $now->copy()->addDays(1)->setTime(14, 0),
             ],
             [
                 'title' => 'Volunteering: Menanam 1000 Pohon',
@@ -80,7 +81,7 @@ class EventSeeder extends Seeder
                 'penyelenggara' => 'LangkahHijau',
                 'contact_person' => 'Dimas T.',
                 'contact_person_number' => '085611119999',
-                'date_time' => Carbon::parse('2025-06-30 07:00:00'),
+                'date_time' => $now->copy()->addDays(1)->setTime(7, 0),
             ],
             [
                 'title' => 'Sosialisasi Gaya Hidup Minim Sampah',
@@ -91,7 +92,7 @@ class EventSeeder extends Seeder
                 'penyelenggara' => 'LangkahHijau',
                 'contact_person' => 'Lilis A.',
                 'contact_person_number' => '083888444555',
-                'date_time' => Carbon::parse('2025-06-28 16:00:00'),
+                'date_time' => $now->copy()->addDays(2)->setTime(16, 0),
             ],
         ];
 

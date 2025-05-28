@@ -12,6 +12,7 @@
 @source '../**/*.js';
 @source "../views";
 @source "../../node_modules/flowbite";
+@source "../node_modules/flowbite-datepicker";
 
 @custom-variant dark (&:where(.dark, .dark *));
 

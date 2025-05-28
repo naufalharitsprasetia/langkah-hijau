@@ -194,11 +194,11 @@
         {{-- BENTO GRID --}}
         <div class="pt-24 pb-20 sm:py-32">
             <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
-                <p data-aos="fade-up" data-aos-duration="2000"
-                    class="mx-auto mt-2 max-w-2xl text-center text-4xl font-semibold text-balance text-hijautua dark:text-hijaumuda sm:text-5xl">
-                    <span class="text-zinc-900 dark:text-gray-100">Bagaimana</span><br>
-                    LangkahHijau Berdampak ?
-                </p>
+            <p data-aos="fade-up" data-aos-duration="2000"
+                class="mx-auto mt-2 max-w-2xl text-center text-4xl font-semibold text-balance text-hijautua dark:text-hijaumuda sm:text-5xl">
+                <span class="text-zinc-900 dark:text-gray-100">Bagaimana</span><br>
+                LangkahHijau Berdampak ?
+            </p>
                 <div class="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2" data-aos="fade-up"
                     data-aos-duration="2000">
                     <div class="relative lg:row-span-2">

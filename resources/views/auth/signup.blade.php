@@ -76,7 +76,7 @@
                                 placeholder="Masukkan nama pengguna"
                                 class="w-full px-4 py-3 rounded-lg bg-white dark:bg-zinc-900 border dark:border-zinc-600 dark:text-white @error('username') bgwhite dark:bg-red-300 @enderror focus:border-black focus:outline-none focus:ring-2 focus:ring-hijautua transition-all duration-200 ease-in-out">
                             @error('username')
-                            <p class="texhijautua dark:text-red-400 text-sm mt-2">Nama pengguna tidak valid.</p>
+                            <p class="texhijautua dark:text-red-400 text-sm mt-2">error : {{ $message }}</p>
                             @enderror
                         </div>
                     </div>
@@ -89,7 +89,7 @@
                             placeholder="Masukkan email"
                             class="w-full px-4 py-3 rounded-lg bg-white dark:bg-zinc-900 border dark:border-zinc-600 dark:text-white @error('email') bgwhite dark:bg-red-300 @enderror focus:border-black focus:outline-none focus:ring-2 focus:ring-hijautua transition-all duration-200 ease-in-out">
                         @error('email')
-                        <p class="texhijautua dark:text-red-400 text-sm mt-2">Email tidak valid.</p>
+                        <p class="texhijautua dark:text-red-400 text-sm mt-2">error : {{ $message }}</p>
                         @enderror
                     </div>
 
@@ -104,7 +104,7 @@
                                 placeholder="Masukkan kata sandi"
                                 class="w-full px-4 py-3 rounded-lg bg-white dark:bg-zinc-900 border dark:border-zinc-600 dark:text-white @error('password')  input-wrong @enderror focus:border-black focus:outline-none focus:ring-2 focus:ring-hijautua transition-all duration-200 ease-in-out">
                             @error('password')
-                            <p class="texhijautua dark:text-red-400 text-sm mt-2">Kata sandi tidak valid.</p>
+                            <p class="texhijautua dark:text-red-400 text-sm mt-2">error : {{ $message }}</p>
                             @enderror
                         </div>
 
@@ -117,7 +117,7 @@
                                 placeholder="Konfirmasi kata sandi"
                                 class="w-full px-4 py-3 rounded-lg bg-white dark:bg-zinc-900 border dark:border-zinc-600 dark:text-white @error('password_confirmation')  input-wrong @enderror focus:border-black focus:outline-none focus:ring-2 focus:ring-hijautua transition-all duration-200 ease-in-out">
                             @error('password_confirmation')
-                            <p class="texhijautua dark:text-red-400 text-sm mt-2">Kata sandi tidak cocok.</p>
+                            <p class="texhijautua dark:text-red-400 text-sm mt-2">error : {{ $message }}</p>
                             @enderror
                         </div>
                     </div>
