@@ -47,7 +47,7 @@
         <x-navbar :active="$active" />
         {{-- Main --}}
         <main>
-            <div class="relative isolate px-6 pt-14 lg:px-8 min-h-screen">
+            <div class="relative isolate px-3 sm:px-4 md:px-6 pt-14 lg:px-8 min-h-screen">
                 {{ $slot }}
             </div>
         </main>

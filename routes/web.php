@@ -43,6 +43,7 @@ Route::get('/quizzes/{quiz}/results', [QuizController::class, 'results'])->name(
 
 // Auth for guest
 Route::middleware('guest')->group(function () {
+    // auth
     Route::get('/req-auth', [AuthController::class, 'reqAuth'])->name('auth.reqAuth');
     Route::get('/login', [AuthController::class, 'login'])->name('auth.login');
     Route::post('/login', [AuthController::class, 'authenticate'])->name('auth.authenticate');

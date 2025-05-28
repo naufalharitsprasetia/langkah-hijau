@@ -52,7 +52,7 @@
     @include('sweetalert2::index')
     @vite('resources/js/sweetalert.js')
     <script src="{{ asset('js/script.js') }}"></script>
-    <script src="{{ asset('js/scrollnavbar.js') }}"></script>
+    {{-- <script src="{{ asset('js/scrollnavbar.js') }}"></script> --}}
     <script src="{{ asset('js/preload.js') }}"></script>
     <script src="{{ asset('js/themelogic.js') }}"></script>
 </body>

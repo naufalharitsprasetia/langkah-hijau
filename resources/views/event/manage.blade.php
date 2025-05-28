@@ -81,11 +81,14 @@
                                         <a href="{{ route('event.edit', $event->id) }}"
                                             class="inline-block p-2 m-2 font-medium text-yellow-600 dark:text-yellow-500 hover:underline">Edit</a>
                                         <form action="{{ route('event.destroy', $event->id) }}" method="POST"
-                                            class="inline-block" id="formDelete-{{ $loop->iteration }}">
+                                            class="deleteForm" id="formDelete-{{ $loop->iteration }}">
                                             @csrf
                                             @method('delete')
-                                            <button type="submit" onclick="deleteConfirm({{ $loop->iteration }})"
-                                                class="cursor-pointer inline-block p-2 m-2 font-medium text-rose-600 dark:text-rose-500 hover:underline">Delete</button>
+                                            <button type="button" class="deleteButton cursor-pointer"
+                                                data-form-id="{{ $loop->iteration }}">
+                                                <span
+                                                    class="inline-block p-2 m-2 font-medium text-rose-600 dark:text-rose-500 hover:underline">Delete</span>
+                                            </button>
                                         </form>
                                     </div>
                                 </td>

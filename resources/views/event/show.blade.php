@@ -1,7 +1,7 @@
 <x-layout :title="$title" :active="$active">
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 pb-12">
+    <section class="max-w-7xl mx-auto sm:px-6 lg:px-16 pb-12">
         <!-- Event Details -->
-        <div class="p-6 sm:p-8">
+        <div class="p-3 sm:p-6 md:p-8">
             <a href="{{ route('event.index') }}" class="text-hijaumuda"><i class="fa-solid fa-arrow-left"></i>
                 Kembali</a>
             <br>
@@ -62,8 +62,25 @@
                     href="https://wa.me/{{ $event->contact_person_number  }}" target="_blank">{{ $event->contact_person
                     }} ({{
                     $event->contact_person_number }})</a> </p>
-        </div>
 
+            @php
+            // Format: YYYYMMDDTHHmmssZ (UTC), atau YYYYMMDD jika acara seharian
+            $startTime = \Carbon\Carbon::parse($event->date_time)->format('Ymd\THis\Z');
+
+            $googleCalendarUrl = 'https://www.google.com/calendar/render?action=TEMPLATE'
+            . '&text=' . urlencode($event->title)
+            . '&dates=' . $startTime
+            . '&details=' . urlencode($event->description)
+            . '&location=' . urlencode($event->location)
+            . '&sf=true&output=xml';
+            @endphp
+
+            <a href="{{ $googleCalendarUrl }}" target="_blank"
+                class="inline-block mt-4 bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded shadow">
+                <i class="fa-brands fa-google me-2"></i> Tambahkan ke Google Calendar
+            </a>
+
+        </div>
 
     </section>
 

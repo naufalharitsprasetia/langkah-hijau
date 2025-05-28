@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class EventController extends Controller
 {
@@ -33,7 +34,7 @@ class EventController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'category' => 'required|string',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5000',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5024',
             'description' => 'required|string',
             'location' => 'required|string',
             'penyelenggara' => 'required|string',
@@ -96,7 +97,7 @@ class EventController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'category' => 'required|string',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5024',
             'description' => 'required|string',
             'location' => 'required|string',
             'penyelenggara' => 'required|string',
@@ -164,6 +165,19 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        if (!$event) {
+            return redirect()->back()->withErrors('event not found!');
+        }
+
+        // Hapus gambar dari storage jika ada
+        if ($event->image) {
+            Storage::disk('public')->delete($event->image);
+        }
+
+        // Hapus produk dari database
+        DB::table('events')->where('id', $event->id)->delete();
+
+        // Redirect kembali dengan pesan sukses
+        return redirect()->route('event.manage')->with('success', 'event deleted successfully!');
     }
 }
