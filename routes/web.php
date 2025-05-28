@@ -58,6 +58,8 @@ Route::middleware('auth')->group(function () {
     // users
     Route::get('/leaderboard', [UserController::class, 'leaderboard'])->name('user.leaderboard');
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('user.dashboard');
+    Route::get('/tier-info', [UserController::class, 'tierInfo'])->name('user.tierInfo');
+    Route::get('/profile/{user:username}', [UserController::class, 'profile'])->name('user.profile');
     // hijau AI
     Route::get('/hijau-ai', [HijauAIController::class, 'index'])->name('hijau-ai.index');
     Route::post('/hijau-ai', [HijauAIController::class, 'ask'])->name('hijau-ai.ask');

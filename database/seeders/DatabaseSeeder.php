@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Tier;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -16,6 +17,7 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
         $this->call([
+            TierSeeder::class,
             UserSeeder::class,
             PostSeeder::class,
             ChallengeSeeder::class,
@@ -23,5 +25,9 @@ class DatabaseSeeder extends Seeder
             DailyUserActionSeeder::class,
             EventSeeder::class,
         ]);
+        // $users = User::all();
+        // foreach ($users as $user) {
+        //     User::updateTier($user);
+        // }
     }
 }

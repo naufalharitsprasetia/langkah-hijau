@@ -1,3 +1,8 @@
+@php
+$now = \Carbon\Carbon::now();
+$nextSchedule = \Carbon\Carbon::now()->next(\Carbon\Carbon::SUNDAY)->setTime(0, 0);
+$diffInDays = round($now->diffInDays($nextSchedule));
+@endphp
 <x-sidebar.layout :title="$title" :active="$active">
     <!-- Konten Utama -->
     <div class="flex flex-col w-full">
@@ -12,30 +17,24 @@
                     <div class="flex justify-center space-x-2 mb-6 pb-2">
                         @php
                         $badges = [
-                        ['color' => 'bg-amber-600', 'active' => false],
-                        ['color' => 'bg-gray-400', 'active' => false],
-                        ['color' => 'bg-yellow-400', 'active' => false],
-                        ['color' => 'bg-blue-500', 'active' => true],
-                        ['color' => 'bg-gray-300', 'active' => false],
-                        ['color' => 'bg-gray-300', 'active' => false],
-                        ['color' => 'bg-gray-300', 'active' => false],
+                        ['color' => 'amber-600', 'active' => false],
+                        ['color' => 'green-400', 'active' => false],
+                        ['color' => 'yellow-400', 'active' => true],
+                        ['color' => 'blue-500', 'active' => false],
                         ];
                         @endphp
 
                         @foreach($badges as $badge)
+                        {{-- hidden state / sr-only --}}
+                        <div class="bg-yellow-400 ring-yellow-400 hidden"></div>
+                        <div class="bg-blue-500 ring-blue-500 hidden"></div>
+                        <div class="bg-amber-600 ring-amber-600 hidden"></div>
+                        <div class="bg-green-400 ring-green-400 hidden"></div>
+                        {{-- hidden state / sr-only --}}
                         <div class="flex-shrink-0">
                             <div
-                                class="w-12 h-14 {{ $badge['color'] }} rounded-t-lg rounded-b-sm relative {{ $badge['active'] ? 'ring-2 ring-blue-400 ring-offset-2 dark:ring-offset-gray-800' : '' }} transition-all duration-200">
-                                {{-- @if($badge['active'])
-                                <div
-                                    class="absolute -top-1 -right-1 w-4 h-4 bg-blue-500 rounded-full flex items-center justify-center">
-                                    <svg class="w-2 h-2 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                </div>
-                                @endif --}}
+                                class="w-12 h-14 md:w-20 md:h-24 flex items-center justify-center bg-{{ $badge['color'] }} rounded-t-lg rounded-b-sm relative {{ $badge['active'] ? 'ring-2 ring-offset-2 dark:ring-offset-gray-800' : '' }} ring-{{ $badge['color'] }} transition-all duration-200">
+                                <span class="md:text-2xl">{{ auth()->user()->tier->icon }}</span>
                             </div>
                         </div>
                         @endforeach
@@ -43,11 +42,15 @@
 
                     <!-- League Title -->
                     <div class="text-center mb-6">
-                        <h1 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Tier Safir</h1>
+                        <h1 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Tier {{
+                            auth()->user()->tier->name }} <a href="{{ route('user.tierInfo') }}"
+                                class="cursor-pointer text-base text-hijautua hover:text-hijaumuda"
+                                title="Informasi Tentang Tier"><i class="fa-solid fa-circle-info"></i></a>
+                        </h1>
                         <p class="text-gray-600 dark:text-gray-400 text-sm mb-1">{{ count($topUsers) }} teratas akan
-                            maju ke Tier berikutnya
+                            naik ke Tier berikutnya
                         </p>
-                        <p class="text-yellow-500 font-semibold text-sm">5 hari</p>
+                        <p class="text-yellow-500 font-semibold text-sm">{{ $diffInDays }} hari lagi</p>
                     </div>
                 </div>
 
@@ -58,9 +61,8 @@
                         {{-- loop top user --}}
                         @foreach($topUsers as $user)
                         @if($user->green_points > 500)
-
-                        <div
-                            class="flex items-center p-3 rounded-xl transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-700/50
+                        <a href="{{ route('user.profile', $user->username) }}"
+                            class="cursor-pointer flex items-center p-3 rounded-xl transition-all duration-200 hover:bg-gray-200 dark:hover:bg-gray-600/50
                             {{  $user->username == auth()->user()->username  ? 'bg-blue-100 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800' : '' }}">
                             <!-- Rank -->
                             <div class="w-8 text-center">
@@ -74,7 +76,7 @@
                             <div class="relative mx-3">
                                 <div
                                     class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-xl">
-                                    👨
+                                    🙂
                                 </div>
                                 <div
                                     class="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white dark:border-gray-800">
@@ -102,7 +104,7 @@
                                     }}
                                     Points</span>
                             </div>
-                        </div>
+                        </a>
                         {{-- tampilkan user --}}
                         @endif
                         @endforeach
@@ -128,9 +130,9 @@
                         </div>
                         {{-- loop users --}}
                         @foreach($users as $user)
-                        <div
-                            class="flex items-center p-3 rounded-xl transition-all duration-200 hover:bg-gray-50 dark:hover:bg-gray-700/50
-                        {{  $user->username == auth()->user()->username  ? 'bg-blue-100 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800' : '' }}">
+                        <a href="{{ route('user.profile', $user->username) }}" class="cursor-pointer  flex items-center p-3 rounded-xl transition-all duration-200 hover:bg-gray-50
+                            dark:hover:bg-gray-700/50 {{ $user->username == auth()->user()->username ? 'bg-blue-100
+                            dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800' : '' }}">
                             <!-- Rank -->
                             <div class="w-8 text-center">
                                 <span
@@ -171,7 +173,7 @@
                                     }}
                                     Points</span>
                             </div>
-                        </div>
+                        </a>
                         @endforeach
                     </div>
                 </div>

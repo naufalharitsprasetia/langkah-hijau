@@ -155,3 +155,10 @@ https://github.com/naufalharitsprasetia/langkah-hijau
 ---- 
 Semoga bermanfaat 🌱
 Mari mulai Langkah Hijau kita hari ini!
+
+
+----
+update tiers seminggu sekali tiap hari ahad, jika ingin update tier manual untuk seluruh users, jalankan perintah berikut di terminal :
+```bash
+ php artisan app:update-user-tiers
+```
