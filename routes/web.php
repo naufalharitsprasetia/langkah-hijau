@@ -74,4 +74,4 @@ Route::get('/challenges', [ChallengeController::class, 'index'])->name('challeng
 Route::get('/challenges/{challenge}', [ChallengeController::class, 'show'])->name('challenges.show');
 Route::post('/challenges/{challenge}/participate', [ChallengeController::class, 'participate'])->name('challenges.participate');
 Route::get('/challenges/{participation}/progress', [ChallengeController::class, 'progress'])->name('challenges.progress');
-Route::post('/daily-actions/{id}/checklist', [ChallengeController::class, 'submitChecklist'])->name('daily-actions.checklist');
+Route::post('/daily-actions/{id}/checklist', [ChallengeController::class, 'checklist'])->name('challenges.checklist');

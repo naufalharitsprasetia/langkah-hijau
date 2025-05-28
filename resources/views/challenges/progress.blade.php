@@ -118,7 +118,6 @@
                                             $currentActionDateCarbon->isPast() ||
                                             $currentActionDateCarbon->isToday()
                                         ) {
-                                            // Sudah lewat tapi belum dikerjakan
                                             $buttonColor = 'bg-gray-600 hover:bg-gray-700';
                                         }
 
@@ -178,25 +177,17 @@
                                         </h4>
 
                                         <form method="POST"
-                                            action="{{ route('daily-actions.checklist', $dailyAction->id) }}">
+                                            action="{{ route('challenges.checklist', $dailyAction->id) }}">
                                             @csrf
-                                            @foreach ($checklistItems as $item)
+                                            @foreach ($checklistItems as $key => $label)
                                                 @php
-                                                    $isChecked = $checklistStatus[$item] ?? false;
+                                                    $isChecked = $checklistStatus[$key] ?? false;
                                                 @endphp
 
-                                                <div class="flex items-center space-x-2 mb-2">
-                                                    <input type="checkbox"
-                                                        id="item_{{ $dailyAction->id }}_{{ $loop->index }}"
-                                                        name="checklist_status[{{ $item }}]" value="1"
-                                                        {{ $isChecked ? 'checked' : '' }}>
-                                                    <label for="item_{{ $dailyAction->id }}_{{ $loop->index }}"
-                                                        class="text-gray-800 dark:text-gray-200">
-                                                        {{ Str::headline(str_replace('_', ' ', $item)) }}
-                                                    </label>
-                                                </div>
+                                                <input type="checkbox" name="checklist_status[{{ $key }}]"
+                                                    value="1" {{ $isChecked ? 'checked' : '' }}>
+                                                <label>{{ $label }}</label>
                                             @endforeach
-
                                             <button type="submit"
                                                 class="mt-4 px-4 py-2 text-white font-medium rounded {{ $buttonColor }}">
                                                 Simpan Checklist
