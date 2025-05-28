@@ -1,6 +1,22 @@
 <x-layout :title="$title" :active="$active">
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 pb-12">
         <!-- Page Header -->
+        @if (session()->has('success'))
+        <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+            <div class="alert alert-success col-lg-12 mt-4" role="alert">
+                {{ session('success') }}
+            </div>
+        </div>
+        @endif
+        @if ($errors->any())
+        <div class="mx-auto max-w-7xl">
+            <div class="alert alert-error col-lg-12 mt-4" role="alert">
+                @foreach ($errors->all() as $error)
+                <div>{{ $error }}</div>
+                @endforeach
+            </div>
+        </div>
+        @endif
         <div class="text-center mb-8 sm:mb-12">
             <h2
                 class="mx-auto mb-4 max-w-2xl text-center text-4xl font-bold text-balance text-hijautua dark:text-hijaumuda sm:text-5xl">
@@ -21,8 +37,13 @@
                 <div class="relative bg-gradient-to-br from-green-400 to-lime-600 p-6 sm:p-8">
                     <div
                         class="w-full h-60 sm:h-72 lg:h-80 bg-gradient-to-br from-green-100 to-blue-100 dark:from-green-900 dark:to-blue-900 rounded-2xl flex items-center justify-center overflow-hidden">
+                        @if($eventUtama->is_demo == true)
                         <img src="{{ asset('img/events/') }}/{{ $eventUtama->image }}" alt=""
                             class="w-full h-full object-cover rounded-2xl">
+                        @else
+                        <img src="{{ asset('storage/' . $eventUtama->image) }}" alt=""
+                            class="w-full h-full object-cover rounded-2xl">
+                        @endif
                     </div>
                 </div>
 
@@ -85,8 +106,13 @@
                 <a href="{{ route('event.show', $event->id) }}"
                     class="bg-white dark:bg-gray-800 hover:-translate-y-2 cursor-pointer transform rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700">
                     <div class="bg-gradient-to-br from-green-400 to-lime-600 h-60 sm:h-72">
+                        @if($eventUtama->is_demo == true)
                         <img src="{{ asset('img/events/') }}/{{ $event->image }}" alt=""
                             class="w-full h-full object-cover rounded-2xl">
+                        @else
+                        <img src="{{ asset('storage/' . $event->image) }}" alt=""
+                            class="w-full h-full object-cover rounded-2xl">
+                        @endif
                     </div>
                     <div class="p-4 sm:p-6">
                         <span

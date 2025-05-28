@@ -31,7 +31,8 @@ class PostSeeder extends Seeder
 
             “Mulai dari satu kebiasaan, lalu tambah perlahan. Konsisten lebih penting daripada sempurna!”',
             'image' => 'zerowaste.png',
-            'created_at' => now()
+            'created_at' => now(),
+            'is_demo' => true
         ]);
         // 2
         Post::create([
@@ -48,7 +49,8 @@ class PostSeeder extends Seeder
 
             Coba tantangan “Meatless Monday”! 1 hari tanpa daging = pengurangan emisi sekitar 2 kg CO₂.',
             'image' => 'daging.png',
-            'created_at' => now()
+            'created_at' => now(),
+            'is_demo' => true
         ]);
         // 3
         Post::create([
@@ -65,7 +67,8 @@ class PostSeeder extends Seeder
 
             Berjalan 30 menit sehari bisa membakar ±150 kalori dan mengurangi jejak karbon harianmu.”',
             'image' => 'transportasi.png',
-            'created_at' => now()
+            'created_at' => now(),
+            'is_demo' => true
         ]);
         // 4
         Post::create([
@@ -82,7 +85,8 @@ class PostSeeder extends Seeder
 
             Pilih thrifting, tukar pakaian dengan teman, atau beli dari brand berkelanjutan.',
             'image' => 'fashion.png',
-            'created_at' => now()
+            'created_at' => now(),
+            'is_demo' => true
         ]);
         // 5. Supermarket
         Post::create([
@@ -98,7 +102,8 @@ class PostSeeder extends Seeder
 
             Gunakan daftar belanja agar tidak impulsif — itu juga bagian dari konsumsi berkelanjutan.',
             'image' => 'supermarket.png',
-            'created_at' => now()
+            'created_at' => now(),
+            'is_demo' => true
         ]);
         // 6 kompos
         Post::create([
@@ -115,7 +120,8 @@ class PostSeeder extends Seeder
 
             Mengurangi sampah ke TPA dan menghasilkan pupuk alami untuk tanaman.',
             'image' => 'kompos.png',
-            'created_at' => now()
+            'created_at' => now(),
+            'is_demo' => true
         ]);
         // 7 air
         Post::create([
@@ -138,7 +144,8 @@ class PostSeeder extends Seeder
 
             Hemat air hari ini = air bersih untuk generasi berikutnya.',
             'image' => 'water.png',
-            'created_at' => now()
+            'created_at' => now(),
+            'is_demo' => true
         ]);
     }
 }

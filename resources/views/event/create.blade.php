@@ -17,6 +17,8 @@
     @endif
     {{-- Konten --}}
     <div class="px-4 mx-auto max-w-4xl p-32">
+        <a href="{{ route('event.manage') }}" class="text-hijaumuda"><i class="fa-solid fa-arrow-left"></i>
+            Kembali</a>
         <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Create New Event</h2>
         {{-- form --}}
         <form method="post" enctype="multipart/form-data">
@@ -31,7 +33,7 @@
                 </div>
                 <div class="sm:col-span-2">
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="image">Upload
-                        gambar</label>
+                        gambar (max.5mb)</label>
                     <input
                         class="cursor-pointer bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                         id="image" name="image" type="file" required>

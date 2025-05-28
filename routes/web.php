@@ -81,8 +81,10 @@ Route::middleware([IsAdmin::class])->group(function () {
     Route::put('/edu-zone-edit/{post}', [PostController::class, 'update'])->name('post.update');
     Route::delete('/edu-zone-delete/{post}', [PostController::class, 'destroy'])->name('post.destroy');
     // Events
-    Route::get('/event-manage', [EventController::class, 'manage'])->name('event.manage');
     Route::get('/event-listAjuan', [EventController::class, 'listAjuan'])->name('event.listAjuan');
+    Route::get('/event-accAjuan/{id}/', [EventController::class, 'accAjuan'])->name('event.accAjuan');
+    Route::delete('/event-destroyAjuan/{event}', [EventController::class, 'destroyAjuan'])->name('event.destroyAjuan');
+    Route::get('/event-manage', [EventController::class, 'manage'])->name('event.manage');
     Route::get('/event-create', [EventController::class, 'create'])->name('event.create');
     Route::post('/event-create', [EventController::class, 'store'])->name('event.store');
     Route::get('/event-edit/{event}', [EventController::class, 'edit'])->name('event.edit');

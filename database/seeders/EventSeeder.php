@@ -2,11 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\Event;
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use App\Models\User;
+use App\Models\Event;
+use Illuminate\Support\Str;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class EventSeeder extends Seeder
 {
@@ -108,6 +109,50 @@ class EventSeeder extends Seeder
                 'contact_person' => $event['contact_person'],
                 'contact_person_number' => $event['contact_person_number'],
                 'date_time' => $event['date_time'],
+                'created_at' => now(),
+                'updated_at' => now(),
+                'is_demo' => true
+            ]);
+        }
+        $user1 =  User::where('email', 'naufal@gmail.com')->first();
+        $ajuan_events = [
+            [
+                'title' => 'LangkahHijau Goes to School',
+                'category' => 'Kolaborasi',
+                'image' => 'schoolprogram.png',
+                'description' => 'Belajar teknik bertani di lahan sempit untuk hidup lebih hijau di kota.',
+                'location' => 'SD Negeri 1 Sidoarjo',
+                'penyelenggara' => 'LangkahHijau',
+                'contact_person' => 'Siti M.',
+                'contact_person_number' => '081334455667',
+                'date_time' => $now->copy()->addDays(4)->setTime(10, 0),
+            ],
+            [
+                'title' => 'Eco Bazaar & Tukar Barang Bekas',
+                'category' => 'Pameran',
+                'image' => 'eco-bazaar.png',
+                'description' => 'Bazaar ramah lingkungan dengan area tukar-menukar barang bekas layak pakai.',
+                'location' => 'Alun-alun Sidoarjo',
+                'penyelenggara' => 'LangkahHijau',
+                'contact_person' => 'Budi R.',
+                'contact_person_number' => '085755332211',
+                'date_time' => $now->copy()->addDays(4)->setTime(10, 0),
+            ],
+        ];
+
+        foreach ($ajuan_events as $event) {
+            DB::table('ajuan_events')->insert([
+                'id' => Str::uuid(),
+                'title' => $event['title'],
+                'category' => $event['category'],
+                'image' => $event['image'],
+                'description' => $event['description'],
+                'location' => $event['location'],
+                'penyelenggara' => $event['penyelenggara'],
+                'contact_person' => $event['contact_person'],
+                'contact_person_number' => $event['contact_person_number'],
+                'date_time' => $event['date_time'],
+                'user_id' => $user1->id,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

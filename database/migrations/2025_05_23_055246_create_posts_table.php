@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('category');
             $table->string('image')->nullable();
             $table->text('body');
+            $table->boolean('is_demo')->default(false);
             $table->timestamps();
         });
     }

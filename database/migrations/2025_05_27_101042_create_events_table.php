@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('contact_person');
             $table->string('contact_person_number');
             $table->dateTime('date_time');
+            $table->boolean('is_demo')->default(false);
             // FOREIGN KEY -> users.id (INTEGER)
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

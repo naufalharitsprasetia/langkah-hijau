@@ -135,8 +135,12 @@
                     role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                     <!-- Active: "bg-gray-100 outline-none", Not Active: "" -->
                     <a href="{{ route('user.dashboard') }}"
-                        class="block text-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-zinc-700"
-                        role="menuitem" tabindex="-1" id="user-menu-item-0">Dashboard</a>
+                        class="block text-center px-4 py-2 text-sm text-hijautua dark:text-hijaumuda text-gray-700 dark:text-gray-200"
+                        role="menuitem" tabindex="-1" id="user-menu-item-0"><i class="fa-solid fa-star me-2"></i> {{
+                        auth()->user()->green_points }} Green
+                        Points</a>
+                    <p class="block text-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-zinc-700"
+                        role="menuitem" tabindex="-1" id="user-menu-item-1">Dashboard</p>
                     <form action="{{ route('auth.logout') }}" method="POST" class="block" id="logoutForm">
                         @csrf
                         <button type="button" id="logoutBtn"
@@ -208,6 +212,19 @@
                         <p class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-medium text-gray-700">
                             <i class="fa-solid fa-profile mr-3"></i> {{ auth()->user()->name }}
                         </p>
+                        <p class="block text-center px-4 py-2 text-sm text-hijautua dark:text-hijaumuda" role="menuitem"
+                            tabindex="-1" id="user-menu-item-0"><i class="fa-solid fa-star me-2"></i> {{
+                            auth()->user()->green_points }} Green
+                            Points</p>
+                        <a href="{{ route('user.dashboard') }}"
+                            class="block text-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-zinc-700"
+                            role="menuitem" tabindex="-1" id="user-menu-item-1">Dashboard</a>
+                        <form action="{{ route('auth.logout') }}" method="POST" class="block" id="logoutForm">
+                            @csrf
+                            <button type="button" id="logoutBtn"
+                                class="block w-full cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-zinc-700"
+                                role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</buttont>
+                        </form>
                         @else
                         <a href="{{ route('auth.login') }}"
                             class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-medium text-gray-700 hover:bg-gray-200">
