@@ -20,7 +20,7 @@ class EventSeeder extends Seeder
             [
                 'title' => 'Workshop Urban Farming untuk Pemula',
                 'category' => 'Seminar',
-                'image' => 'urban-farming.jpg',
+                'image' => 'urbanfarming.png',
                 'description' => 'Belajar teknik bertani di lahan sempit untuk hidup lebih hijau di kota.',
                 'location' => 'Ruang Hijau, Surabaya',
                 'penyelenggara' => 'LangkahHijau',
@@ -31,7 +31,7 @@ class EventSeeder extends Seeder
             [
                 'title' => 'Aksi Bersih Sungai Brantas',
                 'category' => 'Gotong Royong',
-                'image' => 'clean-river.jpg',
+                'image' => 'aksisungai.png',
                 'description' => 'Bersama menjaga sungai dengan kegiatan bersih-bersih komunitas.',
                 'location' => 'Tepi Sungai Brantas, Sidoarjo',
                 'penyelenggara' => 'LangkahHijau',
@@ -42,7 +42,7 @@ class EventSeeder extends Seeder
             [
                 'title' => 'Green Talk: Energi Terbarukan di Rumah',
                 'category' => 'Talk Show',
-                'image' => 'talk-renewable.jpg',
+                'image' => 'greentalk.png',
                 'description' => 'Diskusi bersama pakar tentang energi terbarukan dan panel surya.',
                 'location' => 'Online (Zoom)',
                 'penyelenggara' => 'LangkahHijau',
@@ -53,7 +53,7 @@ class EventSeeder extends Seeder
             [
                 'title' => 'Pameran Produk Daur Ulang Lokal',
                 'category' => 'Pameran',
-                'image' => 'recycled-expo.jpg',
+                'image' => 'pameran.png',
                 'description' => 'Pameran kreatifitas masyarakat lokal dalam mendaur ulang barang bekas.',
                 'location' => 'Gedung Kesenian Sidoarjo',
                 'penyelenggara' => 'LangkahHijau',
@@ -64,7 +64,7 @@ class EventSeeder extends Seeder
             [
                 'title' => 'Eco Picnic & Edukasi Sampah Organik',
                 'category' => 'Kolaborasi',
-                'image' => 'eco-picnic.jpg',
+                'image' => 'picnic.png',
                 'description' => 'Bersantai sambil belajar pemanfaatan sampah organik di alam terbuka.',
                 'location' => 'Taman Hijau Kota',
                 'penyelenggara' => 'LangkahHijau',
@@ -75,7 +75,7 @@ class EventSeeder extends Seeder
             [
                 'title' => 'Volunteering: Menanam 1000 Pohon',
                 'category' => 'Volunteer',
-                'image' => 'tree-planting.jpg',
+                'image' => 'treeplanting.png',
                 'description' => 'Bergabung menanam pohon bersama komunitas peduli lingkungan.',
                 'location' => 'Hutan Kota Sidoarjo',
                 'penyelenggara' => 'LangkahHijau',
@@ -86,7 +86,7 @@ class EventSeeder extends Seeder
             [
                 'title' => 'Sosialisasi Gaya Hidup Minim Sampah',
                 'category' => 'Seminar',
-                'image' => 'zero-waste-talk.jpg',
+                'image' => 'seminar.png',
                 'description' => 'Cara-cara mudah memulai gaya hidup minim sampah dari rumah.',
                 'location' => 'Balai RW 05, Sidoarjo',
                 'penyelenggara' => 'LangkahHijau',

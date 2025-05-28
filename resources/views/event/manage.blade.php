@@ -22,9 +22,12 @@
                 <!-- Isi Halaman -->
                 <h2 class="text-2xl font-semibold text-zinc-900 dark:text-white">Manage Events</h2>
                 <p class="text-sm text-zinc-900 dark:text-white">Total Events : {{ count($events) }}</p>
-                <a href="{{ route('post.create') }}"
+                <a href="{{ route('event.create') }}"
                     class="cursor-pointer inline-block text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg my-4 text-xs px-4 py-2 text-center me-2">Create
-                    New Post</a>
+                    New Events</a>
+                <a href="{{ route('event.listAjuan') }}"
+                    class="cursor-pointer inline-block text-white bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg my-4 text-xs px-4 py-2 text-center me-2">Lihat
+                    Ajuan Events</a>
                 <br>
 
                 {{-- flow bite table --}}

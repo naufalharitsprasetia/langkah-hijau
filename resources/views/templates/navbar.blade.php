@@ -45,7 +45,7 @@
                 class="text-sm/6 font-medium {{ $active == 'beranda' ? 'text-hijautua dark:text-hijaumuda' : 'text-gray-700 dark:text-gray-200 hover:text-hijautua'  }}">Beranda
                 🏠</a>
             {{-- dropdwon main --}}
-            <div class="relative" @mouseenter="isDropMain = true" @mouseleave="isDropMain = false">
+            <div class="relative" @click="isDropMain = !isDropMain">
                 <div>
                     <button type="button"
                         class="relative text-sm/6 font-medium text-gray-700 dark:text-gray-200 cursor-pointer"
@@ -76,7 +76,7 @@
                 class="text-sm/6 font-medium {{ $active == 'hijau-ai' ? 'text-hijautua dark:text-hijaumuda' : 'text-gray-700 dark:text-gray-200 hover:text-hijautua'  }}">Hijau
                 AI ✨</a>
             {{-- dropdown Tentang --}}
-            <div class="relative" @mouseenter="isDropAbout = true" @mouseleave="isDropAbout = false">
+            <div class="relative" @click="isDropAbout = !isDropAbout">
                 <div>
                     <button type="button"
                         class="relative text-sm/6 font-medium text-gray-700 dark:text-gray-200 cursor-pointer"

@@ -14,14 +14,15 @@
 
         <!-- Event Card -->
         <div class="max-w-2xl mx-auto">
-            <div
-                class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700">
+            <a href="{{ route('event.show', $eventUtama->id) }}"
+                class="block hover:-translate-y-2 cursor-pointer transform bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700">
 
                 <!-- Event Image/Header -->
                 <div class="relative bg-gradient-to-br from-green-400 to-lime-600 p-6 sm:p-8">
                     <div
-                        class="w-full h-48 sm:h-56 lg:h-64 bg-gradient-to-br from-green-100 to-blue-100 dark:from-green-900 dark:to-blue-900 rounded-2xl flex items-center justify-center overflow-hidden">
-                        <img src="./img/events/kompos.png" alt="" class="w-full h-full object-cover rounded-2xl">
+                        class="w-full h-60 sm:h-72 lg:h-80 bg-gradient-to-br from-green-100 to-blue-100 dark:from-green-900 dark:to-blue-900 rounded-2xl flex items-center justify-center overflow-hidden">
+                        <img src="{{ asset('img/events/') }}/{{ $eventUtama->image }}" alt=""
+                            class="w-full h-full object-cover rounded-2xl">
                     </div>
                 </div>
 
@@ -70,7 +71,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
 
         <!-- Additional Events Section (Optional) -->
@@ -82,9 +83,10 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                 @foreach($events as $event)
                 <a href="{{ route('event.show', $event->id) }}"
-                    class="bg-white dark:bg-gray-800 hover:-translate-y-2 cursor-pointer transform  rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700">
-                    <div class="bg-gradient-to-br from-green-400 to-lime-600 h-32 sm:h-40">
-                        <img src="./img/events/kompos.png" alt="" class="w-full h-full object-cover rounded-2xl">
+                    class="bg-white dark:bg-gray-800 hover:-translate-y-2 cursor-pointer transform rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700">
+                    <div class="bg-gradient-to-br from-green-400 to-lime-600 h-60 sm:h-72">
+                        <img src="{{ asset('img/events/') }}/{{ $event->image }}" alt=""
+                            class="w-full h-full object-cover rounded-2xl">
                     </div>
                     <div class="p-4 sm:p-6">
                         <span

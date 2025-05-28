@@ -1,7 +1,7 @@
 <x-layout :title="$title" :active="$active">
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 pb-12">
         {{-- Form Create --}}
-        <section class="bg-white dark:bg-gray-900">
+        <section class="p-32">
             <div class="px-4 mx-auto max-w-4xl">
                 <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Ajukan Event</h2>
                 {{-- form --}}
@@ -24,7 +24,7 @@
                         </div>
                         <div class="sm:col-span-2">
                             <label for="category"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ka tegori</label>
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kategori</label>
                             <select id="category" name="category" required
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                 <option selected disabled>Pilih Kategori</option>
@@ -72,7 +72,7 @@
                             <label for="contact_person_number"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomer Narahubung
                                 Event</label>
-                            <input type="text" name="contact_person_number" id="contact_person_number"
+                            <input type="number" name="contact_person_number" id="contact_person_number"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                 placeholder="Tulis Nomer Narahubung event..." value="{{ old('contact_person_number') }}"
                                 required>
@@ -109,7 +109,7 @@
                                 </div>
                                 <input type="time" id="time" name="time"
                                     class="bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    min="09:00" max="18:00" value="00:00" required />
+                                    value="00:00" required />
                             </div>
                         </div>
                     </div>
