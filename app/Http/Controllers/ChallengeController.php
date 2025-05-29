@@ -117,52 +117,43 @@ class ChallengeController extends Controller
 
 
     public function checklist(Request $request, $id)
-    {
-        $dailyAction = DailyUserAction::with('participation.challenge')->findOrFail($id);
+{
+    $dailyAction = DailyUserAction::with('participation.challenge')->findOrFail($id);
 
-        $status = $request->input('checklist_status', []);
-        $dailyAction->checklist_status = $status;
+    // Ambil data checklist yang disubmit
+    $status = $request->input('checklist_status', []);
+    $dailyAction->checklist_status = $status;
 
-        $checklistItems = $dailyAction->participation->challenge->checklist ?? [];
+    $checklistItems = $dailyAction->participation->challenge->checklist ?? [];
 
-        $isCompleted = count($checklistItems) > 0 &&
-            count(array_intersect_key($status, array_flip(array_keys($checklistItems)))) === count($checklistItems);
+    $isCompleted = count($checklistItems) > 0 &&
+        !array_diff_key(array_flip(array_keys($checklistItems)), $status);
 
-        $dailyAction->is_completed = $isCompleted;
-        $dailyAction->save();
+    $dailyAction->is_completed = $isCompleted;
+    $dailyAction->save();
 
-        $participation = UserChallengeParticipation::with('dailyActions')
-            ->findOrFail($dailyAction->participation_id);
+    // Cek apakah semua checklist harian sudah selesai
+    $participation = UserChallengeParticipation::with('dailyActions')->find($dailyAction->participation_id);
 
-        $allCompleted = $participation->dailyActions->every(function ($action) {
-            return $action->is_completed;
-        });
+    $allCompleted = $participation->dailyActions->every(function ($action) {
+        return $action->is_completed;
+    });
 
+    if ($allCompleted) {
+        $participation->status = 'completed';
+        $participation->completion_date = now();
+        $participation->save();
 
-        if ($allCompleted && $participation->status !== 'completed') {
-            $participation->status = 'completed';
-            $participation->completion_date = now();
-            $participation->save();
-
-            // dd('Challenge completed diset!', $participation);
-
-            session()->flash('challenge_completed', true); // ✅ Untuk ditampilkan di UI
-        }
-
-        // Log::debug('Status is_completed:', [
-        //     'submitted' => $status,
-        //     'expected' => $checklistItems,
-        //     'jumlah checklist seharusnya' => count($checklistItems),
-        //     'jumlah checklist disubmit' => count($status),
-        //     'Semua dailyActions' => $participation->dailyActions->pluck('is_completed', 'action_date')->toArray(),
-        //     'Durasi challenge' => $participation->challenge->duration_days,
-        //     'Total daily actions' => $participation->dailyActions->count(),
-        // ]);
-        
-
-        return redirect()->route('challenges.progress', $participation->id)
-            ->with('success', 'Checklist berhasil disimpan.');
+        // Redirect ke halaman tantangan dengan pesan sukses
+        return redirect()->route('challenges.index')
+            ->with('success', 'Selamat! Kamu telah menyelesaikan tantangan ini 🎉');
     }
+
+    // Jika belum selesai semua, kembali ke halaman progress
+    return redirect()->route('challenges.progress', $participation->id)
+        ->with('success', 'Checklist berhasil disimpan.');
+}
+
 
 
 
