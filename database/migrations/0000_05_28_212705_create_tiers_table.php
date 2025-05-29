@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('tiers', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('icon');
-            $table->integer('urutan');
+            $table->integer('urutan')->unique();
             $table->string('name');
             $table->string('keterangan');
+            $table->string('color');
             $table->integer('min_points');
             $table->integer('max_points');
             $table->timestamps();
