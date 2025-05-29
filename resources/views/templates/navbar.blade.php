@@ -45,7 +45,7 @@
                 class="text-sm/6 font-medium {{ $active == 'beranda' ? 'text-hijautua dark:text-hijaumuda' : 'text-gray-700 dark:text-gray-200 hover:text-hijautua' }}">Beranda
                 🏠</a>
             {{-- dropdwon main --}}
-            <div class="relative" @mouseenter="isDropMain = true" @mouseleave="isDropMain = false">
+            <div class="relative" @click="isDropMain = !isDropMain">
                 <div>
                     <button type="button"
                         class="relative text-sm/6 font-medium text-gray-700 dark:text-gray-200 cursor-pointer"
@@ -61,14 +61,15 @@
                     class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none"
                     role="menu" aria-orientation="vertical">
                     <a href="/quizzes" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">🌏 Eco-Quiz
+
                     </a>
                     <a href="{{ route('challenges.index') }}"
                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">🏆 Tantangan Hijau
                     </a>
                     <a href="{{ route('post.index') }}"
                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">♻️ Edu-Zone </a>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">📆 Green Events
-                    </a>
+                    <a href="{{ route('event.index') }}"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">📆 Green Events </a>
                 </div>
             </div>
             {{-- Hijau AI --}}
@@ -76,7 +77,7 @@
                 class="text-sm/6 font-medium {{ $active == 'hijau-ai' ? 'text-hijautua dark:text-hijaumuda' : 'text-gray-700 dark:text-gray-200 hover:text-hijautua' }}">Hijau
                 AI ✨</a>
             {{-- dropdown Tentang --}}
-            <div class="relative" @mouseenter="isDropAbout = true" @mouseleave="isDropAbout = false">
+            <div class="relative" @click="isDropAbout = !isDropAbout">
                 <div>
                     <button type="button"
                         class="relative text-sm/6 font-medium text-gray-700 dark:text-gray-200 cursor-pointer"
@@ -127,23 +128,27 @@
                         </button>
                     </div>
 
-                    <div x-show="isOpen" x-transition:enter="transition ease-out duration-100 transform"
-                        x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
-                        x-transition:leave="transition ease-in duration-75 transform"
-                        x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
-                        class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white dark:bg-zinc-900 dark:border-2 dark:border-zinc-700 py-1 shadow-lg ring-1 ring-black/5 focus:outline-none"
-                        role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                        <!-- Active: "bg-gray-100 outline-none", Not Active: "" -->
-                        <a href="{{ route('user.dashboard') }}"
-                            class="block text-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-zinc-700"
-                            role="menuitem" tabindex="-1" id="user-menu-item-0">Dashboard</a>
-                        <form action="{{ route('auth.logout') }}" method="POST" class="block" id="logoutForm">
-                            @csrf
-                            <button type="button" id="logoutBtn"
-                                class="block w-full cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-zinc-700"
-                                role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</buttont>
-                        </form>
-                    </div>
+                <div x-show="isOpen" x-transition:enter="transition ease-out duration-100 transform"
+                    x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                    x-transition:leave="transition ease-in duration-75 transform"
+                    x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+                    class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white dark:bg-zinc-900 dark:border-2 dark:border-zinc-700 py-1 shadow-lg ring-1 ring-black/5 focus:outline-none"
+                    role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                    <!-- Active: "bg-gray-100 outline-none", Not Active: "" -->
+                    <p class="block text-center px-4 py-2 text-sm text-hijautua dark:text-hijaumuda" role="menuitem"
+                        tabindex="-1" id="user-menu-item-0"><i class="fa-solid fa-star me-2"></i> {{
+                        auth()->user()->green_points }} Green
+                        Points</p>
+                    <a href="{{ route('user.dashboard') }}"
+                        class="block text-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-zinc-700"
+                        role="menuitem" tabindex="-1" id="user-menu-item-1">Dashboard</a>
+                    <form action="{{ route('auth.logout') }}" method="POST" class="block" id="logoutForm">
+                        @csrf
+                        <button type="button" id="logoutBtn"
+                            class="block w-full cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-zinc-700"
+                            role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</buttont>
+                    </form>
+
                 </div>
             @endguest
             <!-- Theme Toggle Button -->
@@ -188,10 +193,11 @@
                         <a href="/quizzes"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">Eco-Quiz
                             🌏</a>
+
                         <a href="{{ route('post.index') }}"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">
                             Edu-Zone ♻️</a>
-                        <a href="#"
+                        <a href="{{ route('event.index') }}"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">Green
                             Events 📆</a>
                         <a href="{{ route('hijau-ai.index') }}"
@@ -206,9 +212,23 @@
                     </div>
                     <div class="py-6">
                         @auth
-                            <p class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-medium text-gray-700">
-                                <i class="fa-solid fa-profile mr-3"></i> {{ auth()->user()->name }}
-                            </p>
+
+                        <p class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-medium text-gray-700">
+                            <i class="fa-solid fa-profile mr-3"></i> {{ auth()->user()->name }}
+                        </p>
+                        <p class="block text-center px-4 py-2 text-sm text-hijautua dark:text-hijaumuda" role="menuitem"
+                            tabindex="-1" id="user-menu-item-0"><i class="fa-solid fa-star me-2"></i> {{
+                            auth()->user()->green_points }} Green
+                            Points</p>
+                        <a href="{{ route('user.dashboard') }}"
+                            class="block text-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-zinc-700"
+                            role="menuitem" tabindex="-1" id="user-menu-item-1">Dashboard</a>
+                        <form action="{{ route('auth.logout') }}" method="POST" class="block" id="logoutForm">
+                            @csrf
+                            <button type="button" id="logoutBtn"
+                                class="block w-full cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-zinc-700"
+                                role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</buttont>
+                        </form>
                         @else
                             <a href="{{ route('auth.login') }}"
                                 class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-medium text-gray-700 hover:bg-gray-200">

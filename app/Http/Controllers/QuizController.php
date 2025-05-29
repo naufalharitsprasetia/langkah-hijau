@@ -5,134 +5,167 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Quiz;
 use App\Models\Question;
-use App\Models\Option; // Pastikan ini di-import
+use App\Models\Option;
 use App\Models\UserAnswer;
-use Illuminate\Support\Facades\Auth; // Pastikan ini di-import
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class QuizController extends Controller
 {
-
     public function index()
     {
         $quizzes = Quiz::all();
-        return view('quizzes.index', compact('quizzes'));
+        // Pastikan Anda meneruskan 'title' dan 'active' ke layout jika menggunakan x-layout
+        return view('quizzes.index', [
+            'quizzes' => $quizzes,
+            'title' => 'Daftar Quiz', // Contoh title
+            'active' => 'quiz' // Contoh active menu
+        ]);
     }
 
     public function show(Quiz $quiz)
     {
+        // Ini mungkin tidak lagi digunakan jika start() langsung mengarah ke quiz
         return view('quizzes.show', compact('quiz'));
     }
 
     public function start(Quiz $quiz)
     {
-        // Hapus semua jawaban sebelumnya untuk quiz ini oleh user ini (opsional, tergantung rule)
-        UserAnswer::where('user_id', Auth::id())
-            ->where('quiz_id', $quiz->id)
-            ->delete();
+        // Hapus jawaban sebelumnya hanya jika Anda ingin quiz selalu dimulai dari nol
+        // Jika Anda ingin user bisa melanjutkan, Anda perlu menyesuaikan logika ini
+        // UserAnswer::where('user_id', Auth::id())
+        //     ->where('quiz_id', $quiz->id)
+        //     ->delete();
 
-        $firstQuestion = $quiz->questions()->orderBy('id')->first(); // Pastikan ambil soal pertama berdasarkan urutan ID
-        if (!$firstQuestion) {
-            return redirect()->route('quizzes.index')->with('error', 'Quiz ini belum memiliki soal.');
-        }
+        $quizData = $quiz->load('questions.options');
 
-        // Redirect ke rute showQuestion untuk menampilkan soal
-        return redirect()->route('quizzes.question', [
-            'quiz' => $quiz->id,
-            'question' => $firstQuestion->id
-        ]);
-    }
+        $questionsForAlpine = $quizData->questions->map(function ($question) {
+            return [
+                'id' => $question->id,
+                'text' => $question->question_text,
+                'options' => $question->options->map(function ($option) {
+                    return [
+                        'id' => $option->id,
+                        'text' => $option->option_text,
+                        'points' => $option->points,
+                    ];
+                })->toArray(),
+            ];
+        })->toArray();
 
-    // Tambahkan metode baru untuk menampilkan soal secara individual
-    public function showQuestion(Quiz $quiz, Question $question)
-    {
-        // Pastikan pertanyaan ini milik quiz yang benar
-        if ($question->quiz_id !== $quiz->id) {
-            abort(404);
-        }
-
-        // Tentukan nomor soal saat ini
-        $questionNumber = $quiz->questions()->where('id', '<=', $question->id)->count();
-
-        return view('quizzes.question', [
+        return view('quizzes.start', [
             'quiz' => $quiz,
-            'question' => $question,
-            'questionNumber' => $questionNumber
+            'questions' => json_encode($questionsForAlpine), // Encode sebagai JSON string
+            'user' => Auth::user(), // Kirim data user untuk header
         ]);
     }
 
     /**
-     * Tangani pengiriman jawaban dari soal quiz.
+     * Tangani pengiriman jawaban dari semua soal quiz sekaligus.
      */
-    public function submitAnswer(Request $request, Quiz $quiz, Question $question)
+    public function submitAnswer(Request $request, Quiz $quiz)
     {
-        // Pastikan pertanyaan ini milik quiz yang benar
-        if ($question->quiz_id !== $quiz->id) {
-            abort(404);
-        }
-
         // Validasi input
-        $request->validate([
-            'answer_option_id' => 'required|exists:options,id', // Pastikan ID opsi ada di tabel options
+        $validated = $request->validate([
+            'answers' => 'required|array',
+            'answers.*.question_id' => 'required|integer|exists:questions,id',
+            'answers.*.option_id' => 'required|integer|exists:options,id',
         ]);
 
-        $selectedOption = Option::find($request->input('answer_option_id'));
+        $userId = Auth::id();
+        $submittedAnswers = $validated['answers']; // Gunakan data yang sudah divalidasi
 
-        // Pastikan opsi yang dipilih benar-benar milik pertanyaan ini
-        if (!$selectedOption || $selectedOption->question_id !== $question->id) {
-            return back()->withErrors(['answer_option_id' => 'Opsi jawaban tidak valid.']);
-        }
+        DB::beginTransaction();
+        try {
+            // Hapus jawaban sebelumnya untuk quiz ini dari user ini
+            UserAnswer::where('user_id', $userId)
+                ->where('quiz_id', $quiz->id)
+                ->delete();
 
-        // Simpan jawaban pengguna ke database
-        // Gunakan updateOrCreate agar jika user menjawab ulang soal yang sama, jawaban sebelumnya diupdate
-        UserAnswer::updateOrCreate(
-            [
-                'user_id' => Auth::id(),
-                'quiz_id' => $quiz->id,
-                'question_id' => $question->id,
-            ],
-            [
-                'selected_option_id' => $selectedOption->id,
-                'answer_text' => $selectedOption->option_text, // Simpan teks jawaban juga jika perlu
-            ]
-        );
+            foreach ($submittedAnswers as $answer) {
+                $question = Question::find($answer['question_id']);
+                $selectedOption = Option::find($answer['option_id']);
 
-        // Logika untuk ke soal berikutnya atau ke halaman hasil
-        $nextQuestion = $quiz->questions()->where('id', '>', $question->id)->orderBy('id')->first();
+                // Periksa validitas secara lebih ketat
+                if (!$question || !$selectedOption || $selectedOption->question_id !== $question->id || $question->quiz_id !== $quiz->id) {
+                    DB::rollBack();
+                    // Mengembalikan response JSON untuk AJAX
+                    return response()->json(['errors' => ['invalid_answers' => 'Beberapa jawaban tidak valid atau tidak sesuai dengan quiz ini.']], 422);
+                }
 
-        if ($nextQuestion) {
-            return redirect()->route('quizzes.question', [
-                'quiz' => $quiz->id,
-                'question' => $nextQuestion->id
-            ]);
-        } else {
-            // Jika tidak ada soal lagi, arahkan ke halaman hasil
-            return redirect()->route('quizzes.results', $quiz->id);
+                UserAnswer::create([
+                    'user_id' => $userId,
+                    'quiz_id' => $quiz->id,
+                    'question_id' => $question->id,
+                    'selected_option_id' => $selectedOption->id,
+                    'answer_text' => $selectedOption->option_text,
+                ]);
+            }
+
+            DB::commit();
+
+            // Mengembalikan response JSON dengan redirect URL
+            return response()->json(['redirect' => route('quizzes.results', $quiz->id)]);
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            // Logging error untuk debugging di server
+            // \Log::error('Error submitting quiz answers: ' . $e->getMessage(), ['user_id' => $userId, 'quiz_id' => $quiz->id, 'trace' => $e->getTraceAsString()]);
+            // Mengembalikan response JSON untuk AJAX
+            return response()->json(['errors' => ['server' => 'Terjadi kesalahan internal server. Silakan coba lagi.'], 'message' => $e->getMessage()], 500);
         }
     }
 
     /**
-     * Tampilkan hasil quiz pengguna.
+     * Tampilkan hasil quiz beserta skor dan kategori.
      */
     public function results(Quiz $quiz)
     {
-        // Dapatkan semua jawaban pengguna untuk quiz ini
         $userAnswers = UserAnswer::where('user_id', Auth::id())
             ->where('quiz_id', $quiz->id)
-            ->with('selectedOption', 'question') // Eager load selectedOption dan question
+            ->with('selectedOption', 'question.options')
             ->get();
 
         $totalScore = 0;
         foreach ($userAnswers as $userAnswer) {
-            // Tambahkan poin dari opsi yang dipilih
             if ($userAnswer->selectedOption) {
                 $totalScore += $userAnswer->selectedOption->points;
             }
         }
 
-        // Dapatkan semua pertanyaan untuk quiz ini untuk mengetahui total pertanyaan
         $totalQuestions = $quiz->questions()->count();
 
+        $category = 'Tidak Diketahui';
+        $recommendation = 'Maaf, kami tidak dapat mengkategorikan skor Anda.';
 
-        return view('quizzes.results', compact('quiz', 'totalScore', 'userAnswers', 'totalQuestions'));
+        // Logika kategori yang lebih dinamis berdasarkan skor dan jumlah soal
+        // Asumsi nilai opsi adalah 1-5, dengan total soal 25, maka max score 125, min 25
+        // (Ini adalah contoh, Anda harus menyesuaikan kategori berdasarkan rentang skor actual quiz Anda)
+        $maxPossibleScore = $quiz->questions->sum(function ($question) {
+            return $question->options->max('points'); // Ambil poin tertinggi dari setiap pertanyaan
+        });
+        $minPossibleScore = $quiz->questions->sum(function ($question) {
+            return $question->options->min('points'); // Ambil poin terendah dari setiap pertanyaan
+        });
+
+        // Contoh pembagian kategori berdasarkan persentase skor
+        $scorePercentage = ($totalScore / $maxPossibleScore) * 100;
+
+        if ($scorePercentage >= 80) {
+            $category = 'Gaya Hidup Sangat Berkelanjutan';
+            $recommendation = 'Selamat! Anda memiliki gaya hidup yang sangat ramah lingkungan. Terus pertahankan dan inspirasi orang lain!';
+        } elseif ($scorePercentage >= 60) {
+            $category = 'Gaya Hidup Cukup Berkelanjutan';
+            $recommendation = 'Anda sudah berada di jalur yang benar! Ada beberapa area yang bisa Anda tingkatkan untuk menjadi lebih hijau.';
+        } elseif ($scorePercentage >= 40) {
+            $category = 'Perlu Peningkatan Gaya Hidup Berkelanjutan';
+            $recommendation = 'Ada banyak potensi untuk meningkatkan gaya hidup Anda menjadi lebih berkelanjutan. Mulailah dengan langkah-langkah kecil.';
+        } else {
+            $category = 'Sangat Perlu Perhatian Lingkungan';
+            $recommendation = 'Skor Anda menunjukkan bahwa ada banyak ruang untuk perbaikan. Setiap langkah kecil membantu, mari kita mulai bersama!';
+        }
+
+
+        return view('quizzes.results', compact('quiz', 'totalScore', 'userAnswers', 'totalQuestions', 'category', 'recommendation'));
     }
 }

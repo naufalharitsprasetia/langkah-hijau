@@ -103,7 +103,14 @@ class AuthController extends Controller
             'name' => 'required|string|max:255',
             'username' => 'required|string|max:255|unique:users,username',
             'email' => 'required|email|max:255|unique:users,email',
-            'password' => 'required|string|min:8|confirmed',
+            'password' => 'required|string|min:6|confirmed',
+        ], [
+            'name.required' => 'Nama wajib diisi!',
+            'username.unique' => 'Username sudah terdaftar',
+            'email.unique' => 'Email sudah terdaftar',
+            'email.email' => 'Email harus email yang valid',
+            'password.min' => 'Password minimal 6 karakter',
+            'password.confirmed' => 'Konfirmasi Password tidak cocok',
         ]);
 
         $user = new User();
