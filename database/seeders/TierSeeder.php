@@ -22,7 +22,7 @@ class TierSeeder extends Seeder
             'min_points' => 0,
             'max_points' => 350,
             'keterangan' => 'Baru memulai perjalanan hijau',
-            'color' => 'amber-600',
+            'color' => 'yellow-500',
         ]);
         Tier::create([
             'id' => Str::uuid(),
@@ -32,7 +32,7 @@ class TierSeeder extends Seeder
             'min_points' => 351,
             'max_points' => 500,
             'keterangan' => 'Mulai konsisten',
-            'color' => 'green-400',
+            'color' => 'lime-300',
         ]);
         Tier::create([
             'id' => Str::uuid(),
@@ -42,7 +42,7 @@ class TierSeeder extends Seeder
             'min_points' => 501,
             'max_points' => 750,
             'keterangan' => 'Sudah bisa jadi panutan',
-            'color' => 'yellow-400',
+            'color' => 'green-500',
         ]);
         Tier::create([
             'id' => Str::uuid(),

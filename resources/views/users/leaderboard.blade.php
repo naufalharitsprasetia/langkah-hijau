@@ -17,15 +17,15 @@ $diffInDays = round($now->diffInDays($nextSchedule));
                     <div class="flex justify-center space-x-2 mb-6 pb-2">
                         @foreach($tiers as $tier)
                         {{-- hidden state / sr-only --}}
-                        <div class="bg-yellow-400 ring-yellow-400 hidden"></div>
+                        <div class="bg-yellow-500 ring-yellow-500 hidden"></div>
                         <div class="bg-blue-500 ring-blue-500 hidden"></div>
-                        <div class="bg-amber-600 ring-amber-600 hidden"></div>
-                        <div class="bg-green-400 ring-green-400 hidden"></div>
+                        <div class="bg-lime-300 ring-lime-300 hidden"></div>
+                        <div class="bg-green-500 ring-green-500 hidden"></div>
                         {{-- hidden state / sr-only --}}
                         <div class="flex-shrink-0">
                             <div
-                                class="w-12 h-14 md:w-20 md:h-24 flex items-center justify-center bg-{{ $tier->color }} rounded-t-lg rounded-b-sm relative {{ $tier->urutan == auth()->user()->tier->urutan ? 'ring-2 ring-offset-2 dark:ring-offset-gray-800' : '' }} ring-{{ $badge->color }} transition-all duration-200">
-                                <span class="md:text-2xl">{{ $tier->icon }}</span>
+                                class="w-12 h-14 md:w-20 md:h-24 flex items-center justify-center bg-{{ $tier->color }} rounded-t-lg rounded-b-sm relative {{ $tier->urutan == auth()->user()->tier->urutan ? 'ring-2 ring-offset-2 dark:ring-offset-gray-800' : '' }} ring-{{ $tier->color }} transition-all duration-200">
+                                <span class="md:text-2xl p-1 bg-white rounded-full">{{ $tier->icon }}</span>
                             </div>
                         </div>
                         @endforeach
@@ -80,12 +80,6 @@ $diffInDays = round($now->diffInDays($nextSchedule));
                                     <h3 class="font-semibold text-gray-900 dark:text-white truncate">{{
                                         $user->name }}
                                     </h3>
-                                    @if($user['badge'])
-                                    <span
-                                        class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300">
-                                        🏆 {{ $user['badge'] }}
-                                    </span>
-                                    @endif
                                 </div>
                             </div>
 
@@ -149,12 +143,6 @@ $diffInDays = round($now->diffInDays($nextSchedule));
                                     <h3 class="font-semibold text-gray-900 dark:text-white truncate">{{
                                         $user->name }}
                                     </h3>
-                                    @if($user['badge'])
-                                    <span
-                                        class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300">
-                                        🏆 {{ $user['badge'] }}
-                                    </span>
-                                    @endif
                                 </div>
                             </div>
 
