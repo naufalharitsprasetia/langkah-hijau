@@ -27,3 +27,36 @@ if (logoutBtn) {
         });
     });
 }
+
+// Delete Confirmation
+const deleteButtons = document.querySelectorAll(".deleteButton");
+
+if (deleteButtons.length > 0) {
+    deleteButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const idForm = button.getAttribute("data-form-id");
+
+            Swal.fire({
+                title: "Apakah kamu yakin ingin menghapus ini?",
+                text: "Semua data/progress di dalamnya akan terhapus dan tidak dapat dikembalikan!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ya, Hapus!",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Penghapusan Berhasil!",
+                        text: "Anda telah berhasil menghapus data ini!",
+                        icon: "success",
+                    }).then(() => {
+                        document
+                            .getElementById(`formDelete-${idForm}`)
+                            .submit();
+                    });
+                }
+            });
+        });
+    });
+}

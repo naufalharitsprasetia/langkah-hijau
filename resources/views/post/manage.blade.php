@@ -73,12 +73,20 @@
                                 </td>
                                 <td class="px-6 py-4 text-right">
                                     <div class="flex">
-                                        <a href="#"
+                                        <a href="{{ route('post.show', $post->id) }}"
                                             class="inline-block p-2 m-2 font-medium text-hijautua dark:text-hijaumuda hover:underline">Detail</a>
-                                        <a href="#"
+                                        <a href="{{ route('post.edit', $post->id) }}"
                                             class="inline-block p-2 m-2 font-medium text-yellow-600 dark:text-yellow-500 hover:underline">Edit</a>
-                                        <a href="#"
-                                            class="inline-block p-2 m-2 font-medium text-rose-600 dark:text-rose-500 hover:underline">Delete</a>
+                                        <form action="{{ route('post.destroy', $post->id) }}" method="POST"
+                                            class="inline-block deleteForm" id="formDelete-{{ $loop->iteration }}">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="button" class="deleteButton cursor-pointer"
+                                                data-form-id="{{ $loop->iteration }}">
+                                                <span
+                                                    class="inline-block p-2 m-2 font-medium text-rose-600 dark:text-rose-500 hover:underline">Delete</span>
+                                            </button>
+                                        </form>
                                     </div>
                                 </td>
                             </tr>

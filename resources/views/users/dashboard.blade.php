@@ -1,3 +1,7 @@
+@php
+$nextTier = 1000;
+$kurang = max(0, $nextTier - auth()->user()->green_points);
+@endphp
 <x-sidebar.layout :title="$title" :active="$active">
     <h1>Dashboard User</h1>
     <!-- Konten Utama -->
@@ -5,16 +9,16 @@
         <!-- Isi Halaman -->
         <main class="w-full bg-white dark:bg-zinc-900">
             <div class="mx-auto py-6 sm:px-6 lg:px-8">
-                <!-- Gambaran Umum AI -->
+                <!-- Rekomendasi Tindakan AI -->
                 <div class="flex items-center justify-between mb-4">
                     <h2 class="text-lg font-semibold text-gray-900 dark:text-white">Rekomendasi Tindakan</h2>
                     <span
                         class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-lg text-xs font-medium bg-hijaumuda/20 text-hijaumuda dark:bg-hijaumuda/30 dark:text-hijaumuda">Didukung
                         oleh AI ✨</span>
                 </div>
-                <div class="text-sm text-yellow-600 dark:text-yellow-400 mb-4">
+                {{-- <div class="text-sm text-yellow-600 dark:text-yellow-400 mb-4">
                     <strong>Peringatan:</strong> Rekomendasi ini hanya berdasarkan data anda di aplikasi ini.
-                </div>
+                </div> --}}
                 <div class="shadow-sm rounded-lg overflow-hidden mb-6 border dark:border-zinc-600">
                     <div class="px-4 py-5 sm:p-6">
                         <ul class="space-y-3" id="recommended-actions">
@@ -57,7 +61,7 @@
                     </div>
                 </div>
 
-                <!-- Fitur Pemantau -->
+                <!-- Pencapaian -->
                 <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Pencapaian</h2>
                 <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
                     <div class="overflow-hidden shadow-sm rounded-lg border dark:border-zinc-600">
@@ -75,7 +79,8 @@
                                         <dt class="text-sm font-medium text-hijaumuda dark:text-gray-400 truncate">
                                             Points
                                         </dt>
-                                        <dd id="points" class="text-lg font-semibold text-gray-900 dark:text-white">700
+                                        <dd id="points" class="text-lg font-semibold text-gray-900 dark:text-white">{{
+                                            auth()->user()->green_points }}
                                             Green Points
                                         </dd>
                                     </dl>
@@ -102,7 +107,7 @@
                                     <dl>
                                         <dt class="text-sm font-medium text-hijaumuda dark:text-gray-400 truncate">
                                             Badges</dt>
-                                        <dd id="moisture" class="text-lg font-semibold text-gray-900 dark:text-white">6
+                                        <dd id="moisture" class="text-lg font-semibold text-gray-900 dark:text-white">-
                                             Badges</dd>
                                     </dl>
                                 </div>
@@ -128,7 +133,9 @@
                                     <dl>
                                         <dt class="text-sm font-medium text-hijaumuda dark:text-gray-400 truncate">
                                             Tier</dt>
-                                        <dd class="text-lg font-semibold text-gray-900 dark:text-white">🌳 Eco-Hero</dd>
+                                        <dd class="text-lg font-semibold text-gray-900 dark:text-white">{{
+                                            auth()->user()->tier->icon }} {{
+                                            auth()->user()->tier->name }}</dd>
                                     </dl>
                                 </div>
                             </div>
@@ -153,7 +160,7 @@
                                     <dl>
                                         <dt class="text-sm font-medium text-hijaumuda dark:text-gray-400 truncate">
                                             Quiz Attempted</dt>
-                                        <dd class="text-lg font-semibold text-gray-900 dark:text-white">6 Kali</dd>
+                                        <dd class="text-lg font-semibold text-gray-900 dark:text-white">- Kali</dd>
                                     </dl>
                                 </div>
                             </div>
@@ -176,13 +183,19 @@
                                 <div class="text-sm font-medium text-hijaumuda dark:text-gray-400">Points needed => Next
                                     Tier
                                 </div>
-                                <div class="text-lg font-semibold text-gray-900 dark:text-white">1.000</div>
+                                <div class="text-lg font-semibold text-gray-900 dark:text-white">{{ $nextTier }}</div>
                             </div>
                             <div class="mt-4">
                                 <div class="relative pt-1">
                                     <div
                                         class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200 dark:bg-blue-700">
-                                        <div style="width: 90%"
+                                        {{-- @php
+                                        $nextTier = 1000;
+                                        $now = auth()->user()->green_points;
+                                        $kurang = $nextTier - $now;
+                                        $persen = $now / 10;
+                                        @endphp --}}
+                                        <div style="width: {{ auth()->user()->green_points/10 }}%"
                                             class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-hijaumuda">
                                         </div>
                                     </div>
@@ -194,8 +207,10 @@
                                         </div>
                                     </div>
                                     <div class="flex justify-between mt-1">
-                                        <div class="text-lg font-semibold text-gray-900 dark:text-white">700</div>
-                                        <div class="text-lg font-semibold text-gray-900 dark:text-white">300</div>
+                                        <div class="text-lg font-semibold text-gray-900 dark:text-white">{{
+                                            auth()->user()->green_points }}</div>
+                                        <div class="text-lg font-semibold text-gray-900 dark:text-white">{{ $kurang }}
+                                        </div>
                                     </div>
                                 </div>
                             </div>

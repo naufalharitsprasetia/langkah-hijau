@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Post;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -15,6 +16,7 @@ class PostSeeder extends Seeder
     {
         // 1
         Post::create([
+            'id' => Str::uuid(),
             'title' => '5 Cara Mudah Memulai Gaya Hidup Zero Waste',
             'category' => '🌱 Zero Waste',
             'body' => 'Gaya hidup zero waste bukan berarti hidup tanpa sampah sama sekali, tapi mengurangi semaksimal mungkin. Mulailah dengan:
@@ -29,10 +31,12 @@ class PostSeeder extends Seeder
 
             “Mulai dari satu kebiasaan, lalu tambah perlahan. Konsisten lebih penting daripada sempurna!”',
             'image' => 'zerowaste.png',
-            'created_at' => now()
+            'created_at' => now(),
+            'is_demo' => true
         ]);
         // 2
         Post::create([
+            'id' => Str::uuid(),
             'title' => 'Mengapa Konsumsi Daging Berlebihan Berdampak Buruk untuk Bumi?',
             'category' => '🛍️ Konsumsi Berkelanjutan',
             'body' => 'Produksi daging (terutama sapi) menghasilkan gas rumah kaca seperti metana. Juga memerlukan banyak air dan lahan. Mengurangi konsumsi daging:
@@ -45,10 +49,12 @@ class PostSeeder extends Seeder
 
             Coba tantangan “Meatless Monday”! 1 hari tanpa daging = pengurangan emisi sekitar 2 kg CO₂.',
             'image' => 'daging.png',
-            'created_at' => now()
+            'created_at' => now(),
+            'is_demo' => true
         ]);
         // 3
         Post::create([
+            'id' => Str::uuid(),
             'title' => 'Transportasi Ramah Lingkungan, Pilihan Sehat dan Cerdas',
             'category' => '🚶 Transportasi Hijau',
             'body' => 'Kendaraan bermotor menyumbang emisi terbesar di kota-kota. Gunakan:
@@ -61,10 +67,12 @@ class PostSeeder extends Seeder
 
             Berjalan 30 menit sehari bisa membakar ±150 kalori dan mengurangi jejak karbon harianmu.”',
             'image' => 'transportasi.png',
-            'created_at' => now()
+            'created_at' => now(),
+            'is_demo' => true
         ]);
         // 4
         Post::create([
+            'id' => Str::uuid(),
             'title' => 'Apa Itu Fast Fashion dan Mengapa Kita Harus Peduli?',
             'category' => '🛍️ Konsumsi Berkelanjutan',
             'body' => 'Fast fashion = tren pakaian cepat, murah, tapi berumur pendek. Dampaknya:
@@ -77,10 +85,12 @@ class PostSeeder extends Seeder
 
             Pilih thrifting, tukar pakaian dengan teman, atau beli dari brand berkelanjutan.',
             'image' => 'fashion.png',
-            'created_at' => now()
+            'created_at' => now(),
+            'is_demo' => true
         ]);
         // 5. Supermarket
         Post::create([
+            'id' => Str::uuid(),
             'title' => 'Tips Belanja Ramah Lingkungan di Supermarket',
             'category' => '🛍️ Konsumsi Berkelanjutan',
             'body' => '1. Bawa tas kain sendiri
@@ -92,10 +102,12 @@ class PostSeeder extends Seeder
 
             Gunakan daftar belanja agar tidak impulsif — itu juga bagian dari konsumsi berkelanjutan.',
             'image' => 'supermarket.png',
-            'created_at' => now()
+            'created_at' => now(),
+            'is_demo' => true
         ]);
         // 6 kompos
         Post::create([
+            'id' => Str::uuid(),
             'title' => 'Kompos di Rumah, Cara Sederhana Kurangi Sampah Organik',
             'category' => '🌱 Zero Waste',
             'body' => 'Sampah dapur seperti kulit buah, sayur layu, atau ampas kopi bisa dikompos. Caranya mudah:
@@ -108,10 +120,12 @@ class PostSeeder extends Seeder
 
             Mengurangi sampah ke TPA dan menghasilkan pupuk alami untuk tanaman.',
             'image' => 'kompos.png',
-            'created_at' => now()
+            'created_at' => now(),
+            'is_demo' => true
         ]);
         // 7 air
         Post::create([
+            'id' => Str::uuid(),
             'title' => 'Air Lebih Berharga dari yang Kamu Kira – Hemat Air Mulai Hari Ini',
             'category' => '🔌 Energi dan Elektronik',
             'body' => 'Air bersih makin langka di banyak daerah, dan penggunaannya sering kita anggap remeh. Padahal:
@@ -130,7 +144,8 @@ class PostSeeder extends Seeder
 
             Hemat air hari ini = air bersih untuk generasi berikutnya.',
             'image' => 'water.png',
-            'created_at' => now()
+            'created_at' => now(),
+            'is_demo' => true
         ]);
     }
 }

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
+            $table->text('checklist')->nullable();
             $table->string('image_path')->nullable();
             $table->integer('duration_days');
             $table->string('badge_name');

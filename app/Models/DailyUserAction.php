@@ -21,7 +21,7 @@ class DailyUserAction extends Model
 
     protected $casts = [
         'action_date' => 'date',
-        // 'checklist_status' => 'array',
+        'checklist_status' => 'array',
     ];
 
     public function participation(): BelongsTo

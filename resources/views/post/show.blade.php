@@ -5,8 +5,8 @@
         <!-- Article Image -->
         <div class="w-full xl:w-auto xl:flex-shrink-0">
             <div class="w-full max-w-xl rounded-lg flex items-center justify-center overflow-hidden">
-                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-bsxYju0wDVbprjHOjvtU6JiSucjMxW.png"
-                    alt="Zero Waste Illustration" class="w-full h-full object-cover rounded-2xl">
+                <img src="{{ asset('img/posts/') }}/{{ $post->image }}" alt="{{ $post->title }}"
+                    class="w-full h-full object-cover rounded-2xl">
             </div>
         </div>
         <br>
@@ -25,7 +25,7 @@
                 {{ $post->title }}
             </h2>
             <!-- Description -->
-            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base">
+            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 sm:mb-6 text-lg sm:text-xl">
                 {{ $post->body }}
             </p>
         </div>

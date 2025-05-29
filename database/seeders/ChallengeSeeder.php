@@ -16,6 +16,13 @@ class ChallengeSeeder extends Seeder
         Challenge::create([
             'title' => '7 Hari Tanpa Plastik Sekali Pakai',
             'description' => 'Selama seminggu, hindari penggunaan plastik sekali pakai seperti kantong kresek, sedotan, botol air, dan kemasan makanan/minuman.',
+            'checklist' => [ 
+                'Gunakan tas belanja kain setiap kali berbelanja.',
+                'Bawa dan gunakan botol minum pribadi.',
+                'Hindari membeli makanan atau minuman dalam kemasan plastik sekali pakai.',
+                'Tolak sedotan plastik, atau gunakan alternatif reusable jika perlu.',
+                'Pilih produk dengan kemasan minimal atau tanpa kemasan plastik.'
+            ],
             'image_path' => 'challenge_images/no_plastic_week.jpg',
             'duration_days' => 7,
             'badge_name' => 'Pejuang Anti Plastik',
@@ -26,7 +33,14 @@ class ChallengeSeeder extends Seeder
         Challenge::create([
             'title' => '5 Hari Transportasi Ramah Lingkungan',
             'description' => 'Gunakan transportasi minim emisi: jalan kaki, sepeda, atau transportasi umum selama 5 hari berturut-turut.',
-            'image_path' =>    'challenge_images/eco_transport.jpg',
+            'checklist' => [
+                'Gunakan tas belanja kain setiap kali berbelanja.',
+                'Bawa dan gunakan botol minum pribadi.',
+                'Hindari membeli makanan atau minuman dalam kemasan plastik sekali pakai.',
+                'Tolak sedotan plastik, atau gunakan alternatif reusable jika perlu.',
+                'Pilih produk dengan kemasan minimal atau tanpa kemasan plastik.'
+            ],
+            'image_path' => 'challenge_images/eco_transport.jpg',
             'duration_days' => 5,
             'badge_name' => 'Komuter Hijau',
             'badge_icon' => '🚴',
@@ -36,7 +50,14 @@ class ChallengeSeeder extends Seeder
         Challenge::create([
             'title' => '3 Hari Makan Nabati',
             'description' => 'Selama 3 hari penuh, konsumsi makanan nabati (vegetarian/plant-based), hindari daging dan produk hewani.',
-            'image_path' =>  'challenge_images/plant_based_diet.jpg',
+           'checklist' => [
+                'Gunakan tas belanja kain setiap kali berbelanja.',
+                'Bawa dan gunakan botol minum pribadi.',
+                'Hindari membeli makanan atau minuman dalam kemasan plastik sekali pakai.',
+                'Tolak sedotan plastik, atau gunakan alternatif reusable jika perlu.',
+                'Pilih produk dengan kemasan minimal atau tanpa kemasan plastik.'
+            ],
+            'image_path' => 'challenge_images/plant_based_diet.jpg',
             'duration_days' => 3,
             'badge_name' => 'Eksplorer Nabati',
             'badge_icon' => '🌱',

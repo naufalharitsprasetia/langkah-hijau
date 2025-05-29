@@ -76,7 +76,7 @@
                                 placeholder="Masukkan nama pengguna"
                                 class="w-full px-4 py-3 rounded-lg bg-white dark:bg-zinc-900 border dark:border-zinc-600 dark:text-white @error('username') bgwhite dark:bg-red-300 @enderror focus:border-black focus:outline-none focus:ring-2 focus:ring-hijautua transition-all duration-200 ease-in-out">
                             @error('username')
-                            <p class="texhijautua dark:text-red-400 text-sm mt-2">Nama pengguna tidak valid.</p>
+                            <p class="texhijautua dark:text-red-400 text-sm mt-2">error : {{ $message }}</p>
                             @enderror
                         </div>
                     </div>
@@ -89,7 +89,7 @@
                             placeholder="Masukkan email"
                             class="w-full px-4 py-3 rounded-lg bg-white dark:bg-zinc-900 border dark:border-zinc-600 dark:text-white @error('email') bgwhite dark:bg-red-300 @enderror focus:border-black focus:outline-none focus:ring-2 focus:ring-hijautua transition-all duration-200 ease-in-out">
                         @error('email')
-                        <p class="texhijautua dark:text-red-400 text-sm mt-2">Email tidak valid.</p>
+                        <p class="texhijautua dark:text-red-400 text-sm mt-2">error : {{ $message }}</p>
                         @enderror
                     </div>
 
@@ -102,9 +102,9 @@
                                 Sandi</label>
                             <input type="password" id="password" name="password" required
                                 placeholder="Masukkan kata sandi"
-                                class="w-full px-4 py-3 rounded-lg bg-white dark:bg-zinc-900 border dark:border-zinc-600 dark:text-white @error('password') bgwhite dark:bg-red-300 @enderror focus:border-black focus:outline-none focus:ring-2 focus:ring-hijautua transition-all duration-200 ease-in-out">
+                                class="w-full px-4 py-3 rounded-lg bg-white dark:bg-zinc-900 border dark:border-zinc-600 dark:text-white @error('password')  input-wrong @enderror focus:border-black focus:outline-none focus:ring-2 focus:ring-hijautua transition-all duration-200 ease-in-out">
                             @error('password')
-                            <p class="texhijautua dark:text-red-400 text-sm mt-2">Kata sandi tidak valid.</p>
+                            <p class="texhijautua dark:text-red-400 text-sm mt-2">error : {{ $message }}</p>
                             @enderror
                         </div>
 
@@ -115,9 +115,9 @@
                                 Kata Sandi</label>
                             <input type="password" id="password_confirmation" name="password_confirmation" required
                                 placeholder="Konfirmasi kata sandi"
-                                class="w-full px-4 py-3 rounded-lg bg-white dark:bg-zinc-900 border dark:border-zinc-600 dark:text-white @error('password_confirmation') bgwhite dark:bg-red-300 @enderror focus:border-black focus:outline-none focus:ring-2 focus:ring-hijautua transition-all duration-200 ease-in-out">
+                                class="w-full px-4 py-3 rounded-lg bg-white dark:bg-zinc-900 border dark:border-zinc-600 dark:text-white @error('password_confirmation')  input-wrong @enderror focus:border-black focus:outline-none focus:ring-2 focus:ring-hijautua transition-all duration-200 ease-in-out">
                             @error('password_confirmation')
-                            <p class="texhijautua dark:text-red-400 text-sm mt-2">Kata sandi tidak cocok.</p>
+                            <p class="texhijautua dark:text-red-400 text-sm mt-2">error : {{ $message }}</p>
                             @enderror
                         </div>
                     </div>
@@ -151,16 +151,16 @@
 
         <!-- Right Side: Image Section -->
         <div class="signup-right w-full lg:w-1/2 h-full bg-cover bg-center lg:pe-4 lg:py-4">
-            <img src="{{ asset('img/auth/bg-auth.webp') }}" class="w-full h-full object-cover rounded-xl" alt="Gambar">
+            <img src="{{ asset('img/auth/auth-bg.png') }}" class="w-full h-full object-cover rounded-xl" alt="Gambar">
         </div>
     </section>
 
     <script>
         function togglePassword() {
-    const passwordField = document.querySelector('input[name="password"]');
-    const checkbox = document.getElementById('togglePasswordVisibility');
-    passwordField.type = checkbox.checked ? 'text' : 'password';
-}
+            const passwordField = document.querySelector('input[name="password"]');
+            const checkbox = document.getElementById('togglePasswordVisibility');
+            passwordField.type = checkbox.checked ? 'text' : 'password';
+        }
     </script>
     <script>
         // Set timeout to hide the alert after 5 seconds (5000 milliseconds)
@@ -176,30 +176,20 @@ setTimeout(function() {
     <script src="{{ asset('js/preload.js') }}"></script>
     <script src="{{ asset('js/themelogic.js') }}"></script>
     <script>
-        // Password reveal toggle
-        const togglePassword = document.querySelector("#togglePassword");
-        const passwordInput = document.querySelector("#password");
-        togglePassword.addEventListener("click", function () {
-            const type =
-        passwordInput.getAttribute("type") === "password" ? "text" : "password";
-    passwordInput.setAttribute("type", type);
-    this.classList.toggle("fa-eye-slash");
-});
+        function togglePasswordFields() {
+            const passwordField = document.getElementById('password');
+            const confirmPasswordField = document.getElementById('password_confirmation');
+            const checkbox = document.getElementById('togglePasswordVisibility');
 
-function togglePasswordVisibility(passwordId, toggleIconId) {
-    const passwordInput = document.getElementById(passwordId);
-    const toggleIcon = document.getElementById(toggleIconId);
-    if (passwordInput.type === "password") {
-        passwordInput.type = "text";
-        toggleIcon.classList.remove("fa-eye-slash");
-        toggleIcon.classList.add("fa-eye");
-    } else {
-        passwordInput.type = "password";
-        toggleIcon.classList.remove("fa-eye");
-        toggleIcon.classList.add("fa-eye-slash");
-    }
-}
-
+            // Toggle between password and text input type
+            if (checkbox.checked) {
+                passwordField.type = 'text';
+                confirmPasswordField.type = 'text';
+            } else {
+                passwordField.type = 'password';
+                confirmPasswordField.type = 'password';
+            }
+        }
     </script>
     @vite('resources/js/signup.js')
 </body>
