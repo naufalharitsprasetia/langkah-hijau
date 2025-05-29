@@ -87,122 +87,93 @@
                         </div>
                     </div>
 
-                    <!-- Progress Tracker -->
-                    <div class="space-y-4">
+                    <!-- Progress Harian -->
+                    @php
+                        $startDate = $participation->start_date->copy()->startOfDay();
+                        $dailyActions = $participation->dailyActions->keyBy(fn($a) => $a->action_date->format('Y-m-d'));
+                    @endphp
+
+                    <div x-data="{ selectedDate: null }" class="space-y-4">
                         <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Progress Harian</h3>
                         <div class="flex flex-wrap gap-3">
-                            @if ($participation && $participation->challenge)
-                                @for ($day = 1; $day <= $participation->challenge->duration_days; $day++)
-                                    @php
-                                        $currentActionDateCarbon = \Carbon\Carbon::parse($participation->start_date)
-                                            ->startOfDay()
-                                            ->addDays($day - 1);
+                            @for ($i = 0; $i < $participation->challenge->duration_days; $i++)
+                                @php
+                                    $actionDate = $startDate->copy()->addDays($i)->format('Y-m-d');
+                                    $dailyAction = $dailyActions[$actionDate] ?? null;
+                                    $isCompleted = $dailyAction?->is_completed;
+                                    $buttonColor = $isCompleted
+                                        ? 'bg-green-500 hover:bg-green-600'
+                                        : 'bg-gray-600 hover:bg-gray-700';
+                                @endphp
 
-                                        // Ambil DailyUserAction sesuai tanggal
-                                        $dailyAction = $participation->dailyActions?->firstWhere(
-                                            'action_date',
-                                            $currentActionDateCarbon,
-                                        );
-
-                                        $checklistStatus = $dailyAction?->checklist_status ?? [];
-                                        $isDayCompleted = $dailyAction && $dailyAction->is_completed;
-
-                                        // Default: belum bisa diakses (future)
-                                        $buttonColor = 'bg-gray-300 dark:bg-gray-500';
-
-                                        if ($isDayCompleted) {
-                                            $buttonColor = 'bg-green-500 hover:bg-green-600';
-                                        } elseif ($dailyAction) {
-                                            $buttonColor = 'bg-yellow-500 hover:bg-yellow-600';
-                                        } elseif (
-                                            $currentActionDateCarbon->isPast() ||
-                                            $currentActionDateCarbon->isToday()
-                                        ) {
-                                            $buttonColor = 'bg-gray-600 hover:bg-gray-700';
-                                        }
-
-                                        $isClickable = $dailyAction && !$currentActionDateCarbon->isFuture();
-                                    @endphp
-
-                                    <button type="button"
-                                        @if ($isClickable) @click="
-                                        selectedDay = {{ $day }};
-                                        selectedDate = '{{ $dailyAction->action_date }}';
-                                    " @endif
-                                        class="w-12 h-12 sm:w-14 sm:h-14 text-white rounded-lg flex items-center justify-center font-bold text-lg shadow-md transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800 {{ $buttonColor }}">
-                                        {{ $day }}
-                                    </button>
-                                @endfor
-                            @else
-                                <p class="text-gray-500 dark:text-gray-400">Data partisipasi tantangan tidak tersedia.
-                                </p>
-                            @endif
+                                <button type="button" @click="selectedDate = '{{ $actionDate }}'"
+                                    class="w-12 h-12 sm:w-14 sm:h-14 text-white rounded-lg flex items-center justify-center font-bold text-lg shadow-md transition-all duration-200 hover:scale-105 {{ $buttonColor }}">
+                                    {{ $i + 1 }}
+                                </button>
+                            @endfor
                         </div>
-                    </div>
 
+                        {{-- Modal Checklist --}}
+                        <div x-show="selectedDate"
+                            class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
+                            style="display: none;" x-transition @keydown.escape.window="selectedDate = null">
+                            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg max-w-md w-full p-6 relative"
+                                @click.outside="selectedDate = null">
 
-                    {{-- modal --}}
-                    <div x-show="selectedDay"
-                        class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
-                        style="display: none;" x-transition @keydown.escape.window="selectedDay = null">
-                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg max-w-md w-full p-6 relative"
-                            @click.outside="selectedDay = null">
+                                @foreach ($dailyActions as $actionDate => $dailyAction)
+                                    <template x-if="selectedDate === '{{ $actionDate }}'">
+                                        <div>
+                                            @php
+                                                $checklistItems = $participation->challenge->checklist ?? [];
+                                                $checklistStatus = $dailyAction->checklist_status ?? [];
+                                                $isCompleted = $dailyAction->is_completed;
+                                            @endphp
 
-                            @php
-                                $checklistItems = $participation->challenge->checklist ?? [];
-                                $dailyActionData = $participation->dailyActions->keyBy(fn($item) => $item->action_date);
-                                $today = \Carbon\Carbon::today();
-                                $startDate = \Carbon\Carbon::parse($participation->start_date)->startOfDay();
-                                $dayIndex = $today->diffInDays($startDate) + 1;
-                                $todayFormatted = $today->translatedFormat('d F Y');
-                            @endphp
+                                            <h4 class="text-lg font-semibold mb-4">
+                                                Checklist Tanggal
+                                                {{ \Carbon\Carbon::parse($actionDate)->translatedFormat('d F Y') }}
+                                            </h4>
 
-                            @foreach ($dailyActionData as $actionDate => $dailyAction)
-                                <template x-if="selectedDate === '{{ $actionDate }}'">
-                                    <div>
-                                        @php
-                                            $checklistStatus = $dailyAction->checklist_status ?? [];
-                                            $dayIndex =
-                                                \Carbon\Carbon::parse($actionDate)->diffInDays(
-                                                    \Carbon\Carbon::parse($participation->start_date),
-                                                ) + 1;
-                                            $isCompleted = $dailyAction->is_completed;
-                                            $buttonColor = $isCompleted
-                                                ? 'bg-green-500 hover:bg-green-600'
-                                                : 'bg-gray-500 hover:bg-gray-600';
-                                        @endphp
+                                            <form method="POST"
+                                                action="{{ route('challenges.checklist', $dailyAction->id) }}">
+                                                @csrf
 
-                                        <h4 class="text-lg font-semibold mb-4">
-                                            Checklist Hari {{ $todayFormatted }}
-                                        </h4>
+                                                @foreach ($checklistItems as $key => $label)
+                                                    @php $isChecked = $checklistStatus[$key] ?? false; @endphp
+                                                    <div class="flex items-center space-x-2 mb-2">
+                                                        <input type="checkbox"
+                                                            name="checklist_status[{{ $key }}]" value="1"
+                                                            {{ $isChecked ? 'checked' : '' }}
+                                                            class="form-checkbox h-5 w-5 text-indigo-600">
+                                                        <label
+                                                            class="text-gray-800 dark:text-gray-200">{{ $label }}</label>
+                                                    </div>
+                                                @endforeach
 
-                                        <form method="POST"
-                                            action="{{ route('challenges.checklist', $dailyAction->id) }}">
-                                            @csrf
-                                            @foreach ($checklistItems as $key => $label)
                                                 @php
-                                                    $isChecked = $checklistStatus[$key] ?? false;
+                                                    $submitColor = $isCompleted
+                                                        ? 'bg-green-500 hover:bg-green-600'
+                                                        : 'bg-gray-600 hover:bg-gray-700';
                                                 @endphp
 
-                                                <input type="checkbox" name="checklist_status[{{ $key }}]"
-                                                    value="1" {{ $isChecked ? 'checked' : '' }}>
-                                                <label>{{ $label }}</label>
-                                            @endforeach
-                                            <button type="submit"
-                                                class="mt-4 px-4 py-2 text-white font-medium rounded {{ $buttonColor }}">
-                                                Simpan Checklist
-                                            </button>
-                                        </form>
+                                                <button type="submit"
+                                                    class="mt-4 px-4 py-2 text-white font-medium rounded {{ $submitColor }}">
+                                                    Simpan Checklist
+                                                </button>
+                                            </form>
 
-                                        <button @click="selectedDay = null"
-                                            class="mt-4 text-sm text-gray-600 dark:text-gray-300 hover:underline">
-                                            Tutup
-                                        </button>
-                                    </div>
-                                </template>
-                            @endforeach
+                                            <button @click="selectedDate = null"
+                                                class="mt-4 text-sm text-gray-600 dark:text-gray-300 hover:underline">
+                                                Tutup
+                                            </button>
+                                        </div>
+                                    </template>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
+
+
 
                 </div>
 

@@ -103,28 +103,27 @@ class ChallengeController extends Controller
 
 
     public function checklist(Request $request, $id)
-{
-    $dailyAction = DailyUserAction::with('challenge')->findOrFail($id);
+    {
+        $dailyAction = DailyUserAction::with('participation.challenge')->findOrFail($id);
 
-    $status = $request->input('checklist_status', []);
-    $dailyAction->checklist_status = $status;
+        $status = $request->input('checklist_status', []);
+        $dailyAction->checklist_status = $status;
 
-    $checklistItems = $dailyAction->participation->challenge->checklist ?? [];
+        $checklistItems = $dailyAction->participation->challenge->checklist ?? [];
 
-    $isCompleted = count($checklistItems) > 0 &&
-        !array_diff_key($checklistItems, $status);
+        $isCompleted = count($checklistItems) > 0 &&
+            !array_diff_key(array_flip(array_keys($checklistItems)), $status);
 
-    $dailyAction->is_completed = $isCompleted;
+        $dailyAction->is_completed = $isCompleted;
 
-    // Hapus dd() atau pindahkan sebelum save
-    // dd($checklistItems, $status, $isCompleted);
-    logger()->info('Saving dailyAction', $dailyAction->toArray());
+        $dailyAction->save();
 
-    $dailyAction->save();
+        return redirect()->route('challenges.progress', $dailyAction->participation_id)
+            ->with('success', 'Checklist berhasil disimpan.');
+    }
 
-    return redirect()->route('challenges.progress', $dailyAction->participation_id)
-        ->with('success', 'Checklist berhasil disimpan.');
-}
+    
+    
 
 
     // public function checklist(Request $request, $id) {
