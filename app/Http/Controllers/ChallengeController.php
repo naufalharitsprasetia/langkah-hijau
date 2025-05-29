@@ -71,35 +71,49 @@ class ChallengeController extends Controller
         ));
     }
 
-    // untuk menampilkan progess challenge
-    public function progress($participationId) {
-        // dump('ID Partisipasi dari URL:', $participationId);
 
-        $participation = UserChallengeParticipation::with([
-            'challenge', // Info umum tentang tantangan ini
-            'dailyActions' => function ($query) { // Aksi harian yang sudah dilakukan user
-                $query->orderBy('action_date', 'asc');
-            }
-        ])->findOrFail($participationId);
+    public function progress($participationId)
+    {
+        $participation = UserChallengeParticipation::with(['challenge', 'dailyActions'])->findOrFail($participationId);
 
-        // Pastikan partisipasi ini milik user yang sedang login
         if ($participation->user_id !== Auth::id()) {
             abort(403, 'Akses tidak diizinkan.');
         }
 
+        $startDate = $participation->start_date->copy(); // Carbon instance
+        $duration = $participation->challenge->duration_days;
+        $existingDates = $participation->dailyActions->pluck('action_date')->map(fn($d) => $d->toDateString())->toArray();
+
+        // Generate record untuk setiap hari jika belum ada
+        for ($i = 0; $i < $duration; $i++) {
+            $date = $startDate->copy()->addDays($i)->toDateString();
+            if (!in_array($date, $existingDates)) {
+                DailyUserAction::create([
+                    'participation_id' => $participation->id,
+                    'action_date' => $date,
+                    'checklist_status' => [],
+                    'is_completed' => false,
+                ]);
+            }
+        }
+
+        // Reload dengan data baru
+        $participation->load(['challenge', 'dailyActions' => fn($q) => $q->orderBy('action_date', 'asc')]);
+
+        // Pastikan checklist_status ter-decode
         foreach ($participation->dailyActions as $action) {
             if (is_string($action->checklist_status)) {
                 $action->checklist_status = json_decode($action->checklist_status, true);
             }
         }
 
-        $title = "Progress: " . $participation->challenge->title;
-        $active = 'my-challenges'; // Mungkin lebih cocok 'my-challenges' atau nama menu progres
-
-        // dd($participation, $action); // Untuk debugging jika perlu
-
-        return view('challenges.progress', compact('participation', 'title', 'active'));
+        return view('challenges.progress', [
+            'participation' => $participation,
+            'title' => 'Progress: ' . $participation->challenge->title,
+            'active' => 'my-challenges',
+        ]);
     }
+
 
 
     public function checklist(Request $request, $id)

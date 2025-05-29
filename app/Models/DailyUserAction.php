@@ -35,5 +35,4 @@ class DailyUserAction extends Model
     {
         return $this->belongsTo(Challenge::class, 'challenge_id');
     }
-
 }
