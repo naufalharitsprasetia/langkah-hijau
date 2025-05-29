@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             ChallengeSeeder::class,
             UserChallengeParticipationSeeder::class,
             DailyUserActionSeeder::class,
+            QuizSeeder::class,
         ]);
     }
 }

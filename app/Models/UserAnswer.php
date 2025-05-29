@@ -13,7 +13,7 @@ class UserAnswer extends Model
         'user_id',
         'quiz_id',
         'question_id',
-        'is_correct'
+        'selected_option_id'
     ];
 
     public function user()

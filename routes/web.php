@@ -42,15 +42,12 @@ Route::get('/edu-zone', [PostController::class, 'index'])->name('post.index');
 Route::get('/edu-zone/{post}', [PostController::class, 'show'])->name('post.show');
 
 // Quiz
-// Route::middleware(['auth'])->group(function () { // Opsional: Tambahkan middleware 'auth' jika quiz hanya untuk user login
-Route::get('/quizzes', [QuizController::class, 'index'])->name('quizzes.index');
-Route::get('/quizzes/{quiz}', [QuizController::class, 'show'])->name('quizzes.show');
-Route::get('/quizzes/{quiz}/start', [QuizController::class, 'start'])->name('quizzes.start');
-// Rute baru untuk menampilkan soal individual
-Route::get('/quizzes/{quiz}/question/{question}', [QuizController::class, 'showQuestion'])->name('quizzes.question');
-Route::post('/quizzes/{quiz}/question/{question}/submit', [QuizController::class, 'submitAnswer'])->name('quizzes.submit_answer');
-Route::get('/quizzes/{quiz}/results', [QuizController::class, 'results'])->name('quizzes.results');
-// });
+Route::middleware(['auth'])->group(function () {
+    Route::get('/quizzes', [QuizController::class, 'index'])->name('quizzes.index');
+    Route::get('/quizzes/{quiz}/take', [QuizController::class, 'start'])->name('quizzes.take'); // Ganti nama rute menjadi 'take' atau biarkan 'start'
+    Route::post('/quizzes/{quiz}/submit-all-answers', [QuizController::class, 'submitAnswer'])->name('quizzes.submit_answers');
+    Route::get('/quizzes/{quiz}/results', [QuizController::class, 'results'])->name('quizzes.results');
+});
 
 // Hijau AI
 Route::get('/hijau-ai', [HijauAIController::class, 'index'])->name('hijau-ai.index');
@@ -75,6 +72,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 });
 
+// Edu-zone
 Route::get('/edu-zone', [PostController::class, 'index'])->name('post.index');
 Route::get('/edu-zone/{post}', [PostController::class, 'show'])->name('post.show');
 // Products
