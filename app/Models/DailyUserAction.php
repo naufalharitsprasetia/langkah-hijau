@@ -17,15 +17,22 @@ class DailyUserAction extends Model
         'checklist_status',
         'photo_submission_path',
         'notes',
+        'is_completed',
     ];
 
     protected $casts = [
         'action_date' => 'date',
         'checklist_status' => 'array',
+        'is_completed' => 'boolean'
     ];
 
     public function participation(): BelongsTo
     {
         return $this->belongsTo(UserChallengeParticipation::class, 'participation_id');
+    }
+
+    public function challenge()
+    {
+        return $this->belongsTo(Challenge::class, 'challenge_id');
     }
 }

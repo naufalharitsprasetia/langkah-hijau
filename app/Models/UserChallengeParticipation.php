@@ -38,7 +38,7 @@ class UserChallengeParticipation extends Model
     }
 
     // Satu partisipasi memiliki banyak aksi harian
-    public function dailyActions(): HasMany
+    public function dailyActions()
     {
         return $this->hasMany(DailyUserAction::class, 'participation_id');
     }

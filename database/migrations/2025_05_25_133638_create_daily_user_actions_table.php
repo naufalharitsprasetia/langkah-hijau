@@ -21,6 +21,7 @@ return new class extends Migration
             $table->text('checklist_status')->nullable();
             $table->string('photo_submission_path')->nullable();
             $table->text('notes')->nullable();
+            $table->boolean('is_completed')->default(false);
             $table->timestamps();
         });
     }

@@ -1,0 +1,38 @@
+[90m= [39m[34;4mIlluminate\Database\Eloquent\Collection[39;24m {#1343
+    [34mall[39m: [
+      [34;4mApp\Models\DailyUserAction[39;24m {#5958
+        [34mid[39m: [35m1[39m,
+        [34mparticipation_id[39m: [35m1[39m,
+        [34maction_date[39m: "[32m2025-05-24[39m",
+        [34mdaily_points[39m: [35m10[39m,
+        [34mchecklist_status[39m: "[32m"{\"gunakan_tas_kain\":true,\"bawa_botol_minum\":true,\"hindari_kemasan_plastik\":true,\"gunakan_sedotan_reuse\":true}"[39m",
+        [34mphoto_submission_path[39m: [36mnull[39m,
+        [34mnotes[39m: "[32mHari ke-1 tantangan tanpa plastik berjalan lancar![39m",
+        [34mcreated_at[39m: "[32m2025-05-27 09:00:27[39m",
+        [34mupdated_at[39m: "[32m2025-05-27 09:00:27[39m",
+      },
+      [34;4mApp\Models\DailyUserAction[39;24m {#6224
+        [34mid[39m: [35m2[39m,
+        [34mparticipation_id[39m: [35m1[39m,
+        [34maction_date[39m: "[32m2025-05-25[39m",
+        [34mdaily_points[39m: [35m10[39m,
+        [34mchecklist_status[39m: "[32m"{\"gunakan_tas_kain\":true,\"bawa_botol_minum\":false,\"hindari_kemasan_plastik\":true,\"gunakan_sedotan_reuse\":true}"[39m",
+        [34mphoto_submission_path[39m: [36mnull[39m,
+        [34mnotes[39m: "[32mHari ke-2 tantangan tanpa plastik berjalan lancar![39m",
+        [34mcreated_at[39m: "[32m2025-05-27 09:00:27[39m",
+        [34mupdated_at[39m: "[32m2025-05-27 09:00:27[39m",
+      },
+      [34;4mApp\Models\DailyUserAction[39;24m {#6225
+        [34mid[39m: [35m3[39m,
+        [34mparticipation_id[39m: [35m1[39m,
+        [34maction_date[39m: "[32m2025-05-26[39m",
+        [34mdaily_points[39m: [35m10[39m,
+        [34mchecklist_status[39m: "[32m"{\"gunakan_tas_kain\":true,\"bawa_botol_minum\":true,\"hindari_kemasan_plastik\":true,\"gunakan_sedotan_reuse\":true}"[39m",
+        [34mphoto_submission_path[39m: [36mnull[39m,
+        [34mnotes[39m: "[32mHari ke-3 tantangan tanpa plastik berjalan lancar![39m",
+        [34mcreated_at[39m: "[32m2025-05-27 09:00:27[39m",
+        [34mupdated_at[39m: "[32m2025-05-27 09:00:27[39m",
+      },
+    ],
+  }
+

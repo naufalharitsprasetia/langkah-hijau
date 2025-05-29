@@ -29,15 +29,34 @@ class DailyUserActionSeeder extends Seeder
                     'participation_id' => $andiPartisipasiPlastik->id,
                     'action_date' => Carbon::parse($andiPartisipasiPlastik->start_date)->addDays($i),
                     'daily_points' => 10,
-                    'checklist_status' => json_encode([
+                    'checklist_status' => [
                         'gunakan_tas_kain' => true,
                         'bawa_botol_minum' => $i % 2 == 0, // Selang-seling
                         'hindari_kemasan_plastik' => true,
                         'gunakan_sedotan_reuse' => true,
-                    ]),
+                    ],
                     'notes' => 'Hari ke-' . ($i + 1) . ' tantangan tanpa plastik berjalan lancar!',
+                    'is_completed' => false,
                 ]);
             }
+        }
+
+        if ($andiPartisipasiPlastik) {
+            $startDate = \Carbon\Carbon::parse($andiPartisipasiPlastik->start_date);
+
+            // Membuat data untuk hari pertama (day = 1)
+            \App\Models\DailyUserAction::create([
+                'participation_id' => $andiPartisipasiPlastik->id,
+                'action_date' => $startDate->toDateString(), // Ini akan menjadi tanggal start_date
+                'daily_points' => 10, // Contoh poin
+                'checklist_status' => [ // Contoh checklist
+                    'item_pagi_1' => true,
+                    'item_pagi_2' => false,
+                ],
+                'notes' => 'Aksi hari pertama.',
+                'is_completed' => false,
+            ]);
+
         }
 
         // Ambil partisipasi Citra di tantangan nabati (yang masih aktif)
@@ -53,14 +72,36 @@ class DailyUserActionSeeder extends Seeder
                 'participation_id' => $citraPartisipasiNabati->id,
                 'action_date' => Carbon::parse($citraPartisipasiNabati->start_date),
                 'daily_points' => 15,
-                'checklist_status' => json_encode([
+                'checklist_status' => [
                     'sarapan_nabati' => true,
                     'makan_siang_nabati' => true,
                     'konsumsi_buah' => true,
-                ]),
+                ],
                 'notes' => 'Makan nabati ternyata enak juga!',
-                'photo_submission_path' => 'dummy/nabati_day1.jpg', // Contoh path foto
+                'photo_submission_path' => 'dummy/nabati_day1.jpg',
+                'is_completed' => true,
             ]);
         }
+
+        if ($citraPartisipasiNabati) {
+            $startDate = \Carbon\Carbon::parse($citraPartisipasiNabati->start_date);
+
+            // Membuat data untuk hari pertama (day = 1)
+            \App\Models\DailyUserAction::create([
+                'participation_id' => $citraPartisipasiNabati->id,
+                'action_date' => $startDate->toDateString(), // Ini akan menjadi tanggal start_date
+                'daily_points' => 10, // Contoh poin
+                'checklist_status' => [ // Contoh checklist
+                    'item_pagi_1' => true,
+                    'item_pagi_2' => false,
+                ],
+                'notes' => 'Aksi hari pertama.',
+                'is_completed' => true,
+            ]);
+
+        }
+
+        // data hari pertama
+
     }
 }
