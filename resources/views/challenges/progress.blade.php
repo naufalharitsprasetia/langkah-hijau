@@ -114,12 +114,14 @@
                         </div>
 
                         {{-- Modal Checklist --}}
-                        <div x-show="selectedDate"
-                            class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
-                            style="display: none;" x-transition @keydown.escape.window="selectedDate = null">
-                            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg max-w-md w-full p-6 relative"
-                                @click.outside="selectedDate = null">
-
+                        <div x-show="selectedDate" x-init="$watch('selectedDate', value => {
+                            document.body.classList.toggle('overflow-hidden', !!value);
+                        })"
+                            class="absolute inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-white/30 dark:bg-black/20"
+                            x-transition style="display: none;" @keydown.escape.window="selectedDate = null"
+                            @click.outside="selectedDate = null">
+                            <div
+                                class="bg-white dark:bg-gray-900 shadow-2xl rounded-2xl p-6 w-full max-w-lg mx-auto relative">
                                 @foreach ($dailyActions as $actionDate => $dailyAction)
                                     <template x-if="selectedDate === '{{ $actionDate }}'">
                                         <div>
@@ -129,41 +131,47 @@
                                                 $isCompleted = $dailyAction->is_completed;
                                             @endphp
 
-                                            <h4 class="text-lg font-semibold mb-4">
+                                            <h2
+                                                class="text-xl font-semibold mb-4 text-gray-900 dark:text-white text-center">
                                                 Checklist Tanggal
                                                 {{ \Carbon\Carbon::parse($actionDate)->translatedFormat('d F Y') }}
-                                            </h4>
+                                            </h2>
 
                                             <form method="POST"
                                                 action="{{ route('challenges.checklist', $dailyAction->id) }}">
                                                 @csrf
 
-                                                @foreach ($checklistItems as $key => $label)
-                                                    @php $isChecked = $checklistStatus[$key] ?? false; @endphp
-                                                    <div class="flex items-center space-x-2 mb-2">
-                                                        <input type="checkbox"
-                                                            name="checklist_status[{{ $key }}]" value="1"
-                                                            {{ $isChecked ? 'checked' : '' }}
-                                                            class="form-checkbox h-5 w-5 text-indigo-600">
-                                                        <label
-                                                            class="text-gray-800 dark:text-gray-200">{{ $label }}</label>
-                                                    </div>
-                                                @endforeach
+                                                <div class="space-y-3">
+                                                    @foreach ($checklistItems as $key => $label)
+                                                        @php $isChecked = $checklistStatus[$key] ?? false; @endphp
+                                                        <div
+                                                            class="flex items-start space-x-3 bg-gray-100 dark:bg-gray-800 rounded-lg p-3">
+                                                            <input type="checkbox"
+                                                                name="checklist_status[{{ $key }}]"
+                                                                value="1" {{ $isChecked ? 'checked' : '' }}
+                                                                class="mt-1 form-checkbox text-green-600 w-5 h-5">
+                                                            <label
+                                                                class="text-gray-800 dark:text-gray-200 leading-snug">
+                                                                {{ $label }}
+                                                            </label>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
 
                                                 @php
                                                     $submitColor = $isCompleted
                                                         ? 'bg-green-500 hover:bg-green-600'
-                                                        : 'bg-gray-600 hover:bg-gray-700';
+                                                        : 'bg-green-600 hover:bg-indigo-700';
                                                 @endphp
 
                                                 <button type="submit"
-                                                    class="mt-4 px-4 py-2 text-white font-medium rounded {{ $submitColor }}">
+                                                    class="mt-6 w-full px-4 py-2 text-white font-medium rounded-lg {{ $submitColor }} transition">
                                                     Simpan Checklist
                                                 </button>
                                             </form>
 
                                             <button @click="selectedDate = null"
-                                                class="mt-4 text-sm text-gray-600 dark:text-gray-300 hover:underline">
+                                                class="mt-4 w-full text-sm text-gray-500 dark:text-gray-300 hover:underline text-center">
                                                 Tutup
                                             </button>
                                         </div>
@@ -171,6 +179,7 @@
                                 @endforeach
                             </div>
                         </div>
+
                     </div>
 
 
