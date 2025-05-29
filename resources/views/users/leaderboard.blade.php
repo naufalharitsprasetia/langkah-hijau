@@ -15,15 +15,6 @@ $diffInDays = round($now->diffInDays($nextSchedule));
                 <!-- League Badges -->
                 <div class="px-4 py-6">
                     <div class="flex justify-center space-x-2 mb-6 pb-2">
-                        @php
-                        $badges = [
-                        ['color' => 'amber-600', 'active' => false],
-                        ['color' => 'green-400', 'active' => false],
-                        ['color' => 'yellow-400', 'active' => true],
-                        ['color' => 'blue-500', 'active' => false],
-                        ];
-                        @endphp
-
                         @foreach($tiers as $tier)
                         {{-- hidden state / sr-only --}}
                         <div class="bg-yellow-400 ring-yellow-400 hidden"></div>
@@ -33,7 +24,7 @@ $diffInDays = round($now->diffInDays($nextSchedule));
                         {{-- hidden state / sr-only --}}
                         <div class="flex-shrink-0">
                             <div
-                                class="w-12 h-14 md:w-20 md:h-24 flex items-center justify-center bg-{{ $badge['color'] }} rounded-t-lg rounded-b-sm relative {{ $tier->urutan == auth()->user()->tier->urutan ? 'ring-2 ring-offset-2 dark:ring-offset-gray-800' : '' }} ring-{{ $badge['color'] }} transition-all duration-200">
+                                class="w-12 h-14 md:w-20 md:h-24 flex items-center justify-center bg-{{ $tier->color }} rounded-t-lg rounded-b-sm relative {{ $tier->urutan == auth()->user()->tier->urutan ? 'ring-2 ring-offset-2 dark:ring-offset-gray-800' : '' }} ring-{{ $badge->color }} transition-all duration-200">
                                 <span class="md:text-2xl">{{ $tier->icon }}</span>
                             </div>
                         </div>
