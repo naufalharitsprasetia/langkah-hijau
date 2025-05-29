@@ -5,11 +5,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\QuizController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\EventController;
 use App\Http\Controllers\HijauAIController;
 use App\Http\Controllers\ChallengeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\QuizController;
+use App\Http\Controllers\EventController;
+
 
 // // php artisan storage:link untuk hosting
 // Route::get('/create-storage-link', function () {
@@ -33,13 +34,20 @@ Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('/tentang', [HomeController::class, 'tentang'])->name('home.tentang');
 Route::get('/kontak', [HomeController::class, 'kontak'])->name('home.kontak');
 
-Route::get('/quizzes', [QuizController::class, 'index'])->name('quizzes.index');
-Route::get('/quizzes/{quiz}', [QuizController::class, 'show'])->name('quizzes.show');
-Route::get('/quizzes/{quiz}/start', [QuizController::class, 'start'])->name('quizzes.start');
-// Rute baru untuk menampilkan soal individual
-Route::get('/quizzes/{quiz}/question/{question}', [QuizController::class, 'showQuestion'])->name('quizzes.question');
-Route::post('/quizzes/{quiz}/question/{question}/submit', [QuizController::class, 'submitAnswer'])->name('quizzes.submit_answer');
-Route::get('/quizzes/{quiz}/results', [QuizController::class, 'results'])->name('quizzes.results');
+// Quiz
+Route::middleware(['auth'])->group(function () {
+    Route::get('/quizzes', [QuizController::class, 'index'])->name('quizzes.index');
+    Route::get('/quizzes/{quiz}/take', [QuizController::class, 'start'])->name('quizzes.take'); // Ganti nama rute menjadi 'take' atau biarkan 'start'
+    Route::post('/quizzes/{quiz}/submit-all-answers', [QuizController::class, 'submitAnswer'])->name('quizzes.submit_answers');
+    Route::get('/quizzes/{quiz}/results', [QuizController::class, 'results'])->name('quizzes.results');
+});
+// Route::get('/quizzes', [QuizController::class, 'index'])->name('quizzes.index');
+// Route::get('/quizzes/{quiz}', [QuizController::class, 'show'])->name('quizzes.show');
+// Route::get('/quizzes/{quiz}/start', [QuizController::class, 'start'])->name('quizzes.start');
+// // Rute baru untuk menampilkan soal individual
+// Route::get('/quizzes/{quiz}/question/{question}', [QuizController::class, 'showQuestion'])->name('quizzes.question');
+// Route::post('/quizzes/{quiz}/question/{question}/submit', [QuizController::class, 'submitAnswer'])->name('quizzes.submit_answer');
+// Route::get('/quizzes/{quiz}/results', [QuizController::class, 'results'])->name('quizzes.results');
 
 // Auth for guest
 Route::middleware('guest')->group(function () {
@@ -67,7 +75,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/event-ajukan', [EventController::class, 'ajukan'])->name('event.ajukan');
     Route::post('/event-ajukan', [EventController::class, 'simpanAjuan'])->name('event.simpanAjuan');
 });
-// edu zone
+
+// Edu-zone
 Route::get('/edu-zone', [PostController::class, 'index'])->name('post.index');
 Route::get('/edu-zone/{post}', [PostController::class, 'show'])->name('post.show');
 // event
