@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Log;
 use App\Models\Challenge;
 use Illuminate\Http\Request;
 use App\Models\DailyUserAction;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use App\Models\UserChallengeParticipation;
 
@@ -126,18 +126,45 @@ class ChallengeController extends Controller
         $checklistItems = $dailyAction->participation->challenge->checklist ?? [];
 
         $isCompleted = count($checklistItems) > 0 &&
-            !array_diff_key(array_flip(array_keys($checklistItems)), $status);
+            count(array_intersect_key($status, array_flip(array_keys($checklistItems)))) === count($checklistItems);
 
         $dailyAction->is_completed = $isCompleted;
-
         $dailyAction->save();
 
-        return redirect()->route('challenges.progress', $dailyAction->participation_id)
+        $participation = UserChallengeParticipation::with('dailyActions')
+            ->findOrFail($dailyAction->participation_id);
+
+        $allCompleted = $participation->dailyActions->every(function ($action) {
+            return $action->is_completed;
+        });
+
+
+        if ($allCompleted && $participation->status !== 'completed') {
+            $participation->status = 'completed';
+            $participation->completion_date = now();
+            $participation->save();
+
+            // dd('Challenge completed diset!', $participation);
+
+            session()->flash('challenge_completed', true); // ✅ Untuk ditampilkan di UI
+        }
+
+        // Log::debug('Status is_completed:', [
+        //     'submitted' => $status,
+        //     'expected' => $checklistItems,
+        //     'jumlah checklist seharusnya' => count($checklistItems),
+        //     'jumlah checklist disubmit' => count($status),
+        //     'Semua dailyActions' => $participation->dailyActions->pluck('is_completed', 'action_date')->toArray(),
+        //     'Durasi challenge' => $participation->challenge->duration_days,
+        //     'Total daily actions' => $participation->dailyActions->count(),
+        // ]);
+        
+
+        return redirect()->route('challenges.progress', $participation->id)
             ->with('success', 'Checklist berhasil disimpan.');
     }
 
-    
-    
+
 
 
     // public function checklist(Request $request, $id) {

@@ -1,4 +1,22 @@
 <x-layout :title="$title" :active="$active">
+
+    @if (session('challenge_completed'))
+        <div class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+            <div class="bg-white p-6 rounded-lg shadow-lg text-center">
+                <img src="{{ asset('images/challenge-complete.png') }}" alt="Challenge Complete" class="w-32 mx-auto mb-4">
+                <h2 class="text-xl font-bold text-green-600">Selamat! Challenge selesai!</h2>
+                <p class="mt-2">Kamu mendapatkan badge dan poin!</p>
+                <button onclick="window.location.reload()"
+                    class="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+                    Tutup
+                </button>
+            </div>
+        </div>
+    @endif
+
+
+
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6" x-data="{ selectedDay: null, selectedDate: null }">
         <!-- Breadcrumb -->
         <div class="mb-6">
@@ -114,11 +132,9 @@
                         </div>
 
                         {{-- Modal Checklist --}}
-                        <div 
-                            id="modalC"
-                            x-show="selectedDate" x-init="$watch('selectedDate', value => {
+                        <div id="modalC" x-show="selectedDate" x-init="$watch('selectedDate', value => {
                             document.body.classList.toggle('overflow-hidden', !!value);
-                            })"
+                        })"
                             class="absolute inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-white/30 dark:bg-black/20"
                             x-transition style="display: none;" @keydown.escape.window="selectedDate = null"
                             @click.outside="selectedDate = null">
@@ -221,12 +237,15 @@
     const cursorE = document.getElementById('cursor-example');
 
     const observer = new MutationObserver(() => {
-      if (modalC.style.display !== 'none') {
-        cursorE.style.display = 'none';
-      } else {
-        cursorE.style.display = 'block'; // atau kondisi default
-      }
+        if (modalC.style.display !== 'none') {
+            cursorE.style.display = 'none';
+        } else {
+            cursorE.style.display = 'block'; // atau kondisi default
+        }
     });
 
-    observer.observe(modalC, { attributes: true, attributeFilter: ['style'] });
+    observer.observe(modalC, {
+        attributes: true,
+        attributeFilter: ['style']
+    });
 </script>
