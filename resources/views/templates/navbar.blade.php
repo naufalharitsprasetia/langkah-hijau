@@ -1,23 +1,23 @@
 <header x-data="{
-        isOpen: false,
-        isDropMain: false,
-        isDropAbout: false,
-        init() {
-            // Cek ukuran layar saat load pertama
-            this.closeDropdownIfSmallScreen();
+    isOpen: false,
+    isDropMain: false,
+    isDropAbout: false,
+    init() {
+        // Cek ukuran layar saat load pertama
+        this.closeDropdownIfSmallScreen();
 
-            // Cek setiap kali ukuran layar berubah
-            window.addEventListener('resize', () => {
-                this.closeDropdownIfSmallScreen();
-            });
-        },
-        closeDropdownIfSmallScreen() {
-            if (window.innerWidth < 1024) { // Tailwind `lg` breakpoint = 1024px
-                this.isDropMain = false;
-                this.isDropAbout = false;
-            }
+        // Cek setiap kali ukuran layar berubah
+        window.addEventListener('resize', () => {
+            this.closeDropdownIfSmallScreen();
+        });
+    },
+    closeDropdownIfSmallScreen() {
+        if (window.innerWidth < 1024) { // Tailwind `lg` breakpoint = 1024px
+            this.isDropMain = false;
+            this.isDropAbout = false;
         }
-    }" class="lg:sticky inset-x-0 top-0 z-50 relative" id="myNavbar">
+    }
+}" class="lg:sticky inset-x-0 top-0 z-50 relative" id="myNavbar">
     {{-- sebenernya ada add remove bg-white/80 di .js nya --}}
     <div class="bg-white/80 backdrop-blur dark:bg-zinc-900/80 hidden"></div>
     <nav class="flex items-center justify-between p-6 lg:px-8 mx-auto max-w-7xl" aria-label="Global">
@@ -42,7 +42,7 @@
         </div>
         <div class="hidden lg:flex lg:gap-x-12">
             <a href="{{ route('home.index') }}"
-                class="text-sm/6 font-medium {{ $active == 'beranda' ? 'text-hijautua dark:text-hijaumuda' : 'text-gray-700 dark:text-gray-200 hover:text-hijautua'  }}">Beranda
+                class="text-sm/6 font-medium {{ $active == 'beranda' ? 'text-hijautua dark:text-hijaumuda' : 'text-gray-700 dark:text-gray-200 hover:text-hijautua' }}">Beranda
                 🏠</a>
             {{-- dropdwon main --}}
             <div class="relative" @click="isDropMain = !isDropMain">
@@ -60,10 +60,11 @@
                     x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
                     class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none"
                     role="menu" aria-orientation="vertical">
-                    <a href="/quizzes" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">🌏 Cek Gaya Hidup
+                    <a href="/quizzes" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">🌏 Eco-Quiz
+
                     </a>
                     <a href="{{ route('challenges.index') }}"
-                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">🏆 Tantangan
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">🏆 Tantangan Hijau
                     </a>
                     <a href="{{ route('post.index') }}"
                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">♻️ Edu-Zone </a>
@@ -73,7 +74,7 @@
             </div>
             {{-- Hijau AI --}}
             <a href="{{ route('hijau-ai.index') }}"
-                class="text-sm/6 font-medium {{ $active == 'hijau-ai' ? 'text-hijautua dark:text-hijaumuda' : 'text-gray-700 dark:text-gray-200 hover:text-hijautua'  }}">Hijau
+                class="text-sm/6 font-medium {{ $active == 'hijau-ai' ? 'text-hijautua dark:text-hijaumuda' : 'text-gray-700 dark:text-gray-200 hover:text-hijautua' }}">Hijau
                 AI ✨</a>
             {{-- dropdown Tentang --}}
             <div class="relative" @click="isDropAbout = !isDropAbout">
@@ -107,25 +108,25 @@
         </div>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center">
             @guest
-            <a href="/login"
-                class="text-sm/6 font-medium mr-3 text-gray-100 bg-hijautua rounded-sm px-3 py-1 hover:bg-hijaumuda hover:text-grey-200">
-                <i class="fa-solid fa-sign-in"></i> Login</a>
+                <a href="/login"
+                    class="text-sm/6 font-medium mr-3 text-gray-100 bg-hijautua rounded-sm px-3 py-1 hover:bg-hijaumuda hover:text-grey-200">
+                    <i class="fa-solid fa-sign-in"></i> Login</a>
             @else
-            <!-- Profile dropdown -->
-            <div class="relative ml-3">
-                <div>
-                    <button type="button" @click="isOpen = !isOpen"
-                        class="relative flex items-center rounded-sm hover:bg-gray-200 dark:hover:bg-gray-700 text-sm px-3 py-2 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 cursor-pointer"
-                        id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                        {{-- <span class="absolute -inset-1.5"></span> --}}
-                        <span class="sr-only">Open user menu</span>
-                        <span class="text-sm/6 font-medium mr-1 text-gray-700 dark:text-gray-200 rounded-sm block">{{
-                            auth()->user()->name }}</span>
-                        <img class="size-8 rounded-full"
-                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                            alt="">
-                    </button>
-                </div>
+                <!-- Profile dropdown -->
+                <div class="relative ml-3">
+                    <div>
+                        <button type="button" @click="isOpen = !isOpen"
+                            class="relative flex items-center rounded-sm hover:bg-gray-200 dark:hover:bg-gray-700 text-sm px-3 py-2 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 cursor-pointer"
+                            id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                            {{-- <span class="absolute -inset-1.5"></span> --}}
+                            <span class="sr-only">Open user menu</span>
+                            <span
+                                class="text-sm/6 font-medium mr-1 text-gray-700 dark:text-gray-200 rounded-sm block">{{ auth()->user()->name }}</span>
+                            <img class="size-8 rounded-full"
+                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                alt="">
+                        </button>
+                    </div>
 
                 <div x-show="isOpen" x-transition:enter="transition ease-out duration-100 transform"
                     x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
@@ -147,8 +148,8 @@
                             class="block w-full cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-zinc-700"
                             role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</buttont>
                     </form>
+
                 </div>
-            </div>
             @endguest
             <!-- Theme Toggle Button -->
             <button id="theme-toggle" aria-label="Toggle theme"
@@ -187,10 +188,12 @@
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">Beranda</a>
                         <a href="{{ route('challenges.index') }}"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">Tantangan
+                            Hijau
                             🏆</a>
                         <a href="/quizzes"
-                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">Cek
-                            Gaya Hidup 🌏</a>
+                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">Eco-Quiz
+                            🌏</a>
+
                         <a href="{{ route('post.index') }}"
                             class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">
                             Edu-Zone ♻️</a>
@@ -209,6 +212,7 @@
                     </div>
                     <div class="py-6">
                         @auth
+
                         <p class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-medium text-gray-700">
                             <i class="fa-solid fa-profile mr-3"></i> {{ auth()->user()->name }}
                         </p>
@@ -226,14 +230,15 @@
                                 role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</buttont>
                         </form>
                         @else
-                        <a href="{{ route('auth.login') }}"
-                            class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-medium text-gray-700 hover:bg-gray-200">
-                            <i class="fa-solid fa-sign-in mr-3"></i> Login</a>
+                            <a href="{{ route('auth.login') }}"
+                                class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-medium text-gray-700 hover:bg-gray-200">
+                                <i class="fa-solid fa-sign-in mr-3"></i> Login</a>
                         @endauth
                         <!-- Theme Toggle Button -->
                         <button id="theme-toggle" aria-label="Toggle theme"
                             class="p-2 rounded-full text-accent dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer">
-                            <svg id="theme-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg id="theme-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                             </svg>
