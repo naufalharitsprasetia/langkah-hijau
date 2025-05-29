@@ -108,48 +108,48 @@
         </div>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center">
             @guest
-                <a href="/login"
-                    class="text-sm/6 font-medium mr-3 text-gray-100 bg-hijautua rounded-sm px-3 py-1 hover:bg-hijaumuda hover:text-grey-200">
-                    <i class="fa-solid fa-sign-in"></i> Login</a>
+            <a href="/login"
+                class="text-sm/6 font-medium mr-3 text-gray-100 bg-hijautua rounded-sm px-3 py-1 hover:bg-hijaumuda hover:text-grey-200">
+                <i class="fa-solid fa-sign-in"></i> Login</a>
             @else
-                <!-- Profile dropdown -->
-                <div class="relative ml-3">
-                    <div>
-                        <button type="button" @click="isOpen = !isOpen"
-                            class="relative flex items-center rounded-sm hover:bg-gray-200 dark:hover:bg-gray-700 text-sm px-3 py-2 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 cursor-pointer"
-                            id="user-menu-button" aria-expanded="false" aria-haspopup="true">
-                            {{-- <span class="absolute -inset-1.5"></span> --}}
-                            <span class="sr-only">Open user menu</span>
-                            <span
-                                class="text-sm/6 font-medium mr-1 text-gray-700 dark:text-gray-200 rounded-sm block">{{ auth()->user()->name }}</span>
-                            <img class="size-8 rounded-full"
-                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                                alt="">
-                        </button>
-                    </div>
-
-                <div x-show="isOpen" x-transition:enter="transition ease-out duration-100 transform"
-                    x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
-                    x-transition:leave="transition ease-in duration-75 transform"
-                    x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
-                    class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white dark:bg-zinc-900 dark:border-2 dark:border-zinc-700 py-1 shadow-lg ring-1 ring-black/5 focus:outline-none"
-                    role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
-                    <!-- Active: "bg-gray-100 outline-none", Not Active: "" -->
-                    <p class="block text-center px-4 py-2 text-sm text-hijautua dark:text-hijaumuda" role="menuitem"
-                        tabindex="-1" id="user-menu-item-0"><i class="fa-solid fa-star me-2"></i> {{
-                        auth()->user()->green_points }} Green
-                        Points</p>
-                    <a href="{{ route('user.dashboard') }}"
-                        class="block text-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-zinc-700"
-                        role="menuitem" tabindex="-1" id="user-menu-item-1">Dashboard</a>
-                    <form action="{{ route('auth.logout') }}" method="POST" class="block" id="logoutForm">
-                        @csrf
-                        <button type="button" id="logoutBtn"
-                            class="block w-full cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-zinc-700"
-                            role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</buttont>
-                    </form>
-
+            <!-- Profile dropdown -->
+            <div class="relative ml-3">
+                <div>
+                    <button type="button" @click="isOpen = !isOpen"
+                        class="relative flex items-center rounded-sm hover:bg-gray-200 dark:hover:bg-gray-700 text-sm px-3 py-2 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800 cursor-pointer"
+                        id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                        {{-- <span class="absolute -inset-1.5"></span> --}}
+                        <span class="sr-only">Open user menu</span>
+                        <span class="text-sm/6 font-medium mr-1 text-gray-700 dark:text-gray-200 rounded-sm block">{{
+                            auth()->user()->name }}</span>
+                        <img class="size-8 rounded-full"
+                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                            alt="">
+                    </button>
                 </div>
+            </div>
+            <div x-show="isOpen" x-transition:enter="transition ease-out duration-100 transform"
+                x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+                x-transition:leave="transition ease-in duration-75 transform"
+                x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95"
+                class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white dark:bg-zinc-900 dark:border-2 dark:border-zinc-700 py-1 shadow-lg ring-1 ring-black/5 focus:outline-none"
+                role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                <!-- Active: "bg-gray-100 outline-none", Not Active: "" -->
+                <p class="block text-center px-4 py-2 text-sm text-hijautua dark:text-hijaumuda" role="menuitem"
+                    tabindex="-1" id="user-menu-item-0"><i class="fa-solid fa-star me-2"></i> {{
+                    auth()->user()->green_points }} Green
+                    Points</p>
+                <a href="{{ route('user.dashboard') }}"
+                    class="block text-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-zinc-700"
+                    role="menuitem" tabindex="-1" id="user-menu-item-1">Dashboard</a>
+                <form action="{{ route('auth.logout') }}" method="POST" class="block" id="logoutForm">
+                    @csrf
+                    <button type="button" id="logoutBtn"
+                        class="block w-full cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-zinc-700"
+                        role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</buttont>
+                </form>
+
+            </div>
             @endguest
             <!-- Theme Toggle Button -->
             <button id="theme-toggle" aria-label="Toggle theme"
@@ -230,15 +230,14 @@
                                 role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</buttont>
                         </form>
                         @else
-                            <a href="{{ route('auth.login') }}"
-                                class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-medium text-gray-700 hover:bg-gray-200">
-                                <i class="fa-solid fa-sign-in mr-3"></i> Login</a>
+                        <a href="{{ route('auth.login') }}"
+                            class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-medium text-gray-700 hover:bg-gray-200">
+                            <i class="fa-solid fa-sign-in mr-3"></i> Login</a>
                         @endauth
                         <!-- Theme Toggle Button -->
                         <button id="theme-toggle" aria-label="Toggle theme"
                             class="p-2 rounded-full text-accent dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer">
-                            <svg id="theme-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
+                            <svg id="theme-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                             </svg>
