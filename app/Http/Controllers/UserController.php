@@ -62,6 +62,7 @@ class UserController extends Controller
         $topUsers = $allUsers->filter(fn($user) => $user->green_points > $maxPoints);
         $users = $allUsers->filter(fn($user) => $user->green_points <= $maxPoints);
 
-        return view('users.leaderboard', compact('active', 'title', 'users', 'topUsers'));
+        $tiers = Tier::all();
+        return view('users.leaderboard', compact('active', 'title', 'users', 'topUsers', 'tiers'));
     }
 }
