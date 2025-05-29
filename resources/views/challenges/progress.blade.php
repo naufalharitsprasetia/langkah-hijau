@@ -114,9 +114,11 @@
                         </div>
 
                         {{-- Modal Checklist --}}
-                        <div x-show="selectedDate" x-init="$watch('selectedDate', value => {
+                        <div 
+                            id="modalC"
+                            x-show="selectedDate" x-init="$watch('selectedDate', value => {
                             document.body.classList.toggle('overflow-hidden', !!value);
-                        })"
+                            })"
                             class="absolute inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-white/30 dark:bg-black/20"
                             x-transition style="display: none;" @keydown.escape.window="selectedDate = null"
                             @click.outside="selectedDate = null">
@@ -214,4 +216,17 @@
     </div>
 </x-layout>
 
-{{-- <script defer src="//unpkg.com/alpinejs" crossorigin="anonymous"></script> --}}
+<script>
+    const modalC = document.getElementById('modalC');
+    const cursorE = document.getElementById('cursor-example');
+
+    const observer = new MutationObserver(() => {
+      if (modalC.style.display !== 'none') {
+        cursorE.style.display = 'none';
+      } else {
+        cursorE.style.display = 'block'; // atau kondisi default
+      }
+    });
+
+    observer.observe(modalC, { attributes: true, attributeFilter: ['style'] });
+</script>

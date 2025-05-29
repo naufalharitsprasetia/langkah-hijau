@@ -31,7 +31,7 @@
 
 <body class="antialiased">
     {{-- Cursor Custom -> nb: hilangkan ketika di menu seperti dropdown dll. --}}
-    <div class="cursor-example z-[99999999999] hidden sm:block"></div>
+    <div id="cursor-example" class="cursor-example z-[99999999999] hidden sm:block"></div>
     {{-- Loading animation --}}
     <div id="loader-overlay">
         <div class="loader">
