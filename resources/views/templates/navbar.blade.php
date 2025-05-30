@@ -93,8 +93,9 @@
                     class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none"
                     role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                     <!-- Active: "bg-gray-100 outline-none", Not Active: "" -->
-                    <a href="{{ route('home.tentang') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200"
-                        role="menuitem" tabindex="-1" id="user-menu-item-0">Tentang Aplikasi</a>
+                    <a href="{{ route('home.tentang') }}"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200" role="menuitem" tabindex="-1"
+                        id="user-menu-item-0">Tentang Aplikasi</a>
                     <a href="{{ route('home.kontak') }}"
                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 hover:outline-none"
                         role="menuitem" tabindex="-1" id="user-menu-item-1">Kontak Kami</a>
@@ -220,12 +221,12 @@
                             auth()->user()->green_points }} Green
                             Points</p>
                         <a href="{{ route('user.dashboard') }}"
-                            class="block text-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-zinc-700"
-                            role="menuitem" tabindex="-1" id="user-menu-item-1">Dashboard</a>
+                            class="block text-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 " role="menuitem"
+                            tabindex="-1" id="user-menu-item-1">Dashboard</a>
                         <form action="{{ route('auth.logout') }}" method="POST" class="block" id="logoutForm">
                             @csrf
                             <button type="button" id="logoutBtn"
-                                class="block w-full cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-zinc-700"
+                                class="block w-full cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 "
                                 role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</buttont>
                         </form>
                         @else
@@ -234,7 +235,7 @@
                             <i class="fa-solid fa-sign-in mr-3"></i> Login</a>
                         @endauth
                         <!-- Theme Toggle Button -->
-                        <button id="theme-toggle" aria-label="Toggle theme"
+                        <button id="theme-toggle2" aria-label="Toggle theme"
                             class="p-2 rounded-full text-accent dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer">
                             <svg id="theme-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
