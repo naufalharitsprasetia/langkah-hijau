@@ -1,6 +1,17 @@
 @php
-$nextTier = 1000;
-$kurang = max(0, $nextTier - auth()->user()->green_points);
+$nextTier = auth()->user()->tier->max_points;
+$now = auth()->user()->green_points;
+$kurang = max(0, $nextTier - $now);
+
+// Menghitung persentase
+if ($kurang > 0) {
+$persen = ($now / $nextTier) * 100;
+// Pastikan persentase tidak melebihi 100%
+$persen = min(100, $persen);
+} else {
+// Jika $nextTier adalah 0 atau kurang (mungkin sudah tier tertinggi), set persentase ke 100%
+$persen = 100;
+}
 @endphp
 <x-sidebar.layout :title="$title" :active="$active">
     <h1>Dashboard User</h1>
@@ -189,13 +200,7 @@ $kurang = max(0, $nextTier - auth()->user()->green_points);
                                 <div class="relative pt-1">
                                     <div
                                         class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-blue-200 dark:bg-blue-700">
-                                        {{-- @php
-                                        $nextTier = 1000;
-                                        $now = auth()->user()->green_points;
-                                        $kurang = $nextTier - $now;
-                                        $persen = $now / 10;
-                                        @endphp --}}
-                                        <div style="width: {{ auth()->user()->green_points/10 }}%"
+                                        <div style="width: {{ $persen }}%"
                                             class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-hijaumuda">
                                         </div>
                                     </div>

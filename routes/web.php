@@ -41,13 +41,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/quizzes/{quiz}/submit-all-answers', [QuizController::class, 'submitAnswer'])->name('quizzes.submit_answers');
     Route::get('/quizzes/{quiz}/results', [QuizController::class, 'results'])->name('quizzes.results');
 });
-// Route::get('/quizzes', [QuizController::class, 'index'])->name('quizzes.index');
-// Route::get('/quizzes/{quiz}', [QuizController::class, 'show'])->name('quizzes.show');
-// Route::get('/quizzes/{quiz}/start', [QuizController::class, 'start'])->name('quizzes.start');
-// // Rute baru untuk menampilkan soal individual
-// Route::get('/quizzes/{quiz}/question/{question}', [QuizController::class, 'showQuestion'])->name('quizzes.question');
-// Route::post('/quizzes/{quiz}/question/{question}/submit', [QuizController::class, 'submitAnswer'])->name('quizzes.submit_answer');
-// Route::get('/quizzes/{quiz}/results', [QuizController::class, 'results'])->name('quizzes.results');
 
 // Auth for guest
 Route::middleware('guest')->group(function () {
@@ -82,6 +75,7 @@ Route::get('/edu-zone/{post}edu-zone', [PostController::class, 'show'])->name('p
 // event
 Route::get('/event', [EventController::class, 'index'])->name('event.index');
 Route::get('/event/{event}', [EventController::class, 'show'])->name('event.show');
+
 // IS ADMIN Middleware
 Route::middleware([IsAdmin::class])->group(function () {
     // Edu Zone
@@ -104,8 +98,10 @@ Route::middleware([IsAdmin::class])->group(function () {
 });
 
 // challenge
+Route::middleware('auth')->group(function () {
+    Route::post('/challenges/{challenge}/participate', [ChallengeController::class, 'participate'])->name('challenges.participate');
+    Route::get('/challenges-progress/{challenge_participation}', [ChallengeController::class, 'progress'])->name('challenges.progress');
+    Route::post('/daily-actions/{challenge_participation}', [ChallengeController::class, 'checklist'])->name('challenges.checklist');
+});
 Route::get('/challenges', [ChallengeController::class, 'index'])->name('challenges.index');
 Route::get('/challenges/{challenge}', [ChallengeController::class, 'show'])->name('challenges.show');
-Route::post('/challenges/{challenge}/participate', [ChallengeController::class, 'participate'])->name('challenges.participate');
-Route::get('/challenges/{participation}/progress', [ChallengeController::class, 'progress'])->name('challenges.progress');
-Route::post('/daily-actions/{id}/checklist', [ChallengeController::class, 'checklist'])->name('challenges.checklist');
