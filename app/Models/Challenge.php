@@ -2,37 +2,39 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Badge;
+use App\Models\ChallengeAction;
+use App\Models\ChallengeParticipation;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Challenge extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'title',
-        'description',
-        'checklist', 
-        'image_path',
-        'duration_days',
-        'badge_name',
-        'badge_icon',
-        'completion_bonus_points',
-    ];
+    protected $guarded = ['id'];
+    protected $primaryKey = 'id';
+    protected $keyType = 'string'; // Atur tipe data primary key sebagai string
+    public $incrementing = false; // Nonaktifkan incrementing ID
 
-    protected $casts = [
-        'checklist' => 'array',
-    ];
-
-    public function participations(): HasMany
+    public function badge(): BelongsTo
     {
-        return $this->hasMany(UserChallengeParticipation::class);
+        return $this->belongsTo(Badge::class);
     }
 
-    // untuk mendapatkan url gambar
-    public function getImageUrlAttribute()
+    public function challenge_participations(): HasMany
     {
-        return $this->image_path ? asset('storage/' . $this->image_path) : null;
+        return $this->hasMany(ChallengeParticipation::class);
     }
+    public function challenge_actions(): HasMany
+    {
+        return $this->hasMany(ChallengeAction::class);
+    }
+    // public function participations(): HasMany
+    // {
+    //     return $this->hasMany(UserChallengeParticipation::class);
+    // }
+
 }

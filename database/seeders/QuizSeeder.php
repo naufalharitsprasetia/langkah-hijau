@@ -165,8 +165,10 @@ class QuizSeeder extends Seeder
         $question20 = $quiz2->questions()->create([
             'question_text' => 'Apakah kamu aktif mengajak teman atau keluarga untuk menerapkan gaya hidup yang lebih ramah lingkungan?',
         ]);
+
         $question20->options()->create(['option_text' => 'Ya, saya sering berbagi tips dan mendorong mereka.', 'points' => 3]);
         $question20->options()->create(['option_text' => 'Kadang-kadang, jika ada kesempatan atau topik pembicaraan.', 'points' => 2]);
         $question20->options()->create(['option_text' => 'Tidak, itu pilihan pribadi masing-masing.', 'points' => 1]);
+
     }
 }

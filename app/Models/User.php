@@ -44,14 +44,18 @@ class User extends Authenticatable
         ];
     }
 
-    public function challengeParticipations(): HasMany
+    public function challenge_participations(): HasMany
     {
-        return $this->hasMany(UserChallengeParticipation::class);
+        return $this->hasMany(ChallengeParticipation::class);
     }
 
     public function tier(): BelongsTo
     {
         return $this->belongsTo(Tier::class);
+    }
+    public function badge()
+    {
+        return $this->belongsToMany(Badge::class, 'user_badge', 'user_id', 'badge_id');
     }
 
     public static function updateTier(User $user)
