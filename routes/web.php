@@ -71,7 +71,7 @@ Route::middleware('auth')->group(function () {
 
 // Edu-zone
 Route::get('/edu-zone', [PostController::class, 'index'])->name('post.index');
-Route::get('/edu-zone/{post}', [PostController::class, 'show'])->name('post.show');
+Route::get('/edu-zone/{post}edu-zone', [PostController::class, 'show'])->name('post.show');
 // event
 Route::get('/event', [EventController::class, 'index'])->name('event.index');
 Route::get('/event/{event}', [EventController::class, 'show'])->name('event.show');
