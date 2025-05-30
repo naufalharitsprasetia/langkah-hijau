@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\ChallengeDailyAction;
 use App\Models\Tier;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -18,13 +19,16 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
         $this->call([
             TierSeeder::class,
+            BadgeSeeder::class,
             UserSeeder::class,
             PostSeeder::class,
             ChallengeSeeder::class,
-            UserChallengeParticipationSeeder::class,
-            DailyUserActionSeeder::class,
+            ChallengeActionSeeder::class,
+            ChallengeParticipationSeeder::class,
+            ChallengeDailyActionSeeder::class,
             QuizSeeder::class,
             EventSeeder::class,
+            UserBadgeSeeder::class,
         ]);
         // $users = User::all();
         // foreach ($users as $user) {

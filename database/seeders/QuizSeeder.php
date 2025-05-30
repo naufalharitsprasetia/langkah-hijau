@@ -207,6 +207,5 @@ class QuizSeeder extends Seeder
         $question25->options()->create(['option_text' => 'Sangat Setuju', 'points' => 3]);
         $question25->options()->create(['option_text' => 'Setuju', 'points' => 2]);
         $question25->options()->create(['option_text' => 'Tidak Setuju', 'points' => 1]);
-
     }
 }
