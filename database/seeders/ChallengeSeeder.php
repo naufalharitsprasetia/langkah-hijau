@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Badge;
 use App\Models\Challenge;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class ChallengeSeeder extends Seeder
 {
@@ -13,58 +15,38 @@ class ChallengeSeeder extends Seeder
      */
     public function run(): void
     {
+        $badge1 = Badge::where('badge', 'Pejuang Anti Plastik')->first();
+        $badge2 = Badge::where('badge', 'Komuter Hijau')->first();
+        $badge3 = Badge::where('badge', 'Eksplorer Nabati')->first();
+        // challenge 1
         Challenge::create([
+            'id' => Str::uuid(),
             'title' => '7 Hari Tanpa Plastik Sekali Pakai',
             'description' => 'Selama seminggu, hindari penggunaan plastik sekali pakai seperti kantong kresek, sedotan, botol air, dan kemasan makanan/minuman.',
-            'checklist' => [
-                'gunakan_tas_kain' => 'Gunakan tas belanja kain setiap kali berbelanja.',
-                'bawa_botol_minum' => 'Bawa dan gunakan botol minum pribadi.',
-                'hindari_kemasan_plastik' => 'Hindari membeli makanan atau minuman dalam kemasan plastik sekali pakai.',
-                'gunakan_sedotan_reuse' => 'Tolak sedotan plastik, atau gunakan alternatif reusable jika perlu.',
-                'pilih_kemasan_minimal' => 'Pilih produk dengan kemasan minimal atau tanpa kemasan plastik.',
-            ],
-
-            'image_path' => 'challenge_images/no_plastic_week.jpg',
+            'image' => 'haritanpaplastik.png',
             'duration_days' => 7,
-            'badge_name' => 'Pejuang Anti Plastik',
-            'badge_icon' => '♻️',
-            'completion_bonus_points' => 150,
+            'badge_id' => $badge1->id,
+            'green_points' => 400,
         ]);
-
+        // challenge 2
         Challenge::create([
+            'id' => Str::uuid(),
             'title' => '5 Hari Transportasi Ramah Lingkungan',
             'description' => 'Gunakan transportasi minim emisi: jalan kaki, sepeda, atau transportasi umum selama 5 hari berturut-turut.',
-            'checklist' => [
-                'gunakan_tas_kain' => 'Gunakan tas belanja kain setiap kali berbelanja.',
-                'bawa_botol_minum' => 'Bawa dan gunakan botol minum pribadi.',
-                'hindari_kemasan_plastik' => 'Hindari membeli makanan atau minuman dalam kemasan plastik sekali pakai.',
-                'gunakan_sedotan_reuse' => 'Tolak sedotan plastik, atau gunakan alternatif reusable jika perlu.',
-                'pilih_kemasan_minimal' => 'Pilih produk dengan kemasan minimal atau tanpa kemasan plastik.',
-            ],
-
-            'image_path' => 'challenge_images/eco_transport.jpg',
+            'image' => 'haritransportasi.png',
             'duration_days' => 5,
-            'badge_name' => 'Komuter Hijau',
-            'badge_icon' => '🚴',
-            'completion_bonus_points' => 100,
+            'badge_id' => $badge2->id,
+            'green_points' => 250,
         ]);
-
+        // challenge 3
         Challenge::create([
+            'id' => Str::uuid(),
             'title' => '3 Hari Makan Nabati',
             'description' => 'Selama 3 hari penuh, konsumsi makanan nabati (vegetarian/plant-based), hindari daging dan produk hewani.',
-           'checklist' => [
-                'gunakan_tas_kain' => 'Gunakan tas belanja kain setiap kali berbelanja.',
-                'bawa_botol_minum' => 'Bawa dan gunakan botol minum pribadi.',
-                'hindari_kemasan_plastik' => 'Hindari membeli makanan atau minuman dalam kemasan plastik sekali pakai.',
-                'gunakan_sedotan_reuse' => 'Tolak sedotan plastik, atau gunakan alternatif reusable jika perlu.',
-                'pilih_kemasan_minimal' => 'Pilih produk dengan kemasan minimal atau tanpa kemasan plastik.',
-            ],
-
-            'image_path' => 'challenge_images/plant_based_diet.jpg',
+            'image' => 'harimakannabati.png',
             'duration_days' => 3,
-            'badge_name' => 'Eksplorer Nabati',
-            'badge_icon' => '🌱',
-            'completion_bonus_points' => 75,
+            'badge_id' => $badge3->id,
+            'green_points' => 150,
         ]);
     }
 }
