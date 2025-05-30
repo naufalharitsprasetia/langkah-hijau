@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz Psikologi - {{ $quiz->title }}</title>
-    {{-- Tambahkan CSRF Token untuk request AJAX --}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -21,40 +20,48 @@
                             600: '#0d9488',
                             700: '#0f766e'
                         },
-                        hijautua: '#0D9488', // Tambahkan warna ini jika belum ada di tailwind.config utama
-                        hijaumuda: '#34D399', // Tambahkan warna ini jika belum ada di tailwind.config utama
+                        // Menggunakan hijautua dan hijaumuda dari tema hasil quiz
+                        hijautua: '#0D9488',
+                        hijaumuda: '#34D399',
                     }
                 }
             }
         }
     </script>
     <style>
+        /* Gaya untuk efek dimmed saat pertanyaan sudah dijawab */
         .question-dimmed-answered {
             opacity: 0.7;
+            /* Sedikit transparan */
             transition: opacity 0.3s ease;
+            /* Transisi halus */
         }
 
+        /* Gaya untuk pertanyaan yang sedang aktif/belum dijawab */
         .question-active {
             opacity: 1;
+            /* Sepenuhnya terlihat */
             transition: opacity 0.3s ease;
+            /* Transisi halus */
         }
 
-        .question-ring {
-            box-shadow: 0 0 0 2px var(--primary-500);
-        }
-
+        /* Gaya untuk efek scaling pada opsi jawaban saat hover */
         .scale-option {
             transition: all 0.3s ease;
         }
 
         .scale-option:hover {
-            transform: scale(1.1);
+            transform: scale(1.02);
+            /* Sedikit scaling saat hover */
         }
 
+        /* Gaya untuk lingkaran nomor pertanyaan */
         .question-number-circle {
             flex-shrink-0;
-            width: 2rem;
-            height: 2rem;
+            width: 2.25rem;
+            /* Ukuran sedikit lebih besar */
+            height: 2.25rem;
+            /* Ukuran sedikit lebih besar */
             border-radius: 9999px;
             display: flex;
             align-items: center;
@@ -63,16 +70,78 @@
             font-weight: 700;
             transition: background-color 0.3s ease, color 0.3s ease;
         }
+
+        /* Gaya untuk glow effect pada container utama */
+        #container {
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Gaya untuk simulasi blur dan gradient seperti di layout hasil quiz */
+        .glow-effect {
+            position: absolute;
+            width: 80%;
+            height: 80%;
+            /* Mengatur ukuran glow agar terlihat */
+            background: radial-gradient(circle at center, var(--tw-gradient-stops));
+            /* Menggunakan radial gradient */
+            opacity: 0.2;
+            /* Menyesuaikan opacity */
+            filter: blur(80px);
+            /* Menyesuaikan blur */
+            border-radius: 50%;
+            /* Membuat bentuk lingkaran */
+            z-index: -1;
+            /* Di belakang konten */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            /* Posisi di tengah */
+        }
+
+        /* Posisi glow disesuaikan untuk bagian atas */
+        .glow-top {
+            background-image: linear-gradient(to bottom right, #a0ffbc, #46ff21);
+            top: -20%;
+            left: -20%;
+            width: 60%;
+            height: 60%;
+            transform: translate(0, 0);
+            /* Reset transform */
+            filter: blur(100px);
+            opacity: 0.25;
+        }
+
+        /* Posisi glow disesuaikan untuk bagian bawah */
+        .glow-bottom {
+            background-image: linear-gradient(to top left, #a0ffbc, #46ff21);
+            bottom: -20%;
+            right: -20%;
+            width: 60%;
+            height: 60%;
+            transform: translate(0, 0);
+            /* Reset transform */
+            filter: blur(100px);
+            opacity: 0.25;
+        }
     </style>
 </head>
 
 <body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-    <div x-data="quizApp({{ $questions }})" class="min-h-screen">
+    <div x-data="quizApp({{ $questions }})" class="min-h-screen relative overflow-hidden">
+        {{-- Glow effect di atas --}}
+        <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+            aria-hidden="true">
+            <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#46ff21] to-[#a0ffbc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+                style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%);">
+            </div>
+        </div>
+
         <header class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center h-16">
                     <div class="flex items-center space-x-4">
-                        <div class="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center">
+                        <div class="w-10 h-10 bg-hijautua rounded-full flex items-center justify-center">
                             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
@@ -111,7 +180,7 @@
                         x-text="`${Object.keys(answers).length}/${questions.length}`"></span>
                 </div>
                 <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                    <div class="bg-primary-500 h-2 rounded-full transition-all duration-300"
+                    <div class="bg-hijautua h-2 rounded-full transition-all duration-300"
                         :style="`width: ${(Object.keys(answers).length / questions.length) * 100}%`"></div>
                 </div>
             </div>
@@ -121,11 +190,11 @@
                 @csrf
 
                 <template x-for="(question, index) in questions" :key="question.id">
-                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 transition-all duration-300"
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 p-6 transition-all duration-300"
                         :class="{
                             'question-dimmed-answered': answers[question.id],
                             'question-active': !answers[question.id],
-                            'ring-2 ring-primary-500': !answers[question.id],
+                            'ring-2 ring-hijautua dark:ring-hijaumuda': !answers[question.id],
                             'bg-green-50 dark:bg-green-900/10 border-green-200 dark:border-green-800': answers[question
                                 .id]
                         }"
@@ -135,7 +204,7 @@
                             <div class="question-number-circle"
                                 :class="{
                                     'bg-green-500 text-white': answers[question.id],
-                                    'bg-primary-500 text-white': !answers[question.id],
+                                    'bg-hijautua text-white': !answers[question.id],
                                 }">
                                 <span x-show="!answers[question.id]" x-text="index + 1"></span>
                                 <svg x-show="answers[question.id]" class="w-4 h-4" fill="currentColor"
@@ -148,66 +217,40 @@
                             <div class="flex-1">
                                 <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-2"
                                     x-text="question.text"></h3>
-                                <p class="text-sm text-gray-500 dark:text-gray-400">Pilih tingkat persetujuan Anda
-                                    dengan pernyataan di atas</p>
                             </div>
                         </div>
 
-                        <div class="space-y-4">
-                            <div class="flex justify-between items-center px-4">
-                                <span class="text-sm font-medium text-primary-600 dark:text-primary-400">Sangat
-                                    Setuju</span>
-                                <span class="text-sm font-medium text-purple-600 dark:text-purple-400">Sangat Tidak
-                                    Setuju</span>
-                            </div>
-
-                            <div class="flex justify-between items-center px-4">
-                                <template x-for="option in question.options" :key="option.id">
-                                    {{-- Pastikan label membungkus input untuk interaksi yang lebih baik --}}
-                                    <label class="cursor-pointer scale-option flex flex-col items-center">
-                                        <input type="radio" :name="`question_${question.id}`" :value="option.id"
-                                            @change="setAnswer(question.id, option.id); $nextTick(() => { scrollToNextUnanswered(question.id); })"
-                                            :checked="answers[question.id] == option.id" class="hidden">
-                                        {{-- Gunakan 'hidden' untuk sembunyikan asli, dan style div sebagai pengganti --}}
-                                        <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 flex items-center justify-center transition-all duration-200"
-                                            :class="{
-                                                'border-primary-500 bg-primary-500': answers[question.id] == option
-                                                    .id && option.points >= 5,
-                                                'border-gray-400 bg-gray-400': answers[question.id] == option.id &&
-                                                    option.points >= 3 && option.points <= 4,
-                                                'border-purple-500 bg-purple-500': answers[question.id] == option.id &&
-                                                    option.points <= 2,
-                                                'border-primary-300 dark:border-primary-700 text-primary-600 dark:text-primary-400': answers[
-                                                    question.id] != option.id && option.points >= 5,
-                                                'border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-400': answers[
-                                                        question.id] != option.id && option.points >= 3 && option
-                                                    .points <= 4,
-                                                'border-purple-300 dark:border-purple-700 text-purple-600 dark:text-purple-400': answers[
-                                                    question.id] != option.id && option.points <= 2,
-                                                'hover:bg-primary-100 dark:hover:bg-primary-900/20': option.points >=
-                                                    5 && answers[question.id] != option.id,
-                                                'hover:bg-gray-100 dark:hover:bg-gray-900/20': option.points >= 3 &&
-                                                    option.points <= 4 && answers[question.id] != option.id,
-                                                'hover:bg-purple-100 dark:hover:bg-purple-900/20': option.points <= 2 &&
-                                                    answers[question.id] != option.id,
-                                            }">
-                                            <svg x-show="answers[question.id] == option.id" class="w-4 h-4 text-white"
-                                                fill="currentColor" viewBox="0 0 20 20">
-                                                <path fill-rule="evenodd"
-                                                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                                    clip-rule="evenodd"></path>
-                                            </svg>
-                                        </div>
-                                    </label>
-                                </template>
-                            </div>
-
-                            <div class="flex justify-between items-center px-4">
-                                <template x-for="option in question.options" :key="option.id">
-                                    <span class="text-xs text-gray-500 dark:text-gray-400 w-8 sm:w-10 text-center"
-                                        x-text="option.points"></span>
-                                </template>
-                            </div>
+                        <div class="space-y-3">
+                            <template x-for="option in question.options" :key="option.id">
+                                <label
+                                    class="cursor-pointer scale-option flex items-center p-3 rounded-lg border dark:border-gray-700 transition-all duration-200"
+                                    :class="{
+                                        'bg-primary-50 dark:bg-primary-900/20 border-hijautua dark:border-hijaumuda': answers[
+                                            question
+                                            .id] == option.id,
+                                        'bg-white dark:bg-gray-800 border-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700': answers[
+                                            question.id] != option.id
+                                    }">
+                                    <input type="radio" :name="`question_${question.id}`" :value="option.id"
+                                        @change="setAnswer(question.id, option.id); $nextTick(() => { scrollToNextUnanswered(question.id); })"
+                                        :checked="answers[question.id] == option.id" class="hidden">
+                                    <div class="w-5 h-5 rounded-full border-2 flex items-center justify-center mr-3 transition-colors duration-200"
+                                        :class="{
+                                            'border-hijautua bg-hijautua': answers[question.id] == option.id,
+                                            'border-gray-400 dark:border-gray-600 bg-white dark:bg-gray-800': answers[
+                                                question.id] != option.id
+                                        }">
+                                        <svg x-show="answers[question.id] == option.id" class="w-3 h-3 text-white"
+                                            fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="text-base text-gray-800 dark:text-gray-200"
+                                        x-text="option.text"></span>
+                                </label>
+                            </template>
                         </div>
                     </div>
                 </template>
@@ -216,11 +259,19 @@
                     <button type="submit" x-show="Object.keys(answers).length === questions.length"
                         :disabled="Object.keys(answers).length !== questions.length"
                         :class="{ 'opacity-50 cursor-not-allowed': Object.keys(answers).length !== questions.length }"
-                        class="px-6 py-3 bg-hijautua text-white rounded-lg hover:bg-hijautua-darken transition-colors text-lg font-semibold">
+                        class="px-8 py-4 bg-hijautua text-white rounded-xl shadow-lg hover:bg-hijaumuda focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hijautua transition-all duration-300 text-xl font-bold">
                         Selesai Quiz
                     </button>
                 </div>
             </form>
+        </div>
+
+        {{-- Glow effect di bawah --}}
+        <div class="absolute inset-x-0 top-[calc(100%-40rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-78rem)]"
+            aria-hidden="true">
+            <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#46ff21] to-[#a0ffbc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+                style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
+            </div>
         </div>
     </div>
 

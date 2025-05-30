@@ -1,129 +1,99 @@
-<!DOCTYPE html>
-<html lang="id" x-data="{ darkMode: localStorage.getItem('darkMode') === 'true' }" x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))" :class="{ 'dark': darkMode }">
+<x-layout :title="'Hasil Quiz - ' . $quiz->title" :active="'quiz'">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hasil Quiz - {{ $quiz->title }}</title>
-    {{-- Menggunakan CDN Tailwind dan Alpine.js agar konsisten dengan start.blade.php --}}
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            50: '#f0fdfa',
-                            500: '#14b8a6',
-                            600: '#0d9488',
-                            700: '#0f766e'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        /* Style kustom jika ada yang relevan dari start.blade.php */
-    </style>
-</head>
+    <div class="min-h-screen flex justify-center p-4 pt-14 md:mt-0 md:pt-0">
+        <div id="container" class="w-full max-w-2xl rounded-3xl overflow-hidden flex flex-col">
+            <div class="p-8 md:pt-0 flex-grow flex flex-col">
+                <div id="content" class="text-center mb-8">
 
-<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-    <div class="min-h-screen">
-        <header class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
-            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex justify-between items-center h-16">
-                    <div class="flex items-center space-x-4">
-                        <div class="w-10 h-10 bg-primary-500 rounded-full flex items-center justify-center">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                            </svg>
+                    <div
+                        class="w-16 h-16 bg-hijautua rounded-full pt-4 overflow-hidden mx-auto mb-4 flex items-center justify-center">
+                        <svg class="w-10 h-10 text-hijautua dark:text-hijaumuda fill-current" viewBox="0 0 24 24"
+                            aria-hidden="true">
+                            <path
+                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8.59 10 17z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-2">Hasil Uji Pengetahuanmu!
+                    </h2>
+                    <p class="text-xl text-gray-600 dark:text-white mb-4">Ini dia rangkuman performamu dalam tes
+                        {{ $quiz->title }}.</p>
+                </div>
+
+                {{-- Konten utama hasil quiz --}}
+                <div class="flex-grow">
+                    <div
+                        class="quiz-result-card bg-white dark:bg-zinc-800 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 p-6 opacity-80">
+                        <h1 class="text-3xl font-bold mb-6 text-center text-hijautua dark:text-hijaumuda">Rangkuman
+                            Hasil
+                        </h1>
+
+                        {{-- Total Skor --}}
+                        <div class="mb-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg text-center">
+                            <p class="text-lg text-gray-700 dark:text-gray-300">Total Poin yang Kamu Dapatkan:</p>
+                            <p class="text-4xl font-extrabold text-hijautua dark:text-hijaumuda">{{ $totalScore }}</p>
+                            <p class="text-md text-gray-600 dark:text-gray-400">Kamu menjawab
+                                {{ $userAnswers->count() }} dari {{ $totalQuestions }} soal.
+                            </p>
                         </div>
-                        <div>
-                            <h1 class="text-lg font-semibold text-gray-900 dark:text-white">
-                                {{ Auth::user()->name ?? 'Pengguna' }}</h1>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">Hasil Tes</p> {{-- Deskripsi untuk halaman ini --}}
+
+                        {{-- Kategori --}}
+                        <div class="bg-green-50 border-l-4 border-green-500 text-green-800 p-4 mb-6 dark:bg-green-900/20 dark:border-green-700 dark:text-green-300"
+                            role="alert">
+                            <p class="font-bold text-lg mb-1">Eco-Persona Kamu Adalah:</p>
+                            <p class="text-3xl font-bold">{{ $category }}</p>
+                            <p class="mt-3 text-base">{{ $recommendation }}</p>
+                        </div>
+
+                        <h3 class="text-xl font-semibold mb-4 text-gray-800 dark:text-white">Detail Jawabanmu:</h3>
+                        <div class="space-y-6">
+                            @foreach ($userAnswers as $userAnswer)
+                                <div
+                                    class="border-b pb-4 border-gray-200 dark:border-gray-700 last:border-b-0 last:pb-0">
+                                    <p class="font-semibold text-lg mb-2 text-gray-900 dark:text-white">
+                                        {{ $loop->iteration }}. {{ $userAnswer->question->question_text }}</p>
+                                    <p class="text-gray-700 dark:text-gray-300 mb-2">
+                                        Kamu memilih: <span
+                                            class="font-medium text-green-700 dark:text-green-400">{{ $userAnswer->selectedOption->option_text ?? 'Tidak memilih opsi' }}</span>
+                                        (Poin: {{ $userAnswer->selectedOption->points ?? 0 }})
+                                    </p>
+                                    {{-- Tampilkan semua opsi dengan poinnya agar user bisa melihat --}}
+                                    <p class="font-medium text-gray-800 dark:text-gray-200 mt-3 mb-1">Semua Opsi:</p>
+                                    <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-400">
+                                        @foreach ($userAnswer->question->options->sortByDesc('points') as $option)
+                                            <li
+                                                class="{{ $userAnswer->selectedOption && $userAnswer->selectedOption->id === $option->id ? 'font-bold text-hijautua dark:text-hijaumuda' : '' }}">
+                                                {{ $option->option_text }} ({{ $option->points }} poin)
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endforeach
+                        </div>
+
+                        <div class="mt-8 text-center">
+                            <a href="{{ route('quizzes.index') }}"
+                                class="rounded-md bg-hijautua px-6 py-3 text-lg font-semibold text-white shadow-sm hover:bg-hijaumuda focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hijautua transition-colors duration-300">
+                                Kembali ke Daftar Tes
+                            </a>
                         </div>
                     </div>
-
-                    <button @click="darkMode = !darkMode"
-                        class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
-                        <svg x-show="!darkMode" class="w-5 h-5" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
-                            </path>
-                        </svg>
-                        <svg x-show="darkMode" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
-                            </path>
-                        </svg>
-                    </button>
                 </div>
             </div>
-        </header>
 
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
-                <h1 class="text-3xl font-bold mb-4 text-center text-blue-700 dark:text-blue-500">Hasil Tes Anda</h1>
-                <h2 class="text-2xl font-semibold mb-6 text-center text-gray-800 dark:text-gray-200">{{ $quiz->title }}
-                </h2>
-
-                {{-- Menampilkan Total Skor --}}
-                <p class="text-xl font-bold text-center mb-6">Total Poin Anda: <span
-                        class="text-green-600">{{ $totalScore }}</span></p>
-                <p class="text-md text-center mb-6 text-gray-700 dark:text-gray-300">Jumlah soal dijawab:
-                    {{ $userAnswers->count() }} dari {{ $totalQuestions }}
-                </p>
-
-                {{-- Tampilkan Kategori --}}
-                <div class="bg-blue-50 border-l-4 border-blue-500 text-blue-800 p-4 mb-6 dark:bg-blue-900/20 dark:border-blue-700 dark:text-blue-300"
-                    role="alert">
-                    <p class="font-bold">Kategori Hasil Anda:</p>
-                    <p class="text-2xl font-bold">{{ $category }}</p>
-                    <p class="mt-2">{{ $recommendation }}</p>
+            {{-- glow tengah bawah --}}
+            <div class="absolute inset-x-0 top-[calc(100%-40rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(10%-8rem)]"
+                aria-hidden="true">
+                <div class="isolation right-[calc(50%+3rem)] aspect-1155/678 w-144.5 -translate-x-1/2 bg-gradient-to-tr from-[#46ff21] to-[#a0ffbc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-288.75"
+                    style="clip-path: polygon(34.1% 74.1%, 100% 31.6%, 67.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
                 </div>
-
-                <h3 class="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">Detail Jawaban Anda:</h3>
-                <div class="space-y-6">
-                    @foreach ($userAnswers as $userAnswer)
-                        <div class="border-b pb-4 border-gray-200 dark:border-gray-700">
-                            <p class="font-semibold text-lg mb-2 text-gray-900 dark:text-white">{{ $loop->iteration }}.
-                                {{ $userAnswer->question->question_text }}</p>
-                            <p class="text-gray-700 dark:text-gray-300">
-                                Anda memilih: <span
-                                    class="font-medium text-blue-700 dark:text-blue-400">{{ $userAnswer->selectedOption->option_text ?? 'Tidak memilih opsi' }}</span>
-                                ({{ $userAnswer->selectedOption->points ?? 0 }} poin)
-                            </p>
-                            {{-- Opsional: Tampilkan semua opsi dengan poinnya agar user bisa melihat --}}
-                            <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-400 mt-2">
-                                @foreach ($userAnswer->question->options->sortBy('points', SORT_NUMERIC, true) as $option)
-                                    <li
-                                        class="{{ $userAnswer->selectedOption && $userAnswer->selectedOption->id === $option->id ? 'font-bold text-blue-700 dark:text-blue-400' : '' }}">
-                                        {{ $option->option_text }} ({{ $option->points }} poin)
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endforeach
-                </div>
-
-                <div class="mt-8 text-center">
-                    <a href="{{ route('quizzes.index') }}"
-                        class="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700 transition duration-300">
-                        Kembali ke Daftar Tes
-                    </a>
+            </div>
+            <div class="absolute inset-x-0 top-[calc(100%-40rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-78rem)]"
+                aria-hidden="true">
+                <div class="relative left-[calc(50%+3rem)] aspect-1155/678 w-144.5 -translate-x-1/2 bg-gradient-to-tr from-[#46ff21] to-[#a0ffbc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-288.75"
+                    style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)">
                 </div>
             </div>
         </div>
     </div>
-
-    {{-- Vite JS (Jika Anda tetap ingin memakainya, meskipun CDN sudah ada) --}}
-    {{-- @vite('resources/js/app.js') --}}
-</body>
-
-</html>
+</x-layout>
