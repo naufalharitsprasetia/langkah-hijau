@@ -12,8 +12,10 @@
                     <p class="text-xl text-black-500 dark:text-gray-400 font-bold">Our Team</p>
                     <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white"
                         x-text="members[current] ? members[current].name : ''"></h1>
-                    <h2 class="text-lg text-gray-700 dark:text-gray-300 font-medium" x-text="members[current]?.position"></h2>
-                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed" x-text="members[current]?.description"></p>
+                    <h2 class="text-lg text-gray-700 dark:text-gray-300 font-medium" x-text="members[current]?.position">
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed" x-text="members[current]?.description">
+                    </p>
                 </div>
 
                 <!-- Image + Navigation -->
@@ -68,8 +70,7 @@
         function teamSlider() {
             return {
                 current: 0,
-                members: [
-                    {
+                members: [{
                         name: 'Vicky Tsui',
                         position: 'Vice President of Sales & Marketing',
                         description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus veritatis, similique hic, pariatur id sunt excepturi placeat aliquam adipisci et quia, soluta modi odio magni molestiae nihil illo fugiat officiis! ',
@@ -109,7 +110,7 @@
             };
         }
     </script>
-    
+
 
 
 </x-layout>

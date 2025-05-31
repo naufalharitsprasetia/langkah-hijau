@@ -37,11 +37,9 @@ Route::get('/kontak', [HomeController::class, 'kontak'])->name('home.kontak');
 
 // Quiz
 Route::get('/quizzes', [QuizController::class, 'index'])->name('quizzes.index');
-Route::middleware(['auth'])->group(function () {
-    Route::get('/quizzes/{quiz}/take', [QuizController::class, 'start'])->name('quizzes.take'); // Ganti nama rute menjadi 'take' atau biarkan 'start'
-    Route::post('/quizzes/{quiz}/submit-all-answers', [QuizController::class, 'submitAnswer'])->name('quizzes.submit_answers');
-    Route::get('/quizzes/{quiz}/results', [QuizController::class, 'results'])->name('quizzes.results');
-});
+Route::get('/quizzes/{quiz}/start', [QuizController::class, 'start'])->name('quizzes.start')->middleware('auth');
+Route::post('/quizzes/{quiz}/submit', [QuizController::class, 'submitAnswer'])->name('quizzes.submit')->middleware('auth');
+Route::get('/quizzes/{quiz}/results', [QuizController::class, 'results'])->name('quizzes.results')->middleware('auth');
 
 // Auth for guest
 Route::middleware('guest')->group(function () {

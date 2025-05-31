@@ -128,7 +128,8 @@
 </head>
 
 <body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-    <div x-data="quizApp({{ $questions }})" class="min-h-screen relative overflow-hidden">
+    {{-- Meneruskan quiz ID ke Alpine data untuk localStorage key --}}
+    <div x-data="quizApp({{ $questions }}, {{ $quiz->id }})" class="min-h-screen relative overflow-hidden">
         {{-- Glow effect di atas --}}
         <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
             aria-hidden="true">
@@ -185,7 +186,8 @@
                 </div>
             </div>
 
-            <form @submit.prevent="submitQuiz" action="{{ route('quizzes.submit_answers', $quiz->id) }}" method="POST"
+            {{-- Form untuk submit jawaban, sekarang menggunakan Alpine.js submitQuiz() --}}
+            <form @submit.prevent="submitQuiz" action="{{ route('quizzes.submit', $quiz->id) }}" method="POST"
                 class="space-y-8">
                 @csrf
 
@@ -259,7 +261,7 @@
                     <button type="submit" x-show="Object.keys(answers).length === questions.length"
                         :disabled="Object.keys(answers).length !== questions.length"
                         :class="{ 'opacity-50 cursor-not-allowed': Object.keys(answers).length !== questions.length }"
-                        class="px-8 py-4 bg-hijautua text-white rounded-xl shadow-lg hover:bg-hijaumuda focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hijautua transition-all duration-300 text-xl font-bold">
+                        class="px-8 py-4 bg-hijautua text-white rounded-xl shadow-lg hover:bg-hijaumuda focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hijautua transition-all duration-300 text-xl font-bold">
                         Selesai Quiz
                     </button>
                 </div>
@@ -276,17 +278,23 @@
     </div>
 
     <script>
-        function quizApp(initialQuestions) {
+        function quizApp(initialQuestions, quizId) { // Menerima quizId sebagai parameter
             return {
                 answers: {},
                 questions: initialQuestions,
+                quizId: quizId, // Simpan quizId di data Alpine
                 currentQuestion: initialQuestions[0] ? initialQuestions[0].id : null,
 
                 init() {
-                    // Coba muat jawaban dari localStorage jika ada (untuk melanjutkan quiz yang belum selesai)
-                    const savedAnswers = localStorage.getItem(`quiz_${this.questions[0].quiz_id}_answers`);
+                    // Gunakan quizId untuk key localStorage yang unik per quiz
+                    const savedAnswers = localStorage.getItem(`quiz_${this.quizId}_answers`);
                     if (savedAnswers) {
-                        this.answers = JSON.parse(savedAnswers);
+                        try {
+                            this.answers = JSON.parse(savedAnswers);
+                        } catch (e) {
+                            console.error("Error parsing saved answers from localStorage:", e);
+                            this.answers = {}; // Reset jika ada error parsing
+                        }
                     }
 
                     this.$nextTick(() => {
@@ -299,7 +307,7 @@
                 setAnswer(questionId, optionId) {
                     this.answers[questionId] = optionId;
                     // Simpan jawaban ke localStorage setiap kali ada perubahan
-                    localStorage.setItem(`quiz_${this.questions[0].quiz_id}_answers`, JSON.stringify(this.answers));
+                    localStorage.setItem(`quiz_${this.quizId}_answers`, JSON.stringify(this.answers));
                     this.$nextTick(() => {
                         this.scrollToNextUnanswered(questionId);
                     });
@@ -327,10 +335,6 @@
                         }
                     }
 
-                    if (!nextUnansweredQuestion && Object.keys(this.answers).length < this.questions.length) {
-                        nextUnansweredQuestion = this.questions.find(q => !this.answers[q.id]);
-                    }
-
                     if (nextUnansweredQuestion) {
                         const element = document.getElementById(`question-${nextUnansweredQuestion.id}`);
                         if (element) {
@@ -340,6 +344,7 @@
                             });
                         }
                     } else if (Object.keys(this.answers).length === this.questions.length) {
+                        // Ini adalah fitur auto-scroll ke tombol submit
                         const submitButton = document.querySelector(
                             'button[type="submit"][x-show="Object.keys(answers).length === questions.length"]');
                         if (submitButton) {
@@ -362,15 +367,13 @@
                     console.log('Isi formattedAnswers yang akan dikirim:', formattedAnswers);
 
                     const form = this.$el;
-                    // Ambil CSRF token dari meta tag
                     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
 
                     fetch(form.action, {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
-                                'X-CSRF-TOKEN': csrfToken // Menggunakan CSRF token dari meta tag
+                                'X-CSRF-TOKEN': csrfToken
                             },
                             body: JSON.stringify({
                                 answers: formattedAnswers
@@ -378,17 +381,17 @@
                         })
                         .then(response => {
                             if (!response.ok) {
-                                // Jika respons bukan 2xx (misal 422, 500), coba parse JSON error
                                 return response.json().then(err => Promise.reject(err));
                             }
                             return response.json();
                         })
                         .then(data => {
                             if (data.redirect) {
-                                // Bersihkan localStorage setelah berhasil submit
-                                localStorage.removeItem(`quiz_${this.questions[0].quiz_id}_answers`);
+                                // Bersihkan localStorage setelah berhasil submit untuk quiz ini
+                                localStorage.removeItem(`quiz_${this.quizId}_answers`);
                                 window.location.href = data.redirect;
                             } else if (data.errors) {
+                                // Ini bisa terjadi jika ada validasi dari backend yang terlewat di frontend
                                 alert('Terjadi kesalahan: ' + JSON.stringify(data.errors));
                             }
                         })
@@ -396,15 +399,13 @@
                             console.error('Error:', error);
                             let errorMessage = 'Terjadi kesalahan saat mengirim quiz. Silakan coba lagi.';
 
-                            // Handle berbagai jenis error
                             if (error instanceof TypeError) {
                                 errorMessage = "Terjadi masalah koneksi atau server tidak merespons.";
                             } else if (error.errors) { // Validasi Laravel (422 Unprocessable Entity)
-                                // Ambil pesan error dari Laravel Validator
                                 const validationErrors = Object.values(error.errors).flat().join('\n');
                                 errorMessage = 'Validasi gagal:\n' + validationErrors;
                             } else if (error.message) { // Pesan error dari server (catch di controller)
-                                errorMessage += '\n' + error.message;
+                                errorMessage = error.message; // Hanya tampilkan pesan dari server jika ada
                             }
 
                             alert(errorMessage);
