@@ -16,7 +16,13 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@font-face {
+    font-family: "arabic-lpmq";
+    src: url("/fonts/LPMQIsepMisbah.ttf");
+}
+
 @theme {
+    --font-arabic: "arabic-lpmq";
     --font-sans: InterVariable, sans-serif, "Instrument Sans", ui-sans-serif,
         system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
         "Segoe UI Symbol", "Noto Color Emoji";

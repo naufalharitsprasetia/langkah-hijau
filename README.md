@@ -126,9 +126,9 @@ Jika mengalami kendala, hubungi saya:
 
 |          Nama          |      NIM     |       Peran            |                                                          Contact Link                                                            |
 | :--------------------: | :----------: | :----------------:     | :----------------------------------------------------------------------------------------------------------------------------:   |
-| Naufal Harits Prasetia | 432022611051 |  Full-stack Developer  | [LinkedIn](https://www.linkedin.com/in/naufal-harits-prasetia-35b443283/) or [GitHub](https://github.com/naufalharitsprasetia)   |
-|      Rizky Cahyono     | 442023611000 |  Full-stack Developer  |      [LinkedIn](https://www.linkedin.com/in/rizky-cahyono-putra-67367a2a0/) or [GitHub](https://github.com/rizkycahyono97)       |
-|      Iqbal Maulana     | 442023611000 |  Full-stack Developer  |        [LinkedIn](https://www.linkedin.com/in/iqbal-maulana-dev/) or [GitHub](https://github.com/cardinaldeacre)                 |
+| Naufal Harits Prasetia | 432022611051 |  Fullstack Developer  | [LinkedIn](https://www.linkedin.com/in/naufal-harits-prasetia-35b443283/) or [GitHub](https://github.com/naufalharitsprasetia)   |
+|      Rizky Cahyono     | 442023611012 |  Backend Developer  |      [LinkedIn](https://www.linkedin.com/in/rizky-cahyono-putra-67367a2a0/) or [GitHub](https://github.com/rizkycahyono97)       |
+|      Iqbal Maulana     | 442023611094 |  Frontend Developer  |        [LinkedIn](https://www.linkedin.com/in/iqbal-maulana-dev/) or [GitHub](https://github.com/cardinaldeacre)                 |
 
 ### 🧪 Tech Stack
 -Framework: Laravel

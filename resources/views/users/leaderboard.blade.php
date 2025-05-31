@@ -2,6 +2,7 @@
 $now = \Carbon\Carbon::now();
 $nextSchedule = \Carbon\Carbon::now()->next(\Carbon\Carbon::SUNDAY)->setTime(0, 0);
 $diffInDays = round($now->diffInDays($nextSchedule));
+$diffInHours = ceil($now->diffInRealHours($nextSchedule));
 @endphp
 <x-sidebar.layout :title="$title" :active="$active">
     <!-- Konten Utama -->
@@ -41,7 +42,9 @@ $diffInDays = round($now->diffInDays($nextSchedule));
                         <p class="text-gray-600 dark:text-gray-400 text-sm mb-1">{{ count($topUsers) }} teratas akan
                             naik ke Tier berikutnya
                         </p>
-                        <p class="text-yellow-500 font-semibold text-sm">{{ $diffInDays }} hari lagi</p>
+                        <p class="text-yellow-500 font-semibold text-sm">
+                            {{ $diffInDays == 0 ? "$diffInHours jam lagi" : "$diffInDays hari lagi" }}
+                        </p>
                     </div>
                 </div>
 

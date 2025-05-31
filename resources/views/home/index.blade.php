@@ -175,6 +175,19 @@
                 </div>
             </div>
         </div>
+        {{-- surat Fusilat , ayat 53 --}}
+        <div class="mx-auto text-center py-14 md:px-8 max-w-4xl mb-6" data-aos="fade-down" data-aos-easing="linear"
+            data-aos-duration="1500">
+            <p class="text-zinc-900  dark:text-gray-100 font-arabic font-semibold text-2xl/[3.5rem] md:text-3xl/[3.5rem] lg:text-4xl/[4rem]"
+                dir="rtl">وَلَا تُفْسِدُوْا
+                فِى الْاَرْضِ بَعْدَ اِصْلَاحِهَا وَادْعُوْهُ خَوْفًا وَّطَمَعًاۗ اِنَّ رَحْمَتَ اللّٰهِ قَرِيْبٌ مِّنَ
+                الْمُحْسِنِيْنَ</p>
+            <p class="terjemahannya text-hijautua dark:text-hijaumuda text-sm mt-6">“Janganlah kamu berbuat kerusakan di
+                bumi
+                setelah diatur dengan baik. Berdoalah
+                kepada-Nya dengan rasa takut dan penuh harap. Sesungguhnya rahmat Allah sangat dekat dengan orang-orang
+                yang berbuat baik.” (Q.S. Al-A’raf Ayat 56)</p>
+        </div>
         {{-- Mitra --}}
         <div class="py-6 sm:py-10 mb-20" id="mitra">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
