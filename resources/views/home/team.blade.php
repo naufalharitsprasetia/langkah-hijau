@@ -12,8 +12,41 @@
                     <p class="text-xl text-black-500 dark:text-gray-400 font-bold">Our Team</p>
                     <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white"
                         x-text="members[current] ? members[current].name : ''"></h1>
-                    <h2 class="text-lg text-gray-700 dark:text-gray-300 font-medium" x-text="members[current]?.position"></h2>
-                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed" x-text="members[current]?.description"></p>
+                    <h2 class="text-lg text-gray-700 dark:text-gray-300 font-medium" x-text="members[current]?.position">
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-300 leading-relaxed" x-text="members[current]?.description">
+                    </p>
+
+                    {{-- social media --}}
+                    <div class="flex gap-4 mt-4 text-gray-600 dark:text-gray-300 text-3xl">
+                        <template x-if="members[current]?.socials?.linkedin">
+                            <a :href="members[current].socials.linkedin" target="_blank" class="hover:text-blue-600 transition">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </template>
+                        <template x-if="members[current]?.socials?.github">
+                            <a :href="members[current].socials.github" target="_blank" class="hover:text-black dark:hover:text-white transition">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </template>
+                        <template x-if="members[current]?.socials?.instagram">
+                            <a :href="members[current].socials.instagram" target="_blank" class="hover:text-pink-500 transition">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </template>
+                        <template x-if="members[current]?.socials?.gmail">
+                            <a :href="members[current].socials.gmail" target="_blank" class="hover:text-red-600 transition">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </template>
+                        <template x-if="members[current]?.socials?.whatsapp">
+                            <a :href="members[current].socials.whatsapp" target="_blank" class="hover:text-green-500 transition">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </template>
+                    </div>
+                    
+
                 </div>
 
                 <!-- Image + Navigation -->
@@ -68,27 +101,47 @@
         function teamSlider() {
             return {
                 current: 0,
-                members: [
-                    {
+                members: [{
                         name: 'Rizky C. Putra',
                         position: 'Front-End Web Developer',
                         description: 'Sebagai seorang web developer dan mahasiswa , Anda memiliki kombinasi kemampuan teknis dan akademik yang kuat. Bergabung sebagai staff IT di PPTIK (Pusat Pengembangan Teknologi Informasi dan Komunikasi) UNIDA Gontor , Anda turut berkontribusi dalam pengembangan sistem informasi, pengelolaan infrastruktur TI, serta penerapan teknologi untuk mendukung proses pendidikan dan administrasi di kampus. Dengan latar belakang akademik yang solid dan pengalaman praktis di dunia pemrograman web, Anda menjadi aset penting dalam memajukan digitalisasi institusi.',
                         short: 'Front-End',
-                        image: '{{ asset('img/tentang/rizky.png') }}'
+                        image: '{{ asset('img/tentang/rizky.png') }}',
+                        socials: {
+                            linkedin: 'https://linkedin.com/in/rizky',
+                            github: 'https://github.com/rizky',
+                            instagram: 'https://instagram.com/rizky',
+                            gmail: 'mailto:rizky@example.com',
+                            whatsapp: 'https://wa.me/6281234567890'
+                        }
                     },
                     {
                         name: 'Naufal Harits Prasetia ',
                         position: 'Full-Stack Web Developer',
-                        description: 'Naufal Harits Prasetia lahir dan dibesarkan di Subang, Jawa Barat. Sejak usia muda, Naufal menunjukkan minat yang besar dalam bidang teknologi dan pendidikan, yang kemudian membawanya untuk menempuh pendidikan di Pondok Modern Darussalam Gontor. Di sana, ia menamatkan jenjang pendidikan SMP dan SMA, mendapatkan landasan yang kuat dalam ilmu agama dan pengetahuan umum. Setelah menyelesaikan pendidikan di Gontor, Naufal melanjutkan studi di Universitas Darussalam (UNIDA) Gontor, dengan memilih Program Studi Teknik Informatika. Selama kuliah, Naufal semakin mengasah keahliannya di bidang pemrograman web, menjadi ahli dalam berbagai bahasa dan teknologi pemrograman yang terkait. Dengan pengalaman dan prestasinya yang gemilang, Naufal Harits Prasetia terus berkomitmen untuk mengembangkan keterampilan dan berkontribusi dalam bidang teknologi informasi. Ia dapat dihubungi melalui email: naufalharisprasetia@gmail.com.',
+                        description: 'Naufal Harits Prasetia, mahasiswa Teknik Informatika Universitas Darussalam Gontor angkatan 2022, memiliki ketertarikan dan keahlian mendalam dalam pengembangan web dan inovasi teknologi, dibuktikan melalui berbagai kemenangan kompetisi. Pengalamannya mencakup pengembangan website tafsil.id berbasis Laravel untuk penafsiran Al-Qur’an bertema sains melalui penelitian bersama dosen, serta partisipasi di Bangkit Academy 2024 (machine learning). Mahir dalam Laravel dan arsitektur MVC, ia antusias menggabungkan solusi web modern dengan rekayasa perangkat lunak yang solid untuk menciptakan solusi digital berdampak.',
                         short: 'Full-Stack',
-                        image: '{{ asset('img/tentang/haris.png') }}'
+                        image: '{{ asset('img/tentang/haris.png') }}',
+                        socials: {
+                            linkedin: 'https://linkedin.com/in/rizky',
+                            github: 'https://github.com/rizky',
+                            instagram: 'https://instagram.com/rizky',
+                            gmail: 'mailto:rizky@example.com',
+                            whatsapp: 'https://wa.me/6281234567890'
+                        }
                     },
                     {
                         name: 'Iqbal Maulanan',
                         position: 'Back-End Web Developer',
                         description: 'Sebagai seorang web developer dan mahasiswa , Anda memiliki kombinasi kemampuan teknis dan akademik yang kuat. Bergabung sebagai staff IT di PPTIK (Pusat Pengembangan Teknologi Informasi dan Komunikasi) UNIDA Gontor , Anda turut berkontribusi dalam pengembangan sistem informasi, pengelolaan infrastruktur TI, serta penerapan teknologi untuk mendukung proses pendidikan dan administrasi di kampus. Dengan latar belakang akademik yang solid dan pengalaman praktis di dunia pemrograman web, Anda menjadi aset penting dalam memajukan digitalisasi institusi.',
                         short: 'Back-End',
-                        image: '{{ asset('img/tentang/person-1.png') }}'
+                        image: '{{ asset('img/tentang/person-1.png') }}',
+                        socials: {
+                            linkedin: 'https://linkedin.com/in/rizky',
+                            github: 'https://github.com/rizky',
+                            instagram: 'https://instagram.com/rizky',
+                            gmail: 'mailto:rizky@example.com',
+                            whatsapp: 'https://wa.me/6281234567890'
+                        }
                     },
                 ],
                 init() {
@@ -109,7 +162,7 @@
             };
         }
     </script>
-    
+
 
 
 </x-layout>
