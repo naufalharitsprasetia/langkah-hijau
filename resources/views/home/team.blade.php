@@ -1,7 +1,7 @@
 <x-layout :title="$title" :active="$active">
 
     <div x-data="teamSlider()" x-init="init()"
-        class="relative bg-green-100 dark:bg-gray-900 w-screen h-screen flex flex-col items-center justify-center overflow-hidden px-4">
+        class="relative w-screen h-screen bg-green-100 dark:bg-gray-900 flex flex-col items-center justify-center overflow-hidden px-4">
 
         <!-- Profile Section -->
         <div class="relative z-10 max-w-5xl w-full bg-transparent pt-12">
@@ -70,25 +70,25 @@
                 current: 0,
                 members: [
                     {
-                        name: 'Vicky Tsui',
-                        position: 'Vice President of Sales & Marketing',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus veritatis, similique hic, pariatur id sunt excepturi placeat aliquam adipisci et quia, soluta modi odio magni molestiae nihil illo fugiat officiis! ',
-                        short: 'VP of Marketing',
+                        name: 'Rizky C. Putra',
+                        position: 'Front-End Web Developer',
+                        description: 'Sebagai seorang web developer dan mahasiswa , Anda memiliki kombinasi kemampuan teknis dan akademik yang kuat. Bergabung sebagai staff IT di PPTIK (Pusat Pengembangan Teknologi Informasi dan Komunikasi) UNIDA Gontor , Anda turut berkontribusi dalam pengembangan sistem informasi, pengelolaan infrastruktur TI, serta penerapan teknologi untuk mendukung proses pendidikan dan administrasi di kampus. Dengan latar belakang akademik yang solid dan pengalaman praktis di dunia pemrograman web, Anda menjadi aset penting dalam memajukan digitalisasi institusi.',
+                        short: 'Front-End',
+                        image: '{{ asset('img/tentang/rizky.png') }}'
+                    },
+                    {
+                        name: 'Naufal Harits Prasetia ',
+                        position: 'Full-Stack Web Developer',
+                        description: 'Naufal Harits Prasetia lahir dan dibesarkan di Subang, Jawa Barat. Sejak usia muda, Naufal menunjukkan minat yang besar dalam bidang teknologi dan pendidikan, yang kemudian membawanya untuk menempuh pendidikan di Pondok Modern Darussalam Gontor. Di sana, ia menamatkan jenjang pendidikan SMP dan SMA, mendapatkan landasan yang kuat dalam ilmu agama dan pengetahuan umum. Setelah menyelesaikan pendidikan di Gontor, Naufal melanjutkan studi di Universitas Darussalam (UNIDA) Gontor, dengan memilih Program Studi Teknik Informatika. Selama kuliah, Naufal semakin mengasah keahliannya di bidang pemrograman web, menjadi ahli dalam berbagai bahasa dan teknologi pemrograman yang terkait. Dengan pengalaman dan prestasinya yang gemilang, Naufal Harits Prasetia terus berkomitmen untuk mengembangkan keterampilan dan berkontribusi dalam bidang teknologi informasi. Ia dapat dihubungi melalui email: naufalharisprasetia@gmail.com.',
+                        short: 'Full-Stack',
+                        image: '{{ asset('img/tentang/haris.png') }}'
+                    },
+                    {
+                        name: 'Iqbal Maulanan',
+                        position: 'Back-End Web Developer',
+                        description: 'Sebagai seorang web developer dan mahasiswa , Anda memiliki kombinasi kemampuan teknis dan akademik yang kuat. Bergabung sebagai staff IT di PPTIK (Pusat Pengembangan Teknologi Informasi dan Komunikasi) UNIDA Gontor , Anda turut berkontribusi dalam pengembangan sistem informasi, pengelolaan infrastruktur TI, serta penerapan teknologi untuk mendukung proses pendidikan dan administrasi di kampus. Dengan latar belakang akademik yang solid dan pengalaman praktis di dunia pemrograman web, Anda menjadi aset penting dalam memajukan digitalisasi institusi.',
+                        short: 'Back-End',
                         image: '{{ asset('img/tentang/person-1.png') }}'
-                    },
-                    {
-                        name: 'Alex Tan',
-                        position: 'CTO',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus veritatis, similique hic, pariatur id sunt excepturi placeat aliquam adipisci et quia, soluta modi odio magni molestiae nihil illo fugiat officiis! ',
-                        short: 'CTO',
-                        image: '{{ asset('img/tentang/person-2.png') }}'
-                    },
-                    {
-                        name: 'Jane Liu',
-                        position: 'Chief Designer',
-                        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus veritatis, similique hic, pariatur id sunt excepturi placeat aliquam adipisci et quia, soluta modi odio magni molestiae nihil illo fugiat officiis!',
-                        short: 'Designer',
-                        image: '{{ asset('img/tentang/person-3.png') }}'
                     },
                 ],
                 init() {
