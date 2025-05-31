@@ -7,29 +7,37 @@
 
 ## 📱 Deskripsi Aplikasi
 
-**LangkahHijau** adalah aplikasi web interaktif berbasis Laravel yang mengedukasi dan mengajak masyarakat untuk menjalani gaya hidup sehat dan ramah lingkungan melalui pendekatan gamifikasi. Pengguna dapat mengikuti tantangan harian, menjawab kuis, melacak kebiasaan, dan mendapatkan poin serta badge sebagai bentuk apresiasi atas kontribusinya terhadap lingkungan.
+**LangkahHijau** adalah aplikasi edukatif interaktif yang menggabungkan gaya hidup sehat dan ramah lingkungan dengan pendekatan gamifikasi. Dikembangkan untuk menjawab rendahnya kesadaran generasi muda terhadap isu lingkungan dan kesehatan, aplikasi ini mendorong aksi nyata sehari-hari seperti hemat energi, zero waste, dan aktivitas fisik melalui fitur tantangan, kuis, serta sistem Green Points dan badge. Dengan konten edukatif yang ringan dan relevan, leaderboard mingguan, dan chatbot HijauAI sebagai asisten pintar, LangkahHijau menciptakan pengalaman belajar yang menyenangkan sekaligus mendorong perubahan kebiasaan positif secara kolektif. Inovasi utamanya terletak pada integrasi aksi nyata, edukasi praktis, dan penghargaan digital dalam satu platform yang saling terhubung, menjadikannya bukan sekadar aplikasi, tetapi gerakan digital untuk kehidupan yang lebih sehat dan bumi yang lebih lestari.
+
+- Dokumentasi Sourcecode : https://github.com/naufalharitsprasetia/langkah-hijau
+
+- Website (Demo) : https://langkahhijau.site
 
 ---
 
 ## 🚀 Fitur Utama
 
-- 🎯 **Green Challenge Harian dan Mingguan**  
+- 🎯 **Tantangan Hijau (Tantangan Harian/Mingguan)**  
   Lakukan aksi hijau setiap hari dan kumpulkan poin dari tantangan yang kamu selesaikan.
 
-- 🧠 **Quiz Harian**  
+- 🌎 **Eco-Quiz (Kuis Edukatif):**  
   Uji pengetahuan dan kesadaranmu soal lingkungan dan gaya hidup sehat melalui kuis singkat.
 
-- 🏅 **Sistem Green Points & Badge**  
-  Kumpulkan poin dari kuis dan challenge untuk membuka badge/gelar eksklusif.
+- 🏅 **Green Points & Badge System**  
+  Sistem poin dan badge eksklusif sebagai bentuk apresiasi untuk setiap aksi hijau pengguna.
 
-- 📚 **Artikel Edukasi & Tips**  
-  Baca artikel ringkas yang inspiratif seputar hidup sehat dan peduli lingkungan.
+- 📚 **Edu-Zone (Artikel Edukasi & Tips Hijau)**  
+  Konten informatif seputar gaya hidup sehat, ramah lingkungan, dan aksi hijau yang mudah diterapkan.
 
-- 📊 **Jejak Karbon Harian** *(opsional)*  
-  Lacak dampak lingkungan dari gaya hidupmu sehari-hari (transportasi, konsumsi, dll).
+- 📆 **Green Events**  
+  Fitur yang menampilkan berbagai acara atau kegiatan bertema lingkungan dan gaya hidup sehat, seperti seminar, talk show, gotong royong, dan lain-lain. Pengguna bisa melihat daftar event, menambahkan jadwal ke Google Calendar, serta mengajukan acara sendiri melalui aplikasi kemudian menunggu admin untuk menyetujuinya.
 
-- 🗺️ **Peta Hijau Lokal** *(opsional)*  
-  Temukan tempat daur ulang, refill station, taman, dan komunitas hijau di sekitarmu.
+- 🏆 **Leaderboard & Tier**  
+  Sistem peringkat yang menampilkan pencapaian pengguna berdasarkan akumulasi Green Points. Tier (level) pengguna diperbarui setiap minggu untuk mendorong semangat kompetitif yang sehat dan berkelanjutan.
+
+- ✨ **HijauAI**  
+  HijauAI adalah asisten virtual di aplikasi LangkahHijau yang membantu menjawab pertanyaan seputar gaya hidup sehat dan ramah lingkungan. Mulai dari zero waste, pengurangan emisi, hingga penjelasan tantangan dan sistem Green Points. Jawabannya selalu singkat, jelas, dan sesuai tema.
+
 ---
 
 ## ✅ Persyaratan
@@ -137,11 +145,11 @@ Jika mengalami kendala, hubungi saya:
 
 -Database: MySQL / PostgreSQL / SQLite
 
--Deployment: Laravel Cloud
+-Deployment: Niagahoster (https://langkahhijau.site)
 
 ### 📜 Lisensi & Kontribusi
 
-Proyek ini dibuat sebagai bagian dari partisipasi lomb  a dan penelitian edukatif.
+Proyek ini dibuat sebagai bagian dari partisipasi lomba.
 
 Saya tidak mengizinkan penggunaan aplikasi ini secara langsung untuk kepentingan pribadi/komersial tanpa izin.
 Anda diperbolehkan meniru ide atau desain, namun mohon cantumkan referensi berikut:
