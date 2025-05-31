@@ -51,7 +51,7 @@
                         class="relative text-sm/6 font-medium text-gray-700 dark:text-gray-200 cursor-pointer"
                         aria-expanded="false" aria-haspopup="true">
                         <span class="sr-only">Open navbar dropdown menu</span>
-                        Main Features 🔻
+                        Fitur Utama 🔻
                     </button>
                 </div>
                 <div x-show="isDropMain" x-transition:enter="transition ease-out duration-100 transform"
@@ -99,7 +99,8 @@
                     <a href="{{ route('home.kontak') }}"
                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 hover:outline-none"
                         role="menuitem" tabindex="-1" id="user-menu-item-1">Kontak Kami</a>
-                    <a href="{{ route('home.team') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 hover:outline-none"
+                    <a href="{{ route('home.team') }}"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 hover:outline-none"
                         role="menuitem" tabindex="-1" id="user-menu-item-2">Tim Kami</a>
                 </div>
             </div>
