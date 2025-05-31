@@ -22,6 +22,12 @@ class HomeController extends Controller
         $active = 'tentang';
         return view('home.tentang', compact('active', 'title'));
     }
+    public function team()
+    {
+        $title = 'Tim Kami';
+        $active = 'teams';
+        return view('home.team', compact('title', 'active'));
+    }
     public function kontak()
     {
         $title = 'Kontak Kami';

@@ -98,7 +98,7 @@
                     <a href="{{ route('home.kontak') }}"
                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 hover:outline-none"
                         role="menuitem" tabindex="-1" id="user-menu-item-1">Kontak Kami</a>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 hover:outline-none"
+                    <a href="{{ route('home.team') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 hover:outline-none"
                         role="menuitem" tabindex="-1" id="user-menu-item-2">Tim Kami</a>
                 </div>
             </div>
