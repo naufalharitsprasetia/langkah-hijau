@@ -1,7 +1,7 @@
 <x-layout :title="$title" :active="$active">
 
     <div x-data="teamSlider()" x-init="init()"
-        class="relative bg-gray-100 dark:bg-gray-900 min-h-screen flex flex-col items-center justify-center overflow-hidden px-4">
+        class="relative bg-green-100 dark:bg-gray-900 w-screen h-screen flex flex-col items-center justify-center overflow-hidden px-4">
 
         <!-- Profile Section -->
         <div class="relative z-10 max-w-5xl w-full bg-transparent pt-12">
@@ -9,7 +9,7 @@
 
                 <!-- Text Content -->
                 <div class="space-y-4 fade-in">
-                    <p class="text-sm text-gray-500 dark:text-gray-400">Management Team</p>
+                    <p class="text-xl text-black-500 dark:text-gray-400 font-bold">Our Team</p>
                     <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white"
                         x-text="members[current] ? members[current].name : ''"></h1>
                     <h2 class="text-lg text-gray-700 dark:text-gray-300 font-medium" x-text="members[current]?.position"></h2>
@@ -45,7 +45,7 @@
                 <template x-for="(member, index) in members" :key="index">
                     <div class="text-center cursor-pointer" @click="goTo(index)">
                         <div :class="{
-                            'ring-4 ring-blue-500 scale-110': current === index,
+                            'ring-4 ring-green-500 scale-110': current === index,
                             'ring-2 ring-gray-400': current !== index
                         }"
                             class="transition-all duration-300 w-16 h-16 rounded-full overflow-hidden mx-auto mb-2">
@@ -56,16 +56,6 @@
                     </div>
                 </template>
             </div>
-        </div>
-
-
-
-        <!-- Visit Button -->
-        <div class="fixed bottom-6 left-6 z-30">
-            <button
-                class="bg-gray-900 dark:bg-gray-700 text-white px-6 py-3 rounded-full shadow hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                <i class="fas fa-external-link-alt mr-2"></i> Visit site
-            </button>
         </div>
 
     </div>
@@ -82,23 +72,23 @@
                     {
                         name: 'Vicky Tsui',
                         position: 'Vice President of Sales & Marketing',
-                        description: 'Ms. Tsui oversees business development...',
+                        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus veritatis, similique hic, pariatur id sunt excepturi placeat aliquam adipisci et quia, soluta modi odio magni molestiae nihil illo fugiat officiis! ',
                         short: 'VP of Marketing',
                         image: '{{ asset('img/tentang/person-1.png') }}'
                     },
                     {
                         name: 'Alex Tan',
                         position: 'CTO',
-                        description: 'Alex is responsible for tech operations...',
+                        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus veritatis, similique hic, pariatur id sunt excepturi placeat aliquam adipisci et quia, soluta modi odio magni molestiae nihil illo fugiat officiis! ',
                         short: 'CTO',
-                        image: '{{ asset('img/tentang/person-1.png') }}'
+                        image: '{{ asset('img/tentang/person-2.png') }}'
                     },
                     {
                         name: 'Jane Liu',
                         position: 'Chief Designer',
-                        description: 'Jane leads the design innovation team...',
+                        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus veritatis, similique hic, pariatur id sunt excepturi placeat aliquam adipisci et quia, soluta modi odio magni molestiae nihil illo fugiat officiis!',
                         short: 'Designer',
-                        image: '{{ asset('img/tentang/person-1.png') }}'
+                        image: '{{ asset('img/tentang/person-3.png') }}'
                     },
                 ],
                 init() {
