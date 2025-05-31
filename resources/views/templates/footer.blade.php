@@ -50,12 +50,12 @@
             <div>
                 <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Aplikasi</h3>
                 <ul class="space-y-2">
-                    <li><a href="" class="hover:text-gray-900 dark:hover:text-white">Tentang Kami</a></li>
+                    <li><a href="{{ route('home.tentang') }}" class="hover:text-gray-900 dark:hover:text-white">Tentang
+                            Aplikasi</a></li>
                     <li><a href="{{ route('home.kontak') }}"
                             class="hover:text-gray-900 dark:hover:text-white">Kontak</a></li>
-                    <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">Tim Kami</a></li>
-                    <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">Support</a></li>
-                    <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">Careers</a></li>
+                    <li><a href="{{ route('home.team') }}" class="hover:text-gray-900 dark:hover:text-white">Tim
+                            Kami</a></li>
                 </ul>
             </div>
 
@@ -74,12 +74,14 @@
             <div>
                 <h3 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">Fitur</h3>
                 <ul class="space-y-2">
-                    <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">Cek Gaya Hidup</a></li>
+                    <li><a href="{{ route('quizzes.index') }}"
+                            class="hover:text-gray-900 dark:hover:text-white">Eco-Quiz</a></li>
                     <li><a href="{{ route('challenges.index') }}"
-                            class="hover:text-gray-900 dark:hover:text-white">Tantangan</a></li>
+                            class="hover:text-gray-900 dark:hover:text-white">Tantangan Hijau</a></li>
                     <li><a href="{{ route('post.index') }}"
                             class="hover:text-gray-900 dark:hover:text-white">Edu-Zone</a></li>
-                    <li><a href="#" class="hover:text-gray-900 dark:hover:text-white">Green Event</a></li>
+                    <li><a href="{{ route('event.index') }}" class="hover:text-gray-900 dark:hover:text-white">Green
+                            Events</a></li>
                     <li><a href="{{ route('hijau-ai.index') }}" class="hover:text-gray-900 dark:hover:text-white">Hijau
                             AI</a></li>
                 </ul>

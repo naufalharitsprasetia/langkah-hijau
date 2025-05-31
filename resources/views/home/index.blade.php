@@ -45,7 +45,7 @@
             <div class="hidden sm:mb-8 sm:flex sm:justify-center">
                 <div
                     class="relative rounded-full px-3 py-1 text-sm/6 text-gray-600 dark:text-gray-300 ring-1 ring-gray-900/10 hover:ring-gray-900/20 dark:ring-gray-100/10 dark:hover:ring-gray-100/20">
-                    Cek gaya hidupmu, hijaukan langkahmu! <a href="#"
+                    Cek gaya hidupmu, hijaukan langkahmu! <a href="{{ route('quizzes.index') }}"
                         class="font-semibold text-hijautua dark:text-hijaumuda hover:opacity-85"><span
                             class="absolute inset-0" aria-hidden="true"></span>Cek Sekarang <span
                             aria-hidden="true">&rarr;</span></a>
