@@ -12,7 +12,9 @@
                 {{-- Tier Info --}}
                 <div class="tier-info">
                     @foreach ($tiers as $tier)
-                    <div class="tier p-3 rounded-lg  dark:bg-zinc-800 bg-gray-100 text-zinc-900 dark:text-white">
+                    {{-- text-blue-600 dark:text-blue-400' : 'text-gray-700 dark:text-gray-300 --}}
+                    <div
+                        class="tier p-3 rounded-lg {{  $tier->id == auth()->user()->tier->id  ? 'text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-800' : 'bg-gray-200 dark:bg-gray-600/50 text-gray-700 dark:text-gray-300' }}">
                         <h2>Tier Icon : {{ $tier->icon }}</h2>
                         <h2>Tier : {{ $tier->name }}</h2>
                         <p>Urutan : {{ $tier->urutan }}</p>

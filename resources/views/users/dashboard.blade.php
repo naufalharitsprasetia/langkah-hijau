@@ -98,7 +98,9 @@ $persen = 100;
                         </div>
                         <div class="bg-gray-200 dark:bg-zinc-700 px-5 py-3">
                             <div class="text-sm">
-                                <a href="" class="font-medium text-green-600 hover:text-hijaumuda">Lihat detail</a>
+                                <a href="{{ route('user.leaderboard') }}"
+                                    class="font-medium text-green-600 hover:text-hijaumuda">Lihat
+                                    detail</a>
                             </div>
                         </div>
                     </div>
@@ -153,7 +155,8 @@ $persen = 100;
                         </div>
                         <div class="bg-gray-200 dark:bg-zinc-700 px-5 py-3">
                             <div class="text-sm">
-                                <a href="#" class="font-medium text-green-600 hover:text-hijaumuda">Lihat detail</a>
+                                <a href="{{ route('user.tierInfo') }}"
+                                    class="font-medium text-green-600 hover:text-hijaumuda">Lihat detail</a>
                             </div>
                         </div>
                     </div>
@@ -223,7 +226,8 @@ $persen = 100;
                     </div>
                 </div>
 
-                <!-- Pencapaian -->
+                @if(count(auth()->user()->badge) != 0)
+                <!-- User Badges -->
                 <h2 class="text-lg font-semibold text-gray-900 dark:text-white mt-6 mb-3" id="userBadge">User Badges
                 </h2>
                 <div class="user-badges flex gap-3 justify-center items-center mb-4">
@@ -234,6 +238,7 @@ $persen = 100;
                     </div>
                     @endforeach
                 </div>
+                @endif
 
             </div>
         </main>
