@@ -24,7 +24,7 @@ $time = \Carbon\Carbon::parse($event->date_time)->format('H:i');
     <div class="px-4 mx-auto max-w-4xl p-32">
         <a href="{{ route('event.manage') }}" class="text-hijaumuda"><i class="fa-solid fa-arrow-left"></i>
             Kembali</a>
-        <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Create New Event</h2>
+        <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Edit Event</h2>
         {{-- form --}}
         <form method="post" action="{{ route('event.update', $event->id) }}" enctype="multipart/form-data">
             @csrf
@@ -142,7 +142,7 @@ $time = \Carbon\Carbon::parse($event->date_time)->format('H:i');
             </div>
             <button type="submit"
                 class="cursor-pointer inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
-                Create New Event
+                Update Event
             </button>
         </form>
     </div>

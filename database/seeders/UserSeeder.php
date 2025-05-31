@@ -22,8 +22,8 @@ class UserSeeder extends Seeder
         User::create([
             'name' => 'Super Admin',
             'username' => 'superadmin',
-            'email' => 'admin@gmail.com',
-            'password' => Hash::make('bismillah'),
+            'email' => 'admin123@gmail.com',
+            'password' => Hash::make('Bismillah@123'),
             'is_admin' => true,
             'green_points' => 0,
             'created_at' => now(),
@@ -33,7 +33,7 @@ class UserSeeder extends Seeder
             'name' => 'Naufal Harits',
             'username' => 'naufalharits',
             'email' => 'naufal@gmail.com',
-            'password' => Hash::make('bismillah'),
+            'password' => Hash::make('bismillah123'),
             'green_points' => 400,
             'created_at' => now(),
             'tier_id' => $tier2->id

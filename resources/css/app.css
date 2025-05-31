@@ -3,7 +3,7 @@
 @import "animate.css";
 @import "lenis/dist/lenis.css";
 @import "aos/dist/aos.css";
-
+@import "quill/dist/quill.core.css";
 @plugin "flowbite/plugin";
 
 @source "../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php";

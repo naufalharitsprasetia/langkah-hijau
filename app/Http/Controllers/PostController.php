@@ -45,7 +45,6 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
             'title' => 'required|string|max:100',
             'body' => 'required|string',
@@ -95,6 +94,7 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        // dd($request);
         $request->validate([
             'title' => 'required|string|max:100',
             'body' => 'required|string',

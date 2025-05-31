@@ -9,8 +9,13 @@
             <!-- Event Image/Header -->
             <div
                 class="w-72 h-full sm:w-80 lg:w-96 bg-gradient-to-br from-green-100 to-blue-100 dark:from-green-900 dark:to-blue-900 rounded-2xl flex items-center justify-center overflow-hidden">
+                @if($eventUtama->is_demo == true)
                 <img src="{{ asset('img/events/') }}/{{ $event->image }}" alt=""
                     class="w-full h-full object-cover rounded-2xl">
+                @else
+                <img src="{{ asset('storage/' . $event->image) }}" alt=""
+                    class="w-full h-full object-cover rounded-2xl">
+                @endif
             </div>
             <br>
             <!-- Event Type Badge -->

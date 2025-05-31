@@ -31,12 +31,12 @@ class BadgeSeeder extends Seeder
         // 4
         Badge::create([
             'badge' => 'Sustainability Hero',
-            'icon' => '🥇',
+            'icon' => '💎',
         ]);
         // 5
         Badge::create([
             'badge' => 'Green Contributor',
-            'icon' => '🥈',
+            'icon' => '🥦',
         ]);
     }
 }

@@ -1,10 +1,12 @@
 <x-layout :title="'Hasil Quiz - ' . $quiz->title" :active="'quiz'">
-
     <div class="min-h-screen flex justify-center p-4 pt-14 md:mt-0 md:pt-0">
         <div id="container" class="w-full max-w-2xl rounded-3xl overflow-hidden flex flex-col">
             <div class="p-8 md:pt-0 flex-grow flex flex-col">
+                <div class="animasi flex items-center justify-center max-w-7xl mx-auto">
+                    <canvas id="dotLottie-canvas" class="mx-auto w-48 h-48 md:w-64 md:h-64">
+                    </canvas>
+                </div>
                 <div id="content" class="text-center mb-8">
-
                     <div
                         class="w-16 h-16 bg-hijautua rounded-full pt-4 overflow-hidden mx-auto mb-4 flex items-center justify-center">
                         <svg class="w-10 h-10 text-hijautua dark:text-hijaumuda fill-current" viewBox="0 0 24 24"
@@ -48,26 +50,25 @@
                         <h3 class="text-xl font-semibold mb-4 text-gray-800 dark:text-white">Detail Jawabanmu:</h3>
                         <div class="space-y-6">
                             @foreach ($userAnswers as $userAnswer)
-                                <div
-                                    class="border-b pb-4 border-gray-200 dark:border-gray-700 last:border-b-0 last:pb-0">
-                                    <p class="font-semibold text-lg mb-2 text-gray-900 dark:text-white">
-                                        {{ $loop->iteration }}. {{ $userAnswer->question->question_text }}</p>
-                                    <p class="text-gray-700 dark:text-gray-300 mb-2">
-                                        Kamu memilih: <span
-                                            class="font-medium text-green-700 dark:text-green-400">{{ $userAnswer->selectedOption->option_text ?? 'Tidak memilih opsi' }}</span>
-                                        (Poin: {{ $userAnswer->selectedOption->points ?? 0 }})
-                                    </p>
-                                    {{-- Tampilkan semua opsi dengan poinnya agar user bisa melihat --}}
-                                    <p class="font-medium text-gray-800 dark:text-gray-200 mt-3 mb-1">Semua Opsi:</p>
-                                    <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-400">
-                                        @foreach ($userAnswer->question->options->sortByDesc('points') as $option)
-                                            <li
-                                                class="{{ $userAnswer->selectedOption && $userAnswer->selectedOption->id === $option->id ? 'font-bold text-hijautua dark:text-hijaumuda' : '' }}">
-                                                {{ $option->option_text }} ({{ $option->points }} poin)
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </div>
+                            <div class="border-b pb-4 border-gray-200 dark:border-gray-700 last:border-b-0 last:pb-0">
+                                <p class="font-semibold text-lg mb-2 text-gray-900 dark:text-white">
+                                    {{ $loop->iteration }}. {{ $userAnswer->question->question_text }}</p>
+                                <p class="text-gray-700 dark:text-gray-300 mb-2">
+                                    Kamu memilih: <span class="font-medium text-green-700 dark:text-green-400">{{
+                                        $userAnswer->selectedOption->option_text ?? 'Tidak memilih opsi' }}</span>
+                                    (Poin: {{ $userAnswer->selectedOption->points ?? 0 }})
+                                </p>
+                                {{-- Tampilkan semua opsi dengan poinnya agar user bisa melihat --}}
+                                <p class="font-medium text-gray-800 dark:text-gray-200 mt-3 mb-1">Semua Opsi:</p>
+                                <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-400">
+                                    @foreach ($userAnswer->question->options->sortByDesc('points') as $option)
+                                    <li
+                                        class="{{ $userAnswer->selectedOption && $userAnswer->selectedOption->id === $option->id ? 'font-bold text-hijautua dark:text-hijaumuda' : '' }}">
+                                        {{ $option->option_text }} ({{ $option->points }} poin)
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </div>
                             @endforeach
                         </div>
 
@@ -96,4 +97,5 @@
             </div>
         </div>
     </div>
+    @vite('resources/js/lottiequiz.js')
 </x-layout>

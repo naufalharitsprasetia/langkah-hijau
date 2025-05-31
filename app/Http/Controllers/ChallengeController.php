@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Badge;
 use App\Models\Challenge;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -131,12 +132,14 @@ class ChallengeController extends Controller
             $participation->completion_date = now();
             $participation->save();
             // update user green point
+            $badge = Badge::where('id', $challenge->badge->id)->first();
+            $user->badge()->attach([$badge->id]);
             $bonusPoint = $challenge->green_points;
             $user->green_points += $bonusPoint;
             $user->save();
             // Redirect ke halaman tantangan dengan pesan sukses
             return redirect()->route('challenges.index')
-                ->with('success', 'Selamat! Kamu telah menyelesaikan tantangan ini 🎉 dan Mendapatkan Bonus ' . $bonusPoint . ' Green Point 🎉!');
+                ->with('success', 'Selamat! Kamu telah menyelesaikan tantangan ini 🎉 dan Mendapatkan Bonus ' . $bonusPoint . ' Green Point dan Mendapatkan Badge : ' . $badge->icon . ' ' . $badge->badge . ' 🎉!');
         }
 
         // Jika belum selesai semua, kembali ke halaman progress

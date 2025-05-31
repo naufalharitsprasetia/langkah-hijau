@@ -2,10 +2,7 @@
 <div class="relative isolate max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 pb-8 z-30">
     <x-efek.glowatas />
     {{-- title --}}
-    <div class="animasi flex items-center justify-center">
-        <canvas id="dotLottie-canvas" class="mx-auto w-48 h-48 md:w-64 md:h-64">
-        </canvas>
-    </div>
+
     <p data-aos="fade-up" data-aos-duration="2000"
         class="mt-4 mb-16 text-2xl text-center font-bold text-pretty text-gray-900 dark:text-gray-100 sm:text-5xl lg:text-balance">
         Edu-Zone<br><span class="text-hijautua dark:text-hijaumuda text-lg sm:text-xl font-normal">Temukan inspirasi
@@ -20,8 +17,13 @@
             <div class="w-full xl:w-auto xl:flex-shrink-0">
                 <div
                     class="w-full xl:w-80 h-48 sm:h-56 lg:h-64 bg-gradient-to-br from-green-100 to-blue-100 dark:from-green-900 dark:to-blue-900 rounded-2xl flex items-center justify-center overflow-hidden">
-                    <img src="./img/posts/{{ $postUtama->image }}" alt="Zero Waste Illustration"
+                    @if($postUtama->is_demo == true)
+                    <img src="{{ asset('img/posts/') }}/{{ $postUtama->image }}" alt=""
                         class="w-full h-full object-cover rounded-2xl">
+                    @else
+                    <img src="{{ asset('storage/' . $postUtama->image) }}" alt=""
+                        class="w-full h-full object-cover rounded-2xl">
+                    @endif
                 </div>
             </div>
 
@@ -43,7 +45,7 @@
 
                 <!-- Description -->
                 <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 sm:mb-6 text-sm sm:text-base">
-                    {{ $postUtama->body }}
+                    {!!Str::limit(strip_tags($postUtama->body), 200) !!}
                 </p>
 
                 <!-- Read More Link -->

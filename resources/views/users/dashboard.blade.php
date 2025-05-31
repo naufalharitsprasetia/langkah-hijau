@@ -14,7 +14,7 @@ $persen = 100;
 }
 @endphp
 <x-sidebar.layout :title="$title" :active="$active">
-    <h1>Dashboard User</h1>
+    <h1 class="text-lg font-semibold text-gray-900 dark:text-white">Dashboard User</h1>
     <!-- Konten Utama -->
     <div class="flex flex-col w-full">
         <!-- Isi Halaman -->
@@ -27,9 +27,7 @@ $persen = 100;
                         class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-lg text-xs font-medium bg-hijaumuda/20 text-hijaumuda dark:bg-hijaumuda/30 dark:text-hijaumuda">Didukung
                         oleh AI ✨</span>
                 </div>
-                {{-- <div class="text-sm text-yellow-600 dark:text-yellow-400 mb-4">
-                    <strong>Peringatan:</strong> Rekomendasi ini hanya berdasarkan data anda di aplikasi ini.
-                </div> --}}
+
                 <div class="shadow-sm rounded-lg overflow-hidden mb-6 border dark:border-zinc-600">
                     <div class="px-4 py-5 sm:p-6">
                         <ul class="space-y-3" id="recommended-actions">
@@ -74,7 +72,7 @@ $persen = 100;
 
                 <!-- Pencapaian -->
                 <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Pencapaian</h2>
-                <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+                <div class="grid grid-cols-1 gap-5 lg:grid-cols-2">
                     <div class="overflow-hidden shadow-sm rounded-lg border dark:border-zinc-600">
                         <div class="p-5">
                             <div class="flex items-center">
@@ -98,7 +96,7 @@ $persen = 100;
                                 </div>
                             </div>
                         </div>
-                        <div class="bg-gray-50 dark:bg-zinc-700 px-5 py-3">
+                        <div class="bg-gray-200 dark:bg-zinc-700 px-5 py-3">
                             <div class="text-sm">
                                 <a href="" class="font-medium text-green-600 hover:text-hijaumuda">Lihat detail</a>
                             </div>
@@ -118,15 +116,17 @@ $persen = 100;
                                     <dl>
                                         <dt class="text-sm font-medium text-hijaumuda dark:text-gray-400 truncate">
                                             Badges</dt>
-                                        <dd id="moisture" class="text-lg font-semibold text-gray-900 dark:text-white">-
+                                        <dd id="moisture" class="text-lg font-semibold text-gray-900 dark:text-white">{{
+                                            count(auth()->user()->badge) }}
                                             Badges</dd>
                                     </dl>
                                 </div>
                             </div>
                         </div>
-                        <div class="bg-gray-50 dark:bg-zinc-700 px-5 py-3">
+                        <div class="bg-gray-200 dark:bg-zinc-700 px-5 py-3">
                             <div class="text-sm">
-                                <a href="" class="font-medium text-green-600 hover:text-hijaumuda">Lihat detail</a>
+                                <a href="#userBadge" class="font-medium text-green-600 hover:text-hijaumuda">Lihat
+                                    detail</a>
                             </div>
                         </div>
                     </div>
@@ -151,7 +151,7 @@ $persen = 100;
                                 </div>
                             </div>
                         </div>
-                        <div class="bg-gray-50 dark:bg-zinc-700 px-5 py-3">
+                        <div class="bg-gray-200 dark:bg-zinc-700 px-5 py-3">
                             <div class="text-sm">
                                 <a href="#" class="font-medium text-green-600 hover:text-hijaumuda">Lihat detail</a>
                             </div>
@@ -176,7 +176,7 @@ $persen = 100;
                                 </div>
                             </div>
                         </div>
-                        <div class="bg-gray-50 dark:bg-zinc-700 px-5 py-3">
+                        <div class="bg-gray-200 dark:bg-zinc-700 px-5 py-3">
                             <div class="text-sm">
                                 <a href="#" class="font-medium text-green-600 hover:text-hijaumuda">Lihat detail</a>
                             </div>
@@ -221,6 +221,18 @@ $persen = 100;
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <!-- Pencapaian -->
+                <h2 class="text-lg font-semibold text-gray-900 dark:text-white mt-6 mb-3" id="userBadge">User Badges
+                </h2>
+                <div class="user-badges flex gap-3 justify-center items-center mb-4">
+                    @foreach (auth()->user()->badge as $badge)
+                    <div class="max-w-lg rounded-lg border-2 border-hijaumuda p-3 flex justify-center items-center">
+                        <span class="text-xl">{{ $badge->icon }} </span>
+                        <h2 class="font-semibold tracking-wide text-gray-900 dark:text-white">{{ $badge->badge }}</h2>
+                    </div>
+                    @endforeach
                 </div>
 
             </div>

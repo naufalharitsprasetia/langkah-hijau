@@ -14,6 +14,7 @@ export default defineConfig({
                 "resources/js/signup.js",
                 "resources/js/sweetalert.js",
                 "resources/js/lottie.js",
+                "resources/js/lottiequiz.js",
             ],
             refresh: true,
         }),
