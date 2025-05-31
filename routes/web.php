@@ -32,6 +32,7 @@ use App\Http\Controllers\EventController;
 // Home
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('/tentang', [HomeController::class, 'tentang'])->name('home.tentang');
+Route::get('/team', [HomeController::class, 'team'])->name('home.team');
 Route::get('/kontak', [HomeController::class, 'kontak'])->name('home.kontak');
 
 // Quiz
