@@ -2,11 +2,12 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 use App\Models\Quiz;
-use App\Models\Question;
 use App\Models\Option;
+use App\Models\Question;
+use Illuminate\Support\Str;
+use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class QuizSeeder extends Seeder
 {
@@ -17,6 +18,8 @@ class QuizSeeder extends Seeder
     {
         // Quiz 1:  Seberapa Hijau Jiwamu? Mari Kenali Eco-Persona-mu!
         $quiz1 = Quiz::create([
+            'id' => Str::uuid(),
+            'urutan' => 1,
             'title' => ' Seberapa Hijau Jiwamu? Mari Kenali Eco-Persona-mu!',
             'description' => 'Penasaran seberapa jauh gaya hidupmu selaras dengan alam? Ikuti kuis singkat ini dan temukan eco-persona unikmu!',
             'duration_minutes' => 5,
@@ -94,6 +97,8 @@ class QuizSeeder extends Seeder
 
         // --- QUIZ 2: JEJAK LINGKUNGANKU ---
         $quiz2 = Quiz::create([
+            'id' => Str::uuid(),
+            'urutan' => 2,
             'title' => 'Jejak Lingkunganku - Sejauh Mana Kamu Berkontribusi?',
             'description' => 'Mari selami lebih dalam kebiasaanmu dan pahami dampak lingkungan dari setiap pilihan yang kamu ambil.',
             'duration_minutes' => 6,

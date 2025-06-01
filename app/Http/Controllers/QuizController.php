@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon; // Untuk bekerja dengan tanggal
 use App\Models\QuizAttempt; // Pastikan ini diimpor
+use Illuminate\Support\Facades\Http;
 
 class QuizController extends Controller
 {
@@ -75,6 +76,7 @@ class QuizController extends Controller
                 })->toArray(),
             ];
         })->toArray();
+        // dd($questionsForAlpine);
 
         return view('quizzes.start', [
             'quiz' => $quiz,
@@ -133,6 +135,35 @@ class QuizController extends Controller
                 if ($selectedOption) {
                     $totalScore += $selectedOption->points;
                 }
+                // Kumpulkan detail untuk prompt
+                $userAnswerDetailsForPrompt[] = [
+                    'question_text' => $question->question_text,
+                    'selected_option_text' => $selectedOption->option_text,
+                    'selected_option_points' => $selectedOption->points,
+                    'max_points_for_question' => $question->options->max('points'),
+                ];
+            }
+            // Hitung kategori dan rekomendasi statis (diperlukan untuk prompt AI juga)
+            $maxPossibleScore = $quiz->questions->sum(fn($q) => $q->options->max('points'));
+            $scorePercentage = $maxPossibleScore > 0 ? ($totalScore / $maxPossibleScore) * 100 : 0;
+            list($category, $staticRecommendation) = $this->determineCategoryAndStaticRecommendation($scorePercentage, $maxPossibleScore <= 0);
+
+            // Hasilkan rekomendasi AI
+            $aiRecommendationText = 'Rekomendasi personal dari AI sedang dimuat atau tidak tersedia saat ini.'; // Default
+            try {
+                // Perbaiki pemanggilan $this->generateAIPrompt dengan parameter yang benar
+                $promptForAI = $this->generateAIPrompt(
+                    $user,
+                    $quiz,
+                    $userAnswerDetailsForPrompt, // Kirim detail jawaban yang sudah diproses
+                    $totalScore,
+                    $category, // Kirim kategori yang sudah dihitung
+                    $scorePercentage,
+                    $maxPossibleScore
+                );
+                $aiRecommendationText = $this->fetchGeminiRecommendation($promptForAI, false); // false berarti tidak pakai nl2br
+            } catch (\Exception $e) {
+                Log::error('Error fetching AI recommendation during submission: ' . $e->getMessage());
             }
 
             // Simpan ringkasan upaya quiz ke QuizAttempt
@@ -140,6 +171,7 @@ class QuizController extends Controller
                 'user_id' => $user->id,
                 'quiz_id' => $quiz->id,
                 'score' => $totalScore,
+                'rekomendasi_ai' => $aiRecommendationText, // Simpan rekomendasi AI
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]);
@@ -162,52 +194,230 @@ class QuizController extends Controller
         }
     }
 
-// Metode results() tetap sama
-public function results(Quiz $quiz)
-{
-    $userAnswers = UserAnswer::where('user_id', Auth::id())
-        ->where('quiz_id', $quiz->id)
-        ->with('selectedOption', 'question.options')
-        ->get();
+    // Metode results() tetap sama (OLD)
+    public function resultsDetail(Quiz $quiz)
+    {
+        $userAnswers = UserAnswer::where('user_id', Auth::id())
+            ->where('quiz_id', $quiz->id)
+            ->with('selectedOption', 'question.options')
+            ->get();
 
-    $totalScore = 0;
-    foreach ($userAnswers as $userAnswer) {
-        if ($userAnswer->selectedOption) {
-            $totalScore += $userAnswer->selectedOption->points;
+        $totalScore = 0;
+        foreach ($userAnswers as $userAnswer) {
+            if ($userAnswer->selectedOption) {
+                $totalScore += $userAnswer->selectedOption->points;
+            }
         }
-    }
 
-    $totalQuestions = $quiz->questions()->count();
+        $totalQuestions = $quiz->questions()->count();
 
-    $category = 'Tidak Diketahui';
-    $recommendation = 'Maaf, kami tidak dapat mengkategorikan skor Anda.';
+        $category = 'Tidak Diketahui';
+        $recommendation = 'Maaf, kami tidak dapat mengkategorikan skor Anda.';
 
-    $maxPossibleScore = $quiz->questions->sum(function ($question) {
-        return $question->options->max('points');
-    });
+        $maxPossibleScore = $quiz->questions->sum(function ($question) {
+            return $question->options->max('points');
+        });
 
-    if ($maxPossibleScore > 0) { // Mencegah pembagian dengan nol
-        $scorePercentage = ($totalScore / $maxPossibleScore) * 100;
+        if ($maxPossibleScore > 0) { // Mencegah pembagian dengan nol
+            $scorePercentage = ($totalScore / $maxPossibleScore) * 100;
 
-        if ($scorePercentage >= 80) {
-            $category = 'Gaya Hidup Sangat Berkelanjutan';
-            $recommendation = 'Selamat! Anda memiliki gaya hidup yang sangat ramah lingkungan. Terus pertahankan dan inspirasi orang lain!';
-        } elseif ($scorePercentage >= 60) {
-            $category = 'Gaya Hidup Cukup Berkelanjutan';
-            $recommendation = 'Anda sudah berada di jalur yang benar! Ada beberapa area yang bisa Anda tingkatkan untuk menjadi lebih hijau.';
-        } elseif ($scorePercentage >= 40) {
-            $category = 'Perlu Peningkatan Gaya Hidup Berkelanjutan';
-            $recommendation = 'Ada banyak potensi untuk meningkatkan gaya hidup Anda menjadi lebih berkelanjutan. Mulailah dengan langkah-langkah kecil.';
+            if ($scorePercentage >= 80) {
+                $category = 'Gaya Hidup Sangat Berkelanjutan';
+                $recommendation = 'Selamat! Anda memiliki gaya hidup yang sangat ramah lingkungan. Terus pertahankan dan inspirasi orang lain!';
+            } elseif ($scorePercentage >= 60) {
+                $category = 'Gaya Hidup Cukup Berkelanjutan';
+                $recommendation = 'Anda sudah berada di jalur yang benar! Ada beberapa area yang bisa Anda tingkatkan untuk menjadi lebih hijau.';
+            } elseif ($scorePercentage >= 40) {
+                $category = 'Perlu Peningkatan Gaya Hidup Berkelanjutan';
+                $recommendation = 'Ada banyak potensi untuk meningkatkan gaya hidup Anda menjadi lebih berkelanjutan. Mulailah dengan langkah-langkah kecil.';
+            } else {
+                $category = 'Sangat Perlu Perhatian Lingkungan';
+                $recommendation = 'Skor Anda menunjukkan bahwa ada banyak ruang untuk perbaikan. Setiap langkah kecil membantu, mari kita mulai bersama!';
+            }
         } else {
-            $category = 'Sangat Perlu Perhatian Lingkungan';
-            $recommendation = 'Skor Anda menunjukkan bahwa ada banyak ruang untuk perbaikan. Setiap langkah kecil membantu, mari kita mulai bersama!';
+            $scorePercentage = 0; // Jika tidak ada pertanyaan atau poin, persentase 0
+            $recommendation = 'Quiz ini tidak memiliki pertanyaan dengan poin.';
         }
-    } else {
-        $scorePercentage = 0; // Jika tidak ada pertanyaan atau poin, persentase 0
-        $recommendation = 'Quiz ini tidak memiliki pertanyaan dengan poin.';
+        $user = Auth::user();
+        $attempt = QuizAttempt::where('user_id', $user->id)
+            ->where('quiz_id', $quiz->id)->first();
+
+        return view('quizzes.detail-results', compact('quiz', 'totalScore', 'userAnswers', 'totalQuestions', 'category', 'recommendation', 'scorePercentage', 'attempt'));
+    }
+
+    // Fungsi untuk menentukan kategori dan rekomendasi statis
+    private function determineCategoryAndStaticRecommendation(float $scorePercentage, bool $noPointsQuiz)
+    {
+        if ($noPointsQuiz) {
+            return ['Tidak Diketahui', 'Quiz ini tidak memiliki pertanyaan dengan poin.'];
+        }
+        if ($scorePercentage >= 80) {
+            return ['Gaya Hidup Sangat Berkelanjutan', 'Selamat! Anda memiliki gaya hidup yang sangat ramah lingkungan. Terus pertahankan dan inspirasi orang lain!'];
+        } elseif ($scorePercentage >= 60) {
+            return ['Gaya Hidup Cukup Berkelanjutan', 'Anda sudah berada di jalur yang benar! Ada beberapa area yang bisa Anda tingkatkan untuk menjadi lebih hijau.'];
+        } elseif ($scorePercentage >= 40) {
+            return ['Perlu Peningkatan Gaya Hidup Berkelanjutan', 'Ada banyak potensi untuk meningkatkan gaya hidup Anda menjadi lebih berkelanjutan. Mulailah dengan langkah-langkah kecil.'];
+        } else {
+            return ['Sangat Perlu Perhatian Lingkungan', 'Skor Anda menunjukkan bahwa ada banyak ruang untuk perbaikan. Setiap langkah kecil membantu, mari kita mulai bersama!'];
+        }
     }
 
 
-    return view('quizzes.results', compact('quiz', 'totalScore', 'userAnswers', 'totalQuestions', 'category', 'recommendation', 'scorePercentage'));
-}
+    public function results(Quiz $quiz, Request $request) // Tambahkan Request $request
+    {
+        $user = Auth::user();
+        $attemptId = $request->query('attempt_id'); // Ambil attempt_id dari query string
+        $quizAttempt = null;
+
+        if ($attemptId) {
+            $quizAttempt = QuizAttempt::with('quiz.questions.options') // Eager load relasi yang dibutuhkan
+                ->where('user_id', $user->id)
+                ->where('quiz_id', $quiz->id)
+                ->findOrFail($attemptId);
+        } else {
+            // Fallback jika attempt_id tidak ada, ambil attempt terakhir (meskipun idealnya selalu ada)
+            $quizAttempt = QuizAttempt::with('quiz.questions.options')
+                ->where('user_id', $user->id)
+                ->where('quiz_id', $quiz->id)
+                ->latest()
+                ->firstOrFail();
+        }
+
+        $userAnswers = UserAnswer::where('user_id', $user->id)
+            ->where('quiz_id', $quiz->id)
+            // Filter berdasarkan attempt jika memungkinkan, atau ambil yang terbaru jika UserAnswer punya timestamp attempt
+            // Untuk saat ini, kita asumsikan UserAnswer yang ada adalah untuk attempt terakhir yang dilihat
+            ->with('selectedOption', 'question.options')
+            ->get();
+
+        if ($userAnswers->isEmpty() && $quizAttempt) {
+            // Jika tidak ada UserAnswer, ini mungkin berarti user langsung ke halaman hasil
+            // dari attempt lama. Kita tidak bisa menampilkan detail jawaban satu per satu.
+            // Tapi kita masih bisa menampilkan skor dan rekomendasi AI dari $quizAttempt.
+            Log::warning("UserAnswers not found for quiz_id {$quiz->id} and user_id {$user->id} for attempt_id {$quizAttempt->id}. Showing summary from QuizAttempt.");
+        }
+
+        $totalScore = $quizAttempt->score;
+        $totalQuestions = $quizAttempt->quiz->questions()->count(); // Akses dari relasi
+        $aiRecommendationFromDB = $quizAttempt->rekomendasi_ai;
+
+        $maxPossibleScore = $quizAttempt->quiz->questions->sum(function ($question) {
+            return $question->options->max('points');
+        });
+
+        $scorePercentage = 0;
+        if ($maxPossibleScore > 0) {
+            $scorePercentage = ($totalScore / $maxPossibleScore) * 100;
+        }
+
+        list($category, $staticRecommendation) = $this->determineCategoryAndStaticRecommendation($scorePercentage, $maxPossibleScore <= 0);
+
+        return view('quizzes.results', compact(
+            'quiz', // quiz dari route model binding
+            'totalScore',
+            'userAnswers', // Mungkin kosong jika attempt lama tanpa UserAnswer yang tersimpan dengan cara saat ini
+            'totalQuestions',
+            'category',
+            'staticRecommendation',
+            'aiRecommendationFromDB', // Ganti nama variabel
+            'scorePercentage',
+            'quizAttempt' // Kirim seluruh objek attempt jika perlu
+        ));
+    }
+
+    // --- Fungsi AI yang sudah ada dari jawaban sebelumnya ---
+    // (generateAIPrompt dan fetchGeminiRecommendation)
+    // Modifikasi kecil pada generateAIPrompt dan fetchGeminiRecommendation
+
+    private function generateAIPrompt($user, $quiz, $userAnswerDetails, $totalScore, $category, $scorePercentage, $maxPossibleScore)
+    {
+        $prompt = "Anda adalah Hijau AI, asisten virtual dari aplikasi LangkahHijau. Tugas Anda adalah memberikan rekomendasi tindakan yang personal, praktis, dan memberi semangat kepada pengguna berdasarkan hasil kuis gaya hidup ramah lingkungan yang baru saja mereka selesaikan.\n\n";
+        $prompt .= "Berikut adalah detail hasil kuis pengguna bernama {$user->name}:\n";
+        $prompt .= "- Judul Kuis: {$quiz->title}\n";
+        $prompt .= "- Total Poin Diperoleh: {$totalScore} dari {$maxPossibleScore} poin maksimal.\n";
+        $prompt .= "- Persentase Skor: " . round($scorePercentage, 2) . "%\n";
+        $prompt .= "- Kategori Eco-Persona: {$category}\n\n";
+        $prompt .= "Detail jawaban pengguna (pertanyaan, jawaban pengguna, poin diperoleh, poin maksimal pertanyaan):\n";
+
+        $lowScoringAnswersInfo = [];
+        foreach ($userAnswerDetails as $index => $detail) {
+            $prompt .= ($index + 1) . ". Pertanyaan: {$detail['question_text']}\n";
+            $prompt .= "   Jawaban Pengguna: {$detail['selected_option_text']} (Poin: {$detail['selected_option_points']})\n";
+            $prompt .= "   Poin maksimal untuk pertanyaan ini: {$detail['max_points_for_question']}\n\n";
+
+            if ($detail['selected_option_points'] < $detail['max_points_for_question'] && $detail['max_points_for_question'] > 0) {
+                // Cari opsi dengan poin tertinggi (perlu akses ke semua opsi pertanyaan jika ingin menampilkan best option)
+                // Untuk saat ini, kita hanya highlight bahwa ada ruang untuk perbaikan
+                $lowScoringAnswersInfo[] = [
+                    'question' => $detail['question_text'],
+                    'user_answer' => $detail['selected_option_text'],
+                    'user_points' => $detail['selected_option_points'],
+                    'max_points' => $detail['max_points_for_question'],
+                ];
+            }
+        }
+
+        if (!empty($lowScoringAnswersInfo)) {
+            $prompt .= "Beberapa area yang bisa ditingkatkan berdasarkan jawaban pengguna:\n";
+            foreach ($lowScoringAnswersInfo as $item) {
+                $prompt .= "- Pada pertanyaan '{$item['question']}', pengguna memilih '{$item['user_answer']}' ({$item['user_points']} poin dari {$item['max_points']} poin maksimal).\n";
+            }
+            $prompt .= "\n";
+        } else {
+            $prompt .= "Pengguna tampaknya sudah sangat baik dalam menjawab pertanyaan!\n\n";
+        }
+
+        $prompt .= "Berdasarkan semua informasi ini, berikan 3-5 rekomendasi tindakan konkret dan actionable yang dapat dilakukan pengguna untuk lebih meningkatkan gaya hidup ramah lingkungannya. Fokus pada area di mana pengguna masih bisa memperbaiki diri atau mendapatkan poin lebih tinggi. Jika skor sudah sangat tinggi, berikan tips untuk mempertahankan atau menginspirasi orang lain. Buat rekomendasi ini dalam format poin-poin (bullet points) yang jelas. Mulailah dengan sapaan yang positif dan mengacu pada kategori Eco-Persona mereka.";
+        $prompt .= "Contoh format jawaban (gunakan bullet points atau nomor):\n";
+        $prompt .= "- [Rekomendasi 1]\n";
+        $prompt .= "- [Rekomendasi 2]\n";
+        $prompt .= "- [Rekomendasi 3]\n";
+        $prompt .= "Pastikan output hanya berisi rekomendasi dan sapaan tersebut, tanpa teks tambahan di awal atau akhir responsmu.";
+
+        return $prompt;
+    }
+
+    // Modifikasi fetchGeminiRecommendation untuk opsi nl2br
+    private function fetchGeminiRecommendation(string $promptText, bool $useNl2br = true)
+    {
+        $apiKey = env('GEMINI_API_KEY');
+        if (!$apiKey) {
+            Log::error('GEMINI_API_KEY not set in .env file.');
+            return 'Konfigurasi API Key untuk AI belum diatur.';
+        }
+        $url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key={$apiKey}";
+
+        try {
+            $response = Http::timeout(45)->post($url, [ // Timeout ditingkatkan sedikit
+                'contents' => [['parts' => [['text' => $promptText]]]],
+                'generationConfig' => [
+                    'temperature' => 0.7, // Sesuaikan sesuai kebutuhan
+                    'maxOutputTokens' => 800, // Sesuaikan sesuai kebutuhan
+                ]
+            ]);
+
+            if ($response->successful()) {
+                $data = $response->json();
+                if (isset($data['candidates'][0]['content']['parts'][0]['text'])) {
+                    $text = $data['candidates'][0]['content']['parts'][0]['text'];
+                    return $useNl2br ? nl2br(e($text)) : $text; // e() tetap untuk keamanan dasar
+                } elseif (isset($data['promptFeedback']['blockReason'])) {
+                    Log::warning('Gemini API blocked prompt: ' . ($data['promptFeedback']['blockReason']['reason'] ?? 'Unknown reason'));
+                    return 'Maaf, permintaan untuk rekomendasi AI diblokir karena alasan keamanan atau kebijakan konten.';
+                } else {
+                    Log::warning('Gemini API response format unexpected: ' . json_encode($data));
+                    return 'Gagal memproses respons dari AI. Format tidak dikenali.';
+                }
+            } else {
+                Log::error('Gemini API request failed: ' . $response->status() . ' - ' . $response->body());
+                return 'Gagal menghubungi layanan AI saat ini (Status: ' . $response->status() . '). Coba lagi nanti.';
+            }
+        } catch (\Illuminate\Http\Client\ConnectionException $e) {
+            Log::error('Gemini API connection error: ' . $e->getMessage());
+            return 'Tidak dapat terhubung ke layanan AI. Periksa koneksi internet Anda atau coba lagi nanti.';
+        } catch (\Exception $e) {
+            Log::error('Generic error fetching Gemini recommendation: ' . $e->getMessage());
+            return 'Terjadi kesalahan saat mengambil rekomendasi AI.';
+        }
+    }
 }

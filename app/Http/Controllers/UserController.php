@@ -12,7 +12,8 @@ class UserController extends Controller
 {
     public function dashboard()
     {
-        $user = Auth::user();
+        $user1 = Auth::user();
+        $user =  User::where('id', $user1->id)->first();
         $quizAttempts = $user->quizAttempts()->with('quiz')->latest()->get();
 
         $title = 'Dashboard';
@@ -62,7 +63,7 @@ class UserController extends Controller
 
         // Cek jika tier tidak ditemukan
         if (!$tier) {
-            $maxPoints = 0; // Atau nilai default lainnya          
+            $maxPoints = 0; // Atau nilai default lainnya
         } else {
             $maxPoints = $tier->max_points;
         }

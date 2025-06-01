@@ -19,10 +19,10 @@ return new class extends Migration {
                 ->onDelete('cascade'); // Jika user dihapus, attempts-nya ikut terhapus
 
             // Foreign key untuk quiz yang dikerjakan
-            $table->foreignId('quiz_id')
+            $table->foreignUuid('quiz_id')
                 ->constrained() // Membuat foreign key ke tabel 'quizzes'
                 ->onDelete('cascade'); // Jika quiz dihapus, attempts-nya ikut terhapus
-
+            $table->text('rekomendasi_ai')->nullable();
             // Kolom untuk menyimpan skor total quiz
             $table->integer('score');
 

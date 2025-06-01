@@ -13,6 +13,9 @@ class Quiz extends Model
         'description',
         'duration'
     ];
+    protected $primaryKey = 'id';
+    protected $keyType = 'string'; // Atur tipe data primary key sebagai string
+    public $incrementing = false; // Nonaktifkan incrementing ID
 
     public function questions()
     {

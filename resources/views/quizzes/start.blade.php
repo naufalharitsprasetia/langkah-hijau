@@ -7,28 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eco-Quiz - {{ $quiz->title }}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <script src="https://cdn.tailwindcss.com"></script>
+    @vite('resources/css/app.css')
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            50: '#f0fdfa',
-                            500: '#14b8a6',
-                            600: '#0d9488',
-                            700: '#0f766e'
-                        },
-                        // Menggunakan hijautua dan hijaumuda dari tema hasil quiz
-                        hijautua: '#0D9488',
-                        hijaumuda: '#34D399',
-                    }
-                }
-            }
-        }
-    </script>
     <style>
         /* Gaya untuk efek dimmed saat pertanyaan sudah dijawab */
         .question-dimmed-answered {
@@ -130,7 +110,7 @@
 
 <body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
     {{-- Meneruskan quiz ID ke Alpine data untuk localStorage key --}}
-    <div x-data="quizApp({{ $questions }}, {{ $quiz->id }})" class="min-h-screen relative overflow-hidden">
+    <div x-data="quizApp({{ $questions }}, {{ $quiz->urutan }})" class="min-h-screen relative overflow-hidden">
         {{-- Glow effect di atas --}}
         <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
             aria-hidden="true">
@@ -259,7 +239,7 @@
                     <button type="submit" x-show="Object.keys(answers).length === questions.length"
                         :disabled="Object.keys(answers).length !== questions.length"
                         :class="{ 'opacity-50 cursor-not-allowed': Object.keys(answers).length !== questions.length }"
-                        class="px-8 py-4 bg-hijautua text-white rounded-xl shadow-lg hover:bg-hijaumuda focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hijautua transition-all duration-300 text-xl font-bold">
+                        class="cursor-pointer px-8 py-4 bg-hijautua text-white rounded-xl shadow-lg hover:bg-hijaumuda focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hijautua transition-all duration-300 text-xl font-bold">
                         Selesai Quiz
                     </button>
                 </div>
@@ -413,6 +393,7 @@
             }
         }
     </script>
+    {{-- @vite('resources/js/app.js') --}}
 </body>
 
 </html>
