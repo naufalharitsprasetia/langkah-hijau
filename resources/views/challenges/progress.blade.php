@@ -15,9 +15,7 @@
     @endif
 
 
-
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6"
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 relative"
         x-data="{ openModal: false, day: null, totalCheckboxes: {{ count($challenge->challenge_actions) }}, checkedCount: 0 }">
         <!-- Breadcrumb -->
         <div class="mb-6">
@@ -32,7 +30,7 @@
                 </a>
             </nav>
             <div class="mt-2">
-                <h3 class="font-bold text-gray-800 mt-2">
+                <h3 class="font-bold text-gray-900 dark:text-white mt-2">
                     <span class="text-gray-500 font-normal">Challenge /</span>
                     {{ $challenge->badge->icon }} {{ $challenge->title }}
                 </h3>
@@ -165,56 +163,7 @@
                                 @endfor
                         </div>
 
-                        {{-- Modal Checklist --}}
-                        <div id="modalC" x-show="openModal" x-init="$watch('openModal', value => {
-                            document.body.classList.toggle('overflow-hidden', !!value);
-                        })" class="absolute inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-white/30 dark:bg-black/20"
-                            x-transition style="display: none;" @keydown.escape.window="openModal = false"
-                            @click.outside="openModal = false">
-                            <div
-                                class="bg-white dark:bg-gray-900 shadow-2xl rounded-2xl p-6 w-full max-w-lg mx-auto relative">
-                                <template x-if="openModal">
-                                    <div>
-                                        <h2
-                                            class="text-xl font-semibold mb-4 text-gray-900 dark:text-white text-center">
-                                            Checklist Tanggal
-                                            {{ \Carbon\Carbon::now()->translatedFormat('d F Y') }}
-                                        </h2>
-                                        <form method="POST"
-                                            @submit.prevent="checkedCount !== totalCheckboxes ? null : $el.submit()"
-                                            action="{{ route('challenges.checklist', $participation->id) }}">
-                                            @csrf
-                                            <input type="hidden" name="day" :value="day">
-                                            <div class="space-y-3">
-                                                @foreach ($challenge->challenge_actions as $action)
-                                                <div
-                                                    class="flex items-start space-x-3 bg-gray-100 dark:bg-gray-800 rounded-lg p-3">
-                                                    <input type="checkbox"
-                                                        class="mt-1 form-checkbox text-green-600 w-5 h-5"
-                                                        @change="checkedCount = [...$el.closest('form').querySelectorAll('input[type=checkbox]')].filter(cb => cb.checked).length">
-                                                    <label class="text-gray-800 dark:text-gray-200 leading-snug">
-                                                        {{ $action->action }}
-                                                    </label>
-                                                </div>
-                                                @endforeach
-                                            </div>
 
-
-                                            <button type="submit" :disabled="checkedCount !== totalCheckboxes"
-                                                class="cursor-pointer mt-6 w-full px-4 py-2 text-white font-medium rounded-lg transition
-                                                   bg-green-500 hover:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed">
-                                                Simpan Progress
-                                            </button>
-                                        </form>
-
-                                        <button @click="openModal = false"
-                                            class="mt-4 w-full text-sm text-gray-500 dark:text-gray-300 hover:underline text-center">
-                                            Tutup
-                                        </button>
-                                    </div>
-                                </template>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -227,9 +176,54 @@
                         </p>
                     </div>
                 </div>
+                {{-- Modal Checklist --}}
+                <div id="modalC" x-show="openModal" x-init="$watch('openModal', value => {
+    document.body.classList.toggle('overflow-hidden', !!value);
+})" class="absolute inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-white/30 dark:bg-black/20"
+                    x-transition style="display: none;" @keydown.escape.window="openModal = false"
+                    @click.outside="openModal = false">
+                    <div class="bg-white dark:bg-gray-900 shadow-2xl rounded-2xl p-6 w-full max-w-lg mx-auto relative">
+                        <template x-if="openModal">
+                            <div>
+                                <h2 class="text-xl font-semibold mb-4 text-gray-900 dark:text-white text-center">
+                                    Checklist Tanggal
+                                    {{ \Carbon\Carbon::now()->translatedFormat('d F Y') }}
+                                </h2>
+                                <form method="POST"
+                                    @submit.prevent="checkedCount !== totalCheckboxes ? null : $el.submit()"
+                                    action="{{ route('challenges.checklist', $participation->id) }}">
+                                    @csrf
+                                    <input type="hidden" name="day" :value="day">
+                                    <div class="space-y-3">
+                                        @foreach ($challenge->challenge_actions as $action)
+                                        <div
+                                            class="flex items-start space-x-3 bg-gray-100 dark:bg-gray-800 rounded-lg p-3">
+                                            <input type="checkbox" class="mt-1 form-checkbox text-green-600 w-5 h-5"
+                                                @change="checkedCount = [...$el.closest('form').querySelectorAll('input[type=checkbox]')].filter(cb => cb.checked).length">
+                                            <label class="text-gray-800 dark:text-gray-200 leading-snug">
+                                                {{ $action->action }}
+                                            </label>
+                                        </div>
+                                        @endforeach
+                                    </div>
 
+
+                                    <button type="submit" :disabled="checkedCount !== totalCheckboxes" class="cursor-pointer mt-6 w-full px-4 py-2 text-white font-medium rounded-lg transition
+                           bg-green-500 hover:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed">
+                                        Simpan Progress
+                                    </button>
+                                </form>
+
+                                <button @click="openModal = false"
+                                    class="mt-4 w-full text-sm text-gray-500 dark:text-gray-300 hover:underline text-center">
+                                    Tutup
+                                </button>
+                            </div>
+                        </template>
+                    </div>
+                </div>
                 <!-- Action Buttons -->
-                <div class="flex flex-col sm:flex-row gap-3 pt-4">
+                {{-- <div class="flex flex-col sm:flex-row gap-3 pt-4">
                     <button
                         class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 p-3 rounded-lg font-medium transition-colors duration-200 flex items-center justify-center">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -239,27 +233,27 @@
                         </svg>
                         Bagikan
                     </button>
-                </div>
+                </div> --}}
             </div>
         </div>
+
     </div>
+    <script>
+        // Hilangkan cursor bulat
+        const modalC = document.getElementById('modalC');
+        const cursorE = document.getElementById('cursor-example');
+
+        const observer = new MutationObserver(() => {
+            if (modalC.style.display !== 'none') {
+                cursorE.style.display = 'none';
+            } else {
+                cursorE.style.display = 'block'; // atau kondisi default
+            }
+        });
+
+        observer.observe(modalC, {
+            attributes: true,
+            attributeFilter: ['style']
+        });
+    </script>
 </x-layout>
-
-<script>
-    // Hilangkan cursor bulat
-    const modalC = document.getElementById('modalC');
-    const cursorE = document.getElementById('cursor-example');
-
-    const observer = new MutationObserver(() => {
-        if (modalC.style.display !== 'none') {
-            cursorE.style.display = 'none';
-        } else {
-            cursorE.style.display = 'block'; // atau kondisi default
-        }
-    });
-
-    observer.observe(modalC, {
-        attributes: true,
-        attributeFilter: ['style']
-    });
-</script>

@@ -31,7 +31,7 @@
         </div>
         <div class="flex lg:hidden">
             <button type="button" @click="isOpen = !isOpen"
-                class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
+                class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-gray-200">
                 <span class="sr-only">Open main menu</span>
                 <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                     aria-hidden="true" data-slot="icon">
@@ -63,11 +63,11 @@
                     <a href="/quizzes" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">🌏 Eco-Quiz
 
                     </a>
+                    <a href="{{ route('post.index') }}"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">♻️ Edu-Zone </a>
                     <a href="{{ route('challenges.index') }}"
                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">🏆 Tantangan Hijau
                     </a>
-                    <a href="{{ route('post.index') }}"
-                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">♻️ Edu-Zone </a>
                     <a href="{{ route('event.index') }}"
                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200">📆 Green Events </a>
                 </div>
@@ -166,14 +166,14 @@
         <!-- Background backdrop, show/hide based on slide-over state. -->
         <div class="fixed inset-0 z-50"></div>
         <div
-            class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+            class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white dark:bg-zinc-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
             <div class="flex items-center justify-between">
                 <a href="#" class="-m-1.5 p-1.5">
                     <span class="sr-only">Your Company</span>
                     <img class="h-8 w-auto" src="{{ asset('img/logoweb.png') }}" alt="">
                 </a>
                 <button @click="isOpen = !isOpen, isDropMain= false, isDropAbout=false" type="button"
-                    class="-m-2.5 rounded-md p-2.5 text-gray-700">
+                    class="-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-gray-200">
                     <span class="sr-only">Close menu</span>
                     <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                         aria-hidden="true" data-slot="icon">
@@ -185,63 +185,67 @@
                 <div class="-my-6 divide-y divide-gray-500/10">
                     <div class="space-y-2 py-6">
                         <a href="{{ route('home.index') }}"
-                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">Beranda</a>
+                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700">Beranda</a>
+                        <a href="/quizzes"
+                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700">Eco-Quiz
+                            🌏</a>
+                        <a href="{{ route('post.index') }}"
+                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700">
+                            Edu-Zone ♻️</a>
                         <a href="{{ route('challenges.index') }}"
-                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">Tantangan
+                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700">Tantangan
                             Hijau
                             🏆</a>
-                        <a href="/quizzes"
-                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">Eco-Quiz
-                            🌏</a>
-
-                        <a href="{{ route('post.index') }}"
-                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">
-                            Edu-Zone ♻️</a>
                         <a href="{{ route('event.index') }}"
-                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">Green
+                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700">Green
                             Events 📆</a>
                         <a href="{{ route('hijau-ai.index') }}"
-                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">Hijau
+                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700">Hijau
                             AI ✨</a>
-                        <a href="{{ route('home.kontak') }}"
-                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">Kontak</a>
                         <a href="{{ route('home.tentang') }}"
-                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 hover:bg-gray-200">Tentang
+                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700">Tentang
                             Aplikasi
+                        </a>
+                        <a href="{{ route('home.kontak') }}"
+                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700">Kontak</a>
+                        <a href="{{ route('home.team') }}"
+                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700">Tim
+                            Kami
                         </a>
                     </div>
                     <div class="py-6">
-                        @auth
-
-                        <p class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-medium text-gray-700">
-                            <i class="fa-solid fa-profile mr-3"></i> {{ auth()->user()->name }}
-                        </p>
-                        <p class="block text-center px-4 py-2 text-sm text-hijautua dark:text-hijaumuda" role="menuitem"
-                            tabindex="-1" id="user-menu-item-0"><i class="fa-solid fa-star me-2"></i> {{
-                            auth()->user()->green_points }} Green
-                            Points</p>
-                        <a href="{{ route('user.dashboard') }}"
-                            class="block text-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 " role="menuitem"
-                            tabindex="-1" id="user-menu-item-1">Dashboard</a>
-                        <form action="{{ route('auth.logout') }}" method="POST" class="block" id="logoutForm">
-                            @csrf
-                            <button type="button" id="logoutBtn"
-                                class="block w-full cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-200 "
-                                role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</buttont>
-                        </form>
-                        @else
-                        <a href="{{ route('auth.login') }}"
-                            class="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-medium text-gray-700 hover:bg-gray-200">
-                            <i class="fa-solid fa-sign-in mr-3"></i> Login</a>
-                        @endauth
                         <!-- Theme Toggle Button -->
                         <button id="theme-toggle2" aria-label="Toggle theme"
-                            class="p-2 rounded-full text-accent dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer">
-                            <svg id="theme-icon" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            class="p-2 block mx-auto text-center rounded-full text-accent dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer">
+                            <svg id="theme-icon2" class="h-6 w-6 mx-auto text-center" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                             </svg>
                         </button>
+                        @auth
+                        <form action="{{ route('auth.logout') }}" method="POST" class="block" id="logoutForm">
+                            @csrf
+                            <button type="button" id="logoutBtn"
+                                class="block w-full cursor-pointer px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg"
+                                role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</button>
+                        </form>
+                        <a href="{{ route('user.dashboard') }}"
+                            class="block text-center px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg"
+                            role="menuitem" tabindex="-1" id="user-menu-item-1">Dashboard</a>
+                        <p class="block text-center px-4 py-2 text-sm text-hijautua dark:text-hijaumuda" role="menuitem"
+                            tabindex="-1" id="user-menu-item-0"><i class="fa-solid fa-star me-2"></i> {{
+                            auth()->user()->green_points }} Green
+                            Points</p>
+                        <p
+                            class="mx-auto text-center block rounded-lg px-4 py-2 text-sm/7 font-medium text-gray-700 dark:text-gray-200">
+                            <i class="fa-solid fa-profile mr-3"></i> {{ auth()->user()->name }}
+                        </p>
+                        @else
+                        <a href="{{ route('auth.login') }}"
+                            class="mx-auto block px-3 py-2.5 text-sm/7 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg">
+                            <i class="fa-solid fa-sign-in mr-3"></i> Login</a>
+                        @endauth
                     </div>
                 </div>
             </div>

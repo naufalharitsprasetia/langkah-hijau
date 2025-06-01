@@ -7,7 +7,7 @@
 
                     <div
                         class="w-16 h-16 bg-hijautua rounded-full pt-4 overflow-hidden mx-auto mb-4 flex items-center justify-center">
-                        <svg class="w-10 h-10 text-hijautua dark:text-hijaumuda fill="currentColor" viewBox="0 0 24 24"
+                        <svg class="w-10 h-10 text-hijautua dark:text-hijaumuda fill=" currentColor" viewBox="0 0 24 24"
                             aria-hidden="true">
                             <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z">
@@ -20,18 +20,17 @@
 
                 {{-- Pesan flash dari controller --}}
                 @if (session('error'))
-                    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4"
-                        role="alert">
-                        <strong class="font-bold">Oops!</strong>
-                        <span class="block sm:inline">{{ session('error') }}</span>
-                    </div>
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                    <strong class="font-bold">Oops!</strong>
+                    <span class="block sm:inline">{{ session('error') }}</span>
+                </div>
                 @endif
                 @if (session('success'))
-                    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4"
-                        role="alert">
-                        <strong class="font-bold">Berhasil!</strong>
-                        <span class="block sm:inline">{{ session('success') }}</span>
-                    </div>
+                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4"
+                    role="alert">
+                    <strong class="font-bold">Berhasil!</strong>
+                    <span class="block sm:inline">{{ session('success') }}</span>
+                </div>
                 @endif
 
                 {{-- Konten utama daftar quiz --}}
@@ -42,39 +41,48 @@
                             Tersedia</h1>
 
                         @if ($quizzes->isEmpty())
-                            <p class="text-center text-gray-600 dark:text-gray-400">Belum ada quiz yang tersedia saat
-                                ini.</p>
+                        <p class="text-center text-gray-600 dark:text-gray-400">Belum ada quiz yang tersedia saat
+                            ini.</p>
                         @else
-                            <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
-                                @foreach ($quizzes as $quiz)
-                                    <div
-                                        class="bg-gray-50 dark:bg-zinc-700 rounded-xl p-4 shadow-sm hover:shadow-lg transition-shadow duration-300 dark:border-gray-600">
+                        <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
+                            @foreach ($quizzes as $quiz)
+                            <div
+                                class="bg-gray-50 dark:bg-zinc-700 rounded-xl p-4 shadow-sm hover:shadow-lg transition-shadow duration-300 dark:border-gray-600">
 
-                                        <h2 class="text-xl font-semibold mb-2 text-gray-800 dark:text-white">
-                                            {{ $quiz->title }}</h2>
-                                        <p class="text-gray-600 dark:text-gray-300 mb-3">
-                                            {{ Str::limit($quiz->description, 100) }}</p>
-                                        @if ($quiz->duration_minutes)
-                                            <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Durasi:
-                                                {{ $quiz->duration_minutes }} menit</p>
-                                        @endif
+                                <h2 class="text-xl font-semibold mb-2 text-gray-800 dark:text-white">
+                                    {{ $quiz->title }}</h2>
+                                <p class="text-gray-600 dark:text-gray-300 mb-3">
+                                    {{ Str::limit($quiz->description, 100) }}</p>
+                                @if ($quiz->duration_minutes)
+                                <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Durasi:
+                                    {{ $quiz->duration_minutes }} menit</p>
+                                @endif
 
-                                        {{-- Logika untuk tombol Mulai Tes --}}
-                                        @if (in_array($quiz->id, $takenQuizzesToday))
-                                            <button
-                                                class="rounded-md bg-gray-400 px-3.5 py-2.5 text-sm font-semibold text-white cursor-not-allowed opacity-70"
-                                                disabled>
-                                                Sudah Dikerjakan Hari Ini
-                                            </button>
-                                        @else
-                                            <a href="{{ route('quizzes.start', $quiz->id) }}"
-                                                class="rounded-md bg-hijautua px-3.5 py-2.5 text-sm font-semibold opacity-100 text-white shadow-xs hover:bg-hijaumuda focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hijautua">
-                                                Mulai Tes
-                                            </a>
-                                        @endif
-                                    </div>
-                                @endforeach
+                                {{-- Logika untuk tombol Mulai Tes --}}
+                                @auth
+
+                                @if (in_array($quiz->id, $takenQuizzesToday))
+                                <button
+                                    class="rounded-md bg-gray-400 px-3.5 py-2.5 text-sm font-semibold text-white cursor-not-allowed opacity-70"
+                                    disabled>
+                                    Sudah Dikerjakan Hari Ini
+                                </button>
+                                @else
+                                <a href="{{ route('quizzes.start', $quiz->id) }}"
+                                    class="rounded-md bg-hijautua px-3.5 py-2.5 text-sm font-semibold opacity-100 text-white shadow-xs hover:bg-hijaumuda focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hijautua">
+                                    Mulai Tes
+                                </a>
+                                @endif
+                                @endauth
+                                @guest
+                                <a href="{{ route('quizzes.start', $quiz->id) }}"
+                                    class="rounded-md bg-hijautua px-3.5 py-2.5 text-sm font-semibold opacity-100 text-white shadow-xs hover:bg-hijaumuda focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hijautua">
+                                    Mulai Tes
+                                </a>
+                                @endguest
                             </div>
+                            @endforeach
+                        </div>
                         @endif
                     </div>
                 </div>

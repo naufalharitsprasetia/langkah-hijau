@@ -127,7 +127,7 @@
                         </p>
                         <div class="flex justify-between items-center text-xs">
                             <span class="text-gray-500 dark:text-gray-400">{{
-                                \Carbon\Carbon::parse($eventUtama->date_time)->locale('id')->diffForHumans()
+                                \Carbon\Carbon::parse($event->date_time)->locale('id')->diffForHumans()
                                 }}</span>
                             <span class="text-green-600 dark:text-green-400 font-medium">{{ $event->location }}</span>
                         </div>

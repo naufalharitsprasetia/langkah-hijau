@@ -2,12 +2,14 @@
 <div class="relative isolate max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 pb-8 z-30">
     <x-efek.glowatas />
     {{-- title --}}
-
-    <p data-aos="fade-up" data-aos-duration="2000"
-        class="mt-4 mb-16 text-2xl text-center font-bold text-pretty text-gray-900 dark:text-gray-100 sm:text-5xl lg:text-balance">
-        Edu-Zone<br><span class="text-hijautua dark:text-hijaumuda text-lg sm:text-xl font-normal">Temukan inspirasi
-            gaya hidup sehat dan ramah lingkungan di sini – mulai langkah hijau Anda sekarang!</span>
-    </p>
+    <div class="mt-4 mb-16 mx-auto text-center">
+        <p data-aos="fade-up" data-aos-duration="2000"
+            class="mb-3 text-3xl text-center font-bold text-pretty text-gray-900 dark:text-gray-100 sm:text-5xl lg:text-balance">
+            Edu-Zone
+        </p>
+        <p class="text-hijautua dark:text-hijaumuda text-sm md:text-lg font-normal">Temukan inspirasi
+            gaya hidup sehat dan ramah lingkungan di sini – mulai langkah hijau Anda sekarang!</p>
+    </div>
     {{-- <h2 class="text-center text-lg/8 font-semibold text-zinc-900 dark:text-gray-200 my-12">Edu-Zone</h2> --}}
     <!-- Featured Article Section -->
     <div data-aos="fade-up" data-aos-duration="2000"

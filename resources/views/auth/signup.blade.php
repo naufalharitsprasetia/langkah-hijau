@@ -70,8 +70,7 @@
                         <!-- Username -->
                         <div class="relative">
                             <label for="username"
-                                class="block text-sm lg:text-base font-medium text-gray-700 dark:text-gray-300 mb-2">Nama
-                                Pengguna</label>
+                                class="block text-sm lg:text-base font-medium text-gray-700 dark:text-gray-300 mb-2">Username</label>
                             <input type="text" name="username" value="{{ old('username') }}" required
                                 placeholder="Masukkan nama pengguna"
                                 class="w-full px-4 py-3 rounded-lg bg-white dark:bg-zinc-900 border dark:border-zinc-600 dark:text-white @error('username') bgwhite dark:bg-red-300 @enderror focus:border-black focus:outline-none focus:ring-2 focus:ring-hijautua transition-all duration-200 ease-in-out">

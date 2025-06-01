@@ -1,8 +1,8 @@
 <x-layout :title="$title" :active="$active">
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 pb-12">
         {{-- Form Create --}}
-        <section class="px-16 pb-32">
-            <div class="px-4 mx-auto max-w-4xl">
+        <section class="md:px-16 pb-32">
+            <div class="md:px-4 mx-auto max-w-4xl">
                 <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Ajukan Event</h2>
                 {{-- form --}}
                 <form method="post" enctype="multipart/form-data">

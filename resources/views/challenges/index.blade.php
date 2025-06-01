@@ -2,7 +2,7 @@
 
     <div class="container mx-auto p-4">
         <p class="text-center mb-2 text-green-600 dark:text-green-400 font-semibold">LangkahHijau</p>
-        <h1 class="text-3xl font-bold mb-6 pb-5 text-center">Challenge</h1>
+        <h1 class="text-3xl font-bold mb-6 pb-5 text-center text-gray-900 dark:text-white">Challenge</h1>
 
         @if (session('success'))
         <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert">
@@ -19,7 +19,8 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-5">
             @foreach ($challenges as $challenge)
             {{-- Struktur SATU CARD yang sudah diisi konten seperti di atas --}}
-            <div class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col h-full">
+            <div
+                class="bg-white dark:bg-zinc-900 border border-gray-300 dark:border-zinc-700 rounded-lg shadow-md overflow-hidden flex flex-col h-full">
                 <div class="flex-shrink-0">
                     <img class="w-full h-72 object-cover" src="{{ asset('img/challenges') }}/{{ $challenge->image }}"
                         alt="{{ $challenge->title }}">
@@ -41,10 +42,10 @@
                                 Green Points</span>
                         </span>
                     </div>
-                    <h3 class="text-lg md:text-xl font-semibold text-gray-800 mb-2">
+                    <h3 class="text-lg md:text-xl font-semibold text-gray-900 dark:text-white mb-2">
                         {{ $challenge->badge_icon }} {{ $challenge->title }}
                     </h3>
-                    <p class="text-gray-700 text-sm flex-grow mb-3">
+                    <p class="text-gray-600 dark:text-gray-300 text-sm flex-grow mb-3">
                         {{ Str::limit($challenge->description, 150) }}
                     </p>
                     <div class="mt-auto pt-3 border-t border-gray-200">

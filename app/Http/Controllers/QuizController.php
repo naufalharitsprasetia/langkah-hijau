@@ -2,29 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Quiz;
-use App\Models\Question;
 use App\Models\Option;
+use App\Models\Question;
 use App\Models\UserAnswer;
-use App\Models\QuizAttempt; // Pastikan ini diimpor
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon; // Untuk bekerja dengan tanggal
+use App\Models\QuizAttempt; // Pastikan ini diimpor
 
 class QuizController extends Controller
 {
     public function index()
     {
-        $user = Auth::user();
         $quizzes = Quiz::all();
-
-        // Ambil ID quiz yang sudah dikerjakan user hari ini
-        // Menggunakan Carbon untuk membandingkan tanggal saja
-        $takenQuizzesToday = QuizAttempt::where('user_id', $user->id)
-            ->whereDate('created_at', Carbon::today()) // Cek hanya tanggalnya
-            ->pluck('quiz_id')
-            ->toArray();
+        $user = Auth::user();
+        $takenQuizzesToday = '';
+        if ($user) {
+            // Ambil ID quiz yang sudah dikerjakan user hari ini
+            // Menggunakan Carbon untuk membandingkan tanggal saja
+            $takenQuizzesToday = QuizAttempt::where('user_id', $user->id)
+                ->whereDate('created_at', Carbon::today()) // Cek hanya tanggalnya
+                ->pluck('quiz_id')
+                ->toArray();
+        }
 
         return view('quizzes.index', [
             'quizzes' => $quizzes,
@@ -94,7 +97,7 @@ class QuizController extends Controller
 
         // Pengecekan defensif jika user tidak terautentikasi (walaupun middleware 'auth' seharusnya menangani ini)
         if (!$user) {
-            \Log::error('Unauthorized attempt to submit quiz: User not authenticated.', ['quiz_id' => $quiz->id]);
+            Log::error('Unauthorized attempt to submit quiz: User not authenticated.', ['quiz_id' => $quiz->id]);
             return response()->json(['errors' => ['auth' => 'Anda harus login untuk menyelesaikan quiz ini.']], 401);
         }
 
@@ -145,15 +148,12 @@ class QuizController extends Controller
             $user->green_points += 20;
             $user->save(); // Method save() seharusnya tersedia di model User
 
-            \App\Models\User::updateTier($user);
-
             DB::commit();
 
             return response()->json(['redirect' => route('quizzes.results', $quiz->id)]);
-
         } catch (\Exception $e) {
             DB::rollBack();
-            \Log::error('Error submitting quiz answers or updating points: ' . $e->getMessage(), [
+            Log::error('Error submitting quiz answers or updating points: ' . $e->getMessage(), [
                 'user_id' => $user->id ?? 'guest',
                 'quiz_id' => $quiz->id,
                 'trace' => $e->getTraceAsString()

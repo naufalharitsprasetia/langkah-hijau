@@ -18,7 +18,7 @@
 ## 🚀 Fitur Utama
 
 - 🎯 **Tantangan Hijau (Tantangan Harian/Mingguan)**  
-  Lakukan aksi hijau setiap hari dan kumpulkan poin dari tantangan yang kamu selesaikan. dapatkan badge menarik dari tantangan.
+  Lakukan aksi hijau setiap hari dan kumpulkan poin dari tantangan yang kamu selesaikan. Dapatkan badge menarik dari tantangan.
 
 - 🌎 **Eco-Quiz (Kuis Edukatif):**  
   Uji pengetahuan dan kesadaranmu soal lingkungan dan gaya hidup sehat melalui kuis singkat.

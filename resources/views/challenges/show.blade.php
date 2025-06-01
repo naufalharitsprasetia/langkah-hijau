@@ -3,7 +3,7 @@
     {{-- tombol kembali --}}
     <div class="mb-6 md:mb-8">
         <a href="{{ route('challenges.index') }}"
-            class="inline-flex items-center text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors duration-150 ease-in-out group">
+            class="inline-flex items-center text-sm font-medium text-gray-600 dark:text-gray-200 hover:text-gray-900 dark:hover:text-gray-100 transition-colors duration-150 ease-in-out group">
             <svg xmlns="http://www.w3.org/2000/svg"
                 class="h-5 w-5 mr-2 transform transition-transform duration-150 ease-in-out group-hover:-translate-x-1"
                 fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -11,7 +11,7 @@
             </svg>
             Kembali
         </a>
-        <h3 class="font-bold text-gray-800 mt-2">
+        <h3 class="font-bold text-gray-800 dark:text-white mt-2">
             <span class="text-gray-500 font-normal">Challenge /</span> {{ $challenge->badge->icon }} {{
             $challenge->title
             }}
@@ -36,18 +36,18 @@
             </div>
         </div>
         @endif
-        <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-xl overflow-hidden">
+        <div class="max-w-3xl mx-auto bg-white dark:bg-zinc-900 rounded-xl shadow-xl overflow-hidden">
             <div>
                 <img class="w-full h-64 md:h-96 object-cover"
                     src="{{ asset('img/challenges') }}/{{ $challenge->image }}" alt="Gambar {{ $challenge->title }}">
             </div>
 
             <div class="p-6 md:p-8">
-                <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-3">
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-3">
                     {{ $challenge->badge->icon }} {{ $challenge->title }}
                 </h1>
 
-                <div class="flex flex-wrap gap-x-6 gap-y-2 items-center text-md text-gray-600 mb-6">
+                <div class="flex flex-wrap gap-x-6 gap-y-2 items-center text-md text-gray-600 dark:text-gray-300 mb-6">
                     <span class="flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5 text-indigo-500" fill="none"
                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -62,13 +62,13 @@
                             Poin Bonus
                             Penyelesaian</span>
                     </span>
-                    <span class="flex items-center bg-gray-100 px-2 py-1 rounded-full">
+                    <span class="flex items-center bg-white dark:bg-zinc-900 px-2 py-1 rounded-full">
                         <span class="text-xl mr-1.5">{{ $challenge->badge->icon }}</span>
                         <span class="font-medium text-sm">{{ $challenge->badge->badge }}</span>
                     </span>
                 </div>
 
-                <div class="prose prose-indigo max-w-none text-gray-700 leading-relaxed">
+                <div class="prose prose-indigo max-w-none text-gray-600 dark:text-gray-300 leading-relaxed">
                     {!! nl2br(e($challenge->description)) !!}
                 </div>
 

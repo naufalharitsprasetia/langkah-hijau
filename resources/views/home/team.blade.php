@@ -12,7 +12,8 @@
                     <p class="text-xl text-black-500 dark:text-gray-400 font-bold">Our Team</p>
                     <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white"
                         x-text="members[current] ? members[current].name : ''"></h1>
-                    <h2 class="text-lg text-gray-700 dark:text-gray-300 font-medium" x-text="members[current]?.position">
+                    <h2 class="text-lg text-gray-700 dark:text-gray-300 font-medium"
+                        x-text="members[current]?.position">
                     </h2>
                     <p class="text-gray-600 dark:text-gray-300 leading-relaxed" x-text="members[current]?.description">
                     </p>
@@ -20,32 +21,37 @@
                     {{-- social media --}}
                     <div class="flex gap-4 mt-4 text-gray-600 dark:text-gray-300 text-3xl">
                         <template x-if="members[current]?.socials?.linkedin">
-                            <a :href="members[current].socials.linkedin" target="_blank" class="hover:text-blue-600 transition">
+                            <a :href="members[current].socials.linkedin" target="_blank"
+                                class="hover:text-blue-600 transition">
                                 <i class="fab fa-linkedin"></i>
                             </a>
                         </template>
                         <template x-if="members[current]?.socials?.github">
-                            <a :href="members[current].socials.github" target="_blank" class="hover:text-black dark:hover:text-white transition">
+                            <a :href="members[current].socials.github" target="_blank"
+                                class="hover:text-black dark:hover:text-white transition">
                                 <i class="fab fa-github"></i>
                             </a>
                         </template>
                         <template x-if="members[current]?.socials?.instagram">
-                            <a :href="members[current].socials.instagram" target="_blank" class="hover:text-pink-500 transition">
+                            <a :href="members[current].socials.instagram" target="_blank"
+                                class="hover:text-pink-500 transition">
                                 <i class="fab fa-instagram"></i>
                             </a>
                         </template>
                         <template x-if="members[current]?.socials?.gmail">
-                            <a :href="members[current].socials.gmail" target="_blank" class="hover:text-red-600 transition">
+                            <a :href="members[current].socials.gmail" target="_blank"
+                                class="hover:text-red-600 transition">
                                 <i class="fas fa-envelope"></i>
                             </a>
                         </template>
                         <template x-if="members[current]?.socials?.whatsapp">
-                            <a :href="members[current].socials.whatsapp" target="_blank" class="hover:text-green-500 transition">
+                            <a :href="members[current].socials.whatsapp" target="_blank"
+                                class="hover:text-green-500 transition">
                                 <i class="fab fa-whatsapp"></i>
                             </a>
                         </template>
                     </div>
-                    
+
                 </div>
 
                 <!-- Image + Navigation -->
@@ -79,8 +85,7 @@
                         <div :class="{
                             'ring-4 ring-green-500 scale-110': current === index,
                             'ring-2 ring-gray-400': current !== index
-                        }"
-                            class="transition-all duration-300 w-16 h-16 rounded-full overflow-hidden mx-auto mb-2">
+                        }" class="transition-all duration-300 w-16 h-16 rounded-full overflow-hidden mx-auto mb-2">
                             <img :src="member.image" alt="" class="w-full h-full object-cover">
                         </div>
                         <p class="text-sm font-semibold text-gray-900 dark:text-white" x-text="member.name"></p>
@@ -93,7 +98,8 @@
     </div>
 
     {{-- debuggin --}}
-    {{-- <pre x-text="JSON.stringify(members[current], null, 2)"></pre> --}}
+    {{--
+    <pre x-text="JSON.stringify(members[current], null, 2)"></pre> --}}
 
     {{-- for slider --}}
     <script>
@@ -103,15 +109,15 @@
                 members: [{
 
                         name: 'Rizky C. Putra',
-                        position: 'Front-End Web Developer',
-                        description: 'Sebagai seorang web developer dan mahasiswa , Anda memiliki kombinasi kemampuan teknis dan akademik yang kuat. Bergabung sebagai staff IT di PPTIK (Pusat Pengembangan Teknologi Informasi dan Komunikasi) UNIDA Gontor , Anda turut berkontribusi dalam pengembangan sistem informasi, pengelolaan infrastruktur TI, serta penerapan teknologi untuk mendukung proses pendidikan dan administrasi di kampus. Dengan latar belakang akademik yang solid dan pengalaman praktis di dunia pemrograman web, Anda menjadi aset penting dalam memajukan digitalisasi institusi.',
-                        short: 'Front-End',
+                        position: 'Back-End Web Developer',
+                        description: 'Rizky Cahyono adalah seorang web developer sekaligus mahasiswa Teknik Informatika angkatan 2023 di Universitas Darussalam Gontor. Dengan kombinasi kemampuan teknis dan akademik yang kuat, Rizky aktif berkontribusi sebagai staf IT di PPTIK (Pusat Pengembangan Teknologi Informasi dan Komunikasi) UNIDA Gontor. Dalam peran tersebut, ia terlibat dalam pengembangan sistem informasi, pengelolaan infrastruktur TI, serta penerapan teknologi untuk mendukung proses pendidikan dan administrasi di kampus. Dengan latar belakang akademik yang solid serta pengalaman praktis di dunia pemrograman web, Rizky menjadi aset penting dalam mendorong digitalisasi institusi.',
+                        short: 'Back-End',
                         image: '{{ asset('img/tentang/rizky.png') }}',
                         socials: {
                             linkedin: 'https://linkedin.com/in/rizky',
                             github: 'https://github.com/rizky',
                             instagram: 'https://instagram.com/rizky',
-                            gmail: 'mailto:rizky@example.com',
+                            gmail: 'mailto:rizkycahyono@gmail.com',
                             whatsapp: 'https://wa.me/6281234567890'
                         }
                     },
@@ -123,24 +129,24 @@
                         image: '{{ asset('img/tentang/haris.png') }}',
                         socials: {
                             linkedin: 'https://linkedin.com/in/rizky',
-                            github: 'https://github.com/rizky',
-                            instagram: 'https://instagram.com/rizky',
-                            gmail: 'mailto:rizky@example.com',
-                            whatsapp: 'https://wa.me/6281234567890'
+                            github: 'https://github.com/naufalharitsprasetia',
+                            instagram: 'https://instagram.com/naufalharisprasetia',
+                            gmail: 'mailto:naufalharisprasetia@gmail.com',
+                            whatsapp: 'https://wa.me/6281220594202'
                         }
                     },
                     {
-                        name: 'Iqbal Maulanan',
-                        position: 'Back-End Web Developer',
-                        description: 'Sebagai seorang web developer dan mahasiswa , Anda memiliki kombinasi kemampuan teknis dan akademik yang kuat. Bergabung sebagai staff IT di PPTIK (Pusat Pengembangan Teknologi Informasi dan Komunikasi) UNIDA Gontor , Anda turut berkontribusi dalam pengembangan sistem informasi, pengelolaan infrastruktur TI, serta penerapan teknologi untuk mendukung proses pendidikan dan administrasi di kampus. Dengan latar belakang akademik yang solid dan pengalaman praktis di dunia pemrograman web, Anda menjadi aset penting dalam memajukan digitalisasi institusi.',
-                        short: 'Back-End',
+                        name: 'Iqbal Maulana',
+                        position: 'Front-End Web Developer',
+                        description: 'Iqbal Maulana adalah seorang web developer sekaligus mahasiswa Teknik Informatika angkatan 2023 di Universitas Darussalam Gontor. Dengan kombinasi kemampuan teknis dan akademik yang kuat, Iqbal aktif berkontribusi sebagai staf IT di PPTIK (Pusat Pengembangan Teknologi Informasi dan Komunikasi) UNIDA Gontor. Dalam peran tersebut, ia terlibat dalam pengembangan sistem informasi, pengelolaan infrastruktur TI, serta penerapan teknologi untuk mendukung proses pendidikan dan administrasi di kampus. Dengan latar belakang akademik yang solid serta pengalaman praktis di dunia pemrograman web, Iqbal menjadi aset penting dalam mendorong digitalisasi institusi.',
+                        short: 'Front-End',
                         image: '{{ asset('img/tentang/person-1.png') }}',
                         socials: {
-                            linkedin: 'https://linkedin.com/in/rizky',
-                            github: 'https://github.com/rizky',
-                            instagram: 'https://instagram.com/rizky',
-                            gmail: 'mailto:rizky@example.com',
-                            whatsapp: 'https://wa.me/6281234567890'
+                            linkedin: 'https://linkedin.com/in/',
+                            github: 'https://github.com/',
+                            instagram: 'https://instagram.com/',
+                            gmail: 'mailto:iqbalmaulana@gmail.com',
+                            whatsapp: 'https://wa.me/62812'
                         }
                     },
                 ],

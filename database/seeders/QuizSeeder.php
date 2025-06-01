@@ -111,7 +111,7 @@ class QuizSeeder extends Seeder
         ]);
         $question12->options()->create(['option_text' => 'Menjemur di bawah sinar matahari/angin (alami).', 'points' => 3]);
         $question12->options()->create(['option_text' => 'Tergantung cuaca, kadang menjemur, kadang pakai pengering mesin.', 'points' => 2]);
-        $question12->options()->create(['option_text' => 'Selalu menggunakan mesin pengering pakaian. (1 poin)', 'points' => 1]);
+        $question12->options()->create(['option_text' => 'Selalu menggunakan mesin pengering pakaian.', 'points' => 1]);
 
         $question13 = $quiz2->questions()->create([
             'question_text' => 'Ketika kamu melihat keran air bocor atau listrik menyala tanpa guna di tempat umum, apa yang kamu lakukan?',
@@ -169,6 +169,5 @@ class QuizSeeder extends Seeder
         $question20->options()->create(['option_text' => 'Ya, saya sering berbagi tips dan mendorong mereka.', 'points' => 3]);
         $question20->options()->create(['option_text' => 'Kadang-kadang, jika ada kesempatan atau topik pembicaraan.', 'points' => 2]);
         $question20->options()->create(['option_text' => 'Tidak, itu pilihan pribadi masing-masing.', 'points' => 1]);
-
     }
 }
