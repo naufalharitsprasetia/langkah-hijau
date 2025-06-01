@@ -7,7 +7,7 @@
 
 ## 📱 Deskripsi Aplikasi
 
-**LangkahHijau** adalah aplikasi edukatif interaktif yang menggabungkan gaya hidup sehat dan ramah lingkungan dengan pendekatan gamifikasi. Dikembangkan untuk menjawab rendahnya kesadaran generasi muda terhadap isu lingkungan dan kesehatan, aplikasi ini mendorong aksi nyata sehari-hari seperti hemat energi, zero waste, dan aktivitas fisik melalui fitur tantangan, kuis, serta sistem Green Points dan badge. Dengan konten edukatif yang ringan dan relevan, leaderboard mingguan, dan chatbot HijauAI sebagai asisten pintar, LangkahHijau menciptakan pengalaman belajar yang menyenangkan sekaligus mendorong perubahan kebiasaan positif secara kolektif. Inovasi utamanya terletak pada integrasi aksi nyata, edukasi praktis, dan penghargaan digital dalam satu platform yang saling terhubung, menjadikannya bukan sekadar aplikasi, tetapi gerakan digital untuk kehidupan yang lebih sehat dan bumi yang lebih lestari.
+**LangkahHijau** adalah aplikasi gamifikasi edukatif untuk meningkatkan kesadaran lingkungan dan kesehatan generasi muda. Aplikasi ini mendorong aksi nyata seperti hemat energi dan zero waste melalui tantangan, kuis, dan penghargaan digital (Green Points, badge). Dengan konten ringan dan chatbot HijauAI, LangkahHijau bertujuan menciptakan perubahan kebiasaan positif secara menyenangkan untuk gaya hidup sehat dan bumi lestari.
 
 - Dokumentasi Sourcecode : https://github.com/naufalharitsprasetia/langkah-hijau
 

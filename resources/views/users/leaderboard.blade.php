@@ -10,7 +10,7 @@ $diffInHours = ceil($now->diffInRealHours($nextSchedule));
         <main class="w-full">
             <div class="mx-auto py-6 sm:px-6 lg:px-8">
                 <!-- Isi Halaman -->
-                <h2 class="text-2xl font-semibold text-zinc-900 dark:text-white">LeaderBoard</h2>
+                <h2 class="text-2xl font-semibold text-zinc-900 dark:text-white">Leaderboard</h2>
                 <br>
                 {{-- v0 --}}
                 <!-- League Badges -->

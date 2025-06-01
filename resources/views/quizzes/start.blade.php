@@ -105,6 +105,28 @@
             filter: blur(100px);
             opacity: 0.25;
         }
+
+        /* Gaya untuk spinner sederhana (opsional) */
+        .spinner {
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            width: 1rem;
+            /* 16px */
+            height: 1rem;
+            /* 16px */
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            /* Agar bisa berdampingan dengan teks */
+            margin-right: 0.5rem;
+            /* Jarak dengan teks */
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 </head>
 
@@ -205,21 +227,23 @@
                                 <label
                                     class="cursor-pointer scale-option flex items-center p-3 rounded-lg border dark:border-gray-700 transition-all duration-200"
                                     :class="{
-                                        'bg-primary-50 dark:bg-gray-900 border-hijautua dark:border-hijaumuda': answers[
-                                            question
-                                            .id] == option.id,
-                                        'bg-white dark:bg-gray-800 border-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700': answers[
-                                            question.id] != option.id
-                                    }">
+                                    'bg-primary-50 dark:bg-gray-900 border-hijautua dark:border-hijaumuda': answers[
+                                        question
+                                        .id] == option.id,
+                                    'bg-white dark:bg-gray-800 border-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700': answers[
+                                        question.id] != option.id && !isSubmitting, // Tambahkan !isSubmitting agar tidak hover saat submitting
+                                    'opacity-70 cursor-default': isSubmitting // Kurangi interaksi saat submitting
+                                }">
                                     <input type="radio" :name="`question_${question.id}`" :value="option.id"
                                         @change="setAnswer(question.id, option.id); $nextTick(() => { scrollToNextUnanswered(question.id); })"
-                                        :checked="answers[question.id] == option.id" class="hidden">
+                                        :checked="answers[question.id] == option.id" class="hidden"
+                                        :disabled="isSubmitting">
                                     <div class="w-5 h-5 rounded-full border-2 flex items-center justify-center mr-3 transition-colors duration-200"
                                         :class="{
-                                            'border-hijautua bg-hijautua': answers[question.id] == option.id,
-                                            'border-gray-400 dark:border-gray-600 bg-white dark:bg-gray-800': answers[
-                                                question.id] != option.id
-                                        }">
+                                        'border-hijautua bg-hijautua': answers[question.id] == option.id,
+                                        'border-gray-400 dark:border-gray-600 bg-white dark:bg-gray-800': answers[
+                                            question.id] != option.id
+                                    }">
                                         <svg x-show="answers[question.id] == option.id" class="w-3 h-3 text-white"
                                             fill="currentColor" viewBox="0 0 20 20">
                                             <path fill-rule="evenodd"
@@ -237,10 +261,14 @@
 
                 <div class="flex justify-center items-center pt-6">
                     <button type="submit" x-show="Object.keys(answers).length === questions.length"
-                        :disabled="Object.keys(answers).length !== questions.length"
-                        :class="{ 'opacity-50 cursor-not-allowed': Object.keys(answers).length !== questions.length }"
-                        class="cursor-pointer px-8 py-4 bg-hijautua text-white rounded-xl shadow-lg hover:bg-hijaumuda focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hijautua transition-all duration-300 text-xl font-bold">
-                        Selesai Quiz
+                        :disabled="Object.keys(answers).length !== questions.length || isSubmitting" :class="{
+                            'opacity-50 cursor-not-allowed': Object.keys(answers).length !== questions.length || isSubmitting,
+                            'hover:bg-hijaumuda': !isSubmitting
+                        }"
+                        class="cursor-pointer px-8 py-4 bg-hijautua text-white rounded-xl shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hijautua transition-all duration-300 text-xl font-bold flex items-center justify-center">
+                        <span x-show="isSubmitting" class="spinner"></span>
+                        <span x-show="!isSubmitting">Selesai Quiz</span>
+                        <span x-show="isSubmitting">Mengirim...</span>
                     </button>
                 </div>
             </form>
@@ -262,6 +290,7 @@
                 questions: initialQuestions,
                 quizId: quizId, // Simpan quizId di data Alpine
                 currentQuestion: initialQuestions[0] ? initialQuestions[0].id : null,
+                isSubmitting: false, // Tambahkan state untuk tracking submit
 
                 init() {
                     // Gunakan quizId untuk key localStorage yang unik per quiz
@@ -334,7 +363,11 @@
                     }
                 },
 
+
                 submitQuiz() {
+                    if (this.isSubmitting) return; // Cegah submit ganda jika sudah dalam proses
+
+                    this.isSubmitting = true; // Set status ke submitting
                     console.log('Isi this.answers sebelum diformat:', this.answers);
 
                     const formattedAnswers = Object.entries(this.answers).map(([questionId, optionId]) => ({
@@ -344,14 +377,15 @@
 
                     console.log('Isi formattedAnswers yang akan dikirim:', formattedAnswers);
 
-                    const form = this.$el;
+                    const form = this.$el.closest('form'); // Pastikan mengambil form yang benar
                     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
                     fetch(form.action, {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
-                                'X-CSRF-TOKEN': csrfToken
+                                'X-CSRF-TOKEN': csrfToken,
+                                'Accept': 'application/json' // Tambahkan header accept
                             },
                             body: JSON.stringify({
                                 answers: formattedAnswers
@@ -359,36 +393,42 @@
                         })
                         .then(response => {
                             if (!response.ok) {
-                                return response.json().then(err => Promise.reject(err));
+                                // Coba parse error JSON dari Laravel jika ada
+                                return response.json().then(errData => Promise.reject({ status: response.status, body: errData }));
                             }
                             return response.json();
                         })
                         .then(data => {
                             if (data.redirect) {
                                 // Bersihkan localStorage setelah berhasil submit untuk quiz ini
-                                localStorage.removeItem(`quiz_${this.quizId}_answers`);
+                                localStorage.removeItem(`quiz_${this.quizId}_answers`); // Template literal
                                 window.location.href = data.redirect;
+                                // Tidak perlu set isSubmitting = false karena halaman akan redirect
                             } else if (data.errors) {
-                                // Ini bisa terjadi jika ada validasi dari backend yang terlewat di frontend
-                                alert('Terjadi kesalahan: ' + JSON.stringify(data.errors));
+                                alert('Terjadi kesalahan validasi: ' + JSON.stringify(data.errors));
+                                this.isSubmitting = false; // Reset agar bisa submit lagi
+                            } else {
+                                // Handle kasus lain jika diperlukan
+                                alert('Respon tidak dikenali dari server.');
+                                this.isSubmitting = false; // Reset agar bisa submit lagi
                             }
                         })
                         .catch(error => {
                             console.error('Error:', error);
                             let errorMessage = 'Terjadi kesalahan saat mengirim quiz. Silakan coba lagi.';
 
-                            if (error instanceof TypeError) {
-                                errorMessage = "Terjadi masalah koneksi atau server tidak merespons.";
-                            } else if (error.errors) { // Validasi Laravel (422 Unprocessable Entity)
-                                const validationErrors = Object.values(error.errors).flat().join('\n');
+                            if (error && error.body && error.body.errors) { // Error validasi Laravel (422)
+                                const validationErrors = Object.values(error.body.errors).flat().join('\n');
                                 errorMessage = 'Validasi gagal:\n' + validationErrors;
-                            } else if (error.message) { // Pesan error dari server (catch di controller)
-                                errorMessage = error.message; // Hanya tampilkan pesan dari server jika ada
+                            } else if (error && error.body && error.body.message) { // Pesan error kustom dari server
+                                errorMessage = error.body.message;
+                            } else if (error instanceof TypeError) { // Error jaringan
+                                errorMessage = "Terjadi masalah koneksi atau server tidak merespons.";
                             }
 
                             alert(errorMessage);
+                            this.isSubmitting = false; // Reset agar bisa submit lagi
                         });
-
                 }
             }
         }

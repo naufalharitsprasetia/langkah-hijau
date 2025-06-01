@@ -23,8 +23,11 @@
                 Green Events
             </h2>
             <p class="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-                Jangan ketinggalan event-event yang akan datang. Pilihkan sesuai dengan minat Anda dan silakan hadir di
-                kota terdekat Anda.
+                Jangan ketinggalan event-event yang akan datang.
+            </p>
+            <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                <a href="#ajukanEvents" class="text-hijautua hover:text-hijaumuda">Ajukan</a> event Anda dan dapatkan
+                green points!
             </p>
         </div>
 
@@ -135,7 +138,7 @@
                 </a>
                 @endforeach
             </div>
-            <div class="my-14 text-center">
+            <div class="my-14 text-center" id="ajukanEvents">
                 <div class="mx-auto p-4">
                     <p class="text-zinc-900 dark:text-white font-medium text-lg">Ingin Mengajukan Event anda sendiri ?
                     </p>

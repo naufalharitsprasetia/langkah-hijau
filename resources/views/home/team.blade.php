@@ -142,11 +142,11 @@
                         short: 'Front-End',
                         image: '{{ asset('img/tentang/iqbal.png') }}',
                         socials: {
-                            linkedin: 'https://linkedin.com/in/',
-                            github: 'https://github.com/',
-                            instagram: 'https://instagram.com/',
-                            gmail: 'mailto:iqbalmaulana@gmail.com',
-                            whatsapp: 'https://wa.me/62812'
+                            linkedin: 'https://www.linkedin.com/in/iqbal-maulana-dev',
+                            github: 'https://github.com/cardinaldeacre',
+                            instagram: 'https://www.instagram.com/ionic_mass/',
+                            gmail: 'mailto:cardinaldeacre@gmail.com',
+                            whatsapp: 'https://wa.me/6281216547789'
                         }
                     },
                 ],
