@@ -1,7 +1,7 @@
 <x-layout :title="$title" :active="$active">
 
     <div x-data="teamSlider()" x-init="init()"
-        class="relative w-screen h-screen bg-green-100 dark:bg-gray-900 flex flex-col items-center justify-center overflow-hidden px-4">
+        class="relative min-w-screen min-h-screen bg-green-100 dark:bg-gray-900 flex flex-col items-center justify-center overflow-hidden px-4">
 
         <!-- Profile Section -->
         <div class="relative z-10 max-w-5xl w-full bg-transparent pt-12">
@@ -114,11 +114,11 @@
                         short: 'Back-End',
                         image: '{{ asset('img/tentang/rizky.png') }}',
                         socials: {
-                            linkedin: 'https://linkedin.com/in/rizky',
-                            github: 'https://github.com/rizky',
-                            instagram: 'https://instagram.com/rizky',
-                            gmail: 'mailto:rizkycahyono@gmail.com',
-                            whatsapp: 'https://wa.me/6281234567890'
+                            linkedin: 'https://www.linkedin.com/in/rizky-cahyono-putra-67367a2a0/',
+                            github: 'https://github.com/rizkycahyono97',
+                            instagram: 'https://instagram.com/riz.cahyono',
+                            gmail: 'mailto:rizkycahyonoputra2004@gmail.com',
+                            whatsapp: 'https://wa.me/6285843761913'
                         }
                     },
                     {

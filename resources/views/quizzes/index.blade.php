@@ -40,7 +40,7 @@
                     <div
                         class="quiz-option bg-white dark:bg-zinc-800 rounded-xl shadow-md border border-gray-200 dark:border-gray-700 p-6 opacity-80">
                         <h1 class="text-3xl font-bold mb-6 text-center text-hijautua dark:text-hijaumuda">Daftar Quiz
-                            Tersedia</h1>
+                            Tersedia :</h1>
 
                         @if ($quizzes->isEmpty())
                         <p class="text-center text-gray-600 dark:text-gray-400">Belum ada quiz yang tersedia saat
@@ -86,6 +86,9 @@
                             @endforeach
                         </div>
                         @endif
+                        <p class="text-gray-600 dark:text-gray-300 my-3">
+                            NB: Anda hanya dapat mengikuti masing-masing kuis satu kali dalam sehari.
+                        </p>
                     </div>
                 </div>
             </div>

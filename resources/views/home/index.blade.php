@@ -235,8 +235,10 @@
                             <div class="@container relative min-h-120 w-full grow max-lg:mx-auto max-lg:max-w-sm">
                                 <div
                                     class="absolute inset-x-10 top-10 bottom-0 overflow-hidden rounded-t-[12cqw] bg-gray-900 shadow-2xl">
-                                    <img class="size-full object-cover object-top"
+                                    <img class="size-full object-cover object-top block dark:hidden"
                                         src="{{ asset('img/mockup-hp.png') }}" alt="">
+                                    <img class="size-full object-cover object-top hidden dark:block"
+                                        src="{{ asset('img/mockup-hp-dark.png') }}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -309,7 +311,9 @@
                             </div>
                             <div
                                 class="@container relative min-h-120 w-full grow max-lg:mx-auto max-lg:max-w-sm content-center">
-                                <img class="p-4" src="{{ asset('img/mockup-laptop.png') }}" alt="">
+                                <img class="p-4 block dark:hidden" src="{{ asset('img/mockup-laptop.png') }}" alt="">
+                                <img class="p-4 hidden dark:block" src="{{ asset('img/mockup-laptop-dark.png') }}"
+                                    alt="">
                             </div>
                         </div>
                         <div
