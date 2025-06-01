@@ -129,7 +129,7 @@
                             <dt class="text-base/7 font-semibold text-gray-900 dark:text-gray-100">
                                 <div
                                     class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-hijautua">
-                                    <i class="fa-solid fa-shop" style="color:white"></i>
+                                    <i class="fa-solid fa-bolt" style="color:white"></i>
                                 </div>
                                 Aksi
                             </dt>
@@ -144,7 +144,7 @@
                             <dt class="text-base/7 font-semibold text-gray-900 dark:text-gray-100">
                                 <div
                                     class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-hijautua">
-                                    <i class="fa-solid fa-star-and-crescent" style="color:white"></i>
+                                    <i class="fa-solid fa-hand-holding-heart" style="color:white"></i>
                                 </div>
                                 Apresiasi
                             </dt>
@@ -159,8 +159,7 @@
                             <dt class="text-base/7 font-semibold text-gray-900 dark:text-gray-100">
                                 <div
                                     class="absolute top-0 left-0 flex size-10 items-center justify-center rounded-lg bg-hijautua">
-                                    <i class="fa-solid fa-circle-info" style="color:white"></i>
-
+                                    <i class="fa-solid fa-user-group" style="color:white"></i>
                                 </div>
                                 Kesadaran
                             </dt>

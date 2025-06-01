@@ -217,7 +217,6 @@
 </script>
 @vite(['resources/js/404.js'])
 <script>
-    //
     document.addEventListener('DOMContentLoaded', function() {
     const container = document.getElementById('container');
     const content = document.getElementById('content');

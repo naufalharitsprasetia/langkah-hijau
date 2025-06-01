@@ -152,7 +152,7 @@
                         <div>
                             <h1 class="text-lg font-semibold text-gray-900 dark:text-white">
                                 {{ $user->name ?? 'Pengguna' }}</h1>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">Ecu-Quiz</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Eco-Quiz</p>
                         </div>
                     </div>
 

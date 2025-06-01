@@ -140,7 +140,7 @@
                         position: 'Front-End Web Developer',
                         description: 'Iqbal Maulana adalah seorang web developer sekaligus mahasiswa Teknik Informatika angkatan 2023 di Universitas Darussalam Gontor. Dengan kombinasi kemampuan teknis dan akademik yang kuat, Iqbal aktif berkontribusi sebagai staf IT di PPTIK (Pusat Pengembangan Teknologi Informasi dan Komunikasi) UNIDA Gontor. Dalam peran tersebut, ia terlibat dalam pengembangan sistem informasi, pengelolaan infrastruktur TI, serta penerapan teknologi untuk mendukung proses pendidikan dan administrasi di kampus. Dengan latar belakang akademik yang solid serta pengalaman praktis di dunia pemrograman web, Iqbal menjadi aset penting dalam mendorong digitalisasi institusi.',
                         short: 'Front-End',
-                        image: '{{ asset('img/tentang/person-1.png') }}',
+                        image: '{{ asset('img/tentang/iqbal.png') }}',
                         socials: {
                             linkedin: 'https://linkedin.com/in/',
                             github: 'https://github.com/',

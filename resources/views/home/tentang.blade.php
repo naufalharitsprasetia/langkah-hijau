@@ -83,7 +83,7 @@
         <div class="text-center mb-12 sm:mb-16 md:mb-20 lg:mb-24 px-4">
             <h1
                 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-gray-900 dark:text-gray-100 leading-tight">
-                <span class="text-hijautua dark:text-hijaumuda">Tentang LangkahHijau</span>
+                Tentang Langkah<span class="text-hijautua dark:text-hijaumuda">Hijau</span>
             </h1>
         </div>
 
