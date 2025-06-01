@@ -47,19 +47,19 @@ class ChallengeActionSeeder extends Seeder
         $challenge2 = Challenge::where('title', '5 Hari Transportasi Ramah Lingkungan')->first();
         $actions2 = [
             [
-                'action' => 'Gunakan tas belanja kain setiap kali berbelanja.',
+                'action' => 'Jalan Kaki atau Bersepeda untuk Jarak Dekat.',
             ],
             [
-                'action' => 'Bawa dan gunakan botol minum pribadi.',
+                'action' => 'Manfaatkan Transportasi Umum.',
             ],
             [
-                'action' => 'Hindari membeli makanan atau minuman dalam kemasan plastik sekali pakai.',
+                'action' => 'Coba Carpooling atau Berbagi Tumpangan.',
             ],
             [
-                'action' => 'Tolak sedotan plastik, atau gunakan alternatif reusable jika perlu.',
+                'action' => 'Rencanakan Perjalanan Efisien Jika Harus Berkendara.',
             ],
             [
-                'action' => 'Pilih produk dengan kemasan minimal atau tanpa kemasan plastik.',
+                'action' => 'Satu Hari Bebas Emisi Kendaraan Pribadi.',
             ],
         ];
         foreach ($actions2 as $action) {
@@ -73,19 +73,19 @@ class ChallengeActionSeeder extends Seeder
         $challenge3 = Challenge::where('title', '3 Hari Makan Nabati')->first();
         $actions3 = [
             [
-                'action' => 'Gunakan tas belanja kain setiap kali berbelanja.',
+                'action' => 'Eksplorasi Sarapan dan Makan Siang Nabati.',
             ],
             [
-                'action' => 'Bawa dan gunakan botol minum pribadi.',
+                'action' => 'Fokus pada Variasi Protein Nabati untuk Makan Malam.',
             ],
             [
-                'action' => 'Hindari membeli makanan atau minuman dalam kemasan plastik sekali pakai.',
+                'action' => 'Nikmati Camilan dan Makanan Penutup Nabati.',
             ],
             [
-                'action' => 'Tolak sedotan plastik, atau gunakan alternatif reusable jika perlu.',
+                'action' => 'Perhatikan Label & Hindari Produk Hewani Tersembunyi.',
             ],
             [
-                'action' => 'Pilih produk dengan kemasan minimal atau tanpa kemasan plastik.',
+                'action' => 'Jaga Hidrasi dan Perbanyak Serat.',
             ],
         ];
         foreach ($actions3 as $action) {
