@@ -1,5 +1,5 @@
 <x-layout :title="'Hasil Quiz - ' . $quiz->title" :active="'quiz'">
-    <div class="min-h-screen flex justify-center p-4 pt-14 md:mt-0 md:pt-0">
+    <div class="min-h-screen flex justify-center p-4 md:mt-0 md:pt-0">
         <div id="container" class="w-full max-w-2xl rounded-3xl overflow-hidden flex flex-col">
             <div class="md:p-8 md:pt-0 flex-grow flex flex-col">
                 <div class="animasi flex items-center justify-center max-w-7xl mx-auto">
@@ -16,10 +16,8 @@
                             </path>
                         </svg>
                     </div> --}}
-                    <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-2">Hasil Uji Pengetahuanmu!
+                    <h2 class="text-3xl font-semibold text-gray-800 dark:text-white mb-2">Hasil Quiz :
                     </h2>
-                    <p class="text-xl text-gray-600 dark:text-gray-400 mb-4">Ini dia rangkuman performamu dalam tes
-                        {{ $quiz->title }}.</p>
                 </div>
 
                 {{-- Konten utama hasil quiz --}}

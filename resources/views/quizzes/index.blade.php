@@ -16,8 +16,8 @@
                         <canvas id="dotLottie-canvas" class="mx-auto w-48 h-48 md:w-64 md:h-64">
                         </canvas>
                     </div>
-                    <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-2">Uji Pengetahuan Anda</h2>
-                    <p class="text-xl text-gray-600 dark:text-white mb-4">Pilih quiz untuk memulai tes.</p>
+                    <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-2">Cek Gaya Hidup Anda!</h2>
+                    <p class="text-xl text-gray-600 dark:text-white mb-4">Pilih quiz :</p>
                 </div>
 
                 {{-- Pesan flash dari controller --}}

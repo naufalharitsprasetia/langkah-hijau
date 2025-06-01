@@ -162,52 +162,52 @@ class QuizController extends Controller
         }
     }
 
-    // Metode results() tetap sama
-    public function results(Quiz $quiz)
-    {
-        $userAnswers = UserAnswer::where('user_id', Auth::id())
-            ->where('quiz_id', $quiz->id)
-            ->with('selectedOption', 'question.options')
-            ->get();
+// Metode results() tetap sama
+public function results(Quiz $quiz)
+{
+    $userAnswers = UserAnswer::where('user_id', Auth::id())
+        ->where('quiz_id', $quiz->id)
+        ->with('selectedOption', 'question.options')
+        ->get();
 
-        $totalScore = 0;
-        foreach ($userAnswers as $userAnswer) {
-            if ($userAnswer->selectedOption) {
-                $totalScore += $userAnswer->selectedOption->points;
-            }
+    $totalScore = 0;
+    foreach ($userAnswers as $userAnswer) {
+        if ($userAnswer->selectedOption) {
+            $totalScore += $userAnswer->selectedOption->points;
         }
-
-        $totalQuestions = $quiz->questions()->count();
-
-        $category = 'Tidak Diketahui';
-        $recommendation = 'Maaf, kami tidak dapat mengkategorikan skor Anda.';
-
-        $maxPossibleScore = $quiz->questions->sum(function ($question) {
-            return $question->options->max('points');
-        });
-
-        if ($maxPossibleScore > 0) { // Mencegah pembagian dengan nol
-            $scorePercentage = ($totalScore / $maxPossibleScore) * 100;
-
-            if ($scorePercentage >= 80) {
-                $category = 'Gaya Hidup Sangat Berkelanjutan';
-                $recommendation = 'Selamat! Anda memiliki gaya hidup yang sangat ramah lingkungan. Terus pertahankan dan inspirasi orang lain!';
-            } elseif ($scorePercentage >= 60) {
-                $category = 'Gaya Hidup Cukup Berkelanjutan';
-                $recommendation = 'Anda sudah berada di jalur yang benar! Ada beberapa area yang bisa Anda tingkatkan untuk menjadi lebih hijau.';
-            } elseif ($scorePercentage >= 40) {
-                $category = 'Perlu Peningkatan Gaya Hidup Berkelanjutan';
-                $recommendation = 'Ada banyak potensi untuk meningkatkan gaya hidup Anda menjadi lebih berkelanjutan. Mulailah dengan langkah-langkah kecil.';
-            } else {
-                $category = 'Sangat Perlu Perhatian Lingkungan';
-                $recommendation = 'Skor Anda menunjukkan bahwa ada banyak ruang untuk perbaikan. Setiap langkah kecil membantu, mari kita mulai bersama!';
-            }
-        } else {
-            $scorePercentage = 0; // Jika tidak ada pertanyaan atau poin, persentase 0
-            $recommendation = 'Quiz ini tidak memiliki pertanyaan dengan poin.';
-        }
-
-
-        return view('quizzes.results', compact('quiz', 'totalScore', 'userAnswers', 'totalQuestions', 'category', 'recommendation', 'scorePercentage'));
     }
+
+    $totalQuestions = $quiz->questions()->count();
+
+    $category = 'Tidak Diketahui';
+    $recommendation = 'Maaf, kami tidak dapat mengkategorikan skor Anda.';
+
+    $maxPossibleScore = $quiz->questions->sum(function ($question) {
+        return $question->options->max('points');
+    });
+
+    if ($maxPossibleScore > 0) { // Mencegah pembagian dengan nol
+        $scorePercentage = ($totalScore / $maxPossibleScore) * 100;
+
+        if ($scorePercentage >= 80) {
+            $category = 'Gaya Hidup Sangat Berkelanjutan';
+            $recommendation = 'Selamat! Anda memiliki gaya hidup yang sangat ramah lingkungan. Terus pertahankan dan inspirasi orang lain!';
+        } elseif ($scorePercentage >= 60) {
+            $category = 'Gaya Hidup Cukup Berkelanjutan';
+            $recommendation = 'Anda sudah berada di jalur yang benar! Ada beberapa area yang bisa Anda tingkatkan untuk menjadi lebih hijau.';
+        } elseif ($scorePercentage >= 40) {
+            $category = 'Perlu Peningkatan Gaya Hidup Berkelanjutan';
+            $recommendation = 'Ada banyak potensi untuk meningkatkan gaya hidup Anda menjadi lebih berkelanjutan. Mulailah dengan langkah-langkah kecil.';
+        } else {
+            $category = 'Sangat Perlu Perhatian Lingkungan';
+            $recommendation = 'Skor Anda menunjukkan bahwa ada banyak ruang untuk perbaikan. Setiap langkah kecil membantu, mari kita mulai bersama!';
+        }
+    } else {
+        $scorePercentage = 0; // Jika tidak ada pertanyaan atau poin, persentase 0
+        $recommendation = 'Quiz ini tidak memiliki pertanyaan dengan poin.';
+    }
+
+
+    return view('quizzes.results', compact('quiz', 'totalScore', 'userAnswers', 'totalQuestions', 'category', 'recommendation', 'scorePercentage'));
+}
 }

@@ -137,6 +137,34 @@ $persen = 100;
                                 <div class="ml-5 w-0 flex-1">
                                     <dl>
                                         <dt class="text-sm font-medium text-hijaumuda dark:text-gray-400 truncate">
+                                            Tier</dt>
+                                        <dd class="text-lg font-semibold text-gray-900 dark:text-white">{{
+                                            auth()->user()->tier->icon }} {{
+                                            auth()->user()->tier->name }}</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-200 dark:bg-zinc-700 px-5 py-3">
+                            <div class="text-sm">
+                                <a href="{{ route('user.tierInfo') }}"
+                                    class="font-medium text-green-600 hover:text-hijaumuda">Lihat detail</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="overflow-hidden shadow-sm rounded-lg border dark:border-zinc-600">
+                        <div class="p-5">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-hijaumuda rounded-md p-3">
+                                    <svg class="h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                    </svg>
+                                </div>
+                                <div class="ml-5 w-0 flex-1">
+                                    <dl>
+                                        <dt class="text-sm font-medium text-hijaumuda dark:text-gray-400 truncate">
                                             Quiz Attempted</dt>
                                         {{-- Menampilkan jumlah quiz yang sudah dikerjakan --}}
                                         <dd class="text-lg font-semibold text-gray-900 dark:text-white">
@@ -197,11 +225,12 @@ $persen = 100;
                     </div>
                 </div>
 
-                @if (count(auth()->user()->badge) != 0)
+
                 <h2 class="text-lg font-semibold text-gray-900 dark:text-white mt-6 mb-3" id="userBadge">User
                     Badges
                 </h2>
                 <div class="user-badges flex flex-wrap gap-3 justify-center items-center mb-4">
+                    @if (count(auth()->user()->badge) != 0)
                     @foreach (auth()->user()->badge as $badge)
                     <div class="max-w-lg rounded-lg border-2 border-hijaumuda p-3 flex justify-center items-center">
                         <span class="text-xl">{{ $badge->icon }} </span>
@@ -209,8 +238,10 @@ $persen = 100;
                             {{ $badge->badge }}</h2>
                     </div>
                     @endforeach
+                    @else
+                    <p class="text-gray-600 dark:text-gray-400">Anda belum memiliki badges.</p>
+                    @endif
                 </div>
-                @endif
 
                 <h2 class="text-lg font-semibold text-gray-900 dark:text-white mt-6 mb-3" id="quizHistory">Riwayat
                     Pengerjaan Quiz</h2>

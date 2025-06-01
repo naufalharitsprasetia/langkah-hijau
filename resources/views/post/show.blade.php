@@ -29,9 +29,9 @@
                 {{ $post->title }}
             </h2>
             <!-- Description -->
-            <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 sm:mb-6 text-lg sm:text-xl">
+            <div class="text-gray-600 dark:text-gray-300 leading-relaxed mb-4 sm:mb-6 text-lg sm:text-xl">
                 {!! $post->body !!}
-            </p>
+            </div>
         </div>
     </div>
 </x-layout>
