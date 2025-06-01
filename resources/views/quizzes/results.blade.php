@@ -30,9 +30,11 @@
 
                         {{-- Total Skor --}}
                         <div class="mb-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg text-center">
-                            <p class="text-lg text-gray-700 dark:text-gray-300">Total Poin yang Kamu Dapatkan:</p>
-                            <p class="text-4xl font-extrabold text-hijautua dark:text-hijaumuda">{{ $totalScore }}</p>
-                            <p class="text-md text-gray-600 dark:text-gray-400">Kamu menjawab
+                            <p class="text-lg text-gray-700 dark:text-gray-300">Skor yang Kamu Dapatkan:
+                            </p>
+                            <p class="text-4xl font-extrabold text-hijautua dark:text-hijaumuda">{{ $totalScore }}<sub
+                                    class="text-sm">/{{$maxPossibleScore }}</sub></p>
+                            <p class="text-md text-gray-600 dark:text-gray-400 mt-2">Kamu menjawab
                                 {{ $userAnswers->count() }} dari {{ $totalQuestions }} soal.
                             </p>
                         </div>
@@ -42,40 +44,57 @@
                             role="alert">
                             <p class="font-bold text-lg mb-1">Eco-Persona Kamu Adalah:</p>
                             <p class="text-3xl font-bold">{{ $category }}</p>
-                            <p class="mt-3 text-base">{{ $recommendation }}</p>
+                            <p class="mt-3 text-base">{{ $staticRecommendation }}</p>
                         </div>
 
-                        <h3 class="text-xl font-semibold mb-4 text-gray-800 dark:text-white">Detail Jawabanmu:</h3>
-                        <div class="space-y-6">
-                            @foreach ($userAnswers as $userAnswer)
-                            <div class="border-b pb-4 border-gray-200 dark:border-gray-700 last:border-b-0 last:pb-0">
-                                <p class="font-semibold text-lg mb-2 text-gray-900 dark:text-white">
-                                    {{ $loop->iteration }}. {{ $userAnswer->question->question_text }}</p>
-                                <p class="text-gray-700 dark:text-gray-300 mb-2">
-                                    Kamu memilih: <span class="font-medium text-green-700 dark:text-green-400">{{
-                                        $userAnswer->selectedOption->option_text ?? 'Tidak memilih opsi' }}</span>
-                                    (Poin: {{ $userAnswer->selectedOption->points ?? 0 }})
-                                </p>
-                                {{-- Tampilkan semua opsi dengan poinnya agar user bisa melihat --}}
-                                <p class="font-medium text-gray-800 dark:text-gray-200 mt-3 mb-1">Semua Opsi:</p>
-                                <ul class="list-disc list-inside text-sm text-gray-600 dark:text-gray-400">
-                                    @foreach ($userAnswer->question->options->sortByDesc('points') as $option)
-                                    <li
-                                        class="{{ $userAnswer->selectedOption && $userAnswer->selectedOption->id === $option->id ? 'font-bold text-hijautua dark:text-hijaumuda' : '' }}">
-                                        {{ $option->option_text }} ({{ $option->points }} poin)
-                                    </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            @endforeach
-                        </div>
+                        {{-- Rekomendasi AI Personal --}}
+                        {{-- Gunakan $processedAiRecommendation dari controller --}}
+                        @if(isset($processedAiRecommendation) && !empty(strip_tags($processedAiRecommendation,
+                        '<strong><em><br>
+                                <ul>
+                                    <li>'))) {{-- Izinkan beberapa tag untuk pengecekan --}}
+                                        <div class="bg-blue-50 border-l-4 border-blue-500 text-blue-800 p-4 mb-6 dark:bg-blue-900/20 dark:border-blue-700 dark:text-blue-300"
+                                            role="alert">
+                                            <span
+                                                class="inline-flex items-center mb-2 gap-x-1.5 py-1.5 px-3 rounded-lg text-xs font-medium bg-hijaumuda/20 text-hijaumuda dark:bg-hijaumuda/30 dark:text-hijaumuda">Generated
+                                                by Hijau AI ✨</span>
+                                            <p class="font-bold text-lg mb-2 flex items-center">
+                                                Rekomendasi Tindakan Untukmu:
+                                            </p>
+                                            <div id="aiRecommendationTarget"
+                                                class="prose prose-sm sm:prose dark:prose-invert max-w-none">
+                                                {{-- Konten akan diisi oleh JavaScript --}}
+                                            </div>
+                                            <script>
+                                                // Menggunakan json_encode untuk mengirim string HTML dengan aman ke JavaScript
+            const aiHtmlContentForTyping = {!! json_encode($processedAiRecommendation) !!};
+                                            </script>
+                                        </div>
+                                        @else
+                                        <div class="bg-yellow-50 border-l-4 border-yellow-500 text-yellow-800 p-4 mb-6 dark:bg-yellow-900/20 dark:border-yellow-700 dark:text-yellow-300"
+                                            role="alert">
+                                            <p class="font-bold text-lg mb-1">Info Rekomendasi AI:</p>
+                                            {{-- Jika tidak ada rekomendasi yang diproses, tampilkan pesan dari
+                                            quizAttempt atau default --}}
+                                            {{-- Teks mentah dari DB perlu di-escape dan nl2br di sini jika ditampilkan
+                                            langsung --}}
+                                            <p>{!! nl2br(e($quizAttempt->rekomendasi_ai ?: 'Tidak ada rekomendasi AI
+                                                saat ini atau sedang diproses.')) !!}</p>
+                                        </div>
+                                        @endif
+                                        {{-- Akhir Rekomendasi AI --}}
 
-                        <div class="mt-8 text-center">
-                            <a href="{{ route('quizzes.index') }}"
-                                class="rounded-md bg-hijautua px-6 py-3 text-lg font-semibold text-white shadow-sm hover:bg-hijaumuda focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hijautua transition-colors duration-300">
-                                Kembali ke Daftar Tes
-                            </a>
-                        </div>
+                                        <a href="{{ route('quizzes.resultsDetail', $quiz->id) }}"
+                                            class="cursor-pointer text-center mx-auto font-medium mb-4 text-hijaumuda hover:text-hijautua hover:underline">Klik
+                                            untuk Detail
+                                            Jawabanmu</a>
+
+                                        <div class="mt-8 text-center">
+                                            <a href="{{ route('quizzes.index') }}"
+                                                class="rounded-md bg-hijautua px-6 py-3 text-lg font-semibold text-white shadow-sm hover:bg-hijaumuda focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hijautua transition-colors duration-300">
+                                                Kembali ke Daftar Tes
+                                            </a>
+                                        </div>
                     </div>
                 </div>
             </div>
@@ -96,4 +115,43 @@
         </div>
     </div>
     @vite('resources/js/lottiequiz.js')
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const targetElement = document.getElementById('aiRecommendationTarget');
+
+            // aiHtmlContentForTyping diambil dari <script> tag di atasnya
+            if (targetElement && typeof aiHtmlContentForTyping !== 'undefined' && aiHtmlContentForTyping.trim() !== '') {
+                let i = 0;
+                const typingSpeed = 20; // milidetik per karakter, sesuaikan kecepatan
+
+                function typeWriter() {
+                    if (i < aiHtmlContentForTyping.length) {
+                        // Cek jika karakter adalah awal dari sebuah tag HTML
+                        if (aiHtmlContentForTyping[i] === '<') {
+                            let tagEndIndex = aiHtmlContentForTyping.indexOf('>', i);
+                            if (tagEndIndex !== -1) {
+                                // Tambahkan seluruh tag HTML sekaligus
+                                targetElement.innerHTML += aiHtmlContentForTyping.substring(i, tagEndIndex + 1);
+                                i = tagEndIndex + 1; // Pindahkan indeks melewati tag
+                            } else {
+                                // Jika tag tidak lengkap (seharusnya tidak terjadi dengan HTML yang valid),
+                                // tambahkan karakter seperti biasa untuk menghindari loop tak terbatas.
+                                targetElement.innerHTML += aiHtmlContentForTyping[i];
+                                i++;
+                            }
+                        } else {
+                            // Tambahkan karakter biasa
+                            targetElement.innerHTML += aiHtmlContentForTyping[i];
+                            i++;
+                        }
+                        setTimeout(typeWriter, typingSpeed);
+                    }
+                }
+                typeWriter();
+            } else if (targetElement) {
+                // Jika aiHtmlContentForTyping kosong atau tidak ada, pastikan target kosong
+                targetElement.innerHTML = '';
+            }
+        });
+    </script>
 </x-layout>

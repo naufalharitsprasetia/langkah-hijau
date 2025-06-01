@@ -16,7 +16,7 @@
                         <canvas id="dotLottie-canvas" class="mx-auto w-48 h-48 md:w-64 md:h-64">
                         </canvas>
                     </div>
-                    <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-2">Cek Gaya Hidup Anda!</h2>
+                    <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-2">Cek Gaya Hidup Anda !</h2>
                     <p class="text-xl text-gray-600 dark:text-white mb-4">Pilih quiz :</p>
                 </div>
 
@@ -72,14 +72,14 @@
                                 @else
                                 <a href="{{ route('quizzes.start', $quiz->id) }}"
                                     class="rounded-md bg-hijautua px-3.5 py-2.5 text-sm font-semibold opacity-100 text-white shadow-xs hover:bg-hijaumuda focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hijautua">
-                                    Mulai Tes
+                                    Mulai Quiz
                                 </a>
                                 @endif
                                 @endauth
                                 @guest
                                 <a href="{{ route('quizzes.start', $quiz->id) }}"
                                     class="rounded-md bg-hijautua px-3.5 py-2.5 text-sm font-semibold opacity-100 text-white shadow-xs hover:bg-hijaumuda focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hijautua">
-                                    Mulai Tes
+                                    Mulai Quiz
                                 </a>
                                 @endguest
                             </div>

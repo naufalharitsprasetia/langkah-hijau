@@ -40,6 +40,7 @@ Route::get('/quizzes', [QuizController::class, 'index'])->name('quizzes.index');
 Route::get('/quizzes/{quiz}/start', [QuizController::class, 'start'])->name('quizzes.start')->middleware('auth');
 Route::post('/quizzes/{quiz}/submit', [QuizController::class, 'submitAnswer'])->name('quizzes.submit')->middleware('auth');
 Route::get('/quizzes/{quiz}/results', [QuizController::class, 'results'])->name('quizzes.results')->middleware('auth');
+Route::get('/quizzes/{quiz}/results-detail', [QuizController::class, 'resultsDetail'])->name('quizzes.resultsDetail')->middleware('auth');
 
 // Auth for guest
 Route::middleware('guest')->group(function () {

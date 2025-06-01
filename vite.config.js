@@ -15,7 +15,7 @@ export default defineConfig({
                 "resources/js/sweetalert.js",
                 "resources/js/lottie.js",
                 "resources/js/lottiequiz.js",
-                "resources/js/lottiequi2.js",
+                "resources/js/lottiequiz2.js",
                 "resources/js/home.js",
             ],
             refresh: true,
