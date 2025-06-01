@@ -110,7 +110,7 @@
 
 <body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
     {{-- Meneruskan quiz ID ke Alpine data untuk localStorage key --}}
-    <div x-data="quizApp({{ $questions }}, {{ $quiz->urutan }})" class="min-h-screen relative overflow-hidden">
+    <div x-data="quizApp({{ $questions }}, 1)" class="min-h-screen relative overflow-hidden">
         {{-- Glow effect di atas --}}
         <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
             aria-hidden="true">

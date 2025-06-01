@@ -53,9 +53,9 @@
                         </div>
 
                         <div class="mt-8 text-center">
-                            <a href="{{ route('quizzes.index') }}"
+                            <a href="{{ route('quizzes.results', $quiz->id) }}"
                                 class="rounded-md bg-hijautua px-6 py-3 text-lg font-semibold text-white shadow-sm hover:bg-hijaumuda focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hijautua transition-colors duration-300">
-                                Kembali ke Daftar Tes
+                                Kembali
                             </a>
                         </div>
                     </div>

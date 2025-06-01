@@ -76,10 +76,10 @@
                 <ul class="space-y-2">
                     <li><a href="{{ route('quizzes.index') }}"
                             class="hover:text-gray-900 dark:hover:text-white">Eco-Quiz</a></li>
-                    <li><a href="{{ route('challenges.index') }}"
-                            class="hover:text-gray-900 dark:hover:text-white">Tantangan Hijau</a></li>
                     <li><a href="{{ route('post.index') }}"
                             class="hover:text-gray-900 dark:hover:text-white">Edu-Zone</a></li>
+                    <li><a href="{{ route('challenges.index') }}"
+                            class="hover:text-gray-900 dark:hover:text-white">Tantangan Hijau</a></li>
                     <li><a href="{{ route('event.index') }}" class="hover:text-gray-900 dark:hover:text-white">Green
                             Events</a></li>
                     <li><a href="{{ route('hijau-ai.index') }}" class="hover:text-gray-900 dark:hover:text-white">Hijau

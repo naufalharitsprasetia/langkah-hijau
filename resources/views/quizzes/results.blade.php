@@ -32,8 +32,9 @@
                         <div class="mb-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg text-center">
                             <p class="text-lg text-gray-700 dark:text-gray-300">Skor yang Kamu Dapatkan:
                             </p>
-                            <p class="text-4xl font-extrabold text-hijautua dark:text-hijaumuda">{{ $totalScore }}</p>
-                            <p class="text-md text-gray-600 dark:text-gray-400">Kamu menjawab
+                            <p class="text-4xl font-extrabold text-hijautua dark:text-hijaumuda">{{ $totalScore }}<sub
+                                    class="text-sm">/{{$maxPossibleScore }}</sub></p>
+                            <p class="text-md text-gray-600 dark:text-gray-400 mt-2">Kamu menjawab
                                 {{ $userAnswers->count() }} dari {{ $totalQuestions }} soal.
                             </p>
                         </div>
@@ -47,55 +48,53 @@
                         </div>
 
                         {{-- Rekomendasi AI Personal --}}
-                        {{-- Ganti nama variabel ke $aiRecommendationFromDB --}}
-                        @if(isset($aiRecommendationFromDB) && !empty(strip_tags($aiRecommendationFromDB)) &&
-                        strpos(strtolower($aiRecommendationFromDB), 'tidak tersedia') === false &&
-                        strpos(strtolower($aiRecommendationFromDB), 'gagal') === false &&
-                        strpos(strtolower($aiRecommendationFromDB), 'belum diatur') === false)
-                        <div class="bg-blue-50 border-l-4 border-blue-500 text-blue-800 p-4 mb-6 dark:bg-blue-900/20 dark:border-blue-700 dark:text-blue-300"
-                            role="alert">
-                            <p class="font-bold text-lg mb-2 flex items-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-blue-500" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M9.663 17h4.673M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M14.33 10.332C14.33 10.077 14.228 9.873 14.03 9.728L12.13 8.28c-.376-.285-.96-.038-.96.418V9h-.037c-.666 0-1.18.078-1.618.229-.438.15-.81.39-1.118.721a3.773 3.773 0 00-.92 1.268c-.21.512-.315 1.093-.315 1.744 0 .651.105 1.232.315 1.744.21.512.502.95.92 1.268.308.33.68.571 1.118.721.438.151.952.229 1.618.229h.037v.294c0 .456.584.703.96.418l1.898-1.448c.199-.145.301-.35.301-.604V10.332z" />
-                                </svg>
-                                Rekomendasi Tindakan Untukmu:
-                            </p>
-                            {{-- Target untuk typing effect --}}
-                            <div id="aiRecommendationTarget"
-                                class="prose prose-sm sm:prose dark:prose-invert max-w-none">
-                                {{-- Konten akan diisi oleh JavaScript --}}
-                            </div>
-                            {{-- Data AI untuk JavaScript, pastikan di-escape dengan benar --}}
-                            <script>
-                                const aiFullText = `{!! nl2br(e($aiRecommendationFromDB)) !!}`;
-                            </script>
-                        </div>
-                        @else
-                        <div class="bg-yellow-50 border-l-4 border-yellow-500 text-yellow-800 p-4 mb-6 dark:bg-yellow-900/20 dark:border-yellow-700 dark:text-yellow-300"
-                            role="alert">
-                            <p class="font-bold text-lg mb-1">Info Rekomendasi AI:</p>
-                            {{-- Ganti nama variabel ke $aiRecommendationFromDB dan gunakan nl2br juga jika teks mentah
-                            --}}
-                            <p>{!! nl2br(e($aiRecommendationFromDB)) !!}</p>
-                        </div>
-                        @endif
-                        {{-- Akhir Rekomendasi AI --}}
+                        {{-- Gunakan $processedAiRecommendation dari controller --}}
+                        @if(isset($processedAiRecommendation) && !empty(strip_tags($processedAiRecommendation,
+                        '<strong><em><br>
+                                <ul>
+                                    <li>'))) {{-- Izinkan beberapa tag untuk pengecekan --}}
+                                        <div class="bg-blue-50 border-l-4 border-blue-500 text-blue-800 p-4 mb-6 dark:bg-blue-900/20 dark:border-blue-700 dark:text-blue-300"
+                                            role="alert">
+                                            <span
+                                                class="inline-flex items-center mb-2 gap-x-1.5 py-1.5 px-3 rounded-lg text-xs font-medium bg-hijaumuda/20 text-hijaumuda dark:bg-hijaumuda/30 dark:text-hijaumuda">Generated
+                                                by Hijau AI ✨</span>
+                                            <p class="font-bold text-lg mb-2 flex items-center">
+                                                Rekomendasi Tindakan Untukmu:
+                                            </p>
+                                            <div id="aiRecommendationTarget"
+                                                class="prose prose-sm sm:prose dark:prose-invert max-w-none">
+                                                {{-- Konten akan diisi oleh JavaScript --}}
+                                            </div>
+                                            <script>
+                                                // Menggunakan json_encode untuk mengirim string HTML dengan aman ke JavaScript
+            const aiHtmlContentForTyping = {!! json_encode($processedAiRecommendation) !!};
+                                            </script>
+                                        </div>
+                                        @else
+                                        <div class="bg-yellow-50 border-l-4 border-yellow-500 text-yellow-800 p-4 mb-6 dark:bg-yellow-900/20 dark:border-yellow-700 dark:text-yellow-300"
+                                            role="alert">
+                                            <p class="font-bold text-lg mb-1">Info Rekomendasi AI:</p>
+                                            {{-- Jika tidak ada rekomendasi yang diproses, tampilkan pesan dari
+                                            quizAttempt atau default --}}
+                                            {{-- Teks mentah dari DB perlu di-escape dan nl2br di sini jika ditampilkan
+                                            langsung --}}
+                                            <p>{!! nl2br(e($quizAttempt->rekomendasi_ai ?: 'Tidak ada rekomendasi AI
+                                                saat ini atau sedang diproses.')) !!}</p>
+                                        </div>
+                                        @endif
+                                        {{-- Akhir Rekomendasi AI --}}
 
-                        <a href="{{ route('quizzes.resultsDetail', $quiz->id) }}"
-                            class="cursor-pointer text-center mx-auto font-medium mb-4 text-hijaumuda hover:text-hijautua hover:underline">Klik
-                            untuk Detail
-                            Jawabanmu</a>
+                                        <a href="{{ route('quizzes.resultsDetail', $quiz->id) }}"
+                                            class="cursor-pointer text-center mx-auto font-medium mb-4 text-hijaumuda hover:text-hijautua hover:underline">Klik
+                                            untuk Detail
+                                            Jawabanmu</a>
 
-                        <div class="mt-8 text-center">
-                            <a href="{{ route('quizzes.index') }}"
-                                class="rounded-md bg-hijautua px-6 py-3 text-lg font-semibold text-white shadow-sm hover:bg-hijaumuda focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hijautua transition-colors duration-300">
-                                Kembali ke Daftar Tes
-                            </a>
-                        </div>
+                                        <div class="mt-8 text-center">
+                                            <a href="{{ route('quizzes.index') }}"
+                                                class="rounded-md bg-hijautua px-6 py-3 text-lg font-semibold text-white shadow-sm hover:bg-hijaumuda focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hijautua transition-colors duration-300">
+                                                Kembali ke Daftar Tes
+                                            </a>
+                                        </div>
                     </div>
                 </div>
             </div>
@@ -119,25 +118,30 @@
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const targetElement = document.getElementById('aiRecommendationTarget');
-            // aiFullText diambil dari script tag di atasnya
-            // const fullText = aiFullText; // Sudah ada variabel global aiFullText
 
-            if (targetElement && typeof aiFullText !== 'undefined' && aiFullText.trim() !== '') {
+            // aiHtmlContentForTyping diambil dari <script> tag di atasnya
+            if (targetElement && typeof aiHtmlContentForTyping !== 'undefined' && aiHtmlContentForTyping.trim() !== '') {
                 let i = 0;
                 const typingSpeed = 20; // milidetik per karakter, sesuaikan kecepatan
 
                 function typeWriter() {
-                    if (i < aiFullText.length) {
-                        // Cek jika karakter berikutnya adalah bagian dari tag <br>
-                        if (aiFullText.substring(i, i + 4).toLowerCase() === '<br>') {
-                            targetElement.innerHTML += '<br>';
-                            i += 4;
-                        } else if (aiFullText.substring(i, i + 6).toLowerCase() === '<br />') {
-                            targetElement.innerHTML += '<br />';
-                            i += 6;
-                        }
-                        else {
-                            targetElement.innerHTML += aiFullText.charAt(i);
+                    if (i < aiHtmlContentForTyping.length) {
+                        // Cek jika karakter adalah awal dari sebuah tag HTML
+                        if (aiHtmlContentForTyping[i] === '<') {
+                            let tagEndIndex = aiHtmlContentForTyping.indexOf('>', i);
+                            if (tagEndIndex !== -1) {
+                                // Tambahkan seluruh tag HTML sekaligus
+                                targetElement.innerHTML += aiHtmlContentForTyping.substring(i, tagEndIndex + 1);
+                                i = tagEndIndex + 1; // Pindahkan indeks melewati tag
+                            } else {
+                                // Jika tag tidak lengkap (seharusnya tidak terjadi dengan HTML yang valid),
+                                // tambahkan karakter seperti biasa untuk menghindari loop tak terbatas.
+                                targetElement.innerHTML += aiHtmlContentForTyping[i];
+                                i++;
+                            }
+                        } else {
+                            // Tambahkan karakter biasa
+                            targetElement.innerHTML += aiHtmlContentForTyping[i];
                             i++;
                         }
                         setTimeout(typeWriter, typingSpeed);
@@ -145,7 +149,7 @@
                 }
                 typeWriter();
             } else if (targetElement) {
-                // Jika aiFullText kosong atau tidak ada, pastikan target kosong
+                // Jika aiHtmlContentForTyping kosong atau tidak ada, pastikan target kosong
                 targetElement.innerHTML = '';
             }
         });

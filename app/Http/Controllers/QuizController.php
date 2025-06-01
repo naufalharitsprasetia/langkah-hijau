@@ -214,51 +214,52 @@ class QuizController extends Controller
         $category = 'Tidak Diketahui';
         $recommendation = 'Maaf, kami tidak dapat mengkategorikan skor Anda.';
 
+        $maxPossibleScore = 0;
         $maxPossibleScore = $quiz->questions->sum(function ($question) {
             return $question->options->max('points');
         });
 
-        if ($maxPossibleScore > 0) { // Mencegah pembagian dengan nol
-            $scorePercentage = ($totalScore / $maxPossibleScore) * 100;
+        // if ($maxPossibleScore > 0) { // Mencegah pembagian dengan nol
+        //     $scorePercentage = ($totalScore / $maxPossibleScore) * 100;
 
-            if ($scorePercentage >= 80) {
-                $category = 'Gaya Hidup Sangat Berkelanjutan';
-                $recommendation = 'Selamat! Anda memiliki gaya hidup yang sangat ramah lingkungan. Terus pertahankan dan inspirasi orang lain!';
-            } elseif ($scorePercentage >= 60) {
-                $category = 'Gaya Hidup Cukup Berkelanjutan';
-                $recommendation = 'Anda sudah berada di jalur yang benar! Ada beberapa area yang bisa Anda tingkatkan untuk menjadi lebih hijau.';
-            } elseif ($scorePercentage >= 40) {
-                $category = 'Perlu Peningkatan Gaya Hidup Berkelanjutan';
-                $recommendation = 'Ada banyak potensi untuk meningkatkan gaya hidup Anda menjadi lebih berkelanjutan. Mulailah dengan langkah-langkah kecil.';
-            } else {
-                $category = 'Sangat Perlu Perhatian Lingkungan';
-                $recommendation = 'Skor Anda menunjukkan bahwa ada banyak ruang untuk perbaikan. Setiap langkah kecil membantu, mari kita mulai bersama!';
-            }
-        } else {
-            $scorePercentage = 0; // Jika tidak ada pertanyaan atau poin, persentase 0
-            $recommendation = 'Quiz ini tidak memiliki pertanyaan dengan poin.';
-        }
+        //     if ($scorePercentage >= 80) {
+        //         $category = 'Gaya Hidup Sangat Berkelanjutan';
+        //         $recommendation = 'Selamat! Anda memiliki gaya hidup yang sangat ramah lingkungan. Terus pertahankan dan inspirasi orang lain!';
+        //     } elseif ($scorePercentage >= 60) {
+        //         $category = 'Gaya Hidup Cukup Berkelanjutan';
+        //         $recommendation = 'Anda sudah berada di jalur yang benar! Ada beberapa area yang bisa Anda tingkatkan untuk menjadi lebih hijau.';
+        //     } elseif ($scorePercentage >= 40) {
+        //         $category = 'Perlu Peningkatan Gaya Hidup Berkelanjutan';
+        //         $recommendation = 'Ada banyak potensi untuk meningkatkan gaya hidup Anda menjadi lebih berkelanjutan. Mulailah dengan langkah-langkah kecil.';
+        //     } else {
+        //         $category = 'Sangat Perlu Perhatian Lingkungan';
+        //         $recommendation = 'Skor Anda menunjukkan bahwa ada banyak ruang untuk perbaikan. Setiap langkah kecil membantu, mari kita mulai bersama!';
+        //     }
+        // } else {
+        //     $scorePercentage = 0; // Jika tidak ada pertanyaan atau poin, persentase 0
+        //     $recommendation = 'Quiz ini tidak memiliki pertanyaan dengan poin.';
+        // }
         $user = Auth::user();
         $attempt = QuizAttempt::where('user_id', $user->id)
-            ->where('quiz_id', $quiz->id)->first();
+            ->where('quiz_id', $quiz->id)->latest()->first();
 
-        return view('quizzes.detail-results', compact('quiz', 'totalScore', 'userAnswers', 'totalQuestions', 'category', 'recommendation', 'scorePercentage', 'attempt'));
+        return view('quizzes.detail-results', compact('quiz', 'totalScore', 'userAnswers', 'totalQuestions', 'maxPossibleScore', 'category', 'recommendation', 'attempt'));
     }
 
     // Fungsi untuk menentukan kategori dan rekomendasi statis
     private function determineCategoryAndStaticRecommendation(float $scorePercentage, bool $noPointsQuiz)
     {
         if ($noPointsQuiz) {
-            return ['Tidak Diketahui', 'Quiz ini tidak memiliki pertanyaan dengan poin.'];
+            return ['❓ Tidak Diketahui', 'Quiz ini tidak memiliki pertanyaan dengan poin.'];
         }
         if ($scorePercentage >= 80) {
-            return ['Gaya Hidup Sangat Berkelanjutan', 'Selamat! Anda memiliki gaya hidup yang sangat ramah lingkungan. Terus pertahankan dan inspirasi orang lain!'];
+            return ['🌿 Gaya Hidup Sangat Berkelanjutan', 'Selamat! Anda memiliki gaya hidup yang sangat ramah lingkungan. Terus pertahankan dan inspirasi orang lain!'];
         } elseif ($scorePercentage >= 60) {
-            return ['Gaya Hidup Cukup Berkelanjutan', 'Anda sudah berada di jalur yang benar! Ada beberapa area yang bisa Anda tingkatkan untuk menjadi lebih hijau.'];
+            return ['🌱 Gaya Hidup Cukup Berkelanjutan', 'Anda sudah berada di jalur yang benar! Ada beberapa area yang bisa Anda tingkatkan untuk menjadi lebih hijau.'];
         } elseif ($scorePercentage >= 40) {
-            return ['Perlu Peningkatan Gaya Hidup Berkelanjutan', 'Ada banyak potensi untuk meningkatkan gaya hidup Anda menjadi lebih berkelanjutan. Mulailah dengan langkah-langkah kecil.'];
+            return ['⚠️ Perlu Peningkatan Gaya Hidup Berkelanjutan', 'Ada banyak potensi untuk meningkatkan gaya hidup Anda menjadi lebih berkelanjutan. Mulailah dengan langkah-langkah kecil.'];
         } else {
-            return ['Sangat Perlu Perhatian Lingkungan', 'Skor Anda menunjukkan bahwa ada banyak ruang untuk perbaikan. Setiap langkah kecil membantu, mari kita mulai bersama!'];
+            return ['🚨 Sangat Perlu Perhatian Lingkungan', 'Skor Anda menunjukkan bahwa ada banyak ruang untuk perbaikan. Setiap langkah kecil membantu, mari kita mulai bersama!'];
         }
     }
 
@@ -299,18 +300,17 @@ class QuizController extends Controller
 
         $totalScore = $quizAttempt->score;
         $totalQuestions = $quizAttempt->quiz->questions()->count(); // Akses dari relasi
-        $aiRecommendationFromDB = $quizAttempt->rekomendasi_ai;
 
         $maxPossibleScore = $quizAttempt->quiz->questions->sum(function ($question) {
             return $question->options->max('points');
         });
 
-        $scorePercentage = 0;
-        if ($maxPossibleScore > 0) {
-            $scorePercentage = ($totalScore / $maxPossibleScore) * 100;
-        }
-
+        $scorePercentage = $maxPossibleScore > 0 ? ($totalScore / $maxPossibleScore) * 100 : 0;
         list($category, $staticRecommendation) = $this->determineCategoryAndStaticRecommendation($scorePercentage, $maxPossibleScore <= 0);
+        // Ambil teks mentah dari database
+        $rawAiRecommendation = $quizAttempt->rekomendasi_ai;
+        // Proses teks mentah menjadi HTML yang siap ditampilkan
+        $processedAiRecommendation = $this->formatAiTextForDisplay($rawAiRecommendation);
 
         return view('quizzes.results', compact(
             'quiz', // quiz dari route model binding
@@ -318,8 +318,9 @@ class QuizController extends Controller
             'userAnswers', // Mungkin kosong jika attempt lama tanpa UserAnswer yang tersimpan dengan cara saat ini
             'totalQuestions',
             'category',
+            'maxPossibleScore',
             'staticRecommendation',
-            'aiRecommendationFromDB', // Ganti nama variabel
+            'processedAiRecommendation', // Kirim data yang sudah diproses
             'scorePercentage',
             'quizAttempt' // Kirim seluruh objek attempt jika perlu
         ));
@@ -378,32 +379,37 @@ class QuizController extends Controller
     }
 
     // Modifikasi fetchGeminiRecommendation untuk opsi nl2br
-    private function fetchGeminiRecommendation(string $promptText, bool $useNl2br = true)
+    private function fetchGeminiRecommendation(string $promptText) // Selalu return teks mentah
     {
         $apiKey = env('GEMINI_API_KEY');
         if (!$apiKey) {
             Log::error('GEMINI_API_KEY not set in .env file.');
-            return 'Konfigurasi API Key untuk AI belum diatur.';
+            return 'Konfigurasi API Key untuk AI belum diatur.'; // Pesan error
         }
+        // Sesuaikan URL jika model atau versi API Anda berbeda
         $url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key={$apiKey}";
 
         try {
-            $response = Http::timeout(45)->post($url, [ // Timeout ditingkatkan sedikit
+            $response = Http::timeout(45)->post($url, [
                 'contents' => [['parts' => [['text' => $promptText]]]],
                 'generationConfig' => [
-                    'temperature' => 0.7, // Sesuaikan sesuai kebutuhan
-                    'maxOutputTokens' => 800, // Sesuaikan sesuai kebutuhan
+                    'temperature' => 0.7,
+                    'maxOutputTokens' => 800, // Sesuaikan jika perlu output lebih panjang
                 ]
             ]);
 
             if ($response->successful()) {
                 $data = $response->json();
                 if (isset($data['candidates'][0]['content']['parts'][0]['text'])) {
-                    $text = $data['candidates'][0]['content']['parts'][0]['text'];
-                    return $useNl2br ? nl2br(e($text)) : $text; // e() tetap untuk keamanan dasar
+                    // Mengembalikan teks mentah langsung dari AI
+                    return $data['candidates'][0]['content']['parts'][0]['text'];
                 } elseif (isset($data['promptFeedback']['blockReason'])) {
-                    Log::warning('Gemini API blocked prompt: ' . ($data['promptFeedback']['blockReason']['reason'] ?? 'Unknown reason'));
-                    return 'Maaf, permintaan untuk rekomendasi AI diblokir karena alasan keamanan atau kebijakan konten.';
+                    $reason = $data['promptFeedback']['blockReason']['reason'] ?? 'Unknown reason';
+                    Log::warning('Gemini API blocked prompt: ' . $reason . ' Details: ' . json_encode($data['promptFeedback']));
+                    return 'Maaf, permintaan untuk rekomendasi AI diblokir karena alasan kebijakan konten.';
+                } elseif (isset($data['error'])) { // Penanganan error dari API Gemini
+                    Log::error('Gemini API error: ' . json_encode($data['error']));
+                    return 'Layanan AI mengembalikan error: ' . ($data['error']['message'] ?? 'Detail tidak tersedia');
                 } else {
                     Log::warning('Gemini API response format unexpected: ' . json_encode($data));
                     return 'Gagal memproses respons dari AI. Format tidak dikenali.';
@@ -419,5 +425,43 @@ class QuizController extends Controller
             Log::error('Generic error fetching Gemini recommendation: ' . $e->getMessage());
             return 'Terjadi kesalahan saat mengambil rekomendasi AI.';
         }
+    }
+    // In QuizController.php
+
+    private function formatAiTextForDisplay(?string $rawText): string
+    {
+        if (is_null($rawText) || trim($rawText) === '') {
+            return ''; // Kembalikan string kosong jika input null atau hanya spasi
+        }
+
+        // 1. Decode HTML entities yang MUNGKIN ada di output mentah AI (misal jika AI sendiri menulis &quot;)
+        $text = html_entity_decode($rawText, ENT_QUOTES, 'UTF-8');
+
+        // 2. Konversi Markdown sederhana ke HTML
+        // Mengubah **bold** menjadi <strong>bold</strong>
+        // Regex: \*\* (dua bintang literal)
+        //        (.*?) (menangkap grup karakter apa pun, non-greedy)
+        //        \*\* (dua bintang literal lagi)
+        //        's' modifier: membuat '.' cocok dengan newline, jika bold melintasi baris.
+        $text = preg_replace('/\*\*(.*?)\*\*/s', '<strong>$1</strong>', $text);
+
+        // Anda bisa menambahkan konversi Markdown lain di sini jika perlu, misalnya:
+        // Mengubah *italic* menjadi <em>italic</em>
+        $text = preg_replace('/\*([^*]+)\*/s', '<em>$1</em>', $text);
+        // Mengubah _underline_ menjadi <u>underline</u> (meskipun <u> kurang disarankan untuk aksesibilitas)
+        $text = preg_replace('/\_([^_]+)\_/s', '<u>$1</u>', $text);
+
+
+        // 3. Konversi newline (\n) menjadi tag <br /> untuk tampilan HTML
+        $text = nl2br($text);
+
+        // 4. Sanitasi dasar jika diperlukan (opsional, tergantung seberapa Anda percaya output AI)
+        // Jika Anda ingin lebih aman, Anda bisa menggunakan library HTML Purifier di sini
+        // Namun, untuk kasus <strong> dan <br> yang kita buat sendiri, ini mungkin tidak perlu.
+        // $config = \HTMLPurifier_Config::createDefault();
+        // $purifier = new \HTMLPurifier($config);
+        // $text = $purifier->purify($text);
+
+        return $text; // String ini sekarang berisi HTML (misalnya, <strong> dan <br />)
     }
 }
