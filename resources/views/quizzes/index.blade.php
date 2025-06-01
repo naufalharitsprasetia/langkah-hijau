@@ -1,18 +1,20 @@
 <x-layout :title="$title ?? 'Daftar Quiz'" :active="$active ?? 'quiz'">
-
-    <div class="min-h-screen flex justify-center p-4 pt-14 md:mt-0 md:pt-0">
+    <div class="min-h-screen flex justify-center">
         <div id="container" class="w-full max-w-2xl rounded-3xl overflow-hidden flex flex-col">
-            <div class="p-8 md:pt-0 flex-grow flex flex-col">
+            <div class="p-2 sm:p-4 md:pt-0 flex-grow flex flex-col">
                 <div id="content" class="text-center mb-8">
-
-                    <div
-                        class="w-16 h-16 bg-hijautua rounded-full pt-4 overflow-hidden mx-auto mb-4 flex items-center justify-center">
-                        <svg class="w-10 h-10 text-hijautua dark:text-hijaumuda fill=" currentColor" viewBox="0 0 24 24"
-                            aria-hidden="true">
+                    {{-- <div
+                        class="w-16 h-16 bg-hijautua rounded-full overflow-hidden text-white mx-auto mb-4 flex items-center justify-center">
+                        <svg class="w-10 h-10 text-hijautua dark:text-hijaumuda fill-white" fill="fff"
+                            viewBox="0 0 24 24" aria-hidden="true">
                             <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z">
                             </path>
                         </svg>
+                    </div> --}}
+                    <div class="animasi flex items-center justify-center max-w-7xl mx-auto mb-3">
+                        <canvas id="dotLottie-canvas" class="mx-auto w-48 h-48 md:w-64 md:h-64">
+                        </canvas>
                     </div>
                     <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-2">Uji Pengetahuan Anda</h2>
                     <p class="text-xl text-gray-600 dark:text-white mb-4">Pilih quiz untuk memulai tes.</p>
@@ -52,7 +54,7 @@
                                 <h2 class="text-xl font-semibold mb-2 text-gray-800 dark:text-white">
                                     {{ $quiz->title }}</h2>
                                 <p class="text-gray-600 dark:text-gray-300 mb-3">
-                                    {{ Str::limit($quiz->description, 100) }}</p>
+                                    {{ $quiz->description }}</p>
                                 @if ($quiz->duration_minutes)
                                 <p class="text-sm text-gray-500 dark:text-gray-400 mb-3">Durasi:
                                     {{ $quiz->duration_minutes }} menit</p>
@@ -96,4 +98,5 @@
                 </div>
             </div>
         </div>
+        @vite('resources/js/lottiequiz2.js')
 </x-layout>

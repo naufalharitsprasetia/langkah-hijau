@@ -28,6 +28,34 @@ if (logoutBtn) {
     });
 }
 
+const logoutBtn2 = document.getElementById("logoutBtn2");
+const logoutForm2 = document.getElementById("logoutForm2");
+if (logoutBtn2) {
+    logoutBtn2.addEventListener("click", () => {
+        Swal.fire({
+            title: "Apakah Anda Yakin ingin Logout",
+            text: "pastikan seluruh data sudah tersimpan",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Logout",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire({
+                    title: "Logged out",
+                    text: "logout telah berhasil!",
+                    icon: "success",
+                });
+                // Delay 3 detik sebelum submit
+                setTimeout(() => {
+                    logoutForm2.submit();
+                }, 1500);
+            }
+        });
+    });
+}
+
 // Delete Confirmation
 const deleteButtons = document.querySelectorAll(".deleteButton");
 

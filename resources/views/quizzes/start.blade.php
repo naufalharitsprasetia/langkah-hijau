@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="id" x-data="{ darkMode: localStorage.getItem('darkMode') === 'true' }" x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))" :class="{ 'dark': darkMode }">
+<html lang="id" x-data="{ darkMode: localStorage.getItem('darkMode') === 'true' }"
+    x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))" :class="{ 'dark': darkMode }">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Psikologi - {{ $quiz->title }}</title>
+    <title>Eco-Quiz - {{ $quiz->title }}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -151,14 +152,13 @@
                         <div>
                             <h1 class="text-lg font-semibold text-gray-900 dark:text-white">
                                 {{ $user->name ?? 'Pengguna' }}</h1>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">Quiz Psikologi</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">Ecu-Quiz</p>
                         </div>
                     </div>
 
                     <button @click="darkMode = !darkMode"
                         class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
-                        <svg x-show="!darkMode" class="w-5 h-5" fill="none" stroke="currentColor"
-                            viewBox="0 0 24 24">
+                        <svg x-show="!darkMode" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
                             </path>
@@ -199,12 +199,10 @@
                             'ring-2 ring-hijautua dark:ring-hijaumuda': !answers[question.id],
                             'bg-green-50 dark:bg-green-900/10 border-green-200 dark:border-green-800': answers[question
                                 .id]
-                        }"
-                        :id="`question-${question.id}`" x-transition.opacity.duration.300>
+                        }" :id="`question-${question.id}`" x-transition.opacity.duration.300>
 
                         <div class="flex items-start space-x-4 mb-6">
-                            <div class="question-number-circle"
-                                :class="{
+                            <div class="question-number-circle" :class="{
                                     'bg-green-500 text-white': answers[question.id],
                                     'bg-hijautua text-white': !answers[question.id],
                                 }">
@@ -227,7 +225,7 @@
                                 <label
                                     class="cursor-pointer scale-option flex items-center p-3 rounded-lg border dark:border-gray-700 transition-all duration-200"
                                     :class="{
-                                        'bg-primary-50 dark:bg-primary-900/20 border-hijautua dark:border-hijaumuda': answers[
+                                        'bg-primary-50 dark:bg-gray-900 border-hijautua dark:border-hijaumuda': answers[
                                             question
                                             .id] == option.id,
                                         'bg-white dark:bg-gray-800 border-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700': answers[

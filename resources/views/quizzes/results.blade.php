@@ -1,13 +1,13 @@
 <x-layout :title="'Hasil Quiz - ' . $quiz->title" :active="'quiz'">
     <div class="min-h-screen flex justify-center p-4 pt-14 md:mt-0 md:pt-0">
         <div id="container" class="w-full max-w-2xl rounded-3xl overflow-hidden flex flex-col">
-            <div class="p-8 md:pt-0 flex-grow flex flex-col">
+            <div class="md:p-8 md:pt-0 flex-grow flex flex-col">
                 <div class="animasi flex items-center justify-center max-w-7xl mx-auto">
-                    <canvas id="dotLottie-canvas" class="mx-auto w-48 h-48 md:w-64 md:h-64">
+                    <canvas id="dotLottie-canvas" class="mx-auto w-80 h-80 md:w-96 md:h-96">
                     </canvas>
                 </div>
                 <div id="content" class="text-center mb-8">
-                    <div
+                    {{-- <div
                         class="w-16 h-16 bg-hijautua rounded-full pt-4 overflow-hidden mx-auto mb-4 flex items-center justify-center">
                         <svg class="w-10 h-10 text-hijautua dark:text-hijaumuda fill-current" viewBox="0 0 24 24"
                             aria-hidden="true">
@@ -15,10 +15,10 @@
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8.59 10 17z">
                             </path>
                         </svg>
-                    </div>
+                    </div> --}}
                     <h2 class="text-2xl font-semibold text-gray-800 dark:text-white mb-2">Hasil Uji Pengetahuanmu!
                     </h2>
-                    <p class="text-xl text-gray-600 dark:text-white mb-4">Ini dia rangkuman performamu dalam tes
+                    <p class="text-xl text-gray-600 dark:text-gray-400 mb-4">Ini dia rangkuman performamu dalam tes
                         {{ $quiz->title }}.</p>
                 </div>
 

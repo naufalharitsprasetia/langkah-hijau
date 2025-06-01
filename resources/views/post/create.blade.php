@@ -76,7 +76,8 @@
                                         <label for="editor"
                                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Body</label>
                                         <div id="editor" style="min-height: 200px;"
-                                            class="bg-white dark:bg-gray-700 p-2 border border-gray-300 rounded"></div>
+                                            class="bg-white dark:bg-gray-700 p-2 text-gray-900 dark:text-white border border-gray-300 rounded">
+                                        </div>
                                         <input type="hidden" name="body" id="body">
                                     </div>
 
@@ -93,9 +94,17 @@
 </x-sidebar.layout>
 <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 <script>
-    const quill = new Quill('#editor', {
-        theme: 'snow'
+    document.addEventListener("DOMContentLoaded", () => {
+        const haha = document.querySelector('.ql-toolbar.ql-snow');
+        if(haha !== null){
+            haha.style.backgroundColor = '#fff';
+        }
     });
+
+    const quill = new Quill('#editor', {
+        theme: 'snow',
+    });
+
     // Simpan isi Quill ke input hidden sebelum submit
     const form = document.getElementById('formPost');
     form.onsubmit = () => {

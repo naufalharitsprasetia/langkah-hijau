@@ -140,7 +140,7 @@
         }
     }, 15000); // 15000 ms = 15 detik
     </script>
-    <script src="{{ asset('js/script.js') }}"></script>
+
     <script src="{{ asset('js/scrollnavbar.js') }}"></script>
     <script src="{{ asset('js/preload.js') }}"></script>
     <script src="{{ asset('js/themelogic.js') }}"></script>

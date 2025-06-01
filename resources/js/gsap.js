@@ -20,7 +20,6 @@ let posY = 0;
 let mouseX = 0;
 let mouseY = 0;
 
-// cursor.js
 // lenis init
 const lenis = new Lenis();
 

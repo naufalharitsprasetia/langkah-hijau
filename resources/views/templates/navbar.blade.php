@@ -183,37 +183,37 @@
             </div>
             <div class="mt-6 flow-root">
                 <div class="-my-6 divide-y divide-gray-500/10">
-                    <div class="space-y-2 py-6">
+                    <div class="space-y-2 py-4">
                         <a href="{{ route('home.index') }}"
-                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700">Beranda</a>
+                            class="-mx-3 block rounded-lg px-3 py-2 text-sm/7 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700">Beranda</a>
                         <a href="/quizzes"
-                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700">Eco-Quiz
+                            class="-mx-3 block rounded-lg px-3 py-2 text-sm/7 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700">Eco-Quiz
                             🌏</a>
                         <a href="{{ route('post.index') }}"
-                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700">
+                            class="-mx-3 block rounded-lg px-3 py-2 text-sm/7 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700">
                             Edu-Zone ♻️</a>
                         <a href="{{ route('challenges.index') }}"
-                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700">Tantangan
+                            class="-mx-3 block rounded-lg px-3 py-2 text-sm/7 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700">Tantangan
                             Hijau
                             🏆</a>
                         <a href="{{ route('event.index') }}"
-                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700">Green
+                            class="-mx-3 block rounded-lg px-3 py-2 text-sm/7 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700">Green
                             Events 📆</a>
                         <a href="{{ route('hijau-ai.index') }}"
-                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700">Hijau
+                            class="-mx-3 block rounded-lg px-3 py-2 text-sm/7 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700">Hijau
                             AI ✨</a>
                         <a href="{{ route('home.tentang') }}"
-                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700">Tentang
+                            class="-mx-3 block rounded-lg px-3 py-2 text-sm/7 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700">Tentang
                             Aplikasi
                         </a>
                         <a href="{{ route('home.kontak') }}"
-                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700">Kontak</a>
+                            class="-mx-3 block rounded-lg px-3 py-2 text-sm/7 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700">Kontak</a>
                         <a href="{{ route('home.team') }}"
-                            class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700">Tim
+                            class="-mx-3 block rounded-lg px-3 py-2 text-sm/7 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700">Tim
                             Kami
                         </a>
                     </div>
-                    <div class="py-6">
+                    <div class="pt-2 pb-6">
                         <!-- Theme Toggle Button -->
                         <button id="theme-toggle2" aria-label="Toggle theme"
                             class="p-2 block mx-auto text-center rounded-full text-accent dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 cursor-pointer">
@@ -224,26 +224,26 @@
                             </svg>
                         </button>
                         @auth
-                        <form action="{{ route('auth.logout') }}" method="POST" class="block" id="logoutForm">
+                        <form action="{{ route('auth.logout') }}" method="POST" class="block" id="logoutForm2">
                             @csrf
-                            <button type="button" id="logoutBtn"
-                                class="block w-full cursor-pointer px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg"
-                                role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</button>
+                            <button type="button" id="logoutBtn2"
+                                class="block w-full cursor-pointer font-medium px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg"
+                                role="menuitem" tabindex="-1">Sign out</button>
                         </form>
                         <a href="{{ route('user.dashboard') }}"
-                            class="block text-center px-4 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg"
+                            class="block text-center px-4 py-2 font-medium text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg"
                             role="menuitem" tabindex="-1" id="user-menu-item-1">Dashboard</a>
-                        <p class="block text-center px-4 py-2 text-sm text-hijautua dark:text-hijaumuda" role="menuitem"
-                            tabindex="-1" id="user-menu-item-0"><i class="fa-solid fa-star me-2"></i> {{
+                        <p class="block text-center px-4 py-2 font-medium text-sm text-hijautua dark:text-hijaumuda"
+                            role="menuitem" tabindex="-1" id="user-menu-item-0"><i class="fa-solid fa-star me-2"></i> {{
                             auth()->user()->green_points }} Green
                             Points</p>
                         <p
                             class="mx-auto text-center block rounded-lg px-4 py-2 text-sm/7 font-medium text-gray-700 dark:text-gray-200">
-                            <i class="fa-solid fa-profile mr-3"></i> {{ auth()->user()->name }}
+                            <i class="fa-solid fa-user"></i> {{ auth()->user()->name }}
                         </p>
                         @else
                         <a href="{{ route('auth.login') }}"
-                            class="mx-auto block px-3 py-2.5 text-sm/7 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg">
+                            class="mx-auto text-center block px-3 py-2.5 text-sm/7 font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg">
                             <i class="fa-solid fa-sign-in mr-3"></i> Login</a>
                         @endauth
                     </div>

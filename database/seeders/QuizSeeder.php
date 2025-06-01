@@ -15,9 +15,9 @@ class QuizSeeder extends Seeder
      */
     public function run(): void
     {
-        // Quiz 1: Kuis: Seberapa Hijau Jiwamu? Mari Kenali Eco-Persona-mu!
+        // Quiz 1:  Seberapa Hijau Jiwamu? Mari Kenali Eco-Persona-mu!
         $quiz1 = Quiz::create([
-            'title' => 'Kuis: Seberapa Hijau Jiwamu? Mari Kenali Eco-Persona-mu!',
+            'title' => ' Seberapa Hijau Jiwamu? Mari Kenali Eco-Persona-mu!',
             'description' => 'Penasaran seberapa jauh gaya hidupmu selaras dengan alam? Ikuti kuis singkat ini dan temukan eco-persona unikmu!',
             'duration_minutes' => 5,
         ]);
@@ -94,7 +94,7 @@ class QuizSeeder extends Seeder
 
         // --- QUIZ 2: JEJAK LINGKUNGANKU ---
         $quiz2 = Quiz::create([
-            'title' => 'Kuis: Jejak Lingkunganku - Sejauh Mana Kamu Berkontribusi?',
+            'title' => 'Jejak Lingkunganku - Sejauh Mana Kamu Berkontribusi?',
             'description' => 'Mari selami lebih dalam kebiasaanmu dan pahami dampak lingkungan dari setiap pilihan yang kamu ambil.',
             'duration_minutes' => 6,
         ]);

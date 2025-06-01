@@ -21,7 +21,7 @@ class TierSeeder extends Seeder
             'icon' => '🌱',
             'min_points' => 0,
             'max_points' => 350,
-            'keterangan' => 'Baru memulai perjalanan hijau',
+            'keterangan' => 'Langkah awal menuju gaya hidup ramah lingkungan',
             'color' => 'yellow-500',
         ]);
         Tier::create([
@@ -31,7 +31,7 @@ class TierSeeder extends Seeder
             'icon' => '🌿',
             'min_points' => 351,
             'max_points' => 500,
-            'keterangan' => 'Mulai konsisten',
+            'keterangan' => 'Semangat hijau mulai tumbuh dan terus berkembang',
             'color' => 'lime-300',
         ]);
         Tier::create([
@@ -41,7 +41,7 @@ class TierSeeder extends Seeder
             'icon' => '🍀',
             'min_points' => 501,
             'max_points' => 750,
-            'keterangan' => 'Sudah bisa jadi panutan',
+            'keterangan' => 'Menjadi teladan dalam aksi nyata menjaga bumi',
             'color' => 'green-500',
         ]);
         Tier::create([
@@ -51,7 +51,7 @@ class TierSeeder extends Seeder
             'icon' => '🌎',
             'min_points' => 751,
             'max_points' => 1000,
-            'keterangan' => 'Level tertinggi, dapat ditampilkan publik',
+            'keterangan' => 'Pemimpin perubahan, siap menginspirasi dunia digital',
             'color' => 'blue-500',
         ]);
     }

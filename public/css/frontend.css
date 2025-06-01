@@ -2,8 +2,6 @@ body {
     /* font-family: "Plus jakarta sans", sans-serif; */
     scroll-behavior: smooth;
     overflow-x: hidden;
-    background-color: white;
-    color: black;
 }
 
 .menu {

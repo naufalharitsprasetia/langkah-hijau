@@ -2,8 +2,8 @@
 <div class="relative isolate max-w-7xl mx-auto px-4 sm:px-6 lg:px-16 pb-8 z-30">
     <x-efek.glowatas />
     {{-- title --}}
-    <div class="mt-4 mb-16 mx-auto text-center">
-        <p data-aos="fade-up" data-aos-duration="2000"
+    <div class="mt-4 mb-16 mx-auto text-center" data-aos="fade-up" data-aos-duration="2000">
+        <p
             class="mb-3 text-3xl text-center font-bold text-pretty text-gray-900 dark:text-gray-100 sm:text-5xl lg:text-balance">
             Edu-Zone
         </p>

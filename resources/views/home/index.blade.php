@@ -198,12 +198,16 @@
             </div>
         </div>
     </div>
+    {{-- --}}
+    <div class="animasi flex items-center justify-center max-w-7xl mx-auto">
+        <canvas id="dotLottie-canvas" class="mx-auto w-80 h-80 md:w-96 md:h-96">
+        </canvas>
+    </div>
     {{-- sec blog --}}
     <x-post.article :active="$active" class="mt-20" :postUtama="$postUtama" :posts="$posts" />
     {{-- sec.3 --}}
     <div class="sec3 relative isolate">
         <x-efek.glowatas />
-
         {{-- BENTO GRID --}}
         <div class="pt-24 pb-20 sm:py-32">
             <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
@@ -356,4 +360,5 @@
         </div>
         <x-efek.glowbawah />
     </section>
+    @vite('resources/js/home.js')
 </x-layout>
