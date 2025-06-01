@@ -44,6 +44,7 @@
 
 Sebelum memulai, pastikan perangkat Anda memiliki:
 
+- Web Server : Nginx / Apache
 - PHP >= 8.2  
 - Composer  
 - MySQL, PostgreSQL, SQLite, atau database lain yang didukung Laravel
