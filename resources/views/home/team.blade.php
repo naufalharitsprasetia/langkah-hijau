@@ -46,7 +46,6 @@
                         </template>
                     </div>
                     
-
                 </div>
 
                 <!-- Image + Navigation -->
@@ -102,6 +101,7 @@
             return {
                 current: 0,
                 members: [{
+
                         name: 'Rizky C. Putra',
                         position: 'Front-End Web Developer',
                         description: 'Sebagai seorang web developer dan mahasiswa , Anda memiliki kombinasi kemampuan teknis dan akademik yang kuat. Bergabung sebagai staff IT di PPTIK (Pusat Pengembangan Teknologi Informasi dan Komunikasi) UNIDA Gontor , Anda turut berkontribusi dalam pengembangan sistem informasi, pengelolaan infrastruktur TI, serta penerapan teknologi untuk mendukung proses pendidikan dan administrasi di kampus. Dengan latar belakang akademik yang solid dan pengalaman praktis di dunia pemrograman web, Anda menjadi aset penting dalam memajukan digitalisasi institusi.',

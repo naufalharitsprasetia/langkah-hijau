@@ -58,6 +58,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Badge::class, 'user_badge', 'user_id', 'badge_id');
     }
 
+    public function quizAttempts(): HasMany
+    {
+        return $this->hasMany(QuizAttempt::class);
+    }
+
     public static function updateTier(User $user)
     {
         $tier = \App\Models\Tier::where('min_points', '<=', $user->green_points)
