@@ -109,7 +109,7 @@ php artisan migrate:fresh --seed
 ```
 
 ```bash
-php artisan  php artisan storage:link
+php artisan storage:link
 ```
 
 ### 7. Jalankan Aplikasi
