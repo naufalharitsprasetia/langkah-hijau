@@ -124,9 +124,8 @@
                         <span class="sr-only">Open user menu</span>
                         <span class="text-sm/6 font-medium mr-1 text-gray-700 dark:text-gray-200 rounded-sm block">{{
                             auth()->user()->name }}</span>
-                        <img class="size-8 rounded-full"
-                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                            alt="">
+                        <img class="size-8 rounded-full" src="{{ asset('img/ask-ai.png') }}" alt="">
+                        {{-- 256 x 256px --}}
                     </button>
                 </div>
                 <div x-show="isOpen" x-transition:enter="transition ease-out duration-100 transform"
