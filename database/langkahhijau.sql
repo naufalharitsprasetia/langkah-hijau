@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 31, 2025 at 04:13 PM
+-- Generation Time: Jun 01, 2025 at 03:13 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.3.11
 
@@ -48,8 +48,8 @@ CREATE TABLE `ajuan_events` (
 --
 
 INSERT INTO `ajuan_events` (`id`, `title`, `category`, `image`, `description`, `location`, `penyelenggara`, `contact_person`, `contact_person_number`, `date_time`, `user_id`, `created_at`, `updated_at`) VALUES
-('76d5c9f4-320c-4114-86cc-04d2f39385c4', 'Eco Bazaar & Tukar Barang Bekas', 'Pameran', 'eco-bazaar.png', 'Bazaar ramah lingkungan dengan area tukar-menukar barang bekas layak pakai.', 'Alun-alun Sidoarjo', 'LangkahHijau', 'Budi R.', '085755332211', '2025-06-04 10:00:00', 2, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-('8b729670-dd80-40f2-8931-e3ce65f4e9e4', 'LangkahHijau Goes to School', 'Kolaborasi', 'schoolprogram.png', 'Belajar teknik bertani di lahan sempit untuk hidup lebih hijau di kota.', 'SD Negeri 1 Sidoarjo', 'LangkahHijau', 'Siti M.', '081334455667', '2025-06-04 10:00:00', 2, '2025-05-31 16:12:28', '2025-05-31 16:12:28');
+('5bc3367f-185b-4d7e-a80e-e67c6bb5796f', 'Eco Bazaar & Tukar Barang Bekas', 'Pameran', 'eco-bazaar.png', 'Bazaar ramah lingkungan dengan area tukar-menukar barang bekas layak pakai.', 'Alun-alun Sidoarjo', 'LangkahHijau', 'Budi R.', '085755332211', '2025-06-05 10:00:00', 2, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+('d3665591-ff8f-4c61-8488-38cf0905eea2', 'LangkahHijau Goes to School', 'Kolaborasi', 'schoolprogram.png', 'Belajar teknik bertani di lahan sempit untuk hidup lebih hijau di kota.', 'SD Negeri 1 Sidoarjo', 'LangkahHijau', 'Siti M.', '081334455667', '2025-06-05 10:00:00', 2, '2025-06-01 15:03:29', '2025-06-01 15:03:29');
 
 -- --------------------------------------------------------
 
@@ -70,11 +70,11 @@ CREATE TABLE `badges` (
 --
 
 INSERT INTO `badges` (`id`, `icon`, `badge`, `created_at`, `updated_at`) VALUES
-(1, '♻️', 'Pejuang Anti Plastik', '2025-05-31 16:12:24', '2025-05-31 16:12:24'),
-(2, '🚴', 'Komuter Hijau', '2025-05-31 16:12:24', '2025-05-31 16:12:24'),
-(3, '🌱', 'Eksplorer Nabati', '2025-05-31 16:12:24', '2025-05-31 16:12:24'),
-(4, '💎', 'Sustainability Hero', '2025-05-31 16:12:24', '2025-05-31 16:12:24'),
-(5, '🥦', 'Green Contributor', '2025-05-31 16:12:24', '2025-05-31 16:12:24');
+(1, '♻️', 'Pejuang Anti Plastik', '2025-06-01 15:03:24', '2025-06-01 15:03:24'),
+(2, '🚴', 'Komuter Hijau', '2025-06-01 15:03:24', '2025-06-01 15:03:24'),
+(3, '🌱', 'Eksplorer Nabati', '2025-06-01 15:03:24', '2025-06-01 15:03:24'),
+(4, '💎', 'Sustainability Hero', '2025-06-01 15:03:24', '2025-06-01 15:03:24'),
+(5, '🥦', 'Green Contributor', '2025-06-01 15:03:24', '2025-06-01 15:03:24');
 
 -- --------------------------------------------------------
 
@@ -123,9 +123,9 @@ CREATE TABLE `challenges` (
 --
 
 INSERT INTO `challenges` (`id`, `title`, `description`, `image`, `duration_days`, `green_points`, `badge_id`, `created_at`, `updated_at`) VALUES
-('4969ae15-f6d5-4759-9a09-e0aafab4c02c', '7 Hari Tanpa Plastik Sekali Pakai', 'Selama seminggu, hindari penggunaan plastik sekali pakai seperti kantong kresek, sedotan, botol air, dan kemasan makanan/minuman.', 'haritanpaplastik.png', 7, 400, 1, '2025-05-31 16:12:27', '2025-05-31 16:12:27'),
-('8bd157eb-5c6c-44b6-b19e-13e8ecdce057', '5 Hari Transportasi Ramah Lingkungan', 'Gunakan transportasi minim emisi: jalan kaki, sepeda, atau transportasi umum selama 5 hari berturut-turut.', 'haritransportasi.png', 5, 250, 2, '2025-05-31 16:12:27', '2025-05-31 16:12:27'),
-('eec64bc4-a7e1-4435-bba7-ebecb991f4f0', '3 Hari Makan Nabati', 'Selama 3 hari penuh, konsumsi makanan nabati (vegetarian/plant-based), hindari daging dan produk hewani.', 'harimakannabati.png', 3, 150, 3, '2025-05-31 16:12:28', '2025-05-31 16:12:28');
+('13a2333b-fbb6-475b-b17b-ea0a65eddc65', '7 Hari Tanpa Plastik Sekali Pakai', 'Selama seminggu, hindari penggunaan plastik sekali pakai seperti kantong kresek, sedotan, botol air, dan kemasan makanan/minuman.', 'haritanpaplastik.png', 7, 400, 1, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+('3f84d88a-a6b6-43a3-b1b0-ee2e28547e88', '3 Hari Makan Nabati', 'Selama 3 hari penuh, konsumsi makanan nabati (vegetarian/plant-based), hindari daging dan produk hewani.', 'harimakannabati.png', 3, 150, 3, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+('a902d177-1d6e-4518-b9d0-8c7597b65307', '5 Hari Transportasi Ramah Lingkungan', 'Gunakan transportasi minim emisi: jalan kaki, sepeda, atau transportasi umum selama 5 hari berturut-turut.', 'haritransportasi.png', 5, 250, 2, '2025-06-01 15:03:29', '2025-06-01 15:03:29');
 
 -- --------------------------------------------------------
 
@@ -146,21 +146,21 @@ CREATE TABLE `challenge_actions` (
 --
 
 INSERT INTO `challenge_actions` (`id`, `action`, `challenge_id`, `created_at`, `updated_at`) VALUES
-(1, 'Gunakan tas belanja kain setiap kali berbelanja.', '4969ae15-f6d5-4759-9a09-e0aafab4c02c', '2025-05-31 16:12:28', NULL),
-(2, 'Bawa dan gunakan botol minum pribadi.', '4969ae15-f6d5-4759-9a09-e0aafab4c02c', '2025-05-31 16:12:28', NULL),
-(3, 'Hindari membeli makanan atau minuman dalam kemasan plastik sekali pakai.', '4969ae15-f6d5-4759-9a09-e0aafab4c02c', '2025-05-31 16:12:28', NULL),
-(4, 'Tolak sedotan plastik, atau gunakan alternatif reusable jika perlu.', '4969ae15-f6d5-4759-9a09-e0aafab4c02c', '2025-05-31 16:12:28', NULL),
-(5, 'Pilih produk dengan kemasan minimal atau tanpa kemasan plastik.', '4969ae15-f6d5-4759-9a09-e0aafab4c02c', '2025-05-31 16:12:28', NULL),
-(6, 'Gunakan tas belanja kain setiap kali berbelanja.', '8bd157eb-5c6c-44b6-b19e-13e8ecdce057', '2025-05-31 16:12:28', NULL),
-(7, 'Bawa dan gunakan botol minum pribadi.', '8bd157eb-5c6c-44b6-b19e-13e8ecdce057', '2025-05-31 16:12:28', NULL),
-(8, 'Hindari membeli makanan atau minuman dalam kemasan plastik sekali pakai.', '8bd157eb-5c6c-44b6-b19e-13e8ecdce057', '2025-05-31 16:12:28', NULL),
-(9, 'Tolak sedotan plastik, atau gunakan alternatif reusable jika perlu.', '8bd157eb-5c6c-44b6-b19e-13e8ecdce057', '2025-05-31 16:12:28', NULL),
-(10, 'Pilih produk dengan kemasan minimal atau tanpa kemasan plastik.', '8bd157eb-5c6c-44b6-b19e-13e8ecdce057', '2025-05-31 16:12:28', NULL),
-(11, 'Gunakan tas belanja kain setiap kali berbelanja.', 'eec64bc4-a7e1-4435-bba7-ebecb991f4f0', '2025-05-31 16:12:28', NULL),
-(12, 'Bawa dan gunakan botol minum pribadi.', 'eec64bc4-a7e1-4435-bba7-ebecb991f4f0', '2025-05-31 16:12:28', NULL),
-(13, 'Hindari membeli makanan atau minuman dalam kemasan plastik sekali pakai.', 'eec64bc4-a7e1-4435-bba7-ebecb991f4f0', '2025-05-31 16:12:28', NULL),
-(14, 'Tolak sedotan plastik, atau gunakan alternatif reusable jika perlu.', 'eec64bc4-a7e1-4435-bba7-ebecb991f4f0', '2025-05-31 16:12:28', NULL),
-(15, 'Pilih produk dengan kemasan minimal atau tanpa kemasan plastik.', 'eec64bc4-a7e1-4435-bba7-ebecb991f4f0', '2025-05-31 16:12:28', NULL);
+(1, 'Gunakan tas belanja kain setiap kali berbelanja.', '13a2333b-fbb6-475b-b17b-ea0a65eddc65', '2025-06-01 15:03:29', NULL),
+(2, 'Bawa dan gunakan botol minum pribadi.', '13a2333b-fbb6-475b-b17b-ea0a65eddc65', '2025-06-01 15:03:29', NULL),
+(3, 'Hindari membeli makanan atau minuman dalam kemasan plastik sekali pakai.', '13a2333b-fbb6-475b-b17b-ea0a65eddc65', '2025-06-01 15:03:29', NULL),
+(4, 'Tolak sedotan plastik, atau gunakan alternatif reusable jika perlu.', '13a2333b-fbb6-475b-b17b-ea0a65eddc65', '2025-06-01 15:03:29', NULL),
+(5, 'Pilih produk dengan kemasan minimal atau tanpa kemasan plastik.', '13a2333b-fbb6-475b-b17b-ea0a65eddc65', '2025-06-01 15:03:29', NULL),
+(6, 'Jalan Kaki atau Bersepeda untuk Jarak Dekat.', 'a902d177-1d6e-4518-b9d0-8c7597b65307', '2025-06-01 15:03:29', NULL),
+(7, 'Manfaatkan Transportasi Umum.', 'a902d177-1d6e-4518-b9d0-8c7597b65307', '2025-06-01 15:03:29', NULL),
+(8, 'Coba Carpooling atau Berbagi Tumpangan.', 'a902d177-1d6e-4518-b9d0-8c7597b65307', '2025-06-01 15:03:29', NULL),
+(9, 'Rencanakan Perjalanan Efisien Jika Harus Berkendara.', 'a902d177-1d6e-4518-b9d0-8c7597b65307', '2025-06-01 15:03:29', NULL),
+(10, 'Satu Hari Bebas Emisi Kendaraan Pribadi.', 'a902d177-1d6e-4518-b9d0-8c7597b65307', '2025-06-01 15:03:29', NULL),
+(11, 'Eksplorasi Sarapan dan Makan Siang Nabati.', '3f84d88a-a6b6-43a3-b1b0-ee2e28547e88', '2025-06-01 15:03:29', NULL),
+(12, 'Fokus pada Variasi Protein Nabati untuk Makan Malam.', '3f84d88a-a6b6-43a3-b1b0-ee2e28547e88', '2025-06-01 15:03:29', NULL),
+(13, 'Nikmati Camilan dan Makanan Penutup Nabati.', '3f84d88a-a6b6-43a3-b1b0-ee2e28547e88', '2025-06-01 15:03:29', NULL),
+(14, 'Perhatikan Label & Hindari Produk Hewani Tersembunyi.', '3f84d88a-a6b6-43a3-b1b0-ee2e28547e88', '2025-06-01 15:03:29', NULL),
+(15, 'Jaga Hidrasi dan Perbanyak Serat.', '3f84d88a-a6b6-43a3-b1b0-ee2e28547e88', '2025-06-01 15:03:29', NULL);
 
 -- --------------------------------------------------------
 
@@ -183,12 +183,12 @@ CREATE TABLE `challenge_daily_actions` (
 --
 
 INSERT INTO `challenge_daily_actions` (`id`, `challenge_participation_id`, `day`, `checked_at`, `is_checked`, `created_at`, `updated_at`) VALUES
-(1, 'b4a3d98f-2c3d-4890-bb47-0c6c483657bf', 'day1', '2025-05-25 00:00:00', 1, '2025-05-22 16:12:28', '2025-05-31 16:12:28'),
-(2, 'b4a3d98f-2c3d-4890-bb47-0c6c483657bf', 'day2', '2025-05-26 00:00:00', 1, '2025-05-21 16:12:28', '2025-05-31 16:12:28'),
-(3, 'b4a3d98f-2c3d-4890-bb47-0c6c483657bf', 'day3', '2025-05-27 00:00:00', 1, '2025-05-21 16:12:28', '2025-05-31 16:12:28'),
-(4, 'b4a3d98f-2c3d-4890-bb47-0c6c483657bf', 'day4', '2025-05-28 00:00:00', 1, '2025-05-21 16:12:28', '2025-05-31 16:12:28'),
-(5, 'b4a3d98f-2c3d-4890-bb47-0c6c483657bf', 'day5', '2025-05-29 00:00:00', 1, '2025-05-21 16:12:28', '2025-05-31 16:12:28'),
-(6, 'b4a3d98f-2c3d-4890-bb47-0c6c483657bf', 'day6', '2025-05-30 00:00:00', 1, '2025-05-21 16:12:28', '2025-05-31 16:12:28');
+(1, '91e479bd-fe48-4225-a593-c6e2eaa38737', 'day1', '2025-05-26 00:00:00', 1, '2025-05-23 15:03:29', '2025-06-01 15:03:29'),
+(2, '91e479bd-fe48-4225-a593-c6e2eaa38737', 'day2', '2025-05-27 00:00:00', 1, '2025-05-22 15:03:29', '2025-06-01 15:03:29'),
+(3, '91e479bd-fe48-4225-a593-c6e2eaa38737', 'day3', '2025-05-28 00:00:00', 1, '2025-05-22 15:03:29', '2025-06-01 15:03:29'),
+(4, '91e479bd-fe48-4225-a593-c6e2eaa38737', 'day4', '2025-05-29 00:00:00', 1, '2025-05-22 15:03:29', '2025-06-01 15:03:29'),
+(5, '91e479bd-fe48-4225-a593-c6e2eaa38737', 'day5', '2025-05-30 00:00:00', 1, '2025-05-22 15:03:29', '2025-06-01 15:03:29'),
+(6, '91e479bd-fe48-4225-a593-c6e2eaa38737', 'day6', '2025-05-31 00:00:00', 1, '2025-05-22 15:03:29', '2025-06-01 15:03:29');
 
 -- --------------------------------------------------------
 
@@ -212,7 +212,7 @@ CREATE TABLE `challenge_participations` (
 --
 
 INSERT INTO `challenge_participations` (`id`, `user_id`, `challenge_id`, `start_date`, `is_completed`, `completion_date`, `created_at`, `updated_at`) VALUES
-('b4a3d98f-2c3d-4890-bb47-0c6c483657bf', 2, '4969ae15-f6d5-4759-9a09-e0aafab4c02c', '2025-05-21 23:12:28', 0, NULL, '2025-05-31 16:12:28', '2025-05-31 16:12:28');
+('91e479bd-fe48-4225-a593-c6e2eaa38737', 2, '13a2333b-fbb6-475b-b17b-ea0a65eddc65', '2025-05-22 22:03:29', 0, NULL, '2025-06-01 15:03:29', '2025-06-01 15:03:29');
 
 -- --------------------------------------------------------
 
@@ -242,13 +242,13 @@ CREATE TABLE `events` (
 --
 
 INSERT INTO `events` (`id`, `title`, `category`, `image`, `description`, `location`, `penyelenggara`, `contact_person`, `contact_person_number`, `date_time`, `is_demo`, `user_id`, `created_at`, `updated_at`) VALUES
-('0bc3a179-eb96-406c-9762-6c7095c3f64a', 'Green Talk: Energi Terbarukan di Rumah', 'Talk Show', 'greentalk.png', 'Diskusi bersama pakar tentang energi terbarukan dan panel surya.', 'Online (Zoom)', 'LangkahHijau', 'Nanda M.', '081234111222', '2025-06-01 19:00:00', 1, NULL, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-('96ab3714-031e-4d56-ba2e-628831d98b9b', 'Workshop Urban Farming untuk Pemula', 'Seminar', 'urbanfarming.png', 'Belajar teknik bertani di lahan sempit untuk hidup lebih hijau di kota.', 'Ruang Hijau, Surabaya', 'LangkahHijau', 'Rina W.', '081234567890', '2025-06-04 10:00:00', 1, NULL, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-('a5486b35-3bec-4d41-8684-d8f7cb424980', 'Sosialisasi Gaya Hidup Minim Sampah', 'Seminar', 'seminar.png', 'Cara-cara mudah memulai gaya hidup minim sampah dari rumah.', 'Balai RW 05, Sidoarjo', 'LangkahHijau', 'Lilis A.', '083888444555', '2025-06-02 16:00:00', 1, NULL, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-('c03e6adf-5b52-426a-9f1d-6314e30d7ecc', 'Aksi Bersih Sungai Brantas', 'Gotong Royong', 'aksisungai.png', 'Bersama menjaga sungai dengan kegiatan bersih-bersih komunitas.', 'Tepi Sungai Brantas, Sidoarjo', 'LangkahHijau', 'Ari P.', '082112345678', '2025-06-03 08:00:00', 1, NULL, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-('d49f6ad8-fd29-441b-adcb-9855bec5e828', 'Pameran Produk Daur Ulang Lokal', 'Pameran', 'pameran.png', 'Pameran kreatifitas masyarakat lokal dalam mendaur ulang barang bekas.', 'Gedung Kesenian Sidoarjo', 'LangkahHijau', 'Eka S.', '087777000123', '2025-06-02 09:00:00', 1, NULL, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-('e8d050f0-8543-492e-ad36-c68a60124311', 'Volunteering: Menanam 1000 Pohon', 'Volunteer', 'treeplanting.png', 'Bergabung menanam pohon bersama komunitas peduli lingkungan.', 'Hutan Kota Sidoarjo', 'LangkahHijau', 'Dimas T.', '085611119999', '2025-06-01 07:00:00', 1, NULL, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-('f593a215-89f8-4913-8775-ccc2396a1361', 'Eco Picnic & Edukasi Sampah Organik', 'Kolaborasi', 'picnic.png', 'Bersantai sambil belajar pemanfaatan sampah organik di alam terbuka.', 'Taman Hijau Kota', 'LangkahHijau', 'Rafi D.', '081999222111', '2025-06-01 14:00:00', 1, NULL, '2025-05-31 16:12:28', '2025-05-31 16:12:28');
+('2c80f580-d771-4793-961a-fa4542b3f6cc', 'Eco Picnic & Edukasi Sampah Organik', 'Kolaborasi', 'picnic.png', 'Bersantai sambil belajar pemanfaatan sampah organik di alam terbuka.', 'Taman Hijau Kota', 'LangkahHijau', 'Rafi D.', '081999222111', '2025-06-02 14:00:00', 1, NULL, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+('3828399b-b4f1-44af-83f1-5c30ce0f1562', 'Volunteering: Menanam 1000 Pohon', 'Volunteer', 'treeplanting.png', 'Bergabung menanam pohon bersama komunitas peduli lingkungan.', 'Hutan Kota Sidoarjo', 'LangkahHijau', 'Dimas T.', '085611119999', '2025-06-02 07:00:00', 1, NULL, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+('634befc9-1201-4376-8d45-575af85ba267', 'Pameran Produk Daur Ulang Lokal', 'Pameran', 'pameran.png', 'Pameran kreatifitas masyarakat lokal dalam mendaur ulang barang bekas.', 'Gedung Kesenian Sidoarjo', 'LangkahHijau', 'Eka S.', '087777000123', '2025-06-03 09:00:00', 1, NULL, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+('852744cf-5414-46f7-b23b-0abb68fe0cb6', 'Green Talk: Energi Terbarukan di Rumah', 'Talk Show', 'greentalk.png', 'Diskusi bersama pakar tentang energi terbarukan dan panel surya.', 'Online (Zoom)', 'LangkahHijau', 'Nanda M.', '081234111222', '2025-06-02 19:00:00', 1, NULL, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+('9c89f86c-8d40-4c75-8a3a-e7170926394e', 'Aksi Bersih Sungai Brantas', 'Gotong Royong', 'aksisungai.png', 'Bersama menjaga sungai dengan kegiatan bersih-bersih komunitas.', 'Tepi Sungai Brantas, Sidoarjo', 'LangkahHijau', 'Ari P.', '082112345678', '2025-06-04 08:00:00', 1, NULL, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+('bfea2882-c4c6-4cca-a6fb-de49f9764cc6', 'Workshop Urban Farming untuk Pemula', 'Seminar', 'urbanfarming.png', 'Belajar teknik bertani di lahan sempit untuk hidup lebih hijau di kota.', 'Ruang Hijau, Surabaya', 'LangkahHijau', 'Rina W.', '081234567890', '2025-06-05 10:00:00', 1, NULL, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+('d5b9a07d-ed8f-49e0-8353-475b4486faae', 'Sosialisasi Gaya Hidup Minim Sampah', 'Seminar', 'seminar.png', 'Cara-cara mudah memulai gaya hidup minim sampah dari rumah.', 'Balai RW 05, Sidoarjo', 'LangkahHijau', 'Lilis A.', '083888444555', '2025-06-03 16:00:00', 1, NULL, '2025-06-01 15:03:29', '2025-06-01 15:03:29');
 
 -- --------------------------------------------------------
 
@@ -334,7 +334,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (14, '2025_05_30_133641_create_challenge_actions_table', 1),
 (15, '2025_05_30_135619_create_challenge_participations_table', 1),
 (16, '2025_05_30_135802_create_challenge_daily_actions_table', 1),
-(17, '2025_05_30_153743_create_user_badge_table', 1);
+(17, '2025_05_30_153743_create_user_badge_table', 1),
+(18, '2025_06_01_034623_create_quiz_attempts_table', 1);
 
 -- --------------------------------------------------------
 
@@ -356,66 +357,66 @@ CREATE TABLE `options` (
 --
 
 INSERT INTO `options` (`id`, `question_id`, `option_text`, `points`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Jalan kaki, bersepeda, atau naik angkutan umum.', 3, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(2, 1, 'Menggunakan sepeda motor pribadi.', 2, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(3, 1, 'Mengendarai mobil pribadi.', 1, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(4, 2, 'Selalu, sudah jadi kebiasaan.', 3, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(5, 2, 'Kadang-kadang, jika ingat.', 2, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(6, 2, 'Tidak pernah, selalu pakai kantong dari toko.', 1, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(7, 3, 'Memilah sampah untuk didaur ulang (plastik, kertas, organik).', 3, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(8, 3, 'Buang campur, tapi berusaha mengurangi volume sampah.', 2, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(9, 3, 'Membuang semua sampah jadi satu.', 1, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(10, 4, 'Selalu bawa botol minum isi ulang, jarang beli air kemasan.', 3, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(11, 4, 'Kadang beli air minum botol plastik, kadang bawa botol isi ulang.', 2, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(12, 4, 'Hampir setiap hari membeli air minum dalam botol plastik.', 1, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(13, 5, 'Selalu, sudah jadi kebiasaan otomatis.', 3, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(14, 5, 'Kadang-kadang, jika teringat.', 2, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(15, 5, 'Jarang terpikirkan untuk melakukannya.', 1, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(16, 6, 'Jarang (maksimal 1x seminggu atau kurang).', 3, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(17, 6, 'Sedang (sekitar 2-3x seminggu).', 2, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(18, 6, 'Sering (hampir setiap hari).', 1, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(19, 7, 'Memprioritaskan produk lokal dan ramah lingkungan.', 3, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(20, 7, 'Mengutamakan harga, lalu kualitas.', 2, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(21, 7, 'Tidak terlalu memikirkannya, yang penting cocok.', 1, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(22, 8, 'Donasi atau mencari cara untuk mendaur ulang.', 3, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(23, 8, 'Menyimpan di lemari, siapa tahu nanti terpakai lagi.', 2, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(24, 8, 'Membuang ke tempat sampah.', 1, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(25, 9, 'Aktif mengikuti dan menerapkan dalam kehidupan sehari-hari.', 3, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(26, 9, 'Pernah dengar atau tahu sedikit, tapi belum aktif menerapkan.', 2, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(27, 9, 'Tidak tahu sama sekali.', 1, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(28, 10, 'Jarang atau tidak pernah.', 3, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(29, 10, 'Kadang-kadang.', 2, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(30, 10, 'Sering.', 1, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(31, 11, 'Daya tahan produk dan kemudahan perbaikan (agar tidak cepat ganti).', 3, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(32, 11, 'Harga dan fitur terbaru yang ditawarkan.', 2, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(33, 11, 'Merek populer dan tren terkini.', 1, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(34, 12, 'Menjemur di bawah sinar matahari/angin (alami).', 3, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(35, 12, 'Tergantung cuaca, kadang menjemur, kadang pakai pengering mesin.', 2, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(36, 12, 'Selalu menggunakan mesin pengering pakaian. (1 poin)', 1, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(37, 13, 'Melaporkan kepada pihak berwenang atau mencoba memperbaikinya jika aman.', 3, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(38, 13, 'Berpikir untuk melaporkan, tapi seringnya tidak jadi.', 2, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(39, 13, 'Tidak terlalu memperhatikannya.', 1, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(40, 14, 'Sangat jarang, lebih sering pakai lap kain atau handuk.', 3, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(41, 14, 'Kadang-kadang, untuk kepraktisan.', 2, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(42, 14, 'Hampir selalu, untuk kebersihan dan kemudahan.', 1, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(43, 15, 'Mengumpulkan untuk didaur ulang atau diserahkan ke pengumpul khusus.', 3, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(44, 15, 'Membuang ke tempat sampah setelah didinginkan dan dipadatkan.', 2, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(45, 15, 'Langsung membuangnya ke saluran air/wastafel.', 1, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(46, 16, 'Memilih penginapan yang memiliki sertifikasi ramah lingkungan atau praktik berkelanjutan.', 3, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(47, 16, 'Mencari yang sesuai anggaran dan lokasi strategis.', 2, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(48, 16, 'Tidak ada preferensi khusus, yang penting nyaman.', 1, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(49, 17, 'Sering, selalu ingin tahu perkembangan terbaru dan cara berkontribusi.', 3, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(50, 17, 'Kadang-kadang, jika ada berita menarik atau rekomendasi.', 2, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(51, 17, 'Jarang atau tidak pernah.', 1, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(52, 18, 'Ya, saya berusaha keras untuk mendukung mereka.', 3, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(53, 18, 'Jika harganya terjangkau dan mudah diakses.', 2, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(54, 18, 'Tidak, saya fokus pada harga dan kualitas produk itu sendiri.', 1, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(55, 19, 'Berusaha keras menghindari dan mencari alternatif bebas kemasan.', 3, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(56, 19, 'Mengurangi penggunaannya, tapi kadang masih membeli karena praktis.', 2, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(57, 19, 'Tidak terlalu memikirkannya, yang penting praktis dan mudah didapat.', 1, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(58, 20, 'Ya, saya sering berbagi tips dan mendorong mereka.', 3, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(59, 20, 'Kadang-kadang, jika ada kesempatan atau topik pembicaraan.', 2, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(60, 20, 'Tidak, itu pilihan pribadi masing-masing.', 1, '2025-05-31 16:12:28', '2025-05-31 16:12:28');
+(1, 1, 'Jalan kaki, bersepeda, atau naik angkutan umum.', 3, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(2, 1, 'Menggunakan sepeda motor pribadi.', 2, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(3, 1, 'Mengendarai mobil pribadi.', 1, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(4, 2, 'Selalu, sudah jadi kebiasaan.', 3, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(5, 2, 'Kadang-kadang, jika ingat.', 2, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(6, 2, 'Tidak pernah, selalu pakai kantong dari toko.', 1, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(7, 3, 'Memilah sampah untuk didaur ulang (plastik, kertas, organik).', 3, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(8, 3, 'Buang campur, tapi berusaha mengurangi volume sampah.', 2, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(9, 3, 'Membuang semua sampah jadi satu.', 1, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(10, 4, 'Selalu bawa botol minum isi ulang, jarang beli air kemasan.', 3, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(11, 4, 'Kadang beli air minum botol plastik, kadang bawa botol isi ulang.', 2, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(12, 4, 'Hampir setiap hari membeli air minum dalam botol plastik.', 1, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(13, 5, 'Selalu, sudah jadi kebiasaan otomatis.', 3, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(14, 5, 'Kadang-kadang, jika teringat.', 2, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(15, 5, 'Jarang terpikirkan untuk melakukannya.', 1, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(16, 6, 'Jarang (maksimal 1x seminggu atau kurang).', 3, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(17, 6, 'Sedang (sekitar 2-3x seminggu).', 2, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(18, 6, 'Sering (hampir setiap hari).', 1, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(19, 7, 'Memprioritaskan produk lokal dan ramah lingkungan.', 3, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(20, 7, 'Mengutamakan harga, lalu kualitas.', 2, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(21, 7, 'Tidak terlalu memikirkannya, yang penting cocok.', 1, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(22, 8, 'Donasi atau mencari cara untuk mendaur ulang.', 3, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(23, 8, 'Menyimpan di lemari, siapa tahu nanti terpakai lagi.', 2, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(24, 8, 'Membuang ke tempat sampah.', 1, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(25, 9, 'Aktif mengikuti dan menerapkan dalam kehidupan sehari-hari.', 3, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(26, 9, 'Pernah dengar atau tahu sedikit, tapi belum aktif menerapkan.', 2, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(27, 9, 'Tidak tahu sama sekali.', 1, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(28, 10, 'Jarang atau tidak pernah.', 3, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(29, 10, 'Kadang-kadang.', 2, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(30, 10, 'Sering.', 1, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(31, 11, 'Daya tahan produk dan kemudahan perbaikan (agar tidak cepat ganti).', 3, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(32, 11, 'Harga dan fitur terbaru yang ditawarkan.', 2, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(33, 11, 'Merek populer dan tren terkini.', 1, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(34, 12, 'Menjemur di bawah sinar matahari/angin (alami).', 3, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(35, 12, 'Tergantung cuaca, kadang menjemur, kadang pakai pengering mesin.', 2, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(36, 12, 'Selalu menggunakan mesin pengering pakaian.', 1, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(37, 13, 'Melaporkan kepada pihak berwenang atau mencoba memperbaikinya jika aman.', 3, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(38, 13, 'Berpikir untuk melaporkan, tapi seringnya tidak jadi.', 2, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(39, 13, 'Tidak terlalu memperhatikannya.', 1, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(40, 14, 'Sangat jarang, lebih sering pakai lap kain atau handuk.', 3, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(41, 14, 'Kadang-kadang, untuk kepraktisan.', 2, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(42, 14, 'Hampir selalu, untuk kebersihan dan kemudahan.', 1, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(43, 15, 'Mengumpulkan untuk didaur ulang atau diserahkan ke pengumpul khusus.', 3, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(44, 15, 'Membuang ke tempat sampah setelah didinginkan dan dipadatkan.', 2, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(45, 15, 'Langsung membuangnya ke saluran air/wastafel.', 1, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(46, 16, 'Memilih penginapan yang memiliki sertifikasi ramah lingkungan atau praktik berkelanjutan.', 3, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(47, 16, 'Mencari yang sesuai anggaran dan lokasi strategis.', 2, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(48, 16, 'Tidak ada preferensi khusus, yang penting nyaman.', 1, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(49, 17, 'Sering, selalu ingin tahu perkembangan terbaru dan cara berkontribusi.', 3, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(50, 17, 'Kadang-kadang, jika ada berita menarik atau rekomendasi.', 2, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(51, 17, 'Jarang atau tidak pernah.', 1, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(52, 18, 'Ya, saya berusaha keras untuk mendukung mereka.', 3, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(53, 18, 'Jika harganya terjangkau dan mudah diakses.', 2, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(54, 18, 'Tidak, saya fokus pada harga dan kualitas produk itu sendiri.', 1, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(55, 19, 'Berusaha keras menghindari dan mencari alternatif bebas kemasan.', 3, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(56, 19, 'Mengurangi penggunaannya, tapi kadang masih membeli karena praktis.', 2, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(57, 19, 'Tidak terlalu memikirkannya, yang penting praktis dan mudah didapat.', 1, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(58, 20, 'Ya, saya sering berbagi tips dan mendorong mereka.', 3, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(59, 20, 'Kadang-kadang, jika ada kesempatan atau topik pembicaraan.', 2, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(60, 20, 'Tidak, itu pilihan pribadi masing-masing.', 1, '2025-06-01 15:03:29', '2025-06-01 15:03:29');
 
 -- --------------------------------------------------------
 
@@ -451,13 +452,13 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `title`, `category`, `image`, `body`, `is_demo`, `created_at`, `updated_at`) VALUES
-('1edc1aa8-2f1e-4b0e-8bfe-db2298811a68', 'Transportasi Ramah Lingkungan, Pilihan Sehat dan Cerdas', '🚶 Transportasi Hijau', 'transportasi.png', '<h3>Kendaraan bermotor menyumbang emisi terbesar di kota-kota. Gunakan:</h3><p><br></p><p>- Sepeda untuk jarak dekat (juga olahraga!)</p><p>- Transportasi umum untuk efisiensi</p><p>- Jalan kaki = hemat + sehat</p><p><br></p><p><strong>Fun Fact:</strong></p><p>Berjalan 30 menit sehari bisa membakar ±150 kalori dan mengurangi jejak karbon harianmu.”</p>', 1, '2025-05-31 16:12:27', '2025-05-31 16:12:27'),
-('59c01ad4-1a55-40ae-ae07-bbce7819639f', '5 Cara Mudah Memulai Gaya Hidup Zero Waste', '🌱 Zero Waste', 'zerowaste.png', '<p>Gaya hidup zero waste bukan berarti hidup tanpa sampah sama sekali, tapi mengurangi semaksimal mungkin. Mulailah dengan:</p><p><br></p><p>1. Membawa tas belanja sendiri.</p><p>2. Menggunakan botol minum dan tempat makan reusable.</p><p>3. Menghindari produk sekali pakai.</p><p>4. Membeli produk tanpa kemasan berlebih.</p><p>5. Daur ulang dan kompos sisa makanan.</p><p><br></p><p><strong>Tips Praktis:</strong></p><p>“Mulai dari satu kebiasaan, lalu tambah perlahan. Konsisten lebih penting daripada sempurna!”</p>', 1, '2025-05-31 16:12:27', '2025-05-31 16:12:27'),
-('644ca04e-7bce-496a-917f-ef464f8ba330', 'Mengapa Konsumsi Daging Berlebihan Berdampak Buruk untuk Bumi?', '🛍️ Konsumsi Berkelanjutan', 'daging.png', '<p>Produksi daging (terutama sapi) menghasilkan gas rumah kaca seperti metana. Juga memerlukan banyak air dan lahan. Mengurangi konsumsi daging:</p><p><br></p><p>- Mengurangi emisi karbon.</p><p>- Menyehatkan tubuh.</p><p>- Mendukung keberlanjutan bumi.</p><p><br></p><p><strong>Aksi Kecil:</strong></p><p>Coba tantangan “Meatless Monday”! 1 hari tanpa daging = pengurangan emisi sekitar 2 kg CO₂.</p>', 1, '2025-05-31 16:12:27', '2025-05-31 16:12:27'),
-('702e402a-b539-49ad-b087-3460630cca44', 'Apa Itu Fast Fashion dan Mengapa Kita Harus Peduli?', '🛍️ Konsumsi Berkelanjutan', 'fashion.png', '<p>Fast fashion = tren pakaian cepat, murah, tapi berumur pendek. </p><p><strong><em>Dampaknya</em></strong>:</p><ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Limbah tekstil menumpuk</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Banyak pakaian berakhir di TPA</li><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>Eksploitasi tenaga kerja</li></ol><p><br></p><p><strong>Solusi Ringan:</strong></p><p>Pilih thrifting, tukar pakaian dengan teman, atau beli dari brand berkelanjutan.</p>', 1, '2025-05-31 16:12:27', '2025-05-31 16:12:27'),
-('cbe0a4c6-5bb0-4801-94df-1be2f519e3f2', 'Kompos di Rumah, Cara Sederhana Kurangi Sampah Organik', '🌱 Zero Waste', 'kompos.png', '<p>Sampah dapur seperti kulit buah, sayur layu, atau ampas kopi bisa dikompos. Caranya mudah:</p><p><br></p><p>- Gunakan ember kompos tertutup</p><p>- Campur bahan basah dan kering (ranting/kertas)</p><p>- Aduk dan biarkan selama 2–4 minggu</p><p><br></p><p><strong>Manfaat:</strong></p><p>Mengurangi sampah ke TPA dan menghasilkan pupuk alami untuk tanaman.</p>', 1, '2025-05-31 16:12:27', '2025-05-31 16:12:27'),
-('e83821a5-89e1-4601-85f8-a2a727d3eeca', 'Tips Belanja Ramah Lingkungan di Supermarket', '🛍️ Konsumsi Berkelanjutan', 'supermarket.png', '<p>1. Bawa tas kain sendiri</p><p>2. Hindari produk dengan banyak plastik</p><p>3. Pilih produk lokal &amp; musiman</p><p>4. Beli dalam jumlah seperlunya (hindari food waste)</p><p><br></p><p><strong>Bonus:</strong></p><p>Gunakan daftar belanja agar tidak impulsif — itu juga bagian dari konsumsi berkelanjutan.</p>', 1, '2025-05-31 16:12:27', '2025-05-31 16:12:27'),
-('ea444c36-6ba9-4dc7-a339-9cc085e7a805', 'Air Lebih Berharga dari yang Kamu Kira – Hemat Air Mulai Hari Ini', '🔌 Energi dan Elektronik', 'water.png', '<h3>Air bersih makin langka di banyak daerah, dan penggunaannya sering kita anggap remeh. </h3><p><br></p><p><strong>Padahal:</strong></p><p>- Mandi 10 menit = 100 liter air.</p><p>- Sikat gigi dengan keran menyala = 6 liter air terbuang.</p><p>    - 1 kg daging = 15.000 liter air dalam produksinya.</p><p><br></p><p><strong>Langkah Hemat Air:</strong></p><p>    - Gunakan shower hemat air.</p><p>- Matikan keran saat tidak digunakan.</p><p>- Gunakan air bekas cucian sayur untuk siram tanaman.</p><p><br></p><p><strong>Ingat !</strong></p><p>Hemat air hari ini = air bersih untuk generasi berikutnya.</p>', 1, '2025-05-31 16:12:27', '2025-05-31 16:12:27');
+('20e77419-d7d3-42a1-9d8b-bfcdb44de2e2', 'Kompos di Rumah, Cara Sederhana Kurangi Sampah Organik', '🌱 Zero Waste', 'kompos.png', '\n            <h2>Manfaat Kompos untuk Lingkungan dan Rumah Tangga</h2>\n            <p>Sampah organik seperti sisa makanan, kulit buah, dan daun kering bisa dijadikan kompos. Jika dibuang ke TPA, sampah ini menghasilkan gas metana — gas rumah kaca yang sangat kuat. Dengan kompos, kita mengubah limbah menjadi sumber daya.</p>\n\n            <h3>Cara Membuat Kompos di Rumah:</h3>\n            <ol>\n            <li><strong>Gunakan ember atau tong kompos:</strong> Sebaiknya tertutup agar tidak bau dan tahan hama.</li>\n            <li><strong>Campur bahan hijau dan coklat:</strong> Bahan hijau (kulit buah, sisa sayur) dan bahan coklat (daun kering, kertas robek) perlu seimbang.</li>\n            <li><strong>Aduk rutin:</strong> Setiap 3–5 hari agar oksigen menyebar dan proses berjalan cepat.</li>\n            <li><strong>Panen setelah 3–4 minggu:</strong> Kompos siap digunakan jika berwarna gelap, tidak bau, dan menggumpal seperti tanah subur.</li>\n            </ol>\n\n            <h3>Manfaat Langsung:</h3>\n            <ul>\n            <li>Mengurangi volume sampah rumah tangga hingga 40%</li>\n            <li>Menghasilkan pupuk gratis untuk tanaman</li>\n            <li>Mengurangi emisi gas rumah kaca dari TPA</li>\n            </ul>\n\n            <blockquote>\n            <em>\"Dengan kompos, kamu bukan membuang sampah, tapi memberi kembali ke bumi.\"</em>\n            </blockquote>\n            ', 1, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+('2fc2d893-88d0-4d69-8de9-feb5a2db0729', 'Apa Itu Fast Fashion dan Mengapa Kita Harus Peduli?', '🛍️ Konsumsi Berkelanjutan', 'fashion.png', '\n            <h2>Memahami Fast Fashion</h2>\n            <p>Fast fashion merujuk pada industri pakaian yang memproduksi barang dengan cepat, murah, dan dalam jumlah besar untuk mengikuti tren. Meski terlihat menguntungkan konsumen, dampaknya sangat besar bagi lingkungan dan kemanusiaan.</p>\n\n            <h3>Dampak Lingkungan:</h3>\n            <ul>\n            <li>Limbah tekstil meningkat drastis – rata-rata seseorang membuang 30 kg pakaian per tahun.</li>\n            <li>Pakaian murah sering dibuat dari bahan sintetis yang sulit terurai dan melepaskan mikroplastik ke laut.</li>\n            <li>Produksi tekstil memerlukan air dan energi dalam jumlah besar.</li>\n            </ul>\n\n            <h3>Dampak Sosial:</h3>\n            <ul>\n            <li>Upah buruh rendah, kadang tidak manusiawi.</li>\n            <li>Jam kerja berlebihan dan kondisi kerja tidak layak.</li>\n            </ul>\n\n            <h3>Solusi Konsumen:</h3>\n            <ol>\n            <li><strong>Thrifting:</strong> Belanja di toko barang bekas adalah cara hemat dan ramah lingkungan.</li>\n            <li><strong>Tukar pakaian:</strong> Ajak teman atau komunitas untuk saling bertukar pakaian layak pakai.</li>\n            <li><strong>Beli dari brand berkelanjutan:</strong> Dukung merek lokal yang menggunakan bahan ramah lingkungan dan transparan soal produksi.</li>\n            </ol>\n\n            <blockquote>\n            <em>\"Pakaian terbaik bukan yang paling baru, tapi yang paling sering dipakai dan bertahan lama.\"</em>\n            </blockquote>\n            ', 1, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+('4a9cff42-345c-496a-8cee-aa31a3306e0c', 'Mengapa Konsumsi Daging Berlebihan Berdampak Buruk untuk Bumi?', '🛍️ Konsumsi Berkelanjutan', 'daging.png', '\n            <h2>Dampak Konsumsi Daging terhadap Lingkungan</h2>\n            <p>Industri peternakan, khususnya sapi dan kambing, menyumbang emisi gas rumah kaca dalam jumlah besar, terutama metana (CH<sub>4</sub>) yang jauh lebih kuat dibanding CO<sub>2</sub>. Selain itu, dibutuhkan lahan luas dan air dalam jumlah besar untuk menghasilkan daging.</p>\n\n            <h3>Fakta Penting:</h3>\n            <ul>\n            <li>1 kg daging sapi = ±15.000 liter air</li>\n            <li>Industri peternakan menyumbang >14% emisi global</li>\n            <li>Hutan tropis banyak dibabat untuk padang penggembalaan</li>\n            </ul>\n\n            <h3>Kenapa Harus Mengurangi Konsumsi Daging?</h3>\n            <p>\n            Mengurangi konsumsi daging, terutama daging merah, adalah langkah efektif untuk menurunkan jejak karbon individu. Selain itu, pola makan berbasis nabati terbukti lebih sehat dan mendukung keberlanjutan pangan dunia.\n            </p>\n\n            <h3>Manfaat Langsung:</h3>\n            <ol>\n            <li><strong>Menurunkan emisi karbon pribadi</strong></li>\n            <li><strong>Menurunkan risiko penyakit jantung & kanker</strong></li>\n            <li><strong>Mendorong sistem pangan yang lebih adil dan efisien</strong></li>\n            </ol>\n\n            <h3>Aksi Kecil yang Berdampak Besar</h3>\n            <p>Coba mulai dengan <strong>“Meatless Monday”</strong>, yaitu tidak makan daging setiap hari Senin. Satu hari tanpa daging bisa mengurangi sekitar 2–3 kg emisi CO₂ per orang. Bayangkan jika dilakukan rutin oleh jutaan orang.</p>\n\n            <blockquote>\n            <em>\"Bumi tidak butuh 1000 orang sempurna, tapi jutaan orang yang melakukan perubahan kecil secara konsisten.\"</em>\n            </blockquote>\n            ', 1, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+('95ef2e69-6d23-4804-8311-42b144672027', 'Transportasi Ramah Lingkungan, Pilihan Sehat dan Cerdas', '🚶 Transportasi Hijau', 'transportasi.png', '\n            <h2>Mengurangi Emisi dari Aktivitas Harian</h2>\n            <p>Transportasi menyumbang lebih dari 20% emisi karbon global, terutama di kota besar dengan banyak kendaraan pribadi. Padahal, banyak alternatif ramah lingkungan yang bisa kita pilih setiap hari.</p>\n\n            <h3>Pilihan Transportasi Ramah Lingkungan:</h3>\n            <ul>\n            <li><strong>Berjalan kaki:</strong> Efektif untuk jarak pendek, tidak menghasilkan emisi, sekaligus menyehatkan jantung.</li>\n            <li><strong>Bersepeda:</strong> Bebas polusi, hemat biaya, dan baik untuk kesehatan mental.</li>\n            <li><strong>Transportasi umum:</strong> Mengurangi kemacetan dan emisi, terutama jika sistemnya terintegrasi dengan baik.</li>\n            </ul>\n\n            <h3>Manfaat Lainnya:</h3>\n            <p>\n            Transportasi ramah lingkungan tidak hanya baik untuk bumi, tetapi juga dompet dan tubuh kita. Bersepeda 30 menit bisa membakar hingga 300 kalori. Sementara berjalan kaki 30 menit setara dengan 150 kalori terbakar.\n            </p>\n\n            <h3>Tips Memulai:</h3>\n            <ol>\n            <li>Rencanakan rute berjalan atau bersepeda ke tempat kerja/sekolah.</li>\n            <li>Gunakan transportasi publik di jam sibuk untuk menghindari stres berkendara.</li>\n            <li>Gabungkan moda transportasi, seperti naik angkutan umum lalu lanjut jalan kaki atau sepeda.</li>\n            </ol>\n\n            <blockquote>\n            <em>\"Jangan remehkan kekuatan langkah kecilmu — setiap langkah yang kamu pilih tanpa kendaraan, adalah langkah menuju udara yang lebih bersih.\"</em>\n            </blockquote>\n            ', 1, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+('b12d4c95-f7b5-4c74-9d0d-1415dbb50c9c', 'Tips Belanja Ramah Lingkungan di Supermarket', '🛍️ Konsumsi Berkelanjutan', 'supermarket.png', '\n            <h2>Belanja Bijak = Bumi Sehat</h2>\n            <p>Supermarket seringkali penuh dengan produk berkemasan plastik, produk impor, dan makanan dalam jumlah berlebih. Tapi dengan strategi yang tepat, kamu bisa belanja lebih hijau dan hemat!</p>\n\n            <h3>Tips Praktis:</h3>\n            <ol>\n            <li><strong>Bawa tas belanja sendiri:</strong> Gunakan tas kain atau keranjang belanja untuk menghindari kantong plastik.</li>\n            <li><strong>Hindari produk dengan banyak plastik:</strong> Pilih produk dengan kemasan minimal atau bisa didaur ulang.</li>\n            <li><strong>Beli produk lokal dan musiman:</strong> Lebih segar, lebih murah, dan jejak karbonnya lebih kecil karena tidak perlu pengiriman jauh.</li>\n            <li><strong>Beli seperlunya:</strong> Hindari pemborosan makanan dengan hanya membeli sesuai kebutuhan dan kemampuan konsumsi.</li>\n            </ol>\n\n            <h3>Tips Tambahan:</h3>\n            <ul>\n            <li>Buat daftar belanja sebelum berangkat.</li>\n            <li>Periksa isi kulkas/pantry agar tidak membeli barang yang sudah ada.</li>\n            <li>Hindari belanja saat lapar agar tidak impulsif.</li>\n            </ul>\n\n            <blockquote>\n            <em>\"Belanja bukan hanya soal harga — tapi juga dampaknya terhadap lingkungan dan masa depan kita.\"</em>\n            </blockquote>\n            ', 1, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+('cf16a718-b634-43ac-a0b4-6d0b4f781617', '5 Cara Mudah Memulai Gaya Hidup Zero Waste', '🌱 Zero Waste', 'zerowaste.png', '\n            <h2>Memulai Gaya Hidup Zero Waste</h2>\n            <p>Zero waste bukan tentang menjadi sempurna tanpa sampah, melainkan tentang kesadaran untuk mengurangi sampah sebanyak mungkin dalam kehidupan sehari-hari. Dengan meningkatnya krisis iklim dan tumpukan sampah di TPA, gaya hidup ini menjadi semakin relevan.</p>\n\n            <h3>Kenapa Zero Waste Penting?</h3>\n            <p>Sampah plastik membutuhkan ratusan tahun untuk terurai dan banyak yang akhirnya mencemari laut dan membahayakan ekosistem. Dengan mengubah kebiasaan kecil, kita bisa membuat perbedaan besar.</p>\n\n            <h3>5 Langkah Mudah Memulainya:</h3>\n            <ol>\n            <li><strong>Bawa Tas Belanja Sendiri</strong><br>Hindari kantong plastik dengan selalu membawa tas kain yang bisa digunakan berulang kali. Letakkan di tas harian atau kendaraan agar tidak lupa.</li>\n            <li><strong>Gunakan Botol & Tempat Makan Reusable</strong><br>Botol minum stainless dan kotak makan dari kaca atau logam tahan lama dan ramah lingkungan.</li>\n            <li><strong>Hindari Produk Sekali Pakai</strong><br>Ganti tissue dengan sapu tangan kain, sedotan plastik dengan sedotan bambu atau stainless, dan popok sekali pakai dengan versi kain.</li>\n            <li><strong>Pilih Produk Minim Kemasan</strong><br>Belanja di toko curah dengan wadah sendiri, hindari produk berlapis plastik, dan pilih barang dengan kemasan mudah didaur ulang.</li>\n            <li><strong>Kompos & Daur Ulang</strong><br>Komposkan sisa makanan dan gunakan sebagai pupuk tanaman. Pisahkan sampah organik dan anorganik untuk mempermudah proses daur ulang.</li>\n            </ol>\n\n            <h3>Tips Praktis untuk Pemula</h3>\n            <p>Jangan langsung ubah segalanya dalam sehari. Mulai dari satu kebiasaan kecil dan tambahkan perlahan. Zero waste adalah perjalanan, bukan tujuan akhir.</p>\n\n            <blockquote>\n            <em>\"Konsistensi lebih penting daripada kesempurnaan. Lebih baik satu orang melakukan zero waste dengan tidak sempurna, daripada tidak melakukannya sama sekali.\"</em>\n            </blockquote>\n            ', 1, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+('f40cfc6a-804a-4517-9b48-9ac5f45eb3d5', 'Air Lebih Berharga dari yang Kamu Kira – Hemat Air Mulai Hari Ini', '🔌 Energi dan Elektronik', 'water.png', '\n            <h2>Krisis Air Bersih: Ancaman Nyata</h2>\n            <p>Banyak daerah di Indonesia dan dunia sudah mengalami krisis air bersih. Namun, kita sering tidak menyadarinya karena air masih mengalir dari keran. Setiap tetes air yang terbuang adalah sumber daya yang semakin langka.</p>\n\n            <h3>Fakta Penggunaan Air:</h3>\n            <ul>\n            <li>Mandi 10 menit = ±100 liter air</li>\n            <li>Sikat gigi dengan keran menyala = 6 liter air/hari</li>\n            <li>1 kg daging = hingga 15.000 liter air untuk produksinya</li>\n            </ul>\n\n            <h3>Langkah Menghemat Air:</h3>\n            <ol>\n            <li>Gunakan shower hemat air dan batasi waktu mandi</li>\n            <li>Matikan keran saat menyikat gigi atau mencuci tangan</li>\n            <li>Kumpulkan air cucian beras atau sayur untuk menyiram tanaman</li>\n            <li>Periksa kebocoran keran dan perbaiki secepatnya</li>\n            </ol>\n\n            <h3>Air untuk Masa Depan</h3>\n            <p>Dengan perubahan kecil dari kita semua, kita bisa menjamin ketersediaan air bersih untuk generasi mendatang.</p>\n\n            <blockquote>\n            <em>\"Jangan tunggu kekeringan datang baru menghargai air. Mulailah hemat dari sekarang.\"</em>\n            </blockquote>\n            ', 1, '2025-06-01 15:03:29', '2025-06-01 15:03:29');
 
 -- --------------------------------------------------------
 
@@ -467,7 +468,7 @@ INSERT INTO `posts` (`id`, `title`, `category`, `image`, `body`, `is_demo`, `cre
 
 CREATE TABLE `questions` (
   `id` bigint UNSIGNED NOT NULL,
-  `quiz_id` bigint UNSIGNED NOT NULL,
+  `quiz_id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
   `question_text` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -478,26 +479,26 @@ CREATE TABLE `questions` (
 --
 
 INSERT INTO `questions` (`id`, `quiz_id`, `question_text`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Bagaimana kamu paling sering bepergian ke tempat kerja, kampus, atau sekolah?', '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(2, 1, 'Saat berbelanja kebutuhan sehari-hari, seberapa sering kamu membawa tas belanja sendiri dari rumah?', '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(3, 1, 'Di rumah, bagaimana caramu mengelola sampah yang kamu hasilkan?', '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(4, 1, 'Untuk minum di luar rumah, apa pilihan utamamu?', '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(5, 1, 'Apakah kamu rutin mematikan lampu dan mencabut peralatan elektronik saat tidak digunakan?', '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(6, 1, 'Seberapa sering kamu mengonsumsi daging merah (sapi atau kambing) dalam seminggu?', '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(7, 1, 'Saat memilih produk di toko, apa yang jadi pertimbangan utamamu?', '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(8, 1, 'Apa yang kamu lakukan dengan pakaian lama atau tidak terpakai yang masih layak?', '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(9, 1, 'Seberapa paham atau terlibat kamu dengan gerakan zero waste atau gaya hidup hijau?', '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(10, 1, 'Seberapa sering kamu membeli makanan berlebih yang akhirnya tidak habis dan terbuang?', '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(11, 2, 'Saat membeli perangkat elektronik baru (misal: smartphone, laptop), apa yang menjadi pertimbangan utama bagimu?', '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(12, 2, 'Bagaimana kamu mengeringkan pakaian setelah dicuci?', '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(13, 2, 'Ketika kamu melihat keran air bocor atau listrik menyala tanpa guna di tempat umum, apa yang kamu lakukan?', '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(14, 2, 'Seberapa sering kamu menggunakan tisu dapur atau tisu toilet yang sekali pakai?', '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(15, 2, 'Bagaimana caramu membuang limbah minyak goreng bekas di rumah?', '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(16, 2, 'Saat liburan atau bepergian, apa yang menjadi prioritasmu terkait akomodasi?', '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(17, 2, 'Seberapa sering kamu membaca atau mencari informasi tentang isu lingkungan dan keberlanjutan?', '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(18, 2, 'Apakah kamu mendukung merek atau perusahaan yang berkomitmen pada praktik etis dan ramah lingkungan?', '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(19, 2, 'Bagaimana pendapatmu tentang penggunaan produk kemasan sekali pakai (misal: bungkus makanan, botol minuman kemasan, sachet)?', '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(20, 2, 'Apakah kamu aktif mengajak teman atau keluarga untuk menerapkan gaya hidup yang lebih ramah lingkungan?', '2025-05-31 16:12:28', '2025-05-31 16:12:28');
+(1, 'f3aa5807-6afe-44dc-9979-e48762ab88d9', 'Bagaimana kamu paling sering bepergian ke tempat kerja, kampus, atau sekolah?', '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(2, 'f3aa5807-6afe-44dc-9979-e48762ab88d9', 'Saat berbelanja kebutuhan sehari-hari, seberapa sering kamu membawa tas belanja sendiri dari rumah?', '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(3, 'f3aa5807-6afe-44dc-9979-e48762ab88d9', 'Di rumah, bagaimana caramu mengelola sampah yang kamu hasilkan?', '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(4, 'f3aa5807-6afe-44dc-9979-e48762ab88d9', 'Untuk minum di luar rumah, apa pilihan utamamu?', '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(5, 'f3aa5807-6afe-44dc-9979-e48762ab88d9', 'Apakah kamu rutin mematikan lampu dan mencabut peralatan elektronik saat tidak digunakan?', '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(6, 'f3aa5807-6afe-44dc-9979-e48762ab88d9', 'Seberapa sering kamu mengonsumsi daging merah (sapi atau kambing) dalam seminggu?', '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(7, 'f3aa5807-6afe-44dc-9979-e48762ab88d9', 'Saat memilih produk di toko, apa yang jadi pertimbangan utamamu?', '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(8, 'f3aa5807-6afe-44dc-9979-e48762ab88d9', 'Apa yang kamu lakukan dengan pakaian lama atau tidak terpakai yang masih layak?', '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(9, 'f3aa5807-6afe-44dc-9979-e48762ab88d9', 'Seberapa paham atau terlibat kamu dengan gerakan zero waste atau gaya hidup hijau?', '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(10, 'f3aa5807-6afe-44dc-9979-e48762ab88d9', 'Seberapa sering kamu membeli makanan berlebih yang akhirnya tidak habis dan terbuang?', '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(11, '957ef00c-781c-4182-a51b-7a21abc6262b', 'Saat membeli perangkat elektronik baru (misal: smartphone, laptop), apa yang menjadi pertimbangan utama bagimu?', '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(12, '957ef00c-781c-4182-a51b-7a21abc6262b', 'Bagaimana kamu mengeringkan pakaian setelah dicuci?', '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(13, '957ef00c-781c-4182-a51b-7a21abc6262b', 'Ketika kamu melihat keran air bocor atau listrik menyala tanpa guna di tempat umum, apa yang kamu lakukan?', '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(14, '957ef00c-781c-4182-a51b-7a21abc6262b', 'Seberapa sering kamu menggunakan tisu dapur atau tisu toilet yang sekali pakai?', '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(15, '957ef00c-781c-4182-a51b-7a21abc6262b', 'Bagaimana caramu membuang limbah minyak goreng bekas di rumah?', '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(16, '957ef00c-781c-4182-a51b-7a21abc6262b', 'Saat liburan atau bepergian, apa yang menjadi prioritasmu terkait akomodasi?', '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(17, '957ef00c-781c-4182-a51b-7a21abc6262b', 'Seberapa sering kamu membaca atau mencari informasi tentang isu lingkungan dan keberlanjutan?', '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(18, '957ef00c-781c-4182-a51b-7a21abc6262b', 'Apakah kamu mendukung merek atau perusahaan yang berkomitmen pada praktik etis dan ramah lingkungan?', '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(19, '957ef00c-781c-4182-a51b-7a21abc6262b', 'Bagaimana pendapatmu tentang penggunaan produk kemasan sekali pakai (misal: bungkus makanan, botol minuman kemasan, sachet)?', '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+(20, '957ef00c-781c-4182-a51b-7a21abc6262b', 'Apakah kamu aktif mengajak teman atau keluarga untuk menerapkan gaya hidup yang lebih ramah lingkungan?', '2025-06-01 15:03:29', '2025-06-01 15:03:29');
 
 -- --------------------------------------------------------
 
@@ -506,8 +507,9 @@ INSERT INTO `questions` (`id`, `quiz_id`, `question_text`, `created_at`, `update
 --
 
 CREATE TABLE `quizzes` (
-  `id` bigint UNSIGNED NOT NULL,
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `urutan` bigint UNSIGNED DEFAULT NULL,
   `description` text COLLATE utf8mb4_unicode_ci,
   `duration_minutes` int DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -518,9 +520,25 @@ CREATE TABLE `quizzes` (
 -- Dumping data for table `quizzes`
 --
 
-INSERT INTO `quizzes` (`id`, `title`, `description`, `duration_minutes`, `created_at`, `updated_at`) VALUES
-(1, 'Kuis: Seberapa Hijau Jiwamu? Mari Kenali Eco-Persona-mu!', 'Penasaran seberapa jauh gaya hidupmu selaras dengan alam? Ikuti kuis singkat ini dan temukan eco-persona unikmu!', 5, '2025-05-31 16:12:28', '2025-05-31 16:12:28'),
-(2, 'Kuis: Jejak Lingkunganku - Sejauh Mana Kamu Berkontribusi?', 'Mari selami lebih dalam kebiasaanmu dan pahami dampak lingkungan dari setiap pilihan yang kamu ambil.', 6, '2025-05-31 16:12:28', '2025-05-31 16:12:28');
+INSERT INTO `quizzes` (`id`, `title`, `urutan`, `description`, `duration_minutes`, `created_at`, `updated_at`) VALUES
+('957ef00c-781c-4182-a51b-7a21abc6262b', 'Jejak Lingkunganku - Sejauh Mana Kamu Berkontribusi?', 2, 'Mari selami lebih dalam kebiasaanmu dan pahami dampak lingkungan dari setiap pilihan yang kamu ambil.', 6, '2025-06-01 15:03:29', '2025-06-01 15:03:29'),
+('f3aa5807-6afe-44dc-9979-e48762ab88d9', ' Seberapa Hijau Jiwamu? Mari Kenali Eco-Persona-mu!', 1, 'Penasaran seberapa jauh gaya hidupmu selaras dengan alam? Ikuti kuis singkat ini dan temukan eco-persona unikmu!', 5, '2025-06-01 15:03:29', '2025-06-01 15:03:29');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quiz_attempts`
+--
+
+CREATE TABLE `quiz_attempts` (
+  `id` bigint UNSIGNED NOT NULL,
+  `user_id` bigint UNSIGNED NOT NULL,
+  `quiz_id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `rekomendasi_ai` text COLLATE utf8mb4_unicode_ci,
+  `score` int NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -561,10 +579,10 @@ CREATE TABLE `tiers` (
 --
 
 INSERT INTO `tiers` (`id`, `icon`, `urutan`, `name`, `keterangan`, `color`, `min_points`, `max_points`, `created_at`, `updated_at`) VALUES
-('1263ff5b-bc6b-4940-95a9-f62258a52a67', '🌿', 2, 'Aktivis Hijau Muda', 'Mulai konsisten', 'lime-300', 351, 500, '2025-05-31 16:12:24', '2025-05-31 16:12:24'),
-('2f2851f5-2709-4e20-84e0-e6f3671ff89b', '🌎', 4, 'Duta Hijau Digital', 'Level tertinggi, dapat ditampilkan publik', 'blue-500', 751, 1000, '2025-05-31 16:12:24', '2025-05-31 16:12:24'),
-('2fb6530b-6d03-4e3e-bc8c-8ecce4396884', '🌱', 1, 'Eco Beginner', 'Baru memulai perjalanan hijau', 'yellow-500', 0, 350, '2025-05-31 16:12:24', '2025-05-31 16:12:24'),
-('d422e5a2-30ed-4f6b-8ec3-7450a617ecc8', '🍀', 3, 'Inspirator Hijau', 'Sudah bisa jadi panutan', 'green-500', 501, 750, '2025-05-31 16:12:24', '2025-05-31 16:12:24');
+('685fa443-601b-4e60-b94c-34e22d7842da', '🌱', 1, 'Eco Beginner', 'Langkah awal menuju gaya hidup ramah lingkungan', 'yellow-500', 0, 350, '2025-06-01 15:03:24', '2025-06-01 15:03:24'),
+('a8aaa730-b6ba-4d60-a1c2-bcb7575260e1', '🍀', 3, 'Inspirator Hijau', 'Menjadi teladan dalam aksi nyata menjaga bumi', 'green-500', 501, 750, '2025-06-01 15:03:24', '2025-06-01 15:03:24'),
+('b0b7c318-f265-4c83-b8c8-42c7372f7a20', '🌿', 2, 'Aktivis Hijau Muda', 'Semangat hijau mulai tumbuh dan terus berkembang', 'lime-300', 351, 500, '2025-06-01 15:03:24', '2025-06-01 15:03:24'),
+('d09b771b-3864-42bc-95e0-63a273d81266', '🌎', 4, 'Duta Hijau Digital', 'Pemimpin perubahan, siap menginspirasi dunia digital', 'blue-500', 751, 1000, '2025-06-01 15:03:24', '2025-06-01 15:03:24');
 
 -- --------------------------------------------------------
 
@@ -590,71 +608,71 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `username`, `is_admin`, `password`, `green_points`, `created_at`, `updated_at`, `tier_id`) VALUES
-(1, 'Super Admin', 'admin123@gmail.com', 'superadmin', 1, '$2y$12$DU5ixqZRrq3rNa8F9830WOHVN.jDTPDQvjtSRKgHZIVobgFkeZL0a', 0, '2025-05-31 16:12:24', '2025-05-31 16:12:24', '2fb6530b-6d03-4e3e-bc8c-8ecce4396884'),
-(2, 'Naufal Harits', 'naufal@gmail.com', 'naufalharits', 0, '$2y$12$K/hyQxJkEnNCHMZjJ3eo..oNiYnuXNzhjyKpkzHD9YBRIgPPAfvP2', 400, '2025-05-31 16:12:25', '2025-05-31 16:12:25', '1263ff5b-bc6b-4940-95a9-f62258a52a67'),
-(3, 'Andi Budiman', 'andi@example.com', 'andibudiman', 0, '$2y$12$yMfqzAWo7XsTv0QbBJ8YeOTcBNDxwVbvBG/HLhy/uY3Yy1k/QPgzS', 305, '2025-05-31 16:12:26', '2025-05-31 16:12:26', '1263ff5b-bc6b-4940-95a9-f62258a52a67'),
-(4, 'Citra Lestari', 'citra@example.com', 'citralestari', 0, '$2y$12$7Crc0Zqd9b5D3nYHsoeJXueksZxUj1F51jSduMA0GjrwOcwEhrqI2', 250, '2025-05-31 16:12:26', '2025-05-31 16:12:26', 'd422e5a2-30ed-4f6b-8ec3-7450a617ecc8'),
-(5, 'Bayu Perkasa', 'bayu@example.com', 'bayuperkasa', 0, '$2y$12$qXh6K2lPOOjHy/r06F6XpeKn8RpMb3Q4tEKuyELukcuBF7nYEOboi', 100, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '2fb6530b-6d03-4e3e-bc8c-8ecce4396884'),
-(6, 'Sadina Yessi Wijayanti S.Pt', 'narji33@example.org', 'ismail92', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 289, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '2fb6530b-6d03-4e3e-bc8c-8ecce4396884'),
-(7, 'Cahya Prasetyo', 'warsita.lestari@example.net', 'vanesa.yuliarti', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 695, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '2fb6530b-6d03-4e3e-bc8c-8ecce4396884'),
-(8, 'Purwadi Maheswara M.Kom.', 'dsamosir@example.com', 'ratna.suryatmi', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 945, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '2fb6530b-6d03-4e3e-bc8c-8ecce4396884'),
-(9, 'Kurnia Halim', 'hasna66@example.org', 'prastuti.umi', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 787, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '2fb6530b-6d03-4e3e-bc8c-8ecce4396884'),
-(10, 'Titi Rahayu', 'pputra@example.org', 'andriani.bagus', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 747, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '2fb6530b-6d03-4e3e-bc8c-8ecce4396884'),
-(11, 'Elisa Qori Mulyani', 'gfarida@example.com', 'ulya.yolanda', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 302, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '2fb6530b-6d03-4e3e-bc8c-8ecce4396884'),
-(12, 'Kenzie Prasasta', 'winda.mangunsong@example.org', 'yuniar.cornelia', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 808, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '2fb6530b-6d03-4e3e-bc8c-8ecce4396884'),
-(13, 'Padma Novitasari S.Farm', 'eli57@example.net', 'salahudin.zulaikha', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 166, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '2fb6530b-6d03-4e3e-bc8c-8ecce4396884'),
-(14, 'Farah Astuti M.Ak', 'keisha.putra@example.com', 'joko.wasita', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 642, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '2fb6530b-6d03-4e3e-bc8c-8ecce4396884'),
-(15, 'Cinta Hartati', 'citra.maryati@example.com', 'samsul62', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 941, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '2fb6530b-6d03-4e3e-bc8c-8ecce4396884'),
-(16, 'Tiara Yuniar', 'puspita.ismail@example.net', 'utami.kala', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 643, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '2fb6530b-6d03-4e3e-bc8c-8ecce4396884'),
-(17, 'Bakidin Samosir S.E.I', 'jindra70@example.org', 'trahimah', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 988, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '2fb6530b-6d03-4e3e-bc8c-8ecce4396884'),
-(18, 'Yance Sudiati', 'harjo.wastuti@example.com', 'kania39', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 393, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '2fb6530b-6d03-4e3e-bc8c-8ecce4396884'),
-(19, 'Aris Prasasta', 'adika.suwarno@example.net', 'bagus.hutapea', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 957, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '2fb6530b-6d03-4e3e-bc8c-8ecce4396884'),
-(20, 'Luwes Wibisono', 'baktiadi.gunarto@example.com', 'vutama', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 989, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '2fb6530b-6d03-4e3e-bc8c-8ecce4396884'),
-(21, 'Vega Putra', 'hassanah.bala@example.org', 'rina02', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 180, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '1263ff5b-bc6b-4940-95a9-f62258a52a67'),
-(22, 'Bakti Napitupulu', 'mwasita@example.com', 'firmansyah.galur', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 100, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '1263ff5b-bc6b-4940-95a9-f62258a52a67'),
-(23, 'Julia Puspasari M.M.', 'sjanuar@example.org', 'hartaka66', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 670, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '1263ff5b-bc6b-4940-95a9-f62258a52a67'),
-(24, 'Titi Mandasari', 'nrajasa@example.org', 'mustika.kuswandari', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 387, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '1263ff5b-bc6b-4940-95a9-f62258a52a67'),
-(25, 'Icha Anggraini', 'wkusumo@example.net', 'umi.andriani', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 129, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '1263ff5b-bc6b-4940-95a9-f62258a52a67'),
-(26, 'Rahmat Pradipta M.Kom.', 'nashiruddin.kamila@example.org', 'xhidayanto', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 560, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '1263ff5b-bc6b-4940-95a9-f62258a52a67'),
-(27, 'Kanda Sitompul', 'jagapati.hassanah@example.com', 'narji.mandala', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 484, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '1263ff5b-bc6b-4940-95a9-f62258a52a67'),
-(28, 'Sadina Kusmawati', 'tbudiyanto@example.net', 'hasanah.malika', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 536, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '1263ff5b-bc6b-4940-95a9-f62258a52a67'),
-(29, 'Michelle Maryati', 'diana.hassanah@example.com', 'vbudiyanto', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 994, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '1263ff5b-bc6b-4940-95a9-f62258a52a67'),
-(30, 'Lili Rahimah M.Ak', 'cakrabirawa03@example.org', 'kezia66', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 767, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '1263ff5b-bc6b-4940-95a9-f62258a52a67'),
-(31, 'Zulfa Mala Oktaviani', 'prayoga04@example.org', 'hardana.namaga', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 420, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '1263ff5b-bc6b-4940-95a9-f62258a52a67'),
-(32, 'Ratih Dian Widiastuti', 'eusamah@example.org', 'yance.susanti', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 461, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '1263ff5b-bc6b-4940-95a9-f62258a52a67'),
-(33, 'Panji Daru Nashiruddin', 'wacana.capa@example.org', 'zamira32', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 228, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '1263ff5b-bc6b-4940-95a9-f62258a52a67'),
-(34, 'Ellis Laksita', 'ophelia05@example.org', 'malika.natsir', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 151, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '1263ff5b-bc6b-4940-95a9-f62258a52a67'),
-(35, 'Reza Pranowo', 'saputra.syahrini@example.net', 'raharja.suryatmi', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 160, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '1263ff5b-bc6b-4940-95a9-f62258a52a67'),
-(36, 'Ana Utami S.H.', 'dian94@example.com', 'ajimin54', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 558, '2025-05-31 16:12:27', '2025-05-31 16:12:27', 'd422e5a2-30ed-4f6b-8ec3-7450a617ecc8'),
-(37, 'Dinda Sudiati', 'kdabukke@example.com', 'sari36', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 357, '2025-05-31 16:12:27', '2025-05-31 16:12:27', 'd422e5a2-30ed-4f6b-8ec3-7450a617ecc8'),
-(38, 'Cici Purnawati S.Sos', 'saka.pratiwi@example.net', 'nashiruddin.nilam', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 570, '2025-05-31 16:12:27', '2025-05-31 16:12:27', 'd422e5a2-30ed-4f6b-8ec3-7450a617ecc8'),
-(39, 'Opung Ibrahim Latupono', 'nwinarsih@example.org', 'bhardiansyah', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 481, '2025-05-31 16:12:27', '2025-05-31 16:12:27', 'd422e5a2-30ed-4f6b-8ec3-7450a617ecc8'),
-(40, 'Gawati Hafshah Purnawati', 'raisa.mandasari@example.net', 'utama.ellis', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 580, '2025-05-31 16:12:27', '2025-05-31 16:12:27', 'd422e5a2-30ed-4f6b-8ec3-7450a617ecc8'),
-(41, 'Indah Fujiati', 'vgunawan@example.net', 'hidayanto.faizah', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 433, '2025-05-31 16:12:27', '2025-05-31 16:12:27', 'd422e5a2-30ed-4f6b-8ec3-7450a617ecc8'),
-(42, 'Padma Wulandari S.Kom', 'amelani@example.com', 'malika77', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 751, '2025-05-31 16:12:27', '2025-05-31 16:12:27', 'd422e5a2-30ed-4f6b-8ec3-7450a617ecc8'),
-(43, 'Gawati Mandasari S.Sos', 'jyulianti@example.com', 'umar.maheswara', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 337, '2025-05-31 16:12:27', '2025-05-31 16:12:27', 'd422e5a2-30ed-4f6b-8ec3-7450a617ecc8'),
-(44, 'Azalea Wahyuni', 'puspita.diah@example.net', 'martani78', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 503, '2025-05-31 16:12:27', '2025-05-31 16:12:27', 'd422e5a2-30ed-4f6b-8ec3-7450a617ecc8'),
-(45, 'Olivia Pratiwi', 'dadi.hassanah@example.org', 'harto.prayoga', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 172, '2025-05-31 16:12:27', '2025-05-31 16:12:27', 'd422e5a2-30ed-4f6b-8ec3-7450a617ecc8'),
-(46, 'Almira Purnawati S.E.', 'hsiregar@example.net', 'ibun.sihotang', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 838, '2025-05-31 16:12:27', '2025-05-31 16:12:27', 'd422e5a2-30ed-4f6b-8ec3-7450a617ecc8'),
-(47, 'Qori Sari Wahyuni S.Pt', 'xhabibi@example.net', 'jelita36', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 580, '2025-05-31 16:12:27', '2025-05-31 16:12:27', 'd422e5a2-30ed-4f6b-8ec3-7450a617ecc8'),
-(48, 'Margana Permadi S.H.', 'zelaya.mandasari@example.org', 'respati.siregar', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 939, '2025-05-31 16:12:27', '2025-05-31 16:12:27', 'd422e5a2-30ed-4f6b-8ec3-7450a617ecc8'),
-(49, 'Nova Suryatmi S.E.', 'kajen74@example.com', 'inuraini', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 670, '2025-05-31 16:12:27', '2025-05-31 16:12:27', 'd422e5a2-30ed-4f6b-8ec3-7450a617ecc8'),
-(50, 'Yuliana Safitri', 'qsitumorang@example.com', 'fathonah24', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 116, '2025-05-31 16:12:27', '2025-05-31 16:12:27', 'd422e5a2-30ed-4f6b-8ec3-7450a617ecc8'),
-(51, 'Ana Jasmin Hastuti', 'pratiwi.zelda@example.net', 'kusmawati.imam', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 625, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '2f2851f5-2709-4e20-84e0-e6f3671ff89b'),
-(52, 'Opan Tamba M.Farm', 'saiful07@example.net', 'labuh94', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 142, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '2f2851f5-2709-4e20-84e0-e6f3671ff89b'),
-(53, 'Rangga Kuswoyo', 'hasim.pertiwi@example.com', 'riyanti.salman', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 567, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '2f2851f5-2709-4e20-84e0-e6f3671ff89b'),
-(54, 'Kamila Hassanah M.Farm', 'jatmiko.prakasa@example.net', 'yzulaika', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 382, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '2f2851f5-2709-4e20-84e0-e6f3671ff89b'),
-(55, 'Nadine Umi Farida M.Kom.', 'haryanti.wadi@example.org', 'mulyanto.tampubolon', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 483, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '2f2851f5-2709-4e20-84e0-e6f3671ff89b'),
-(56, 'Tomi Anggriawan', 'nmahendra@example.net', 'yoga82', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 901, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '2f2851f5-2709-4e20-84e0-e6f3671ff89b'),
-(57, 'Cindy Ella Haryanti', 'dartono.habibi@example.org', 'gaman08', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 364, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '2f2851f5-2709-4e20-84e0-e6f3671ff89b'),
-(58, 'Raihan Opung Latupono M.Ak', 'fzulaika@example.org', 'thamrin.samiah', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 131, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '2f2851f5-2709-4e20-84e0-e6f3671ff89b'),
-(59, 'Ulya Nasyidah', 'bagya40@example.com', 'cahyo83', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 463, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '2f2851f5-2709-4e20-84e0-e6f3671ff89b'),
-(60, 'Nova Maryati', 'hmansur@example.net', 'atmaja26', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 366, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '2f2851f5-2709-4e20-84e0-e6f3671ff89b'),
-(61, 'Naradi Ikin Permadi S.Ked', 'wahyu74@example.com', 'eko91', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 281, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '2f2851f5-2709-4e20-84e0-e6f3671ff89b'),
-(62, 'Puji Aryani S.E.I', 'gandriani@example.org', 'jefri48', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 669, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '2f2851f5-2709-4e20-84e0-e6f3671ff89b'),
-(63, 'Ratna Nasyidah', 'hassanah.danu@example.com', 'mahesa83', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 212, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '2f2851f5-2709-4e20-84e0-e6f3671ff89b'),
-(64, 'Malika Fujiati S.Kom', 'vpratama@example.com', 'wsuartini', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 396, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '2f2851f5-2709-4e20-84e0-e6f3671ff89b'),
-(65, 'Lukita Opung Pangestu S.Psi', 'latupono.sabrina@example.org', 'suryatmi.farhunnisa', 0, '$2y$12$rVlUhpFOgosHdf5Tmvm4/eTpo/uCSPXhMUtYKBwsyJfFjc12L6Z4m', 232, '2025-05-31 16:12:27', '2025-05-31 16:12:27', '2f2851f5-2709-4e20-84e0-e6f3671ff89b');
+(1, 'Super Admin', 'admin123@gmail.com', 'superadmin', 1, '$2y$12$YMk7TDteaOMmqKmvkZ.cV./jV7cB.7VnB2R/xCO4bIY4TtAKqbUnq', 0, '2025-06-01 15:03:24', '2025-06-01 15:03:24', '685fa443-601b-4e60-b94c-34e22d7842da'),
+(2, 'Naufal Harits', 'naufal@gmail.com', 'naufalharits', 0, '$2y$12$bvPZv5aqPipR4iFqJFx0Qe6WcEmnHMS8bfkaVhiCxtZ.LxhejHy5a', 400, '2025-06-01 15:03:25', '2025-06-01 15:03:25', 'b0b7c318-f265-4c83-b8c8-42c7372f7a20'),
+(3, 'Andi Budiman', 'andi@example.com', 'andibudiman', 0, '$2y$12$hRY1n8tLhEUWM4ndipSTbuCDkYr5gteqV7FLmVXXLoLl.xhrTxv36', 305, '2025-06-01 15:03:25', '2025-06-01 15:03:25', 'b0b7c318-f265-4c83-b8c8-42c7372f7a20'),
+(4, 'Citra Lestari', 'citra@example.com', 'citralestari', 0, '$2y$12$eA5Eh7KpeSZRQRbckUv8jO4TELbj/4qhSqmgYSSKLgkK/l/JwDNly', 250, '2025-06-01 15:03:26', '2025-06-01 15:03:26', 'a8aaa730-b6ba-4d60-a1c2-bcb7575260e1'),
+(5, 'Bayu Perkasa', 'bayu@example.com', 'bayuperkasa', 0, '$2y$12$TZBVHTsaRzHHS6sGyvNTsOLZEUtxJRftLjndDrOilq48pE7my.rhq', 100, '2025-06-01 15:03:26', '2025-06-01 15:03:26', '685fa443-601b-4e60-b94c-34e22d7842da'),
+(6, 'Malika Suartini', 'waluyo.tedi@example.org', 'swastuti', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 578, '2025-06-01 15:03:28', '2025-06-01 15:03:29', '685fa443-601b-4e60-b94c-34e22d7842da'),
+(7, 'Siti Padmasari', 'dimaz.setiawan@example.org', 'azalea87', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 736, '2025-06-01 15:03:28', '2025-06-01 15:03:29', '685fa443-601b-4e60-b94c-34e22d7842da'),
+(8, 'Vanya Nasyidah S.Pt', 'safitri.almira@example.net', 'usimbolon', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 345, '2025-06-01 15:03:28', '2025-06-01 15:03:29', '685fa443-601b-4e60-b94c-34e22d7842da'),
+(9, 'Natalia Talia Wijayanti', 'prasetya.purwadi@example.com', 'juli.winarsih', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 345, '2025-06-01 15:03:28', '2025-06-01 15:03:29', '685fa443-601b-4e60-b94c-34e22d7842da'),
+(10, 'Jelita Mardhiyah', 'luhung.santoso@example.com', 'halima26', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 868, '2025-06-01 15:03:28', '2025-06-01 15:03:29', '685fa443-601b-4e60-b94c-34e22d7842da'),
+(11, 'Kenari Hidayanto', 'padma80@example.net', 'pradana.okto', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 244, '2025-06-01 15:03:28', '2025-06-01 15:03:29', '685fa443-601b-4e60-b94c-34e22d7842da'),
+(12, 'Bajragin Ardianto', 'makara96@example.net', 'permata.bakiono', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 359, '2025-06-01 15:03:28', '2025-06-01 15:03:29', '685fa443-601b-4e60-b94c-34e22d7842da'),
+(13, 'Vega Kunthara Widodo', 'harjaya.habibi@example.org', 'puspita.aslijan', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 153, '2025-06-01 15:03:28', '2025-06-01 15:03:29', '685fa443-601b-4e60-b94c-34e22d7842da'),
+(14, 'Nasrullah Budiman', 'sadina95@example.org', 'manullang.wani', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 163, '2025-06-01 15:03:28', '2025-06-01 15:03:29', '685fa443-601b-4e60-b94c-34e22d7842da'),
+(15, 'Genta Sabrina Riyanti', 'kgunarto@example.net', 'kanda.sitompul', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 832, '2025-06-01 15:03:28', '2025-06-01 15:03:29', '685fa443-601b-4e60-b94c-34e22d7842da'),
+(16, 'Rudi Jindra Santoso S.Pd', 'whutagalung@example.com', 'capa74', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 404, '2025-06-01 15:03:28', '2025-06-01 15:03:29', '685fa443-601b-4e60-b94c-34e22d7842da'),
+(17, 'Panca Sirait', 'halimah.mila@example.net', 'nrima.usamah', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 113, '2025-06-01 15:03:28', '2025-06-01 15:03:29', '685fa443-601b-4e60-b94c-34e22d7842da'),
+(18, 'Yunita Icha Maryati', 'epurnawati@example.net', 'jsuryatmi', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 628, '2025-06-01 15:03:28', '2025-06-01 15:03:29', '685fa443-601b-4e60-b94c-34e22d7842da'),
+(19, 'Caturangga Tampubolon', 'kiandra.hidayanto@example.net', 'ami.pradana', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 545, '2025-06-01 15:03:28', '2025-06-01 15:03:29', '685fa443-601b-4e60-b94c-34e22d7842da'),
+(20, 'Hartaka Damanik', 'gtamba@example.org', 'whandayani', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 408, '2025-06-01 15:03:28', '2025-06-01 15:03:29', '685fa443-601b-4e60-b94c-34e22d7842da'),
+(21, 'Raditya Gaduh Utama', 'rahimah.jabal@example.com', 'rahmi05', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 582, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'b0b7c318-f265-4c83-b8c8-42c7372f7a20'),
+(22, 'Galiono Ganep Napitupulu', 'hani43@example.org', 'oagustina', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 938, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'b0b7c318-f265-4c83-b8c8-42c7372f7a20'),
+(23, 'Soleh Maheswara', 'cagak55@example.com', 'mayasari.sadina', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 750, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'b0b7c318-f265-4c83-b8c8-42c7372f7a20'),
+(24, 'Danu Lembah Marbun', 'yuniar.daliman@example.net', 'mandasari.margana', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 665, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'b0b7c318-f265-4c83-b8c8-42c7372f7a20'),
+(25, 'Mulyono Manullang', 'rsiregar@example.net', 'rahmi.astuti', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 913, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'b0b7c318-f265-4c83-b8c8-42c7372f7a20'),
+(26, 'Puti Safitri', 'hutapea.gawati@example.net', 'juli43', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 455, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'b0b7c318-f265-4c83-b8c8-42c7372f7a20'),
+(27, 'Tina Haryanti', 'mzulaika@example.com', 'hnatsir', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 950, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'b0b7c318-f265-4c83-b8c8-42c7372f7a20'),
+(28, 'Embuh Lasmono Pradana S.Ked', 'wani44@example.com', 'rafid97', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 315, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'b0b7c318-f265-4c83-b8c8-42c7372f7a20'),
+(29, 'Anita Farida', 'kardianto@example.org', 'jatmiko49', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 706, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'b0b7c318-f265-4c83-b8c8-42c7372f7a20'),
+(30, 'Maya Uyainah', 'tlatupono@example.org', 'adriansyah.alika', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 101, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'b0b7c318-f265-4c83-b8c8-42c7372f7a20'),
+(31, 'Cawisono Uwais S.Gz', 'lprabowo@example.com', 'samosir.martana', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 385, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'b0b7c318-f265-4c83-b8c8-42c7372f7a20'),
+(32, 'Perkasa Lega Pangestu', 'fpradana@example.net', 'winarsih.dartono', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 361, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'b0b7c318-f265-4c83-b8c8-42c7372f7a20'),
+(33, 'Puspa Vera Mulyani', 'rsiregar@example.com', 'murti.wulandari', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 971, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'b0b7c318-f265-4c83-b8c8-42c7372f7a20'),
+(34, 'Titin Zulaika', 'pudjiastuti.raina@example.org', 'satya.handayani', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 117, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'b0b7c318-f265-4c83-b8c8-42c7372f7a20'),
+(35, 'Putri Cici Kuswandari', 'wastuti.legawa@example.org', 'muwais', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 171, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'b0b7c318-f265-4c83-b8c8-42c7372f7a20'),
+(36, 'Maryadi Hutasoit', 'maida.yolanda@example.com', 'calista.haryanti', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 378, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'a8aaa730-b6ba-4d60-a1c2-bcb7575260e1'),
+(37, 'Emin Haryanto', 'cagak53@example.org', 'ladriansyah', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 576, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'a8aaa730-b6ba-4d60-a1c2-bcb7575260e1'),
+(38, 'Bagus Napitupulu S.T.', 'tania.najmudin@example.net', 'znuraini', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 218, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'a8aaa730-b6ba-4d60-a1c2-bcb7575260e1'),
+(39, 'Hendri Santoso', 'dodo06@example.net', 'tiara.kuswoyo', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 725, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'a8aaa730-b6ba-4d60-a1c2-bcb7575260e1'),
+(40, 'Naradi Jayeng Santoso', 'mmustofa@example.net', 'ajeng.pertiwi', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 704, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'a8aaa730-b6ba-4d60-a1c2-bcb7575260e1'),
+(41, 'Saka Widodo', 'dasa.saputra@example.org', 'mayasari.enteng', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 617, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'a8aaa730-b6ba-4d60-a1c2-bcb7575260e1'),
+(42, 'Kuncara Irawan', 'fujiati.dalima@example.net', 'ejailani', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 121, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'a8aaa730-b6ba-4d60-a1c2-bcb7575260e1'),
+(43, 'Ciaobella Handayani', 'fyuniar@example.com', 'wahyuni.tiara', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 479, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'a8aaa730-b6ba-4d60-a1c2-bcb7575260e1'),
+(44, 'Nalar Januar', 'hariyah.lulut@example.com', 'permadi.kiandra', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 585, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'a8aaa730-b6ba-4d60-a1c2-bcb7575260e1'),
+(45, 'Jumari Jono Saptono S.Pd', 'atma.palastri@example.net', 'mulyani.karimah', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 166, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'a8aaa730-b6ba-4d60-a1c2-bcb7575260e1'),
+(46, 'Safina Laksmiwati', 'rachel92@example.com', 'rahayu.ratna', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 673, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'a8aaa730-b6ba-4d60-a1c2-bcb7575260e1'),
+(47, 'Devi Vera Astuti', 'yessi.laksmiwati@example.org', 'hastuti.vanya', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 177, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'a8aaa730-b6ba-4d60-a1c2-bcb7575260e1'),
+(48, 'Raharja Pangestu', 'salsabila12@example.org', 'salahudin.luwar', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 444, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'a8aaa730-b6ba-4d60-a1c2-bcb7575260e1'),
+(49, 'Nugraha Lazuardi M.Ak', 'zmaryadi@example.org', 'laksana.suwarno', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 581, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'a8aaa730-b6ba-4d60-a1c2-bcb7575260e1'),
+(50, 'Latika Padma Laksita', 'vino.kuswandari@example.net', 'vinsen.safitri', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 570, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'a8aaa730-b6ba-4d60-a1c2-bcb7575260e1'),
+(51, 'Malik Wibisono', 'epudjiastuti@example.com', 'michelle.yuliarti', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 197, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'd09b771b-3864-42bc-95e0-63a273d81266'),
+(52, 'Nurul Yuliarti S.E.I', 'hafshah.tamba@example.com', 'irma52', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 648, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'd09b771b-3864-42bc-95e0-63a273d81266'),
+(53, 'Karimah Diana Rahayu', 'wijayanti.cakrabirawa@example.net', 'zelaya.pranowo', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 479, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'd09b771b-3864-42bc-95e0-63a273d81266'),
+(54, 'Emin Pranowo', 'vivi44@example.org', 'sari.rahayu', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 338, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'd09b771b-3864-42bc-95e0-63a273d81266'),
+(55, 'Yono Sihotang S.Farm', 'cindy.firgantoro@example.net', 'imanullang', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 782, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'd09b771b-3864-42bc-95e0-63a273d81266'),
+(56, 'Bakiono Saefullah', 'anggraini.ulya@example.com', 'widiastuti.cawisono', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 881, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'd09b771b-3864-42bc-95e0-63a273d81266'),
+(57, 'Hesti Vanya Yuniar', 'siregar.sarah@example.org', 'ahasanah', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 688, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'd09b771b-3864-42bc-95e0-63a273d81266'),
+(58, 'Humaira Anggraini S.Pt', 'sabar41@example.org', 'lintang18', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 139, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'd09b771b-3864-42bc-95e0-63a273d81266'),
+(59, 'Utama Capa Wacana', 'fharyanti@example.com', 'gunarto.daryani', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 412, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'd09b771b-3864-42bc-95e0-63a273d81266'),
+(60, 'Agus Dariati Dongoran S.T.', 'kemal86@example.org', 'kani28', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 925, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'd09b771b-3864-42bc-95e0-63a273d81266'),
+(61, 'Kamaria Purwanti S.T.', 'ira43@example.net', 'yuni64', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 462, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'd09b771b-3864-42bc-95e0-63a273d81266'),
+(62, 'Olga Yoga Anggriawan S.I.Kom', 'permadi.cornelia@example.org', 'dewi.pudjiastuti', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 262, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'd09b771b-3864-42bc-95e0-63a273d81266'),
+(63, 'Sadina Wulan Pertiwi', 'rajasa.edward@example.net', 'azalea.anggriawan', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 364, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'd09b771b-3864-42bc-95e0-63a273d81266'),
+(64, 'Gasti Haryanti S.Ked', 'irwan.sudiati@example.net', 'hsuryatmi', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 286, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'd09b771b-3864-42bc-95e0-63a273d81266'),
+(65, 'Ayu Lidya Suryatmi M.Farm', 'fujiati.halim@example.net', 'elvin.wahyuni', 0, '$2y$12$uDc2yxi.yPQjXRvZxWhHDuw8JeXiNoRDHI2ZRYzJVfQbhjtwthmCS', 815, '2025-06-01 15:03:29', '2025-06-01 15:03:29', 'd09b771b-3864-42bc-95e0-63a273d81266');
 
 -- --------------------------------------------------------
 
@@ -665,7 +683,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `username`, `is_admin`, `password`, 
 CREATE TABLE `user_answers` (
   `id` bigint UNSIGNED NOT NULL,
   `user_id` bigint UNSIGNED NOT NULL,
-  `quiz_id` bigint UNSIGNED NOT NULL,
+  `quiz_id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL,
   `question_id` bigint UNSIGNED NOT NULL,
   `selected_option_id` bigint UNSIGNED DEFAULT NULL,
   `answer_text` text COLLATE utf8mb4_unicode_ci,
@@ -819,6 +837,14 @@ ALTER TABLE `quizzes`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `quiz_attempts`
+--
+ALTER TABLE `quiz_attempts`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `quiz_attempts_user_id_foreign` (`user_id`),
+  ADD KEY `quiz_attempts_quiz_id_foreign` (`quiz_id`);
+
+--
 -- Indexes for table `sessions`
 --
 ALTER TABLE `sessions`
@@ -898,7 +924,7 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `options`
@@ -913,10 +939,10 @@ ALTER TABLE `questions`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT for table `quizzes`
+-- AUTO_INCREMENT for table `quiz_attempts`
 --
-ALTER TABLE `quizzes`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `quiz_attempts`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -988,6 +1014,13 @@ ALTER TABLE `options`
 --
 ALTER TABLE `questions`
   ADD CONSTRAINT `questions_quiz_id_foreign` FOREIGN KEY (`quiz_id`) REFERENCES `quizzes` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `quiz_attempts`
+--
+ALTER TABLE `quiz_attempts`
+  ADD CONSTRAINT `quiz_attempts_quiz_id_foreign` FOREIGN KEY (`quiz_id`) REFERENCES `quizzes` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `quiz_attempts_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `users`
