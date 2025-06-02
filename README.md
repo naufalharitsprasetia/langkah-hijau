@@ -94,15 +94,23 @@ DB_USERNAME=root
 DB_PASSWORD=your_password
 ```
 
-File database juga telah disediakan di folder /database.
+### 5. Konfigurasi Gemini API KEY di .env
 
-### 5. Generate Application Key
+```env
+GEMINI_API_KEY={YOUR_KEY}
+```
+isi dengan gemini api key kalian
+cara nya dapatkan key nya : https://ai.google.dev/gemini-api/docs
+
+Pastikan anda sudah save perubahan tadi (ctrl+s).
+
+### 6. Generate Application Key
 
 ```bash
 php artisan key:generate
 ```
 
-### 6. Migrasi dan Seed Database dan buat storage link
+### 7. Migrasi dan Seed Database dan buat storage link
 
 ```bash
 php artisan migrate:fresh --seed
@@ -112,7 +120,7 @@ php artisan migrate:fresh --seed
 php artisan storage:link
 ```
 
-### 7. Jalankan Aplikasi
+### 8. Jalankan Aplikasi
 ```bash
 composer run dev
 ```
