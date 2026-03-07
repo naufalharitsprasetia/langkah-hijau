@@ -1,3 +1,5 @@
+![LangkahHijau](./langkahhijau.png)
+
 # 🌿 LangkahHijau – Gaya Hidup Sehat dan Ramah Lingkungan
 
 **Slogan:**  
